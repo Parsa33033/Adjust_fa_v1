@@ -1,0 +1,11 @@
+id;created_at;height;weight;bmi;body_composition_file;body_composition_file_content_type;blood_test_file;blood_test_file_content_type
+1;2020-07-31;61161;62097;26664;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+2;2020-07-30;54858;42964;79949;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+3;2020-07-31;61294;1198;41243;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+4;2020-07-31;9635;71168;97365;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+5;2020-07-30;92078;46686;62113;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+6;2020-07-30;88385;55140;9724;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+7;2020-07-30;64010;54457;50339;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+8;2020-07-30;21582;89240;37802;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+9;2020-07-31;24570;22114;31124;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png
+10;2020-07-31;43543;10969;95448;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png

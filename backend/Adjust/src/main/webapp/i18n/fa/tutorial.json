@@ -1,0 +1,29 @@
+{
+  "adjustApp": {
+    "tutorial": {
+      "home": {
+        "title": "Tutorials",
+        "createLabel": "Create a new Tutorial",
+        "createOrEditLabel": "Create or edit a Tutorial",
+        "notFound": "No Tutorials found"
+      },
+      "created": "A new Tutorial is created with identifier {{ param }}",
+      "updated": "A Tutorial is updated with identifier {{ param }}",
+      "deleted": "A Tutorial is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tutorial {{ id }}?"
+      },
+      "detail": {
+        "title": "Tutorial"
+      },
+      "title": "Title",
+      "description": "Description",
+      "text": "Text",
+      "thumbnail": "Thumbnail",
+      "tokenPrice": "Token Price",
+      "adjustTutorialId": "Adjust Tutorial Id",
+      "video": "Video",
+      "client": "Client"
+    }
+  }
+}

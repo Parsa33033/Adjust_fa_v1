@@ -1,0 +1,30 @@
+{
+  "name": "AdjustTutorialVideo",
+  "fields": [
+    {
+      "fieldName": "content",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "adjustTutorial",
+      "otherEntityRelationshipName": "video",
+      "relationshipName": "tutorial",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200731134320",
+  "entityTableName": "adjust_tutorial_video",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

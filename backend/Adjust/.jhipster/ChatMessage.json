@@ -1,0 +1,50 @@
+{
+  "name": "ChatMessage",
+  "fields": [
+    {
+      "fieldName": "clientId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "clientUsername",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "specialistId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "specialistUsername",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "voice",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "conversation",
+      "otherEntityRelationshipName": "messages",
+      "relationshipName": "conversation",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200731134020",
+  "entityTableName": "chat_message",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,76 @@
+{
+  "name": "AdjustProgram",
+  "fields": [
+    {
+      "fieldName": "createdAt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "expirationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "designed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "done",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "paid",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "bodyComposition",
+      "otherEntityRelationshipName": "program",
+      "relationshipName": "bodyCompostion",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "fitnessProgram",
+      "otherEntityRelationshipName": "program",
+      "relationshipName": "fitnessProgram",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "nutritionProgram",
+      "otherEntityRelationshipName": "program",
+      "relationshipName": "nutritionProgram",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "adjustClient",
+      "otherEntityRelationshipName": "programs",
+      "relationshipName": "client",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "specialist",
+      "otherEntityRelationshipName": "programs",
+      "relationshipName": "specialist",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200731132720",
+  "entityTableName": "adjust_program",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

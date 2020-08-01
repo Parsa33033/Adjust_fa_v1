@@ -1,0 +1,33 @@
+{
+  "name": "AdjustFood",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "adjustNutrition",
+      "otherEntityRelationshipName": "foods",
+      "relationshipName": "nutrition",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200731133820",
+  "entityTableName": "adjust_food",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

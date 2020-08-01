@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity AdjustTutorial.
+    -->
+    <changeSet id="20200731134220-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="video_id"
+                                 baseTableName="adjust_tutorial"
+                                 constraintName="fk_adjust_tutorial_video_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="adjust_tutorial_video"/>
+
+    </changeSet>
+</databaseChangeLog>

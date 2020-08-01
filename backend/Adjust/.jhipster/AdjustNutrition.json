@@ -1,0 +1,56 @@
+{
+  "name": "AdjustNutrition",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "adjustNutritionId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "caloriesPerUnit",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "proteinPerUnit",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "carbsPerUnit",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "fatInUnit",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "adjustFood",
+      "otherEntityRelationshipName": "nutrition",
+      "relationshipName": "foods"
+    }
+  ],
+  "changelogDate": "20200731133720",
+  "entityTableName": "adjust_nutrition",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

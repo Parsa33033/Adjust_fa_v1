@@ -1,0 +1,11 @@
+id;created_at;expiration_date;designed;done;paid
+1;2020-07-31;2020-07-31;false;true;false
+2;2020-07-30;2020-07-31;true;false;false
+3;2020-07-30;2020-07-31;true;false;false
+4;2020-07-30;2020-07-30;false;false;false
+5;2020-07-30;2020-07-31;false;true;false
+6;2020-07-31;2020-07-30;true;true;false
+7;2020-07-30;2020-07-30;true;false;true
+8;2020-07-31;2020-07-31;true;false;true
+9;2020-07-30;2020-07-31;true;false;true
+10;2020-07-30;2020-07-31;true;false;false

@@ -1,0 +1,51 @@
+{
+  "name": "Move",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "muscleName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "muscleType",
+      "fieldType": "MuscleType",
+      "fieldValues": "CHEST,SHOULDER,TRAPEZOID,BACK,LATERAL,BICEP,TRICEP,FOREARM,LEG,HAMSTRING,GLUTES,CALVES,ABS,MISC"
+    },
+    {
+      "fieldName": "equipment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "picture",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "adjustMoveId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "exercise",
+      "otherEntityRelationshipName": "move",
+      "relationshipName": "exercise",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200731133220",
+  "entityTableName": "move",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

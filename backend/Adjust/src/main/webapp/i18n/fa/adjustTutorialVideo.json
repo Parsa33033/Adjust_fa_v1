@@ -1,0 +1,23 @@
+{
+  "adjustApp": {
+    "adjustTutorialVideo": {
+      "home": {
+        "title": "Adjust Tutorial Videos",
+        "createLabel": "Create a new Adjust Tutorial Video",
+        "createOrEditLabel": "Create or edit a Adjust Tutorial Video",
+        "notFound": "No Adjust Tutorial Videos found"
+      },
+      "created": "A new Adjust Tutorial Video is created with identifier {{ param }}",
+      "updated": "A Adjust Tutorial Video is updated with identifier {{ param }}",
+      "deleted": "A Adjust Tutorial Video is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Adjust Tutorial Video {{ id }}?"
+      },
+      "detail": {
+        "title": "Adjust Tutorial Video"
+      },
+      "content": "Content",
+      "tutorial": "Tutorial"
+    }
+  }
+}

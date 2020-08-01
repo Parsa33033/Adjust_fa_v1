@@ -1,0 +1,75 @@
+{
+  "name": "AdjustClient",
+  "fields": [
+    {
+      "fieldName": "username",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "birthDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "age",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValues": "MALE,FEMALE"
+    },
+    {
+      "fieldName": "token",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "score",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tutorial",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "tutorials"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "adjustProgram",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "programs"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "conversation",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "conversation",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200731132520",
+  "entityTableName": "adjust_client",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

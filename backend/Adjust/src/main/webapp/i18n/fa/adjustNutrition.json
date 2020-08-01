@@ -1,0 +1,30 @@
+{
+  "adjustApp": {
+    "adjustNutrition": {
+      "home": {
+        "title": "Adjust Nutritions",
+        "createLabel": "Create a new Adjust Nutrition",
+        "createOrEditLabel": "Create or edit a Adjust Nutrition",
+        "notFound": "No Adjust Nutritions found"
+      },
+      "created": "A new Adjust Nutrition is created with identifier {{ param }}",
+      "updated": "A Adjust Nutrition is updated with identifier {{ param }}",
+      "deleted": "A Adjust Nutrition is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Adjust Nutrition {{ id }}?"
+      },
+      "detail": {
+        "title": "Adjust Nutrition"
+      },
+      "name": "Name",
+      "description": "Description",
+      "unit": "Unit",
+      "adjustNutritionId": "Adjust Nutrition Id",
+      "caloriesPerUnit": "Calories Per Unit",
+      "proteinPerUnit": "Protein Per Unit",
+      "carbsPerUnit": "Carbs Per Unit",
+      "fatInUnit": "Fat In Unit",
+      "foods": "Foods"
+    }
+  }
+}

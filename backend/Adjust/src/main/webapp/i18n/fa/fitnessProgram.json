@@ -1,0 +1,25 @@
+{
+  "adjustApp": {
+    "fitnessProgram": {
+      "home": {
+        "title": "Fitness Programs",
+        "createLabel": "Create a new Fitness Program",
+        "createOrEditLabel": "Create or edit a Fitness Program",
+        "notFound": "No Fitness Programs found"
+      },
+      "created": "A new Fitness Program is created with identifier {{ param }}",
+      "updated": "A Fitness Program is updated with identifier {{ param }}",
+      "deleted": "A Fitness Program is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Fitness Program {{ id }}?"
+      },
+      "detail": {
+        "title": "Fitness Program"
+      },
+      "type": "Type",
+      "description": "Description",
+      "workouts": "Workouts",
+      "program": "Program"
+    }
+  }
+}

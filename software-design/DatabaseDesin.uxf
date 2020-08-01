@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>704</y>
+      <w>184</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>FitnessProgram
+--
+type: String
+workouts: List&lt;Workout&gt;
+description: String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1568</x>
+      <y>336</y>
+      <w>168</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>BodyComposition
+--
+createdAt: Date
+height: Double
+width: Double
+bmi: Double
+bodyComposition: Blob
+bloodTest: Blob
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1304</x>
+      <y>384</y>
+      <w>280</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>304</y>
+      <w>232</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>AdjustProgram
+--
+createdAt: Date
+bodyCompositionBefore: BodyComposition
+bodyCompositionAfter: BodyComposition
+nutritionProgram: NutritionProgram
+fitnessProgram: fitnessProgram
+expirationDate: Date
+designed: Boolean
+clientId: Long
+specialistId: Long
+done: Boolean
+paid: Boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>632</x>
+      <y>328</y>
+      <w>232</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>AdjustClient
+--
+userId: Long
+firstName: String
+lastName: String
+birth: Date
+image: Blob
+token: Double
+score: Double
+programs: List&lt;Program&gt;
+tutorials: List&lt;Long&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>856</y>
+      <w>184</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Workout
+--
+dayNumber: int
+excercise: Excercise
+sets: int
+repsMin: int
+repsMax: int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>1024</y>
+      <w>184</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Excercise
+--
+number: int
+name: String
+muscle: String
+equipment: String
+picture: Blob
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>944</y>
+      <w>40</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>776</y>
+      <w>40</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>856</x>
+      <y>384</y>
+      <w>240</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1..n</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>464</y>
+      <w>248</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>290.0;10.0;290.0;80.0;10.0;80.0;10.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1072</x>
+      <y>48</y>
+      <w>232</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>Specialist
+--
+userId: Long
+firstName: String
+lastName: String
+image: Blob
+stars: int
+programs: List&lt;Program&gt;
+clientLimit: int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1288</x>
+      <y>704</y>
+      <w>184</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>NutritionProgram
+--
+dailyCalories: Double
+proteinPercentage: int
+carbsPercentage: int
+fatPercentage: int
+meals: List&lt;Meal&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1288</x>
+      <y>888</y>
+      <w>200</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes>Meal
+--
+name: String
+number: int
+lowFatDairyUnit: int   #glass
+mediumFatDairyUnit: int   #glass
+highFatDairyUnit: int   #glass
+lowFatMeatUnit: int   #30 grams
+mediumFatMeatUnit: int   #30 grams
+highFatMeatUnti: int   #30 grams
+breadUnit: int   #30 grams
+cerealUnit: int   #30 grams
+riceUnit: int   #30 grams
+pastaUnit: int   #30 grams
+fruitUnit: int   #glass
+vegetableUnit: int   #glass
+fatUnit: int   #teaspoon
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1368</x>
+      <y>800</y>
+      <w>40</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1184</x>
+      <y>464</y>
+      <w>208</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;240.0;80.0;240.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1184</x>
+      <y>176</y>
+      <w>24</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>592</y>
+      <w>152</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>AdjustTutorial
+--
+title: String
+description: String
+thumbnail: Blob
+content: Blob
+tokenPrice: Double
+clients: List&lt;AdjustClient&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>592</y>
+      <w>152</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>BuyToken
+--
+name: String
+amount: Double
+date: Date
+client: Client</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>384</y>
+      <w>152</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>ChatMessage
+--
+clientId: Long
+specialistId: Long
+text: String
+voice: Blob</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>384</y>
+      <w>176</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Conversation
+--
+clientId: Long
+specialistId: Long
+messages: List&lt;ChatMessage&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>168</x>
+      <y>424</y>
+      <w>184</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>624</x>
+      <y>112</y>
+      <w>232</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Price
+--
+adjustProgram: Double</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

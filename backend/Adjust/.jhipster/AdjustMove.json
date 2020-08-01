@@ -1,0 +1,39 @@
+{
+  "name": "AdjustMove",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "muscleName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "muscleType",
+      "fieldType": "MuscleType",
+      "fieldValues": "CHEST,SHOULDER,TRAPEZOID,BACK,LATERAL,BICEP,TRICEP,FOREARM,LEG,HAMSTRING,GLUTES,CALVES,ABS,MISC"
+    },
+    {
+      "fieldName": "equipment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "picture",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200731133320",
+  "entityTableName": "adjust_move",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

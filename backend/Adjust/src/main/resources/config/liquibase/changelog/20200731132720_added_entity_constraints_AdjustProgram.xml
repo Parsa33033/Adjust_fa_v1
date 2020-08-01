@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity AdjustProgram.
+    -->
+    <changeSet id="20200731132720-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="body_compostion_id"
+                                 baseTableName="adjust_program"
+                                 constraintName="fk_adjust_program_body_compostion_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="body_composition"/>
+
+        <addForeignKeyConstraint baseColumnNames="fitness_program_id"
+                                 baseTableName="adjust_program"
+                                 constraintName="fk_adjust_program_fitness_program_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fitness_program"/>
+
+        <addForeignKeyConstraint baseColumnNames="nutrition_program_id"
+                                 baseTableName="adjust_program"
+                                 constraintName="fk_adjust_program_nutrition_program_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="nutrition_program"/>
+
+        <addForeignKeyConstraint baseColumnNames="client_id"
+                                 baseTableName="adjust_program"
+                                 constraintName="fk_adjust_program_client_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="adjust_client"/>
+
+        <addForeignKeyConstraint baseColumnNames="specialist_id"
+                                 baseTableName="adjust_program"
+                                 constraintName="fk_adjust_program_specialist_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="specialist"/>
+
+    </changeSet>
+</databaseChangeLog>

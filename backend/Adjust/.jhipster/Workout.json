@@ -1,0 +1,35 @@
+{
+  "name": "Workout",
+  "fields": [
+    {
+      "fieldName": "dayNumber",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "exercise",
+      "otherEntityRelationshipName": "workout",
+      "relationshipName": "exercises"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "fitnessProgram",
+      "otherEntityRelationshipName": "workouts",
+      "relationshipName": "program",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200731133020",
+  "entityTableName": "workout",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

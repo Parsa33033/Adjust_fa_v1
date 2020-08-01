@@ -1,0 +1,24 @@
+{
+  "adjustApp": {
+    "workout": {
+      "home": {
+        "title": "Workouts",
+        "createLabel": "Create a new Workout",
+        "createOrEditLabel": "Create or edit a Workout",
+        "notFound": "No Workouts found"
+      },
+      "created": "A new Workout is created with identifier {{ param }}",
+      "updated": "A Workout is updated with identifier {{ param }}",
+      "deleted": "A Workout is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Workout {{ id }}?"
+      },
+      "detail": {
+        "title": "Workout"
+      },
+      "dayNumber": "Day Number",
+      "exercises": "Exercises",
+      "program": "Program"
+    }
+  }
+}

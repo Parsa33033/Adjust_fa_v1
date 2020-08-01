@@ -1,0 +1,26 @@
+{
+  "adjustApp": {
+    "adjustMove": {
+      "home": {
+        "title": "Adjust Moves",
+        "createLabel": "Create a new Adjust Move",
+        "createOrEditLabel": "Create or edit a Adjust Move",
+        "notFound": "No Adjust Moves found"
+      },
+      "created": "A new Adjust Move is created with identifier {{ param }}",
+      "updated": "A Adjust Move is updated with identifier {{ param }}",
+      "deleted": "A Adjust Move is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Adjust Move {{ id }}?"
+      },
+      "detail": {
+        "title": "Adjust Move"
+      },
+      "name": "Name",
+      "muscleName": "Muscle Name",
+      "muscleType": "Muscle Type",
+      "equipment": "Equipment",
+      "picture": "Picture"
+    }
+  }
+}

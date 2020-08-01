@@ -1,0 +1,52 @@
+{
+  "name": "NutritionProgram",
+  "fields": [
+    {
+      "fieldName": "dailyCalories",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "proteinPercentage",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "carbsPercentage",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "fatPercentage",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "meal",
+      "otherEntityRelationshipName": "nutritionProgram",
+      "relationshipName": "meals"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "adjustProgram",
+      "otherEntityRelationshipName": "nutritionProgram",
+      "relationshipName": "program",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200731133420",
+  "entityTableName": "nutrition_program",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

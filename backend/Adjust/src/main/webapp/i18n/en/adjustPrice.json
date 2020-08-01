@@ -1,0 +1,24 @@
+{
+  "adjustApp": {
+    "adjustPrice": {
+      "home": {
+        "title": "Adjust Prices",
+        "createLabel": "Create a new Adjust Price",
+        "createOrEditLabel": "Create or edit a Adjust Price",
+        "notFound": "No Adjust Prices found"
+      },
+      "created": "A new Adjust Price is created with identifier {{ param }}",
+      "updated": "A Adjust Price is updated with identifier {{ param }}",
+      "deleted": "A Adjust Price is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Adjust Price {{ id }}?"
+      },
+      "detail": {
+        "title": "Adjust Price"
+      },
+      "name": "Name",
+      "token": "Token",
+      "price": "Price"
+    }
+  }
+}

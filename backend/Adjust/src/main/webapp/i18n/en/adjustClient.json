@@ -1,0 +1,33 @@
+{
+  "adjustApp": {
+    "adjustClient": {
+      "home": {
+        "title": "Adjust Clients",
+        "createLabel": "Create a new Adjust Client",
+        "createOrEditLabel": "Create or edit a Adjust Client",
+        "notFound": "No Adjust Clients found"
+      },
+      "created": "A new Adjust Client is created with identifier {{ param }}",
+      "updated": "A Adjust Client is updated with identifier {{ param }}",
+      "deleted": "A Adjust Client is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Adjust Client {{ id }}?"
+      },
+      "detail": {
+        "title": "Adjust Client"
+      },
+      "username": "Username",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "birthDate": "Birth Date",
+      "age": "Age",
+      "gender": "Gender",
+      "token": "Token",
+      "score": "Score",
+      "image": "Image",
+      "tutorials": "Tutorials",
+      "programs": "Programs",
+      "conversation": "Conversation"
+    }
+  }
+}

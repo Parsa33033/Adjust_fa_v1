@@ -1,0 +1,39 @@
+{
+  "name": "Meal",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "number",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "nutrition",
+      "otherEntityRelationshipName": "meal",
+      "relationshipName": "nutritions"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "nutritionProgram",
+      "otherEntityRelationshipName": "meals",
+      "relationshipName": "nutritionProgram",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200731133520",
+  "entityTableName": "meal",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

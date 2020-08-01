@@ -1,0 +1,28 @@
+{
+  "adjustApp": {
+    "bodyComposition": {
+      "home": {
+        "title": "Body Compositions",
+        "createLabel": "Create a new Body Composition",
+        "createOrEditLabel": "Create or edit a Body Composition",
+        "notFound": "No Body Compositions found"
+      },
+      "created": "A new Body Composition is created with identifier {{ param }}",
+      "updated": "A Body Composition is updated with identifier {{ param }}",
+      "deleted": "A Body Composition is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Body Composition {{ id }}?"
+      },
+      "detail": {
+        "title": "Body Composition"
+      },
+      "createdAt": "Created At",
+      "height": "Height",
+      "weight": "Weight",
+      "bmi": "Bmi",
+      "bodyCompositionFile": "Body Composition File",
+      "bloodTestFile": "Blood Test File",
+      "program": "Program"
+    }
+  }
+}

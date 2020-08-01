@@ -1,0 +1,321 @@
+entity AdjustTokens {
+	name String,
+    description String,
+    token Double,
+    price Double,
+    image ImageBlob
+}
+
+entity AdjustPrice {
+	name String,
+    token Double,
+    price Double
+}
+
+entity ShopingItem {
+	name String,
+    description String,
+    token Double,
+    price Double,
+    image ImageBlob,
+    orderable Boolean
+}
+
+entity AdjustShopingItem {
+	name String,
+    description String,
+    token Double,
+    price Double,
+    image ImageBlob,
+    orderable Boolean
+}
+
+entity Cart {
+	username String,
+    firstName String,
+    lastName String,
+}
+
+entity Order {
+	username String,
+    firstName String,
+    lastName String,
+    phoneNumber String,
+    email String,
+    country String,
+    state String,
+    city String,
+    address1 String,
+    address2 String,
+    done Boolean,
+    received Boolean
+}
+
+relationship OneToOne {
+	Order{cart} to Cart{item}
+}
+
+relationship OneToMany {
+	Cart{items} to ShopingItem{cart}
+}
+
+entity AdjustClient {
+	username String,
+	firstName String,
+    lastName String,
+    birthDate LocalDate,
+    age Integer,
+    gender Gender,
+	token Double,
+    score Double,
+    image ImageBlob
+}
+
+entity Specialist {
+	username String,
+	firstName String,
+    lastName String,
+    birth LocalDate,
+    gender Gender,
+    degree String,
+    field String,
+    resume String
+	stars Double,
+    image ImageBlob,
+    busy Boolean
+}
+
+enum Gender {
+	 MALE,
+     FEMALE
+}
+
+entity AdjustProgram {
+	createdAt LocalDate,
+    expirationDate LocalDate,
+    designed Boolean,
+    done Boolean,
+    paid Boolean
+}
+
+entity BodyComposition {
+	createdAt LocalDate,
+    height Double,
+    weight Double,
+    bmi Double,
+    bodyCompositionFile ImageBlob,
+    bloodTestFile ImageBlob,
+}
+
+//fitness program
+
+entity FitnessProgram {
+	type String,
+    description TextBlob,
+}
+
+entity Workout {
+	dayNumber Integer,
+
+}
+
+entity Exercise {
+	number Integer,
+    sets Integer,
+    repsMin Integer,
+    repsMax Integer
+
+}
+
+entity Move {
+    name String,
+    muscleName String,
+    muscleType MuscleType
+    equipment String,
+    picture ImageBlob,
+    adjustMoveId Long,
+}
+
+entity AdjustMove {
+    name String,
+    muscleName String,
+    muscleType MuscleType
+    equipment String,
+    picture ImageBlob,
+}
+
+
+enum MuscleType {
+	CHEST,
+    SHOULDER,
+    TRAPEZOID,
+    BACK,
+    LATERAL,
+    BICEP,
+    TRICEP,
+    FOREARM,
+    LEG,
+    HAMSTRING,
+    GLUTES,
+    CALVES,
+    ABS,
+    MISC
+}
+
+//nutrition program
+
+entity NutritionProgram {
+	dailyCalories Double,
+    proteinPercentage Integer,
+    carbsPercentage Integer,
+    fatPercentage Integer,
+    description TextBlob,
+}
+
+entity Meal {
+	name String,
+    number Integer,
+}
+
+entity Nutrition {
+	name String,
+    description String,
+	unit Integer,
+    adjustNutritionId Long,
+    caloriesPerUnit Integer,
+    proteinPerUnit Integer,
+    carbsPerUnit Integer,
+    fatInUnit Integer,
+}
+
+entity AdjustNutrition {
+	name String,
+    description String,
+	unit Integer,
+    adjustNutritionId Long,
+    caloriesPerUnit Integer,
+    proteinPerUnit Integer,
+    carbsPerUnit Integer,
+    fatInUnit Integer,
+}
+
+entity AdjustFood {
+	name String,
+    description String,
+}
+
+relationship OneToMany {
+	Meal{nutritions} to Nutrition{meal}
+}
+
+relationship OneToMany {
+	AdjustNutrition{foods} to AdjustFood{nutrition}
+}
+
+//chat 
+entity Conversation {
+
+}
+
+entity ChatMessage {
+	clientId Long,
+    clientUsername String,
+    specialistId Long,
+    specialistUsername String,
+    text String,
+    voice AnyBlob
+}
+
+relationship OneToOne {
+	Conversation{client} to AdjustClient{conversation}
+}
+
+relationship OneToOne {
+	Conversation{specialist} to Specialist{conversation}
+}
+
+relationship OneToMany {
+	Conversation{messages} to ChatMessage{conversation}
+}
+
+// tutorial
+
+entity Tutorial {
+	title String,
+    description String,
+    text TextBlob,
+    thumbnail ImageBlob,
+    tokenPrice Double,
+    adjustTutorialId Long,
+    
+}
+
+entity AdjustTutorial {
+	title String,
+    description String,
+    text TextBlob,
+    thumbnail ImageBlob,
+    tokenPrice Double,
+}
+
+
+entity AdjustTutorialVideo {
+	content AnyBlob
+}
+
+entity TutorialVideo {
+	adjustTutorialVideoId Long,
+	content AnyBlob
+}
+
+relationship OneToOne {
+	Tutorial{video} to TutorialVideo{tutorial}
+}
+
+relationship OneToOne {
+	AdjustTutorial{video} to AdjustTutorialVideo{tutorial}
+}
+
+relationship OneToMany {
+	AdjustClient{tutorials} to Tutorial{client}
+}
+
+
+relationship OneToOne {
+	AdjustProgram{bodyCompostion} to BodyComposition{program}
+}
+
+relationship OneToMany {
+	AdjustClient{programs} to AdjustProgram{client}
+}
+
+relationship OneToMany {
+	Specialist{programs} to AdjustProgram{specialist}
+}
+
+relationship OneToOne {
+	AdjustProgram{fitnessProgram} to FitnessProgram{program}
+}
+
+relationship OneToOne {
+	AdjustProgram{nutritionProgram} to NutritionProgram{program}
+}
+
+relationship OneToMany {
+	FitnessProgram{workouts} to Workout{program}
+}
+
+relationship OneToMany {
+	Workout{exercises} to Exercise{workout}
+}
+
+relationship OneToOne {
+	Exercise{move} to Move{exercise}
+}
+
+relationship OneToMany {
+	NutritionProgram{meals} to Meal{nutritionProgram}
+}
+
+service all with serviceClass
+dto * with mapstruct

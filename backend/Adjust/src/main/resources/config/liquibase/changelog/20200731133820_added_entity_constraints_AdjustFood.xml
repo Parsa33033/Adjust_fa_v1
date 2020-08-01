@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity AdjustFood.
+    -->
+    <changeSet id="20200731133820-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="nutrition_id"
+                                 baseTableName="adjust_food"
+                                 constraintName="fk_adjust_food_nutrition_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="adjust_nutrition"/>
+
+    </changeSet>
+</databaseChangeLog>

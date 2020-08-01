@@ -1,0 +1,34 @@
+{
+  "adjustApp": {
+    "specialist": {
+      "home": {
+        "title": "Specialists",
+        "createLabel": "Create a new Specialist",
+        "createOrEditLabel": "Create or edit a Specialist",
+        "notFound": "No Specialists found"
+      },
+      "created": "A new Specialist is created with identifier {{ param }}",
+      "updated": "A Specialist is updated with identifier {{ param }}",
+      "deleted": "A Specialist is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Specialist {{ id }}?"
+      },
+      "detail": {
+        "title": "Specialist"
+      },
+      "username": "Username",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "birth": "Birth",
+      "gender": "Gender",
+      "degree": "Degree",
+      "field": "Field",
+      "resume": "Resume",
+      "stars": "Stars",
+      "image": "Image",
+      "busy": "Busy",
+      "programs": "Programs",
+      "conversation": "Conversation"
+    }
+  }
+}
