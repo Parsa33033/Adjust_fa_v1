@@ -18,6 +18,48 @@
       "fieldType": "Double"
     },
     {
+      "fieldName": "wrist",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "waist",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "lbm",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "muscleMass",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "muscleMassPercentage",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "fatMass",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "fatMassPercentage",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValues": "MALE,FEMALE"
+    },
+    {
+      "fieldName": "age",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bodyImage",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
       "fieldName": "bodyCompositionFile",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "image"
@@ -30,11 +72,11 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-one",
+      "relationshipType": "many-to-one",
       "otherEntityName": "adjustProgram",
-      "otherEntityRelationshipName": "bodyCompostion",
+      "otherEntityRelationshipName": "bodyCompostions",
       "relationshipName": "program",
-      "ownerSide": false
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20200731132820",

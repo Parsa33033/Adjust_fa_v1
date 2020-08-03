@@ -16,5 +16,15 @@ public class DummyBodyCompositionDTO extends BodyCompositionDTO implements Seria
         this.setBodyCompositionFileContentType(bodyCompositionDTO.getBodyCompositionFileContentType());
         this.setBloodTestFile(bodyCompositionDTO.getBloodTestFile());
         this.setBloodTestFileContentType(bodyCompositionDTO.getBloodTestFileContentType());
+        this.setAge(bodyCompositionDTO.getAge());
+        this.setGender(bodyCompositionDTO.getGender());
+        this.setWaist(bodyCompositionDTO.getWaist());
+        this.setWrist(bodyCompositionDTO.getWrist());
+        this.setMuscleMass(bodyCompositionDTO.getMuscleMass());
+        this.setMuscleMassPercentage(bodyCompositionDTO.getMuscleMassPercentage());
+        this.setBodyImage(bodyCompositionDTO.getBodyImage());
+        this.setBodyImageContentType(bodyCompositionDTO.getBodyImageContentType());
+        this.setFatMass(bodyCompositionDTO.getFatMass());
+        this.setFatMassPercentage(bodyCompositionDTO.getFatMassPercentage());
     }
 }

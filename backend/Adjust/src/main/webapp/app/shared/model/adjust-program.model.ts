@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IBodyComposition } from 'app/shared/model/body-composition.model';
 
 export interface IAdjustProgram {
   id?: number;
@@ -7,9 +8,9 @@ export interface IAdjustProgram {
   designed?: boolean;
   done?: boolean;
   paid?: boolean;
-  bodyCompostionId?: number;
   fitnessProgramId?: number;
   nutritionProgramId?: number;
+  bodyCompostions?: IBodyComposition[];
   clientId?: number;
   specialistId?: number;
 }

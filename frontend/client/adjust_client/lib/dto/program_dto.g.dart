@@ -18,7 +18,6 @@ ProgramDTO _$ProgramDTOFromJson(Map<String, dynamic> json) {
     json['designed'] as bool,
     json['done'] as bool,
     json['paid'] as bool,
-    json['bodyCompostionId'] as int,
     json['fitnessProgramId'] as int,
     json['nutritionProgramId'] as int,
     json['clientId'] as int,
@@ -29,10 +28,11 @@ ProgramDTO _$ProgramDTOFromJson(Map<String, dynamic> json) {
     json['specialist'] == null
         ? null
         : SpecialistDTO.fromJson(json['specialist'] as Map<String, dynamic>),
-    json['bodyComposition'] == null
-        ? null
-        : BodyCompositionDTO.fromJson(
-            json['bodyComposition'] as Map<String, dynamic>),
+    (json['bodyCompositions'] as List)
+        ?.map((e) => e == null
+            ? null
+            : BodyCompositionDTO.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     json['nutritionProgram'] == null
         ? null
         : NutritionProgramDTO.fromJson(
@@ -52,14 +52,13 @@ Map<String, dynamic> _$ProgramDTOToJson(ProgramDTO instance) =>
       'designed': instance.designed,
       'done': instance.done,
       'paid': instance.paid,
-      'bodyCompostionId': instance.bodyCompostionId,
       'fitnessProgramId': instance.fitnessProgramId,
       'nutritionProgramId': instance.nutritionProgramId,
       'clientId': instance.clientId,
       'specialistId': instance.specialistId,
       'client': instance.client,
       'specialist': instance.specialist,
-      'bodyComposition': instance.bodyComposition,
+      'bodyCompositions': instance.bodyCompositions,
       'nutritionProgram': instance.nutritionProgram,
       'fitnessProgram': instance.fitnessProgram,
     };

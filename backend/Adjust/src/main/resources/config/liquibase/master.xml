@@ -53,6 +53,7 @@
     <include file="config/liquibase/changelog/20200731134020_added_entity_constraints_ChatMessage.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731134120_added_entity_constraints_Tutorial.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731134220_added_entity_constraints_AdjustTutorial.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200731132820_added_entity_constraints_BodyComposition.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

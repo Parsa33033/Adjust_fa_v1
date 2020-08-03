@@ -27,6 +27,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.adjust.api.domain.enumeration.Gender;
 /**
  * Integration tests for the {@link BodyCompositionResource} REST controller.
  */
@@ -46,6 +47,38 @@ public class BodyCompositionResourceIT {
 
     private static final Double DEFAULT_BMI = 1D;
     private static final Double UPDATED_BMI = 2D;
+
+    private static final Double DEFAULT_WRIST = 1D;
+    private static final Double UPDATED_WRIST = 2D;
+
+    private static final Double DEFAULT_WAIST = 1D;
+    private static final Double UPDATED_WAIST = 2D;
+
+    private static final Double DEFAULT_LBM = 1D;
+    private static final Double UPDATED_LBM = 2D;
+
+    private static final Double DEFAULT_MUSCLE_MASS = 1D;
+    private static final Double UPDATED_MUSCLE_MASS = 2D;
+
+    private static final Integer DEFAULT_MUSCLE_MASS_PERCENTAGE = 1;
+    private static final Integer UPDATED_MUSCLE_MASS_PERCENTAGE = 2;
+
+    private static final Double DEFAULT_FAT_MASS = 1D;
+    private static final Double UPDATED_FAT_MASS = 2D;
+
+    private static final Integer DEFAULT_FAT_MASS_PERCENTAGE = 1;
+    private static final Integer UPDATED_FAT_MASS_PERCENTAGE = 2;
+
+    private static final Gender DEFAULT_GENDER = Gender.MALE;
+    private static final Gender UPDATED_GENDER = Gender.FEMALE;
+
+    private static final Integer DEFAULT_AGE = 1;
+    private static final Integer UPDATED_AGE = 2;
+
+    private static final byte[] DEFAULT_BODY_IMAGE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_BODY_IMAGE = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_BODY_IMAGE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_BODY_IMAGE_CONTENT_TYPE = "image/png";
 
     private static final byte[] DEFAULT_BODY_COMPOSITION_FILE = TestUtil.createByteArray(1, "0");
     private static final byte[] UPDATED_BODY_COMPOSITION_FILE = TestUtil.createByteArray(1, "1");
@@ -86,6 +119,17 @@ public class BodyCompositionResourceIT {
             .height(DEFAULT_HEIGHT)
             .weight(DEFAULT_WEIGHT)
             .bmi(DEFAULT_BMI)
+            .wrist(DEFAULT_WRIST)
+            .waist(DEFAULT_WAIST)
+            .lbm(DEFAULT_LBM)
+            .muscleMass(DEFAULT_MUSCLE_MASS)
+            .muscleMassPercentage(DEFAULT_MUSCLE_MASS_PERCENTAGE)
+            .fatMass(DEFAULT_FAT_MASS)
+            .fatMassPercentage(DEFAULT_FAT_MASS_PERCENTAGE)
+            .gender(DEFAULT_GENDER)
+            .age(DEFAULT_AGE)
+            .bodyImage(DEFAULT_BODY_IMAGE)
+            .bodyImageContentType(DEFAULT_BODY_IMAGE_CONTENT_TYPE)
             .bodyCompositionFile(DEFAULT_BODY_COMPOSITION_FILE)
             .bodyCompositionFileContentType(DEFAULT_BODY_COMPOSITION_FILE_CONTENT_TYPE)
             .bloodTestFile(DEFAULT_BLOOD_TEST_FILE)
@@ -104,6 +148,17 @@ public class BodyCompositionResourceIT {
             .height(UPDATED_HEIGHT)
             .weight(UPDATED_WEIGHT)
             .bmi(UPDATED_BMI)
+            .wrist(UPDATED_WRIST)
+            .waist(UPDATED_WAIST)
+            .lbm(UPDATED_LBM)
+            .muscleMass(UPDATED_MUSCLE_MASS)
+            .muscleMassPercentage(UPDATED_MUSCLE_MASS_PERCENTAGE)
+            .fatMass(UPDATED_FAT_MASS)
+            .fatMassPercentage(UPDATED_FAT_MASS_PERCENTAGE)
+            .gender(UPDATED_GENDER)
+            .age(UPDATED_AGE)
+            .bodyImage(UPDATED_BODY_IMAGE)
+            .bodyImageContentType(UPDATED_BODY_IMAGE_CONTENT_TYPE)
             .bodyCompositionFile(UPDATED_BODY_COMPOSITION_FILE)
             .bodyCompositionFileContentType(UPDATED_BODY_COMPOSITION_FILE_CONTENT_TYPE)
             .bloodTestFile(UPDATED_BLOOD_TEST_FILE)
@@ -135,6 +190,17 @@ public class BodyCompositionResourceIT {
         assertThat(testBodyComposition.getHeight()).isEqualTo(DEFAULT_HEIGHT);
         assertThat(testBodyComposition.getWeight()).isEqualTo(DEFAULT_WEIGHT);
         assertThat(testBodyComposition.getBmi()).isEqualTo(DEFAULT_BMI);
+        assertThat(testBodyComposition.getWrist()).isEqualTo(DEFAULT_WRIST);
+        assertThat(testBodyComposition.getWaist()).isEqualTo(DEFAULT_WAIST);
+        assertThat(testBodyComposition.getLbm()).isEqualTo(DEFAULT_LBM);
+        assertThat(testBodyComposition.getMuscleMass()).isEqualTo(DEFAULT_MUSCLE_MASS);
+        assertThat(testBodyComposition.getMuscleMassPercentage()).isEqualTo(DEFAULT_MUSCLE_MASS_PERCENTAGE);
+        assertThat(testBodyComposition.getFatMass()).isEqualTo(DEFAULT_FAT_MASS);
+        assertThat(testBodyComposition.getFatMassPercentage()).isEqualTo(DEFAULT_FAT_MASS_PERCENTAGE);
+        assertThat(testBodyComposition.getGender()).isEqualTo(DEFAULT_GENDER);
+        assertThat(testBodyComposition.getAge()).isEqualTo(DEFAULT_AGE);
+        assertThat(testBodyComposition.getBodyImage()).isEqualTo(DEFAULT_BODY_IMAGE);
+        assertThat(testBodyComposition.getBodyImageContentType()).isEqualTo(DEFAULT_BODY_IMAGE_CONTENT_TYPE);
         assertThat(testBodyComposition.getBodyCompositionFile()).isEqualTo(DEFAULT_BODY_COMPOSITION_FILE);
         assertThat(testBodyComposition.getBodyCompositionFileContentType()).isEqualTo(DEFAULT_BODY_COMPOSITION_FILE_CONTENT_TYPE);
         assertThat(testBodyComposition.getBloodTestFile()).isEqualTo(DEFAULT_BLOOD_TEST_FILE);
@@ -177,6 +243,17 @@ public class BodyCompositionResourceIT {
             .andExpect(jsonPath("$.[*].height").value(hasItem(DEFAULT_HEIGHT.doubleValue())))
             .andExpect(jsonPath("$.[*].weight").value(hasItem(DEFAULT_WEIGHT.doubleValue())))
             .andExpect(jsonPath("$.[*].bmi").value(hasItem(DEFAULT_BMI.doubleValue())))
+            .andExpect(jsonPath("$.[*].wrist").value(hasItem(DEFAULT_WRIST.doubleValue())))
+            .andExpect(jsonPath("$.[*].waist").value(hasItem(DEFAULT_WAIST.doubleValue())))
+            .andExpect(jsonPath("$.[*].lbm").value(hasItem(DEFAULT_LBM.doubleValue())))
+            .andExpect(jsonPath("$.[*].muscleMass").value(hasItem(DEFAULT_MUSCLE_MASS.doubleValue())))
+            .andExpect(jsonPath("$.[*].muscleMassPercentage").value(hasItem(DEFAULT_MUSCLE_MASS_PERCENTAGE)))
+            .andExpect(jsonPath("$.[*].fatMass").value(hasItem(DEFAULT_FAT_MASS.doubleValue())))
+            .andExpect(jsonPath("$.[*].fatMassPercentage").value(hasItem(DEFAULT_FAT_MASS_PERCENTAGE)))
+            .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
+            .andExpect(jsonPath("$.[*].age").value(hasItem(DEFAULT_AGE)))
+            .andExpect(jsonPath("$.[*].bodyImageContentType").value(hasItem(DEFAULT_BODY_IMAGE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].bodyImage").value(hasItem(Base64Utils.encodeToString(DEFAULT_BODY_IMAGE))))
             .andExpect(jsonPath("$.[*].bodyCompositionFileContentType").value(hasItem(DEFAULT_BODY_COMPOSITION_FILE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].bodyCompositionFile").value(hasItem(Base64Utils.encodeToString(DEFAULT_BODY_COMPOSITION_FILE))))
             .andExpect(jsonPath("$.[*].bloodTestFileContentType").value(hasItem(DEFAULT_BLOOD_TEST_FILE_CONTENT_TYPE)))
@@ -198,6 +275,17 @@ public class BodyCompositionResourceIT {
             .andExpect(jsonPath("$.height").value(DEFAULT_HEIGHT.doubleValue()))
             .andExpect(jsonPath("$.weight").value(DEFAULT_WEIGHT.doubleValue()))
             .andExpect(jsonPath("$.bmi").value(DEFAULT_BMI.doubleValue()))
+            .andExpect(jsonPath("$.wrist").value(DEFAULT_WRIST.doubleValue()))
+            .andExpect(jsonPath("$.waist").value(DEFAULT_WAIST.doubleValue()))
+            .andExpect(jsonPath("$.lbm").value(DEFAULT_LBM.doubleValue()))
+            .andExpect(jsonPath("$.muscleMass").value(DEFAULT_MUSCLE_MASS.doubleValue()))
+            .andExpect(jsonPath("$.muscleMassPercentage").value(DEFAULT_MUSCLE_MASS_PERCENTAGE))
+            .andExpect(jsonPath("$.fatMass").value(DEFAULT_FAT_MASS.doubleValue()))
+            .andExpect(jsonPath("$.fatMassPercentage").value(DEFAULT_FAT_MASS_PERCENTAGE))
+            .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER.toString()))
+            .andExpect(jsonPath("$.age").value(DEFAULT_AGE))
+            .andExpect(jsonPath("$.bodyImageContentType").value(DEFAULT_BODY_IMAGE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.bodyImage").value(Base64Utils.encodeToString(DEFAULT_BODY_IMAGE)))
             .andExpect(jsonPath("$.bodyCompositionFileContentType").value(DEFAULT_BODY_COMPOSITION_FILE_CONTENT_TYPE))
             .andExpect(jsonPath("$.bodyCompositionFile").value(Base64Utils.encodeToString(DEFAULT_BODY_COMPOSITION_FILE)))
             .andExpect(jsonPath("$.bloodTestFileContentType").value(DEFAULT_BLOOD_TEST_FILE_CONTENT_TYPE))
@@ -228,6 +316,17 @@ public class BodyCompositionResourceIT {
             .height(UPDATED_HEIGHT)
             .weight(UPDATED_WEIGHT)
             .bmi(UPDATED_BMI)
+            .wrist(UPDATED_WRIST)
+            .waist(UPDATED_WAIST)
+            .lbm(UPDATED_LBM)
+            .muscleMass(UPDATED_MUSCLE_MASS)
+            .muscleMassPercentage(UPDATED_MUSCLE_MASS_PERCENTAGE)
+            .fatMass(UPDATED_FAT_MASS)
+            .fatMassPercentage(UPDATED_FAT_MASS_PERCENTAGE)
+            .gender(UPDATED_GENDER)
+            .age(UPDATED_AGE)
+            .bodyImage(UPDATED_BODY_IMAGE)
+            .bodyImageContentType(UPDATED_BODY_IMAGE_CONTENT_TYPE)
             .bodyCompositionFile(UPDATED_BODY_COMPOSITION_FILE)
             .bodyCompositionFileContentType(UPDATED_BODY_COMPOSITION_FILE_CONTENT_TYPE)
             .bloodTestFile(UPDATED_BLOOD_TEST_FILE)
@@ -247,6 +346,17 @@ public class BodyCompositionResourceIT {
         assertThat(testBodyComposition.getHeight()).isEqualTo(UPDATED_HEIGHT);
         assertThat(testBodyComposition.getWeight()).isEqualTo(UPDATED_WEIGHT);
         assertThat(testBodyComposition.getBmi()).isEqualTo(UPDATED_BMI);
+        assertThat(testBodyComposition.getWrist()).isEqualTo(UPDATED_WRIST);
+        assertThat(testBodyComposition.getWaist()).isEqualTo(UPDATED_WAIST);
+        assertThat(testBodyComposition.getLbm()).isEqualTo(UPDATED_LBM);
+        assertThat(testBodyComposition.getMuscleMass()).isEqualTo(UPDATED_MUSCLE_MASS);
+        assertThat(testBodyComposition.getMuscleMassPercentage()).isEqualTo(UPDATED_MUSCLE_MASS_PERCENTAGE);
+        assertThat(testBodyComposition.getFatMass()).isEqualTo(UPDATED_FAT_MASS);
+        assertThat(testBodyComposition.getFatMassPercentage()).isEqualTo(UPDATED_FAT_MASS_PERCENTAGE);
+        assertThat(testBodyComposition.getGender()).isEqualTo(UPDATED_GENDER);
+        assertThat(testBodyComposition.getAge()).isEqualTo(UPDATED_AGE);
+        assertThat(testBodyComposition.getBodyImage()).isEqualTo(UPDATED_BODY_IMAGE);
+        assertThat(testBodyComposition.getBodyImageContentType()).isEqualTo(UPDATED_BODY_IMAGE_CONTENT_TYPE);
         assertThat(testBodyComposition.getBodyCompositionFile()).isEqualTo(UPDATED_BODY_COMPOSITION_FILE);
         assertThat(testBodyComposition.getBodyCompositionFileContentType()).isEqualTo(UPDATED_BODY_COMPOSITION_FILE_CONTENT_TYPE);
         assertThat(testBodyComposition.getBloodTestFile()).isEqualTo(UPDATED_BLOOD_TEST_FILE);

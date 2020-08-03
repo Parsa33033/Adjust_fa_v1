@@ -52,9 +52,6 @@ export const AdjustProgram = (props: IAdjustProgramProps) => {
                   <Translate contentKey="adjustApp.adjustProgram.paid">Paid</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="adjustApp.adjustProgram.bodyCompostion">Body Compostion</Translate>
-                </th>
-                <th>
                   <Translate contentKey="adjustApp.adjustProgram.fitnessProgram">Fitness Program</Translate>
                 </th>
                 <th>
@@ -90,13 +87,6 @@ export const AdjustProgram = (props: IAdjustProgramProps) => {
                   <td>{adjustProgram.designed ? 'true' : 'false'}</td>
                   <td>{adjustProgram.done ? 'true' : 'false'}</td>
                   <td>{adjustProgram.paid ? 'true' : 'false'}</td>
-                  <td>
-                    {adjustProgram.bodyCompostionId ? (
-                      <Link to={`body-composition/${adjustProgram.bodyCompostionId}`}>{adjustProgram.bodyCompostionId}</Link>
-                    ) : (
-                      ''
-                    )}
-                  </td>
                   <td>
                     {adjustProgram.fitnessProgramId ? (
                       <Link to={`fitness-program/${adjustProgram.fitnessProgramId}`}>{adjustProgram.fitnessProgramId}</Link>

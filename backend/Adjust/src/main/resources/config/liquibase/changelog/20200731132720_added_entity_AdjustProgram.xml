@@ -31,9 +31,6 @@
             <column name="paid" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="body_compostion_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_adjust_program_body_compostion_id" />
-            </column>
             <column name="fitness_program_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_adjust_program_fitness_program_id" />
             </column>

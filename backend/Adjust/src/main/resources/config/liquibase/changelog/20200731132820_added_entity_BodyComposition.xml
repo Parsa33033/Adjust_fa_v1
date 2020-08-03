@@ -28,6 +28,39 @@
             <column name="bmi" type="double">
                 <constraints nullable="true" />
             </column>
+            <column name="wrist" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="waist" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="lbm" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="muscle_mass" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="muscle_mass_percentage" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="fat_mass" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="fat_mass_percentage" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="gender" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="age" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="body_image" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="body_image_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="body_composition_file" type="longblob">
                 <constraints nullable="true" />
             </column>
@@ -38,6 +71,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="blood_test_file_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="program_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -67,6 +103,17 @@
             <column name="height" type="numeric"/>
             <column name="weight" type="numeric"/>
             <column name="bmi" type="numeric"/>
+            <column name="wrist" type="numeric"/>
+            <column name="waist" type="numeric"/>
+            <column name="lbm" type="numeric"/>
+            <column name="muscle_mass" type="numeric"/>
+            <column name="muscle_mass_percentage" type="numeric"/>
+            <column name="fat_mass" type="numeric"/>
+            <column name="fat_mass_percentage" type="numeric"/>
+            <column name="gender" type="string"/>
+            <column name="age" type="numeric"/>
+            <column name="body_image" type="blob"/>
+            <column name="body_image_content_type" type="string"/>
             <column name="body_composition_file" type="blob"/>
             <column name="body_composition_file_content_type" type="string"/>
             <column name="blood_test_file" type="blob"/>

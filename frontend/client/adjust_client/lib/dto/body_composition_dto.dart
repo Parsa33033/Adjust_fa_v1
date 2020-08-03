@@ -1,4 +1,5 @@
 import 'package:adjust_client/model/body_composition.dart';
+import 'package:adjust_client/model/client.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'body_composition_dto.g.dart';
@@ -11,20 +12,44 @@ class BodyCompositionDTO extends BodyComposition {
       double height,
       double weight,
       double bmi,
+      double wrist,
+      double waist,
+      double lbm,
+      double muscleMass,
+      int muscleMassPercentage,
+      double fatMass,
+      int fatMassPercentage,
+      Gender gender,
+      int age,
+      String bodyImage,
+      String bodyImageContentType,
       String bodyCompositionFile,
       String bodyCompositionFileContentType,
       String bloodTestFile,
-      String bloodTestFileContentType)
+      String bloodTestFileContentType,
+      int programId)
       : super(
             id,
             createdAt,
             height,
             weight,
             bmi,
+            wrist,
+            waist,
+            lbm,
+            muscleMass,
+            muscleMassPercentage,
+            fatMass,
+            fatMassPercentage,
+            gender,
+            age,
+            bodyImage,
+            bodyImageContentType,
             bodyCompositionFile,
             bodyCompositionFileContentType,
             bloodTestFile,
-            bloodTestFileContentType);
+            bloodTestFileContentType,
+            programId);
 
   factory BodyCompositionDTO.fromJson(Map<String, dynamic> json) =>
       _$BodyCompositionDTOFromJson(json);

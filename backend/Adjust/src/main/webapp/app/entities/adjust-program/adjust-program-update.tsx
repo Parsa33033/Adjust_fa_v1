@@ -7,8 +7,6 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { IBodyComposition } from 'app/shared/model/body-composition.model';
-import { getEntities as getBodyCompositions } from 'app/entities/body-composition/body-composition.reducer';
 import { IFitnessProgram } from 'app/shared/model/fitness-program.model';
 import { getEntities as getFitnessPrograms } from 'app/entities/fitness-program/fitness-program.reducer';
 import { INutritionProgram } from 'app/shared/model/nutrition-program.model';
@@ -25,23 +23,13 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface IAdjustProgramUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const AdjustProgramUpdate = (props: IAdjustProgramUpdateProps) => {
-  const [bodyCompostionId, setBodyCompostionId] = useState('0');
   const [fitnessProgramId, setFitnessProgramId] = useState('0');
   const [nutritionProgramId, setNutritionProgramId] = useState('0');
   const [clientId, setClientId] = useState('0');
   const [specialistId, setSpecialistId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const {
-    adjustProgramEntity,
-    bodyCompositions,
-    fitnessPrograms,
-    nutritionPrograms,
-    adjustClients,
-    specialists,
-    loading,
-    updating,
-  } = props;
+  const { adjustProgramEntity, fitnessPrograms, nutritionPrograms, adjustClients, specialists, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/adjust-program');
@@ -54,7 +42,6 @@ export const AdjustProgramUpdate = (props: IAdjustProgramUpdateProps) => {
       props.getEntity(props.match.params.id);
     }
 
-    props.getBodyCompositions();
     props.getFitnessPrograms();
     props.getNutritionPrograms();
     props.getAdjustClients();
@@ -134,21 +121,6 @@ export const AdjustProgramUpdate = (props: IAdjustProgramUpdateProps) => {
                   <AvInput id="adjust-program-paid" type="checkbox" className="form-check-input" name="paid" />
                   <Translate contentKey="adjustApp.adjustProgram.paid">Paid</Translate>
                 </Label>
-              </AvGroup>
-              <AvGroup>
-                <Label for="adjust-program-bodyCompostion">
-                  <Translate contentKey="adjustApp.adjustProgram.bodyCompostion">Body Compostion</Translate>
-                </Label>
-                <AvInput id="adjust-program-bodyCompostion" type="select" className="form-control" name="bodyCompostionId">
-                  <option value="" key="0" />
-                  {bodyCompositions
-                    ? bodyCompositions.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
               </AvGroup>
               <AvGroup>
                 <Label for="adjust-program-fitnessProgram">
@@ -232,7 +204,6 @@ export const AdjustProgramUpdate = (props: IAdjustProgramUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  bodyCompositions: storeState.bodyComposition.entities,
   fitnessPrograms: storeState.fitnessProgram.entities,
   nutritionPrograms: storeState.nutritionProgram.entities,
   adjustClients: storeState.adjustClient.entities,
@@ -244,7 +215,6 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getBodyCompositions,
   getFitnessPrograms,
   getNutritionPrograms,
   getAdjustClients,

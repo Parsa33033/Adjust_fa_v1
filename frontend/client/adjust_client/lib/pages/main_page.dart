@@ -12,7 +12,9 @@ import 'package:adjust_client/components/preloader.dart';
 import 'package:adjust_client/constants/adjust_colors.dart';
 import 'package:adjust_client/constants/words.dart';
 import 'package:adjust_client/notifications/adjust_state_change_notification.dart';
+import 'package:adjust_client/pages/fitness_program_page.dart';
 import 'package:adjust_client/pages/menu_page.dart';
+import 'package:adjust_client/pages/nutrition_program_page.dart';
 import 'package:adjust_client/pages/program_page.dart';
 import 'package:adjust_client/pages/program_request_page.dart';
 import 'package:adjust_client/pages/shoping_page.dart';
@@ -21,6 +23,7 @@ import 'package:adjust_client/pages/tutorial_page.dart';
 import 'package:adjust_client/pages/tutorial_video_page.dart';
 import 'package:adjust_client/states/app_state.dart';
 import 'package:adjust_client/states/client_state.dart';
+import 'package:adjust_client/states/nutrition_program_state.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +35,8 @@ import 'package:redux/redux.dart';
 import '../main.dart';
 
 final ZoomDrawerController zoomDrawerController = ZoomDrawerController();
-final StreamController<int> mainPageStreamController = StreamController<int>.broadcast();
+final StreamController<int> mainPageStreamController =
+    StreamController<int>.broadcast();
 final Stream<int> mainPageStream = mainPageStreamController.stream;
 
 class MainPage extends StatefulWidget {
@@ -40,7 +44,8 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin{
+class _MainPageState extends State<MainPage>
+    with SingleTickerProviderStateMixin {
   Widget _content;
   GlobalKey _bottomNavigationKey = GlobalKey();
 
@@ -49,7 +54,6 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   double token;
   double score;
   Image _image;
-
 
   @override
   void initState() {
@@ -68,6 +72,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   void fetchDependencies() async {
     await getShopingItems(context);
     await getTokenItems(context);
+    await getClientPrograms(context);
   }
 
   void setMainPageState(bool fromNotification) {
@@ -111,69 +116,75 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
   Widget mainPage() {
     return SafeArea(
       child: Scaffold(
-          bottomNavigationBar: CurvedNavigationBar(
-            key: _bottomNavigationKey,
-            backgroundColor: LIGHT_GREY_COLOR,
-            color: GREEN_COLOR,
-            index: 1,
-            items: <Widget>[
-              Icon(Icons.open_in_browser, size: 30, color: LIGHT_GREY_COLOR,),
-              CircleAvatar(
-                  radius: 30, child: Image.asset("assets/adjust_logo1.png")),
-              Icon(Icons.shopping_cart, size: 30, color: LIGHT_GREY_COLOR,),
-            ],
-            onTap: (index) {
-              //Handle button tap
-              if (index == 0) {
-                setState(() {
-                  _content = Container(
-                    child: ProgramRequestPage()
-                  );
-                });
-              } else if (index == 1) {
-                setState(() {
-                  _content = mainMenu();
-                });
-              } else {
-                setState(() {
-                  _content = ShopingPage();
-                });
-              }
-            },
-          ),
-          body: StoreConnector<AppState, AppState>(
-            converter: (Store store) => store.state,
-            builder: (BuildContext context, AppState state) {
-              return Container(
-                  color: LIGHT_GREY_COLOR,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Expanded(
-                          flex: 25,
-                          child: Dashboard(
-                            firstName: firstName,
-                            lastName: lastName,
-                            token: token,
-                            score: score,
-                            image: _image,
-                          )),
-                      Expanded(
-                          flex: 5,
-                          child: Container(
-                            padding: EdgeInsets.only(top: 20),
-                            child: Divider(
-                              color: SHADOW_COLOR,
-                              endIndent: 20,
-                              indent: 20,
-                              thickness: 2,
-                            ),
-                          )),
-                      Expanded(flex: 70, child: _content),
-                    ],
-                  ));
-            },
-          ),
+        bottomNavigationBar: CurvedNavigationBar(
+          key: _bottomNavigationKey,
+          backgroundColor: LIGHT_GREY_COLOR,
+          color: GREEN_COLOR,
+          index: 1,
+          items: <Widget>[
+            Icon(
+              Icons.open_in_browser,
+              size: 30,
+              color: LIGHT_GREY_COLOR,
+            ),
+            CircleAvatar(
+                radius: 30, child: Image.asset("assets/adjust_logo1.png")),
+            Icon(
+              Icons.shopping_cart,
+              size: 30,
+              color: LIGHT_GREY_COLOR,
+            ),
+          ],
+          onTap: (index) {
+            //Handle button tap
+            if (index == 0) {
+              setState(() {
+                _content = Container(child: ProgramRequestPage());
+              });
+            } else if (index == 1) {
+              setState(() {
+                _content = mainMenu();
+              });
+            } else {
+              setState(() {
+                _content = ShopingPage();
+              });
+            }
+          },
+        ),
+        body: StoreConnector<AppState, AppState>(
+          converter: (Store store) => store.state,
+          builder: (BuildContext context, AppState state) {
+            return Container(
+                color: LIGHT_GREY_COLOR,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Expanded(
+                        flex: 25,
+                        child: Dashboard(
+                          firstName: firstName,
+                          lastName: lastName,
+                          token: token,
+                          score: score,
+                          image: _image,
+                        )),
+                    Expanded(
+                        flex: 5,
+                        child: Container(
+                          padding: EdgeInsets.only(top: 20),
+                          child: Divider(
+                            color: SHADOW_COLOR,
+                            endIndent: 20,
+                            indent: 20,
+                            thickness: 2,
+                          ),
+                        )),
+                    Expanded(flex: 70, child: _content),
+                  ],
+                ));
+          },
+        ),
       ),
     );
   }
@@ -192,12 +203,46 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                 Expanded(
                   flex: 5,
                   child: menuItem("برنامه ی تمرینی من",
-                      "assets/workout_icon.png", GREEN_COLOR, null),
+                      "assets/workout_icon.png", GREEN_COLOR, () {
+                    Store<AppState> store = StoreProvider.of<AppState>(context);
+                    if (store.state.programListState.programs.length >= 1&&
+                        store.state.programListState.programs.reversed
+                            .toList()[0]
+                            .fitnessProgramState != null) {
+                      store.dispatch(SetFitnessProgramAction(
+                          payload: store
+                              .state.programListState.programs.reversed
+                              .toList()[0]
+                              .fitnessProgramState));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => FitnessProgramPage(0)));
+                    } else {
+                      showAdjustDialog(context, "برنامه ای موجود نمی باشد",
+                          false, null, GREEN_COLOR);
+                    }
+                  }),
                 ),
                 Expanded(
                   flex: 5,
                   child: menuItem("برنامه ی تغذیه من",
-                      "assets/nutrition_icon.png", RED_COLOR, null),
+                      "assets/nutrition_icon.png", RED_COLOR, () {
+                    Store<AppState> store = StoreProvider.of<AppState>(context);
+                    if (store.state.programListState.programs.length >= 1 &&
+                        store.state.programListState.programs.reversed
+                                .toList()[0]
+                                .nutritionProgramState != null) {
+                      store.dispatch(SetNutritionProgramAction(
+                          payload: store
+                              .state.programListState.programs.reversed
+                              .toList()[0]
+                              .nutritionProgramState));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => NutritionProgramPage(0)));
+                    } else {
+                      showAdjustDialog(context, "برنامه ای موجود نمی باشد",
+                          false, null, GREEN_COLOR);
+                    }
+                  }),
                 )
               ],
             ),
@@ -209,8 +254,8 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
               children: <Widget>[
                 Expanded(
                   flex: 5,
-                  child: menuItem(
-                      "آموزش", "assets/game_icon.png", ORANGE_COLOR, () async {
+                  child: menuItem("آموزش", "assets/game_icon.png", ORANGE_COLOR,
+                      () async {
                     preloader(context);
                     int j = await getClientTutorials(context);
                     int i = await getTutorials(context);
@@ -223,16 +268,19 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                 ),
                 Expanded(
                   flex: 5,
-                  child:
-                      menuItem("برنامه ها", "assets/tutorial_icon.png", YELLOW_COLOR, () async {
+                  child: menuItem(
+                      "برنامه ها", "assets/tutorial_icon.png", YELLOW_COLOR,
+                      () async {
                     preloader(context);
                     int i = await getClientPrograms(context);
                     if (i == 1) {
                       Navigator.of(context, rootNavigator: true).pop("dialog");
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProgramPage()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ProgramPage()));
                     } else {
                       Navigator.of(context, rootNavigator: true).pop("dialog");
-                      showAdjustDialog(context, FAILURE, false, null, GREEN_COLOR);
+                      showAdjustDialog(
+                          context, FAILURE, false, null, GREEN_COLOR);
                     }
                   }),
                 )
@@ -293,7 +341,9 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
                       child: Text(
                         text,
                         style: TextStyle(
-                            fontFamily: "Iransans", fontSize: 14, color: WHITE_COLOR),
+                            fontFamily: "Iransans",
+                            fontSize: 14,
+                            color: WHITE_COLOR),
                       ),
                     ),
                   )),

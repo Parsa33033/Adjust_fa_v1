@@ -23,7 +23,7 @@ class ProgramListState {
 class ProgramState extends Program {
   ClientState clientState;
   SpecialistState specialistState;
-  BodyCompositionState bodyCompositionState;
+  List<BodyCompositionState> bodyCompositionStateList;
   NutritionProgramState nutritionProgramState;
   FitnessProgramState fitnessProgramState;
   ProgramState(
@@ -33,14 +33,13 @@ class ProgramState extends Program {
       bool designed,
       bool done,
       bool paid,
-      int bodyCompostionId,
       int fitnessProgramId,
       int nutritionProgramId,
       int clientId,
       int specialistId,
       this.clientState,
       this.specialistState,
-      this.bodyCompositionState,
+      this.bodyCompositionStateList,
       this.nutritionProgramState,
       this.fitnessProgramState)
       : super(
@@ -50,7 +49,6 @@ class ProgramState extends Program {
             designed,
             done,
             paid,
-            bodyCompostionId,
             fitnessProgramId,
             nutritionProgramId,
             clientId,

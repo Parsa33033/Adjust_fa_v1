@@ -49,10 +49,43 @@ export const BodyComposition = (props: IBodyCompositionProps) => {
                   <Translate contentKey="adjustApp.bodyComposition.bmi">Bmi</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="adjustApp.bodyComposition.wrist">Wrist</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.bodyComposition.waist">Waist</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.bodyComposition.lbm">Lbm</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.bodyComposition.muscleMass">Muscle Mass</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.bodyComposition.muscleMassPercentage">Muscle Mass Percentage</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.bodyComposition.fatMass">Fat Mass</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.bodyComposition.fatMassPercentage">Fat Mass Percentage</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.bodyComposition.gender">Gender</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.bodyComposition.age">Age</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.bodyComposition.bodyImage">Body Image</Translate>
+                </th>
+                <th>
                   <Translate contentKey="adjustApp.bodyComposition.bodyCompositionFile">Body Composition File</Translate>
                 </th>
                 <th>
                   <Translate contentKey="adjustApp.bodyComposition.bloodTestFile">Blood Test File</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.bodyComposition.program">Program</Translate>
                 </th>
                 <th />
               </tr>
@@ -73,6 +106,35 @@ export const BodyComposition = (props: IBodyCompositionProps) => {
                   <td>{bodyComposition.height}</td>
                   <td>{bodyComposition.weight}</td>
                   <td>{bodyComposition.bmi}</td>
+                  <td>{bodyComposition.wrist}</td>
+                  <td>{bodyComposition.waist}</td>
+                  <td>{bodyComposition.lbm}</td>
+                  <td>{bodyComposition.muscleMass}</td>
+                  <td>{bodyComposition.muscleMassPercentage}</td>
+                  <td>{bodyComposition.fatMass}</td>
+                  <td>{bodyComposition.fatMassPercentage}</td>
+                  <td>
+                    <Translate contentKey={`adjustApp.Gender.${bodyComposition.gender}`} />
+                  </td>
+                  <td>{bodyComposition.age}</td>
+                  <td>
+                    {bodyComposition.bodyImage ? (
+                      <div>
+                        {bodyComposition.bodyImageContentType ? (
+                          <a onClick={openFile(bodyComposition.bodyImageContentType, bodyComposition.bodyImage)}>
+                            <img
+                              src={`data:${bodyComposition.bodyImageContentType};base64,${bodyComposition.bodyImage}`}
+                              style={{ maxHeight: '30px' }}
+                            />
+                            &nbsp;
+                          </a>
+                        ) : null}
+                        <span>
+                          {bodyComposition.bodyImageContentType}, {byteSize(bodyComposition.bodyImage)}
+                        </span>
+                      </div>
+                    ) : null}
+                  </td>
                   <td>
                     {bodyComposition.bodyCompositionFile ? (
                       <div>
@@ -108,6 +170,13 @@ export const BodyComposition = (props: IBodyCompositionProps) => {
                         </span>
                       </div>
                     ) : null}
+                  </td>
+                  <td>
+                    {bodyComposition.programId ? (
+                      <Link to={`adjust-program/${bodyComposition.programId}`}>{bodyComposition.programId}</Link>
+                    ) : (
+                      ''
+                    )}
                   </td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">

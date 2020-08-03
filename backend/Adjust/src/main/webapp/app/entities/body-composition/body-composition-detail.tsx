@@ -54,6 +54,82 @@ export const BodyCompositionDetail = (props: IBodyCompositionDetailProps) => {
           </dt>
           <dd>{bodyCompositionEntity.bmi}</dd>
           <dt>
+            <span id="wrist">
+              <Translate contentKey="adjustApp.bodyComposition.wrist">Wrist</Translate>
+            </span>
+          </dt>
+          <dd>{bodyCompositionEntity.wrist}</dd>
+          <dt>
+            <span id="waist">
+              <Translate contentKey="adjustApp.bodyComposition.waist">Waist</Translate>
+            </span>
+          </dt>
+          <dd>{bodyCompositionEntity.waist}</dd>
+          <dt>
+            <span id="lbm">
+              <Translate contentKey="adjustApp.bodyComposition.lbm">Lbm</Translate>
+            </span>
+          </dt>
+          <dd>{bodyCompositionEntity.lbm}</dd>
+          <dt>
+            <span id="muscleMass">
+              <Translate contentKey="adjustApp.bodyComposition.muscleMass">Muscle Mass</Translate>
+            </span>
+          </dt>
+          <dd>{bodyCompositionEntity.muscleMass}</dd>
+          <dt>
+            <span id="muscleMassPercentage">
+              <Translate contentKey="adjustApp.bodyComposition.muscleMassPercentage">Muscle Mass Percentage</Translate>
+            </span>
+          </dt>
+          <dd>{bodyCompositionEntity.muscleMassPercentage}</dd>
+          <dt>
+            <span id="fatMass">
+              <Translate contentKey="adjustApp.bodyComposition.fatMass">Fat Mass</Translate>
+            </span>
+          </dt>
+          <dd>{bodyCompositionEntity.fatMass}</dd>
+          <dt>
+            <span id="fatMassPercentage">
+              <Translate contentKey="adjustApp.bodyComposition.fatMassPercentage">Fat Mass Percentage</Translate>
+            </span>
+          </dt>
+          <dd>{bodyCompositionEntity.fatMassPercentage}</dd>
+          <dt>
+            <span id="gender">
+              <Translate contentKey="adjustApp.bodyComposition.gender">Gender</Translate>
+            </span>
+          </dt>
+          <dd>{bodyCompositionEntity.gender}</dd>
+          <dt>
+            <span id="age">
+              <Translate contentKey="adjustApp.bodyComposition.age">Age</Translate>
+            </span>
+          </dt>
+          <dd>{bodyCompositionEntity.age}</dd>
+          <dt>
+            <span id="bodyImage">
+              <Translate contentKey="adjustApp.bodyComposition.bodyImage">Body Image</Translate>
+            </span>
+          </dt>
+          <dd>
+            {bodyCompositionEntity.bodyImage ? (
+              <div>
+                {bodyCompositionEntity.bodyImageContentType ? (
+                  <a onClick={openFile(bodyCompositionEntity.bodyImageContentType, bodyCompositionEntity.bodyImage)}>
+                    <img
+                      src={`data:${bodyCompositionEntity.bodyImageContentType};base64,${bodyCompositionEntity.bodyImage}`}
+                      style={{ maxHeight: '30px' }}
+                    />
+                  </a>
+                ) : null}
+                <span>
+                  {bodyCompositionEntity.bodyImageContentType}, {byteSize(bodyCompositionEntity.bodyImage)}
+                </span>
+              </div>
+            ) : null}
+          </dd>
+          <dt>
             <span id="bodyCompositionFile">
               <Translate contentKey="adjustApp.bodyComposition.bodyCompositionFile">Body Composition File</Translate>
             </span>
@@ -97,6 +173,10 @@ export const BodyCompositionDetail = (props: IBodyCompositionDetailProps) => {
               </div>
             ) : null}
           </dd>
+          <dt>
+            <Translate contentKey="adjustApp.bodyComposition.program">Program</Translate>
+          </dt>
+          <dd>{bodyCompositionEntity.programId ? bodyCompositionEntity.programId : ''}</dd>
         </dl>
         <Button tag={Link} to="/body-composition" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

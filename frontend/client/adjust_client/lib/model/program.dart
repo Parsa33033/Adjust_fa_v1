@@ -14,8 +14,6 @@ class Program {
 
   bool paid;
 
-  int bodyCompostionId;
-
   int fitnessProgramId;
 
   int nutritionProgramId;
@@ -31,7 +29,6 @@ class Program {
       this.designed,
       this.done,
       this.paid,
-      this.bodyCompostionId,
       this.fitnessProgramId,
       this.nutritionProgramId,
       this.clientId,

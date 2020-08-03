@@ -1,4 +1,5 @@
 import 'package:adjust_client/actions/shoping_action.dart';
+import 'package:adjust_client/main.dart';
 import 'package:adjust_client/model/shoping_item.dart';
 import 'package:adjust_client/states/app_state.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,6 +15,10 @@ class ShopingState extends Shoping {
 void setShopingState(BuildContext context, Shoping shoping) {
 
   ShopingState shopingState = ShopingState(shoping.items);
-  StoreProvider.of<AppState>(context).dispatch(GetShopingItemsAction(payload: shopingState));
+  try {
+    StoreProvider.of<AppState>(context).dispatch(GetShopingItemsAction(payload: shopingState));
+  } catch (e) {
+    store.dispatch(GetShopingItemsAction(payload: shopingState));
+  }
 }
 

@@ -1,6 +1,8 @@
 import 'package:adjust_client/states/authentication_state.dart';
 import 'package:adjust_client/states/cart_state.dart';
 import 'package:adjust_client/states/client_state.dart';
+import 'package:adjust_client/states/fitness_program_state.dart';
+import 'package:adjust_client/states/nutrition_program_state.dart';
 import 'package:adjust_client/states/program_state.dart';
 import 'package:adjust_client/states/shoping_state.dart';
 import 'package:adjust_client/states/specialist_state.dart';
@@ -19,7 +21,9 @@ AppState appStateInit = AppState(
     tutorialListState: tutorialListStateInit,
     clientTutorialsState: clientTutorialsStateInit,
     programListState: programListStateInit,
-    specialistListState: specialistListStateInit
+    specialistListState: specialistListStateInit,
+    nutritionProgramState: nutritionProgramStateInit,
+    fitnessProgramState: fitnessProgramStateInit
     );
 
 class AppState {
@@ -34,6 +38,8 @@ class AppState {
   ClientTutorialsState clientTutorialsState;
   ProgramListState programListState;
   SpecialistListState specialistListState;
+  NutritionProgramState nutritionProgramState;
+  FitnessProgramState fitnessProgramState;
 
   AppState(
       {this.userState,
@@ -46,5 +52,7 @@ class AppState {
       this.tutorialListState,
       this.clientTutorialsState,
       this.programListState,
-      this.specialistListState});
+      this.specialistListState,
+      this.nutritionProgramState,
+      this.fitnessProgramState});
 }

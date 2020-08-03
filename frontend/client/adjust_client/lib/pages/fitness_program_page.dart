@@ -326,10 +326,10 @@ class _FitnessProgramPageState extends State<FitnessProgramPage> {
                       child: Directionality(
                         textDirection: TextDirection.rtl,
                         child: Text(
-                          "تعداد ست",
+                          "تعداد ست و تکرار",
                           style: TextStyle(
                               fontFamily: "Iransans",
-                              fontSize: 18,
+                              fontSize: 16,
                               color: FONT_COLOR),
                         ),
                       ),
@@ -346,7 +346,7 @@ class _FitnessProgramPageState extends State<FitnessProgramPage> {
                           "حرکت",
                           style: TextStyle(
                               fontFamily: "Iransans",
-                              fontSize: 18,
+                              fontSize: 16,
                               color: FONT_COLOR),
                         ),
                       ),
@@ -364,10 +364,10 @@ class _FitnessProgramPageState extends State<FitnessProgramPage> {
                         child: Text(
                           NumberUtility.changeDigit(
                               exercise.sets.toString() +
-                                  " ست " +
+                                  " ست - " +
                                   exercise.repsMin.toString() +
                                   " تا " +
-                                  exercise.repsMax.toString(),
+                                  exercise.repsMax.toString() + " تکرار",
                               NumStrLanguage.Farsi),
                           style: TextStyle(
                               fontFamily: "Iransans",
@@ -433,7 +433,7 @@ class _FitnessProgramPageState extends State<FitnessProgramPage> {
           converter: (Store store) => store.state,
           builder: (BuildContext context, AppState state) {
             FitnessProgramState fitnessProgramState = state.programListState
-                .programs[this.widget.programIndex].fitnessProgramState;
+                .programs.reversed.toList()[this.widget.programIndex].fitnessProgramState;
             return Container(
                 height: MediaQuery.of(context).size.height,
                 color: GREEN_COLOR.withAlpha(25),
@@ -513,132 +513,12 @@ class _FitnessProgramPageState extends State<FitnessProgramPage> {
                 builder: (BuildContext context, AppState state) {
                   FitnessProgramState fitnessProgramState = state
                       .programListState
-                      .programs[this.widget.programIndex]
+                      .programs.reversed.toList()[this.widget.programIndex]
                       .fitnessProgramState;
                   return Container(
                       child: SingleChildScrollView(
                     child: Column(
                       children: <Widget>[
-//                        Container(
-//                          width: MediaQuery.of(context).size.width,
-//                          child: FittedBox(
-//                            fit: BoxFit.scaleDown,
-//                            child: DataTable(
-//                              columns: <DataColumn>[
-//                                DataColumn(
-//                                    label: Directionality(
-//                                  textDirection: TextDirection.rtl,
-//                                  child: Text(FAT,
-//                                      style: TextStyle(
-//                                          fontFamily: "Iransans",
-//                                          color: WHITE_COLOR,
-//                                          fontSize: 13)),
-//                                )),
-//                                DataColumn(
-//                                    label: Directionality(
-//                                  textDirection: TextDirection.rtl,
-//                                  child: Text(CARBS,
-//                                      style: TextStyle(
-//                                          fontFamily: "Iransans",
-//                                          color: WHITE_COLOR,
-//                                          fontSize: 13)),
-//                                )),
-//                                DataColumn(
-//                                    label: Directionality(
-//                                  textDirection: TextDirection.rtl,
-//                                  child: Text(PROTEIN,
-//                                      style: TextStyle(
-//                                          fontFamily: "Iransans",
-//                                          color: WHITE_COLOR,
-//                                          fontSize: 13)),
-//                                )),
-//                                DataColumn(
-//                                    label: Directionality(
-//                                  textDirection: TextDirection.rtl,
-//                                  child: Text(CALORY + " روزانه",
-//                                      style: TextStyle(
-//                                          fontFamily: "Iransans",
-//                                          color: WHITE_COLOR,
-//                                          fontSize: 13)),
-//                                )),
-//                              ],
-//                              rows: <DataRow>[
-//                                DataRow(cells: <DataCell>[
-//                                  DataCell(Align(
-//                                    alignment: Alignment.centerRight,
-//                                    child: Directionality(
-//                                      textDirection: TextDirection.rtl,
-//                                      child: Text(
-//                                        NumberUtility.changeDigit(
-//                                            nutritionProgramState.fatPercentage
-//                                                    .toString() +
-//                                                "%",
-//                                            NumStrLanguage.Farsi),
-//                                        style: TextStyle(
-//                                            fontFamily: "Iransans",
-//                                            color: WHITE_COLOR,
-//                                            fontSize: 13),
-//                                      ),
-//                                    ),
-//                                  )),
-//                                  DataCell(Align(
-//                                    alignment: Alignment.centerRight,
-//                                    child: Directionality(
-//                                      textDirection: TextDirection.rtl,
-//                                      child: Text(
-//                                        NumberUtility.changeDigit(
-//                                            nutritionProgramState
-//                                                    .carbsPercentage
-//                                                    .toString() +
-//                                                "%",
-//                                            NumStrLanguage.Farsi),
-//                                        style: TextStyle(
-//                                            fontFamily: "Iransans",
-//                                            color: WHITE_COLOR,
-//                                            fontSize: 13),
-//                                      ),
-//                                    ),
-//                                  )),
-//                                  DataCell(Align(
-//                                    alignment: Alignment.centerRight,
-//                                    child: Directionality(
-//                                      textDirection: TextDirection.rtl,
-//                                      child: Text(
-//                                        NumberUtility.changeDigit(
-//                                            nutritionProgramState
-//                                                    .proteinPercentage
-//                                                    .toString() +
-//                                                "%",
-//                                            NumStrLanguage.Farsi),
-//                                        style: TextStyle(
-//                                            fontFamily: "Iransans",
-//                                            color: WHITE_COLOR,
-//                                            fontSize: 13),
-//                                      ),
-//                                    ),
-//                                  )),
-//                                  DataCell(Align(
-//                                    alignment: Alignment.centerRight,
-//                                    child: Directionality(
-//                                      textDirection: TextDirection.rtl,
-//                                      child: Text(
-//                                        NumberUtility.changeDigit(
-//                                            nutritionProgramState.dailyCalories
-//                                                .round()
-//                                                .toString(),
-//                                            NumStrLanguage.Farsi),
-//                                        style: TextStyle(
-//                                            fontFamily: "Iransans",
-//                                            color: WHITE_COLOR,
-//                                            fontSize: 13),
-//                                      ),
-//                                    ),
-//                                  )),
-//                                ])
-//                              ],
-//                            ),
-//                          ),
-//                        ),
                         Container(
                           padding: EdgeInsets.all(20),
                           child: Align(

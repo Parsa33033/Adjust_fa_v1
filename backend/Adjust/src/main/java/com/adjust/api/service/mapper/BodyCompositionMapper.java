@@ -9,11 +9,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link BodyComposition} and its DTO {@link BodyCompositionDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {AdjustProgramMapper.class})
 public interface BodyCompositionMapper extends EntityMapper<BodyCompositionDTO, BodyComposition> {
 
+    @Mapping(source = "program.id", target = "programId")
+    BodyCompositionDTO toDto(BodyComposition bodyComposition);
 
-    @Mapping(target = "program", ignore = true)
+    @Mapping(source = "programId", target = "program")
     BodyComposition toEntity(BodyCompositionDTO bodyCompositionDTO);
 
     default BodyComposition fromId(Long id) {

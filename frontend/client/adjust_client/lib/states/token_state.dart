@@ -1,4 +1,5 @@
 import 'package:adjust_client/actions/shoping_action.dart';
+import 'package:adjust_client/main.dart';
 import 'package:adjust_client/model/shoping_item.dart';
 import 'package:adjust_client/model/token.dart';
 import 'package:adjust_client/states/app_state.dart';
@@ -15,5 +16,9 @@ class TokenState extends Token {
 void setTokenState(BuildContext context, Token token) {
 
   TokenState tokenState = TokenState(token.items);
-  StoreProvider.of<AppState>(context).dispatch(GetTokenItemsAction(payload: tokenState));
+  try {
+    StoreProvider.of<AppState>(context).dispatch(GetTokenItemsAction(payload: tokenState));
+  } catch (e) {
+    store.dispatch(GetTokenItemsAction(payload: tokenState));
+  }
 }

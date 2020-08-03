@@ -28,8 +28,17 @@ import 'package:http/http.dart' as http;
 
 class GetProgramListAction {
   ProgramListState payload;
-
   GetProgramListAction({this.payload});
+}
+
+class SetNutritionProgramAction {
+  NutritionProgramState payload;
+  SetNutritionProgramAction({this.payload});
+}
+
+class SetFitnessProgramAction {
+  FitnessProgramState payload;
+  SetFitnessProgramAction({this.payload});
 }
 
 Future<int> requestForProgram(BuildContext context,
@@ -62,17 +71,32 @@ Future<int> getClientPrograms(BuildContext context) async {
     List l = jsonDecode(utf8.decode(response.bodyBytes));
     List<ProgramState> programList = l.map((e) {
       ProgramDTO programDTO = ProgramDTO.fromJson(e);
-      BodyCompositionDTO bodyCompositionDTO = programDTO.bodyComposition;
-      BodyCompositionState bodyCompositionState = BodyCompositionState(
-          bodyCompositionDTO.id,
-          bodyCompositionDTO.createdAt,
-          bodyCompositionDTO.height,
-          bodyCompositionDTO.weight,
-          bodyCompositionDTO.bmi,
-          bodyCompositionDTO.bodyCompositionFile,
-          bodyCompositionDTO.bodyCompositionFileContentType,
-          bodyCompositionDTO.bloodTestFile,
-          bodyCompositionDTO.bloodTestFileContentType);
+      List<BodyCompositionState> bodyCompositionStateList = programDTO
+          .bodyCompositions.map((bodyCompositionDTO) {
+        BodyCompositionState bodyCompositionState = BodyCompositionState(
+            bodyCompositionDTO.id,
+            bodyCompositionDTO.createdAt,
+            bodyCompositionDTO.height,
+            bodyCompositionDTO.weight,
+            bodyCompositionDTO.bmi,
+            bodyCompositionDTO.wrist,
+            bodyCompositionDTO.waist,
+            bodyCompositionDTO.lbm,
+            bodyCompositionDTO.muscleMass,
+            bodyCompositionDTO.muscleMassPercentage,
+            bodyCompositionDTO.fatMass,
+            bodyCompositionDTO.fatMassPercentage,
+            bodyCompositionDTO.gender,
+            bodyCompositionDTO.age,
+            bodyCompositionDTO.bodyImage,
+            bodyCompositionDTO.bodyImageContentType,
+            bodyCompositionDTO.bodyCompositionFile,
+            bodyCompositionDTO.bodyCompositionFileContentType,
+            bodyCompositionDTO.bloodTestFile,
+            bodyCompositionDTO.bloodTestFileContentType,
+            bodyCompositionDTO.programId);
+        return bodyCompositionState;
+      }).toList();
 
 
       NutritionProgramDTO nutritionProgramDTO = programDTO.nutritionProgram;
@@ -117,7 +141,8 @@ Future<int> getClientPrograms(BuildContext context) async {
       FitnessProgramDTO fitnessProgramDTO = programDTO.fitnessProgram;
       FitnessProgramState fitnessProgramState = null;
       if (fitnessProgramDTO != null && fitnessProgramDTO.workouts != null) {
-        List<WorkoutState> workoutStateList = fitnessProgramDTO.workouts.map((e) {
+        List<WorkoutState> workoutStateList = fitnessProgramDTO.workouts.map((
+            e) {
           List<ExerciseState> exerciseStateList = e.exercises.map((e) {
             return ExerciseState(
                 e.id,
@@ -155,7 +180,20 @@ Future<int> getClientPrograms(BuildContext context) async {
           clientDTO.imageContentType);
 
       SpecialistDTO specialistDTO = programDTO.specialist;
-      SpecialistState specialistState = SpecialistState(specialistDTO.id, specialistDTO.username, specialistDTO.firstName, specialistDTO.lastName, specialistDTO.birth, specialistDTO.gender, specialistDTO.degree, specialistDTO.field, specialistDTO.resume, specialistDTO.stars, specialistDTO.image, specialistDTO.imageContentType, specialistDTO.busy);
+      SpecialistState specialistState = SpecialistState(
+          specialistDTO.id,
+          specialistDTO.username,
+          specialistDTO.firstName,
+          specialistDTO.lastName,
+          specialistDTO.birth,
+          specialistDTO.gender,
+          specialistDTO.degree,
+          specialistDTO.field,
+          specialistDTO.resume,
+          specialistDTO.stars,
+          specialistDTO.image,
+          specialistDTO.imageContentType,
+          specialistDTO.busy);
 
       ProgramState programState = ProgramState(
           programDTO.id,
@@ -164,14 +202,13 @@ Future<int> getClientPrograms(BuildContext context) async {
           programDTO.designed,
           programDTO.done,
           programDTO.paid,
-          programDTO.bodyCompostionId,
           programDTO.fitnessProgramId,
           programDTO.nutritionProgramId,
           programDTO.clientId,
           programDTO.specialistId,
           clientState,
           specialistState,
-          bodyCompositionState,
+          bodyCompositionStateList,
           nutritionProgramState,
           fitnessProgramState);
       return programState;

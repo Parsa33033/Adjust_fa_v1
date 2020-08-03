@@ -64,10 +64,6 @@ export const AdjustProgramDetail = (props: IAdjustProgramDetailProps) => {
           </dt>
           <dd>{adjustProgramEntity.paid ? 'true' : 'false'}</dd>
           <dt>
-            <Translate contentKey="adjustApp.adjustProgram.bodyCompostion">Body Compostion</Translate>
-          </dt>
-          <dd>{adjustProgramEntity.bodyCompostionId ? adjustProgramEntity.bodyCompostionId : ''}</dd>
-          <dt>
             <Translate contentKey="adjustApp.adjustProgram.fitnessProgram">Fitness Program</Translate>
           </dt>
           <dd>{adjustProgramEntity.fitnessProgramId ? adjustProgramEntity.fitnessProgramId : ''}</dd>

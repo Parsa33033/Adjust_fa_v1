@@ -3,6 +3,7 @@ package com.adjust.api.service.dto;
 import java.time.LocalDate;
 import java.io.Serializable;
 import javax.persistence.Lob;
+import com.adjust.api.domain.enumeration.Gender;
 
 /**
  * A DTO for the {@link com.adjust.api.domain.BodyComposition} entity.
@@ -19,6 +20,28 @@ public class BodyCompositionDTO implements Serializable {
 
     private Double bmi;
 
+    private Double wrist;
+
+    private Double waist;
+
+    private Double lbm;
+
+    private Double muscleMass;
+
+    private Integer muscleMassPercentage;
+
+    private Double fatMass;
+
+    private Integer fatMassPercentage;
+
+    private Gender gender;
+
+    private Integer age;
+
+    @Lob
+    private byte[] bodyImage;
+
+    private String bodyImageContentType;
     @Lob
     private byte[] bodyCompositionFile;
 
@@ -27,6 +50,8 @@ public class BodyCompositionDTO implements Serializable {
     private byte[] bloodTestFile;
 
     private String bloodTestFileContentType;
+
+    private Long programId;
     
     public Long getId() {
         return id;
@@ -68,6 +93,94 @@ public class BodyCompositionDTO implements Serializable {
         this.bmi = bmi;
     }
 
+    public Double getWrist() {
+        return wrist;
+    }
+
+    public void setWrist(Double wrist) {
+        this.wrist = wrist;
+    }
+
+    public Double getWaist() {
+        return waist;
+    }
+
+    public void setWaist(Double waist) {
+        this.waist = waist;
+    }
+
+    public Double getLbm() {
+        return lbm;
+    }
+
+    public void setLbm(Double lbm) {
+        this.lbm = lbm;
+    }
+
+    public Double getMuscleMass() {
+        return muscleMass;
+    }
+
+    public void setMuscleMass(Double muscleMass) {
+        this.muscleMass = muscleMass;
+    }
+
+    public Integer getMuscleMassPercentage() {
+        return muscleMassPercentage;
+    }
+
+    public void setMuscleMassPercentage(Integer muscleMassPercentage) {
+        this.muscleMassPercentage = muscleMassPercentage;
+    }
+
+    public Double getFatMass() {
+        return fatMass;
+    }
+
+    public void setFatMass(Double fatMass) {
+        this.fatMass = fatMass;
+    }
+
+    public Integer getFatMassPercentage() {
+        return fatMassPercentage;
+    }
+
+    public void setFatMassPercentage(Integer fatMassPercentage) {
+        this.fatMassPercentage = fatMassPercentage;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public byte[] getBodyImage() {
+        return bodyImage;
+    }
+
+    public void setBodyImage(byte[] bodyImage) {
+        this.bodyImage = bodyImage;
+    }
+
+    public String getBodyImageContentType() {
+        return bodyImageContentType;
+    }
+
+    public void setBodyImageContentType(String bodyImageContentType) {
+        this.bodyImageContentType = bodyImageContentType;
+    }
+
     public byte[] getBodyCompositionFile() {
         return bodyCompositionFile;
     }
@@ -100,6 +213,14 @@ public class BodyCompositionDTO implements Serializable {
         this.bloodTestFileContentType = bloodTestFileContentType;
     }
 
+    public Long getProgramId() {
+        return programId;
+    }
+
+    public void setProgramId(Long adjustProgramId) {
+        this.programId = adjustProgramId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -126,8 +247,19 @@ public class BodyCompositionDTO implements Serializable {
             ", height=" + getHeight() +
             ", weight=" + getWeight() +
             ", bmi=" + getBmi() +
+            ", wrist=" + getWrist() +
+            ", waist=" + getWaist() +
+            ", lbm=" + getLbm() +
+            ", muscleMass=" + getMuscleMass() +
+            ", muscleMassPercentage=" + getMuscleMassPercentage() +
+            ", fatMass=" + getFatMass() +
+            ", fatMassPercentage=" + getFatMassPercentage() +
+            ", gender='" + getGender() + "'" +
+            ", age=" + getAge() +
+            ", bodyImage='" + getBodyImage() + "'" +
             ", bodyCompositionFile='" + getBodyCompositionFile() + "'" +
             ", bloodTestFile='" + getBloodTestFile() + "'" +
+            ", programId=" + getProgramId() +
             "}";
     }
 }

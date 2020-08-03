@@ -25,14 +25,6 @@
   "relationships": [
     {
       "relationshipType": "one-to-one",
-      "otherEntityName": "bodyComposition",
-      "otherEntityRelationshipName": "program",
-      "relationshipName": "bodyCompostion",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
-      "relationshipType": "one-to-one",
       "otherEntityName": "fitnessProgram",
       "otherEntityRelationshipName": "program",
       "relationshipName": "fitnessProgram",
@@ -46,6 +38,12 @@
       "relationshipName": "nutritionProgram",
       "otherEntityField": "id",
       "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "bodyComposition",
+      "otherEntityRelationshipName": "program",
+      "relationshipName": "bodyCompostions"
     },
     {
       "relationshipType": "many-to-one",

@@ -8,6 +8,7 @@ import 'package:adjust_client/states/program_state.dart';
 import 'package:expandable_card/expandable_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:redux/redux.dart';
@@ -159,7 +160,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                                   textDirection: TextDirection.rtl,
                                   child: Text(
                                     NumberUtility.changeDigit(
-                                        nutrition.proteinPerUnit.toString(),
+                                        nutrition.proteinPerUnit.toString() + " گرم",
                                         NumStrLanguage.Farsi),
                                     style: TextStyle(
                                         fontFamily: "Iransans",
@@ -189,7 +190,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                                   textDirection: TextDirection.rtl,
                                   child: Text(
                                     NumberUtility.changeDigit(
-                                        nutrition.carbsPerUnit.toString(),
+                                        nutrition.carbsPerUnit.toString() + " گرم",
                                         NumStrLanguage.Farsi),
                                     style: TextStyle(
                                         fontFamily: "Iransans",
@@ -219,7 +220,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                                   textDirection: TextDirection.rtl,
                                   child: Text(
                                     NumberUtility.changeDigit(
-                                        nutrition.fatInUnit.toString(),
+                                        nutrition.fatInUnit.toString() + " گرم",
                                         NumStrLanguage.Farsi),
                                     style: TextStyle(
                                         fontFamily: "Iransans",
@@ -264,22 +265,34 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                     Container(
                       height: 200,
                       padding: EdgeInsets.all(20),
-                      child: GridView.count(
-                          crossAxisCount: 2,
-                          children: nutrition.foods.map((e) {
-                            return Container(
-                              alignment: Alignment.topCenter,
-                                child: Directionality(
-                              textDirection: TextDirection.rtl,
-                              child: Text(
-                                e.name,
-                                style: TextStyle(
-                                    fontFamily: "Iransans",
-                                    color: FONT_COLOR,
-                                    fontSize: 12),
-                              ),
-                            ));
-                          }).toList()),
+                      child: Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: GridView.count(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 1,
+                            crossAxisSpacing: 1,
+                            children: nutrition.foods.map((e) {
+                              return Container(
+                                color: RED_COLOR,
+                                  padding: EdgeInsets.all(5),
+                                  child: Center(
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Directionality(
+                                        textDirection: TextDirection.rtl,
+                                        child: Text(
+                                          e.name,
+                                          style: TextStyle(
+                                              fontFamily: "Iransans",
+                                              color: WHITE_COLOR,
+                                              fontSize: 16),
+                                        ),
+                                      ),
+                                    )
+                                  )
+                              );
+                            }).toList()),
+                      ),
                     ),
                   ],
                 ),
@@ -404,7 +417,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
           converter: (Store store) => store.state,
           builder: (BuildContext context, AppState state) {
             NutritionProgramState nutritionProgramState = state.programListState
-                .programs[this.widget.programIndex].nutritionProgramState;
+                .programs.reversed.toList()[this.widget.programIndex].nutritionProgramState;
             return Container(
                 height: MediaQuery.of(context).size.height,
                 color: RED_COLOR.withAlpha(25),
@@ -483,7 +496,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                 builder: (BuildContext context, AppState state) {
                   NutritionProgramState nutritionProgramState = state
                       .programListState
-                      .programs[this.widget.programIndex]
+                      .programs.reversed.toList()[this.widget.programIndex]
                       .nutritionProgramState;
                   return Container(
                       child: SingleChildScrollView(

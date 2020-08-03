@@ -1,13 +1,14 @@
 package com.adjust.api.service.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class DummyAdjustProgramDTO extends AdjustProgramDTO implements Serializable {
 
     DummySpecialistDTO specialist;
     DummyAdjustClientDTO client;
 
-    DummyBodyCompositionDTO bodyComposition;
+    List<DummyBodyCompositionDTO> bodyCompositions;
     DummyNutritionProgramDTO nutritionProgram;
     DummyFitnessProgramDTO fitnessProgram;
 
@@ -18,7 +19,6 @@ public class DummyAdjustProgramDTO extends AdjustProgramDTO implements Serializa
         this.setClientId(adjustProgramDTO.getClientId());
         this.setNutritionProgramId(adjustProgramDTO.getNutritionProgramId());
         this.setFitnessProgramId(adjustProgramDTO.getNutritionProgramId());
-        this.setBodyCompostionId(adjustProgramDTO.getBodyCompostionId());
         this.setCreatedAt(adjustProgramDTO.getCreatedAt());
         this.setDesigned(adjustProgramDTO.isDesigned());
         this.setDone(adjustProgramDTO.isDone());
@@ -43,12 +43,12 @@ public class DummyAdjustProgramDTO extends AdjustProgramDTO implements Serializa
         this.client = client;
     }
 
-    public DummyBodyCompositionDTO getBodyComposition() {
-        return bodyComposition;
+    public List<DummyBodyCompositionDTO> getBodyCompositions() {
+        return bodyCompositions;
     }
 
-    public void setBodyComposition(DummyBodyCompositionDTO bodyComposition) {
-        this.bodyComposition = bodyComposition;
+    public void setBodyCompositions(List<DummyBodyCompositionDTO> bodyCompositions) {
+        this.bodyCompositions = bodyCompositions;
     }
 
     public DummyNutritionProgramDTO getNutritionProgram() {

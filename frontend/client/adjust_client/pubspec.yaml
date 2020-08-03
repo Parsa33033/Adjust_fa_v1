@@ -55,6 +55,7 @@ dependencies:
   spincircle_bottom_bar: ^1.0.0
   flutter_launcher_icons: ^0.7.5
   expandable_card: ^0.0.3+1
+  age: ^0.0.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3

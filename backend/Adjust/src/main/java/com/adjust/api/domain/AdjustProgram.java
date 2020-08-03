@@ -8,6 +8,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A AdjustProgram.
@@ -40,15 +42,15 @@ public class AdjustProgram implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private BodyComposition bodyCompostion;
-
-    @OneToOne
-    @JoinColumn(unique = true)
     private FitnessProgram fitnessProgram;
 
     @OneToOne
     @JoinColumn(unique = true)
     private NutritionProgram nutritionProgram;
+
+    @OneToMany(mappedBy = "program", fetch = FetchType.EAGER)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<BodyComposition> bodyCompostions = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties(value = "programs", allowSetters = true)
@@ -132,19 +134,6 @@ public class AdjustProgram implements Serializable {
         this.paid = paid;
     }
 
-    public BodyComposition getBodyCompostion() {
-        return bodyCompostion;
-    }
-
-    public AdjustProgram bodyCompostion(BodyComposition bodyComposition) {
-        this.bodyCompostion = bodyComposition;
-        return this;
-    }
-
-    public void setBodyCompostion(BodyComposition bodyComposition) {
-        this.bodyCompostion = bodyComposition;
-    }
-
     public FitnessProgram getFitnessProgram() {
         return fitnessProgram;
     }
@@ -169,6 +158,31 @@ public class AdjustProgram implements Serializable {
 
     public void setNutritionProgram(NutritionProgram nutritionProgram) {
         this.nutritionProgram = nutritionProgram;
+    }
+
+    public Set<BodyComposition> getBodyCompostions() {
+        return bodyCompostions;
+    }
+
+    public AdjustProgram bodyCompostions(Set<BodyComposition> bodyCompositions) {
+        this.bodyCompostions = bodyCompositions;
+        return this;
+    }
+
+    public AdjustProgram addBodyCompostions(BodyComposition bodyComposition) {
+        this.bodyCompostions.add(bodyComposition);
+        bodyComposition.setProgram(this);
+        return this;
+    }
+
+    public AdjustProgram removeBodyCompostions(BodyComposition bodyComposition) {
+        this.bodyCompostions.remove(bodyComposition);
+        bodyComposition.setProgram(null);
+        return this;
+    }
+
+    public void setBodyCompostions(Set<BodyComposition> bodyCompositions) {
+        this.bodyCompostions = bodyCompositions;
     }
 
     public AdjustClient getClient() {

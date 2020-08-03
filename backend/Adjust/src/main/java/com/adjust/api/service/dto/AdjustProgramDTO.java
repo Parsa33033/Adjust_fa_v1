@@ -21,8 +21,6 @@ public class AdjustProgramDTO implements Serializable {
     private Boolean paid;
 
 
-    private Long bodyCompostionId;
-
     private Long fitnessProgramId;
 
     private Long nutritionProgramId;
@@ -77,14 +75,6 @@ public class AdjustProgramDTO implements Serializable {
 
     public void setPaid(Boolean paid) {
         this.paid = paid;
-    }
-
-    public Long getBodyCompostionId() {
-        return bodyCompostionId;
-    }
-
-    public void setBodyCompostionId(Long bodyCompositionId) {
-        this.bodyCompostionId = bodyCompositionId;
     }
 
     public Long getFitnessProgramId() {
@@ -146,7 +136,6 @@ public class AdjustProgramDTO implements Serializable {
             ", designed='" + isDesigned() + "'" +
             ", done='" + isDone() + "'" +
             ", paid='" + isPaid() + "'" +
-            ", bodyCompostionId=" + getBodyCompostionId() +
             ", fitnessProgramId=" + getFitnessProgramId() +
             ", nutritionProgramId=" + getNutritionProgramId() +
             ", clientId=" + getClientId() +

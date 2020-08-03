@@ -1,4 +1,5 @@
 import 'package:adjust_client/model/client.dart';
+import 'package:adjust_client/model/move.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 
 final String RAMSARI = "دکتر سوسن رامسری";
@@ -42,12 +43,28 @@ final String BIRTH = "تاریخ تولد";
 final String FIRST_NAME = "نام";
 final String LAST_NAME = "نام خانوادگی";
 final String GENDER = "جنسیت";
+final String AGE = "سن";
 final String UPDATE = "بروزرسانی";
 final String DEFAULT = "پیش فرض";
 final Map<String, String> GENDER_LIST = Map<String, String>()
   ..putIfAbsent(EnumToString.parse(Gender.FEMALE), () => "زن")
   ..putIfAbsent(EnumToString.parse(Gender.MALE), () => "مرد");
 
+
+final Map<String, String> MUSCLE_TYPE_LIST = Map<String, String>()
+  ..putIfAbsent(EnumToString.parse(MuscleType.CHEST), () => 'سینه')
+  ..putIfAbsent(EnumToString.parse(MuscleType.BACK), () => 'پشت')
+  ..putIfAbsent(EnumToString.parse(MuscleType.BICEP), () => 'جلوبازو')
+  ..putIfAbsent(EnumToString.parse(MuscleType.TRICEP), () => 'پشت بازو')
+  ..putIfAbsent(EnumToString.parse(MuscleType.ABS), () => 'شکم')
+  ..putIfAbsent(EnumToString.parse(MuscleType.CALVES), () => 'ساق پا')
+  ..putIfAbsent(EnumToString.parse(MuscleType.FOREARM), () => 'ساعد')
+  ..putIfAbsent(EnumToString.parse(MuscleType.GLUTES), () => 'باسن')
+  ..putIfAbsent(EnumToString.parse(MuscleType.HAMSTRING), () => 'پشت پا')
+  ..putIfAbsent(EnumToString.parse(MuscleType.LATERAL), () => 'زیر بغل')
+  ..putIfAbsent(EnumToString.parse(MuscleType.SHOULDER), () => 'شانه')
+  ..putIfAbsent(EnumToString.parse(MuscleType.LEG), () => 'پا')
+  ..putIfAbsent(EnumToString.parse(MuscleType.MISC), () => 'سایر عضلات');
 
 final String PHONE_NUMBER = "شماره تلفن";
 final String COUNTRY = "کشور";
@@ -60,6 +77,9 @@ final String ORDER = "سفارش";
 final String HEIGHT = "قد";
 final String WEIGHT = "وزن";
 final String WRIST = "دور مچ";
+final String WAIST = "دور کمر";
+final String MUSCLE_MASS = "وزن عضله(muscle mass)";
+final String FAT_MASS = "وزن چربی(fat mass)";
 
 
 final String CALORY = "کالری";
@@ -73,3 +93,6 @@ final String MAXREP = "حداکثر تعداد";
 final String MOVE = "حرکت";
 final String EQUIPMENT = "تجهیزات";
 final String MUSCLE = "عضله";
+
+
+final String TERMS_BODY_COMPOSITION = "توجه داشته باشید که ورودی هایی که علامت (*) دارند باید پر شوند ولی تمام ورودی ها نیاز به پر کردن نداشته ولی پر نکردن کامل مشخصات بدنی خود باعث کمبود دقت در برنامه های طراحی شده خواهد شد. در نتیجه مسوولیت عدم پر کردن کامل مشخصات بدنی به عهده ی خود شخص میباشد. ضمنا اعداد وارد شده برای مشخصات بدنی به صورت اعشار بوده (برای مثال 12.50 کیلوگرم برابر با 12 کیلو و پانصد گرم میباشد.)";

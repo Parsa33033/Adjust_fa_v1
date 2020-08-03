@@ -472,9 +472,11 @@ public class ClientAppController {
         dummyAdjustProgramDTO.setClientId(adjustClientDTO.getId());
 
         // set adjust program (nutrition program, fitness program and body composition)
-        BodyCompositionDTO bodyCompositionDTO = bodyCompositionService.save(dummyAdjustProgramDTO.getBodyComposition());
-        dummyAdjustProgramDTO.setBodyCompostionId(bodyCompositionDTO.getId());
         AdjustProgramDTO adjustProgramDTO = adjustProgramService.save(dummyAdjustProgramDTO);
+        dummyAdjustProgramDTO.getBodyCompositions().forEach((bodyComposition) -> {
+            bodyComposition.setProgramId(adjustProgramDTO.getId());
+            bodyCompositionService.save(bodyComposition);
+        });
         return ResponseEntity.ok().header("charset", "utf-8").body(adjustProgramDTO);
     }
 
@@ -499,9 +501,10 @@ public class ClientAppController {
             DummySpecialistDTO dummySpecialistDTO = new DummySpecialistDTO(specialistMapper.toDto(specialist));
 
             // set adjust program's body composition
-            BodyComposition bodyComposition = program.getBodyCompostion();
-            DummyBodyCompositionDTO dummyBodyCompositionDTO = new DummyBodyCompositionDTO(bodyCompositionMapper.toDto(bodyComposition));
-
+            List<DummyBodyCompositionDTO> dummyBodyCompositionDTOList = program.getBodyCompostions().stream().map((bodyComposition) -> {
+                DummyBodyCompositionDTO dummyBodyCompositionDTO = new DummyBodyCompositionDTO(bodyCompositionMapper.toDto(bodyComposition));
+                return dummyBodyCompositionDTO;
+            }).collect(Collectors.toList());
 
             // set adjust program's nutrition program
             NutritionProgram nutritionProgram = program.getNutritionProgram();
@@ -554,7 +557,7 @@ public class ClientAppController {
             DummyAdjustProgramDTO dummyAdjustProgramDTO = new DummyAdjustProgramDTO(adjustProgramMapper.toDto(program));
             dummyAdjustProgramDTO.setClient(dummyAdjustClientDTO);
             dummyAdjustProgramDTO.setSpecialist(dummySpecialistDTO);
-            dummyAdjustProgramDTO.setBodyComposition(dummyBodyCompositionDTO);
+            dummyAdjustProgramDTO.setBodyCompositions(dummyBodyCompositionDTOList);
             dummyAdjustProgramDTO.setNutritionProgram(dummyNutritionProgramDTO);
             dummyAdjustProgramDTO.setFitnessProgram(dummyFitnessProgramDTO);
 

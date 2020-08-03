@@ -13,7 +13,7 @@ class ProgramDTO extends Program {
   ClientDTO client;
   SpecialistDTO specialist;
 
-  BodyCompositionDTO bodyComposition;
+  List<BodyCompositionDTO> bodyCompositions;
   NutritionProgramDTO nutritionProgram;
   FitnessProgramDTO fitnessProgram;
 
@@ -24,14 +24,13 @@ class ProgramDTO extends Program {
       bool designed,
       bool done,
       bool paid,
-      int bodyCompostionId,
       int fitnessProgramId,
       int nutritionProgramId,
       int clientId,
       int specialistId,
       this.client,
       this.specialist,
-      this.bodyComposition,
+      this.bodyCompositions,
       this.nutritionProgram,
       this.fitnessProgram)
       : super(
@@ -41,7 +40,6 @@ class ProgramDTO extends Program {
             designed,
             done,
             paid,
-            bodyCompostionId,
             fitnessProgramId,
             nutritionProgramId,
             clientId,

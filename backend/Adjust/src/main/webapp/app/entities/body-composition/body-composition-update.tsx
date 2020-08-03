@@ -22,7 +22,14 @@ export const BodyCompositionUpdate = (props: IBodyCompositionUpdateProps) => {
 
   const { bodyCompositionEntity, adjustPrograms, loading, updating } = props;
 
-  const { bodyCompositionFile, bodyCompositionFileContentType, bloodTestFile, bloodTestFileContentType } = bodyCompositionEntity;
+  const {
+    bodyImage,
+    bodyImageContentType,
+    bodyCompositionFile,
+    bodyCompositionFileContentType,
+    bloodTestFile,
+    bloodTestFileContentType,
+  } = bodyCompositionEntity;
 
   const handleClose = () => {
     props.history.push('/body-composition');
@@ -115,6 +122,101 @@ export const BodyCompositionUpdate = (props: IBodyCompositionUpdateProps) => {
                 <AvField id="body-composition-bmi" type="string" className="form-control" name="bmi" />
               </AvGroup>
               <AvGroup>
+                <Label id="wristLabel" for="body-composition-wrist">
+                  <Translate contentKey="adjustApp.bodyComposition.wrist">Wrist</Translate>
+                </Label>
+                <AvField id="body-composition-wrist" type="string" className="form-control" name="wrist" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="waistLabel" for="body-composition-waist">
+                  <Translate contentKey="adjustApp.bodyComposition.waist">Waist</Translate>
+                </Label>
+                <AvField id="body-composition-waist" type="string" className="form-control" name="waist" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="lbmLabel" for="body-composition-lbm">
+                  <Translate contentKey="adjustApp.bodyComposition.lbm">Lbm</Translate>
+                </Label>
+                <AvField id="body-composition-lbm" type="string" className="form-control" name="lbm" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="muscleMassLabel" for="body-composition-muscleMass">
+                  <Translate contentKey="adjustApp.bodyComposition.muscleMass">Muscle Mass</Translate>
+                </Label>
+                <AvField id="body-composition-muscleMass" type="string" className="form-control" name="muscleMass" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="muscleMassPercentageLabel" for="body-composition-muscleMassPercentage">
+                  <Translate contentKey="adjustApp.bodyComposition.muscleMassPercentage">Muscle Mass Percentage</Translate>
+                </Label>
+                <AvField id="body-composition-muscleMassPercentage" type="string" className="form-control" name="muscleMassPercentage" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="fatMassLabel" for="body-composition-fatMass">
+                  <Translate contentKey="adjustApp.bodyComposition.fatMass">Fat Mass</Translate>
+                </Label>
+                <AvField id="body-composition-fatMass" type="string" className="form-control" name="fatMass" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="fatMassPercentageLabel" for="body-composition-fatMassPercentage">
+                  <Translate contentKey="adjustApp.bodyComposition.fatMassPercentage">Fat Mass Percentage</Translate>
+                </Label>
+                <AvField id="body-composition-fatMassPercentage" type="string" className="form-control" name="fatMassPercentage" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="genderLabel" for="body-composition-gender">
+                  <Translate contentKey="adjustApp.bodyComposition.gender">Gender</Translate>
+                </Label>
+                <AvInput
+                  id="body-composition-gender"
+                  type="select"
+                  className="form-control"
+                  name="gender"
+                  value={(!isNew && bodyCompositionEntity.gender) || 'MALE'}
+                >
+                  <option value="MALE">{translate('adjustApp.Gender.MALE')}</option>
+                  <option value="FEMALE">{translate('adjustApp.Gender.FEMALE')}</option>
+                </AvInput>
+              </AvGroup>
+              <AvGroup>
+                <Label id="ageLabel" for="body-composition-age">
+                  <Translate contentKey="adjustApp.bodyComposition.age">Age</Translate>
+                </Label>
+                <AvField id="body-composition-age" type="string" className="form-control" name="age" />
+              </AvGroup>
+              <AvGroup>
+                <AvGroup>
+                  <Label id="bodyImageLabel" for="bodyImage">
+                    <Translate contentKey="adjustApp.bodyComposition.bodyImage">Body Image</Translate>
+                  </Label>
+                  <br />
+                  {bodyImage ? (
+                    <div>
+                      {bodyImageContentType ? (
+                        <a onClick={openFile(bodyImageContentType, bodyImage)}>
+                          <img src={`data:${bodyImageContentType};base64,${bodyImage}`} style={{ maxHeight: '100px' }} />
+                        </a>
+                      ) : null}
+                      <br />
+                      <Row>
+                        <Col md="11">
+                          <span>
+                            {bodyImageContentType}, {byteSize(bodyImage)}
+                          </span>
+                        </Col>
+                        <Col md="1">
+                          <Button color="danger" onClick={clearBlob('bodyImage')}>
+                            <FontAwesomeIcon icon="times-circle" />
+                          </Button>
+                        </Col>
+                      </Row>
+                    </div>
+                  ) : null}
+                  <input id="file_bodyImage" type="file" onChange={onBlobChange(true, 'bodyImage')} accept="image/*" />
+                  <AvInput type="hidden" name="bodyImage" value={bodyImage} />
+                </AvGroup>
+              </AvGroup>
+              <AvGroup>
                 <AvGroup>
                   <Label id="bodyCompositionFileLabel" for="bodyCompositionFile">
                     <Translate contentKey="adjustApp.bodyComposition.bodyCompositionFile">Body Composition File</Translate>
@@ -180,6 +282,21 @@ export const BodyCompositionUpdate = (props: IBodyCompositionUpdateProps) => {
                   <input id="file_bloodTestFile" type="file" onChange={onBlobChange(true, 'bloodTestFile')} accept="image/*" />
                   <AvInput type="hidden" name="bloodTestFile" value={bloodTestFile} />
                 </AvGroup>
+              </AvGroup>
+              <AvGroup>
+                <Label for="body-composition-program">
+                  <Translate contentKey="adjustApp.bodyComposition.program">Program</Translate>
+                </Label>
+                <AvInput id="body-composition-program" type="select" className="form-control" name="programId">
+                  <option value="" key="0" />
+                  {adjustPrograms
+                    ? adjustPrograms.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.id}
+                        </option>
+                      ))
+                    : null}
+                </AvInput>
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/body-composition" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />

@@ -1,6 +1,6 @@
 package com.adjust.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -8,6 +8,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+
+import com.adjust.api.domain.enumeration.Gender;
 
 /**
  * A BodyComposition.
@@ -35,6 +37,41 @@ public class BodyComposition implements Serializable {
     @Column(name = "bmi")
     private Double bmi;
 
+    @Column(name = "wrist")
+    private Double wrist;
+
+    @Column(name = "waist")
+    private Double waist;
+
+    @Column(name = "lbm")
+    private Double lbm;
+
+    @Column(name = "muscle_mass")
+    private Double muscleMass;
+
+    @Column(name = "muscle_mass_percentage")
+    private Integer muscleMassPercentage;
+
+    @Column(name = "fat_mass")
+    private Double fatMass;
+
+    @Column(name = "fat_mass_percentage")
+    private Integer fatMassPercentage;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender")
+    private Gender gender;
+
+    @Column(name = "age")
+    private Integer age;
+
+    @Lob
+    @Column(name = "body_image")
+    private byte[] bodyImage;
+
+    @Column(name = "body_image_content_type")
+    private String bodyImageContentType;
+
     @Lob
     @Column(name = "body_composition_file")
     private byte[] bodyCompositionFile;
@@ -49,8 +86,8 @@ public class BodyComposition implements Serializable {
     @Column(name = "blood_test_file_content_type")
     private String bloodTestFileContentType;
 
-    @OneToOne(mappedBy = "bodyCompostion")
-    @JsonIgnore
+    @ManyToOne
+    @JsonIgnoreProperties(value = "bodyCompostions", allowSetters = true)
     private AdjustProgram program;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
@@ -112,6 +149,149 @@ public class BodyComposition implements Serializable {
 
     public void setBmi(Double bmi) {
         this.bmi = bmi;
+    }
+
+    public Double getWrist() {
+        return wrist;
+    }
+
+    public BodyComposition wrist(Double wrist) {
+        this.wrist = wrist;
+        return this;
+    }
+
+    public void setWrist(Double wrist) {
+        this.wrist = wrist;
+    }
+
+    public Double getWaist() {
+        return waist;
+    }
+
+    public BodyComposition waist(Double waist) {
+        this.waist = waist;
+        return this;
+    }
+
+    public void setWaist(Double waist) {
+        this.waist = waist;
+    }
+
+    public Double getLbm() {
+        return lbm;
+    }
+
+    public BodyComposition lbm(Double lbm) {
+        this.lbm = lbm;
+        return this;
+    }
+
+    public void setLbm(Double lbm) {
+        this.lbm = lbm;
+    }
+
+    public Double getMuscleMass() {
+        return muscleMass;
+    }
+
+    public BodyComposition muscleMass(Double muscleMass) {
+        this.muscleMass = muscleMass;
+        return this;
+    }
+
+    public void setMuscleMass(Double muscleMass) {
+        this.muscleMass = muscleMass;
+    }
+
+    public Integer getMuscleMassPercentage() {
+        return muscleMassPercentage;
+    }
+
+    public BodyComposition muscleMassPercentage(Integer muscleMassPercentage) {
+        this.muscleMassPercentage = muscleMassPercentage;
+        return this;
+    }
+
+    public void setMuscleMassPercentage(Integer muscleMassPercentage) {
+        this.muscleMassPercentage = muscleMassPercentage;
+    }
+
+    public Double getFatMass() {
+        return fatMass;
+    }
+
+    public BodyComposition fatMass(Double fatMass) {
+        this.fatMass = fatMass;
+        return this;
+    }
+
+    public void setFatMass(Double fatMass) {
+        this.fatMass = fatMass;
+    }
+
+    public Integer getFatMassPercentage() {
+        return fatMassPercentage;
+    }
+
+    public BodyComposition fatMassPercentage(Integer fatMassPercentage) {
+        this.fatMassPercentage = fatMassPercentage;
+        return this;
+    }
+
+    public void setFatMassPercentage(Integer fatMassPercentage) {
+        this.fatMassPercentage = fatMassPercentage;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public BodyComposition gender(Gender gender) {
+        this.gender = gender;
+        return this;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public BodyComposition age(Integer age) {
+        this.age = age;
+        return this;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public byte[] getBodyImage() {
+        return bodyImage;
+    }
+
+    public BodyComposition bodyImage(byte[] bodyImage) {
+        this.bodyImage = bodyImage;
+        return this;
+    }
+
+    public void setBodyImage(byte[] bodyImage) {
+        this.bodyImage = bodyImage;
+    }
+
+    public String getBodyImageContentType() {
+        return bodyImageContentType;
+    }
+
+    public BodyComposition bodyImageContentType(String bodyImageContentType) {
+        this.bodyImageContentType = bodyImageContentType;
+        return this;
+    }
+
+    public void setBodyImageContentType(String bodyImageContentType) {
+        this.bodyImageContentType = bodyImageContentType;
     }
 
     public byte[] getBodyCompositionFile() {
@@ -205,6 +385,17 @@ public class BodyComposition implements Serializable {
             ", height=" + getHeight() +
             ", weight=" + getWeight() +
             ", bmi=" + getBmi() +
+            ", wrist=" + getWrist() +
+            ", waist=" + getWaist() +
+            ", lbm=" + getLbm() +
+            ", muscleMass=" + getMuscleMass() +
+            ", muscleMassPercentage=" + getMuscleMassPercentage() +
+            ", fatMass=" + getFatMass() +
+            ", fatMassPercentage=" + getFatMassPercentage() +
+            ", gender='" + getGender() + "'" +
+            ", age=" + getAge() +
+            ", bodyImage='" + getBodyImage() + "'" +
+            ", bodyImageContentType='" + getBodyImageContentType() + "'" +
             ", bodyCompositionFile='" + getBodyCompositionFile() + "'" +
             ", bodyCompositionFileContentType='" + getBodyCompositionFileContentType() + "'" +
             ", bloodTestFile='" + getBloodTestFile() + "'" +

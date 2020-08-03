@@ -103,6 +103,16 @@ entity BodyComposition {
     height Double,
     weight Double,
     bmi Double,
+    wrist Double,
+    waist Double,
+    lbm Double,
+    muscleMass Double,
+    muscleMassPercentage Integer,
+    fatMass Double,
+    fatMassPercentage Integer,
+    gender Gender,
+    age Integer,
+    bodyImage ImageBlob,
     bodyCompositionFile ImageBlob,
     bloodTestFile ImageBlob,
 }
@@ -281,8 +291,8 @@ relationship OneToMany {
 }
 
 
-relationship OneToOne {
-	AdjustProgram{bodyCompostion} to BodyComposition{program}
+relationship OneToMany {
+	AdjustProgram{bodyCompostions} to BodyComposition{program}
 }
 
 relationship OneToMany {
