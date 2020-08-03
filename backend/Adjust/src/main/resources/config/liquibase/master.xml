@@ -40,6 +40,7 @@
     <include file="config/liquibase/changelog/20200731134220_added_entity_AdjustTutorial.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731134320_added_entity_AdjustTutorialVideo.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731134420_added_entity_TutorialVideo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200803152230_added_entity_ProgramDevelopment.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20200731132120_added_entity_constraints_ShopingItem.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731132420_added_entity_constraints_Order.xml" relativeToChangelogFile="false"/>
@@ -54,6 +55,7 @@
     <include file="config/liquibase/changelog/20200731134120_added_entity_constraints_Tutorial.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731134220_added_entity_constraints_AdjustTutorial.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731132820_added_entity_constraints_BodyComposition.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200803152230_added_entity_constraints_ProgramDevelopment.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

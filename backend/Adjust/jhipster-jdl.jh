@@ -98,6 +98,12 @@ entity AdjustProgram {
     paid Boolean
 }
 
+entity ProgramDevelopment {
+	date LocalDate,
+    workoutScore Double,
+    fitnessScore Double,
+}
+
 entity BodyComposition {
 	createdAt LocalDate,
     height Double,
@@ -290,6 +296,9 @@ relationship OneToMany {
 	AdjustClient{tutorials} to Tutorial{client}
 }
 
+relationship OneToMany {
+	AdjustProgram{programDevelopments} to ProgramDevelopment{adjustProgram}
+}
 
 relationship OneToMany {
 	AdjustProgram{bodyCompostions} to BodyComposition{program}

@@ -95,6 +95,7 @@ public class ClientAppController {
     private final MoveService moveService;
 
     private final AdjustProgramMapper adjustProgramMapper;
+    private final ProgramDevelopmentMapper programDevelopmentMapper;
     private final BodyCompositionMapper bodyCompositionMapper;
     private final NutritionProgramMapper nutritionProgramMapper;
     private final FitnessProgramMapper fitnessProgramMapper;
@@ -120,7 +121,7 @@ public class ClientAppController {
                                SpecialistService specialistService, SpecialistMapper specialistMapper, AdjustProgramService adjustProgramService, BodyCompositionService bodyCompositionService,
                                FitnessProgramService fitnessProgramService, NutritionProgramService nutritionProgramService,
                                MealService mealService, AdjustNutritionRepository adjustNutritionRepository, WorkoutService workoutService, ExerciseService exerciseService, MoveService moveService,
-                               BodyCompositionMapper bodyCompositionMapper, NutritionProgramMapper nutritionProgramMapper, FitnessProgramMapper fitnessProgramMapper, MealMapper mealMapper,
+                               ProgramDevelopmentMapper programDevelopmentMapper, BodyCompositionMapper bodyCompositionMapper, NutritionProgramMapper nutritionProgramMapper, FitnessProgramMapper fitnessProgramMapper, MealMapper mealMapper,
                                NutritionMapper nutritionMapper, AdjustNutritionMapper adjustNutritionMapper, AdjustFoodMapper adjustFoodMapper, WorkoutMapper workoutMapper, ExerciseMapper exerciseMapper, MoveMapper moveMapper,
                                AdjustProgramRepository adjustProgramRepository, AdjustProgramMapper adjustProgramMapper, AdjustFoodRepository adjustFoodRepository) {
         this.userService = userService;
@@ -151,6 +152,7 @@ public class ClientAppController {
         this.workoutService = workoutService;
         this.exerciseService = exerciseService;
         this.moveService = moveService;
+        this.programDevelopmentMapper = programDevelopmentMapper;
         this.bodyCompositionMapper = bodyCompositionMapper;
         this.nutritionProgramMapper = nutritionProgramMapper;
         this.fitnessProgramMapper = fitnessProgramMapper;
@@ -500,6 +502,12 @@ public class ClientAppController {
             Specialist specialist = program.getSpecialist();
             DummySpecialistDTO dummySpecialistDTO = new DummySpecialistDTO(specialistMapper.toDto(specialist));
 
+            // set adjust program's program development
+            List<DummyProgramDevelopmentDTO> dummyProgramDevelopmentDTOList = program.getProgramDevelopments().stream().map((programDevelopment) -> {
+                DummyProgramDevelopmentDTO dummyProgramDevelopmentDTO = new DummyProgramDevelopmentDTO(programDevelopmentMapper.toDto(programDevelopment));
+                return dummyProgramDevelopmentDTO;
+            }).collect(Collectors.toList());
+
             // set adjust program's body composition
             List<DummyBodyCompositionDTO> dummyBodyCompositionDTOList = program.getBodyCompostions().stream().map((bodyComposition) -> {
                 DummyBodyCompositionDTO dummyBodyCompositionDTO = new DummyBodyCompositionDTO(bodyCompositionMapper.toDto(bodyComposition));
@@ -557,6 +565,7 @@ public class ClientAppController {
             DummyAdjustProgramDTO dummyAdjustProgramDTO = new DummyAdjustProgramDTO(adjustProgramMapper.toDto(program));
             dummyAdjustProgramDTO.setClient(dummyAdjustClientDTO);
             dummyAdjustProgramDTO.setSpecialist(dummySpecialistDTO);
+            dummyAdjustProgramDTO.setProgramDevelopments(dummyProgramDevelopmentDTOList);
             dummyAdjustProgramDTO.setBodyCompositions(dummyBodyCompositionDTOList);
             dummyAdjustProgramDTO.setNutritionProgram(dummyNutritionProgramDTO);
             dummyAdjustProgramDTO.setFitnessProgram(dummyFitnessProgramDTO);

@@ -48,6 +48,10 @@ public class AdjustProgram implements Serializable {
     @JoinColumn(unique = true)
     private NutritionProgram nutritionProgram;
 
+    @OneToMany(mappedBy = "adjustProgram", fetch = FetchType.EAGER)
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<ProgramDevelopment> programDevelopments = new HashSet<>();
+
     @OneToMany(mappedBy = "program", fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<BodyComposition> bodyCompostions = new HashSet<>();
@@ -158,6 +162,31 @@ public class AdjustProgram implements Serializable {
 
     public void setNutritionProgram(NutritionProgram nutritionProgram) {
         this.nutritionProgram = nutritionProgram;
+    }
+
+    public Set<ProgramDevelopment> getProgramDevelopments() {
+        return programDevelopments;
+    }
+
+    public AdjustProgram programDevelopments(Set<ProgramDevelopment> programDevelopments) {
+        this.programDevelopments = programDevelopments;
+        return this;
+    }
+
+    public AdjustProgram addProgramDevelopments(ProgramDevelopment programDevelopment) {
+        this.programDevelopments.add(programDevelopment);
+        programDevelopment.setAdjustProgram(this);
+        return this;
+    }
+
+    public AdjustProgram removeProgramDevelopments(ProgramDevelopment programDevelopment) {
+        this.programDevelopments.remove(programDevelopment);
+        programDevelopment.setAdjustProgram(null);
+        return this;
+    }
+
+    public void setProgramDevelopments(Set<ProgramDevelopment> programDevelopments) {
+        this.programDevelopments = programDevelopments;
     }
 
     public Set<BodyComposition> getBodyCompostions() {

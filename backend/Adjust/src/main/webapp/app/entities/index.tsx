@@ -30,6 +30,7 @@ import Tutorial from './tutorial';
 import AdjustTutorial from './adjust-tutorial';
 import AdjustTutorialVideo from './adjust-tutorial-video';
 import TutorialVideo from './tutorial-video';
+import ProgramDevelopment from './program-development';
 /* jhipster-needle-add-route-import - JHipster will add routes here */
 
 const Routes = ({ match }) => (
@@ -62,6 +63,7 @@ const Routes = ({ match }) => (
       <ErrorBoundaryRoute path={`${match.url}adjust-tutorial`} component={AdjustTutorial} />
       <ErrorBoundaryRoute path={`${match.url}adjust-tutorial-video`} component={AdjustTutorialVideo} />
       <ErrorBoundaryRoute path={`${match.url}tutorial-video`} component={TutorialVideo} />
+      <ErrorBoundaryRoute path={`${match.url}program-development`} component={ProgramDevelopment} />
       {/* jhipster-needle-add-route-path - JHipster will add routes here */}
     </Switch>
   </div>

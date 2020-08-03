@@ -20,6 +20,8 @@ public interface AdjustProgramMapper extends EntityMapper<AdjustProgramDTO, Adju
 
     @Mapping(source = "fitnessProgramId", target = "fitnessProgram")
     @Mapping(source = "nutritionProgramId", target = "nutritionProgram")
+    @Mapping(target = "programDevelopments", ignore = true)
+    @Mapping(target = "removeProgramDevelopments", ignore = true)
     @Mapping(target = "bodyCompostions", ignore = true)
     @Mapping(target = "removeBodyCompostions", ignore = true)
     @Mapping(source = "clientId", target = "client")

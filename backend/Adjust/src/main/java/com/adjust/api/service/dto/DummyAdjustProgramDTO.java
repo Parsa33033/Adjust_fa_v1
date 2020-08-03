@@ -8,6 +8,7 @@ public class DummyAdjustProgramDTO extends AdjustProgramDTO implements Serializa
     DummySpecialistDTO specialist;
     DummyAdjustClientDTO client;
 
+    List<DummyProgramDevelopmentDTO> programDevelopments;
     List<DummyBodyCompositionDTO> bodyCompositions;
     DummyNutritionProgramDTO nutritionProgram;
     DummyFitnessProgramDTO fitnessProgram;
@@ -41,6 +42,14 @@ public class DummyAdjustProgramDTO extends AdjustProgramDTO implements Serializa
 
     public void setClient(DummyAdjustClientDTO client) {
         this.client = client;
+    }
+
+    public List<DummyProgramDevelopmentDTO> getProgramDevelopments() {
+        return programDevelopments;
+    }
+
+    public void setProgramDevelopments(List<DummyProgramDevelopmentDTO> programDevelopments) {
+        this.programDevelopments = programDevelopments;
     }
 
     public List<DummyBodyCompositionDTO> getBodyCompositions() {

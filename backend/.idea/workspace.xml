@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8e9dda49-e498-4220-8497-76c19b84ffb9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Adjust_v1/Adjust/jhipster-jdl.jh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/client/adjust_client/lib/model/program_development.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/AdjustClient.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/AdjustFood.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/AdjustMove.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/AdjustNutrition.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/AdjustPrice.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/AdjustProgram.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/AdjustShopingItem.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/AdjustTokens.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/AdjustTutorial.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/AdjustTutorialVideo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/BodyComposition.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/Cart.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/ChatMessage.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/Conversation.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/Exercise.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/FitnessProgram.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/Meal.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/Move.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/Nutrition.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/NutritionProgram.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/Order.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/ShopingItem.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/Specialist.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/Tutorial.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/TutorialVideo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.jhipster/Workout.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/.yo-rc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/jhipster-jdl.jh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/config/CacheConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/config/CacheConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/AdjustClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/AdjustFood.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/AdjustMove.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/AdjustNutrition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/AdjustPrice.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/AdjustProgram.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/AdjustShopingItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/AdjustTokens.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/AdjustTutorial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/AdjustTutorialVideo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/BodyComposition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/Cart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/ChatMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/Conversation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/Exercise.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/FitnessProgram.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/Meal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/Move.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/Nutrition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/NutritionProgram.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/ShopingItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/Specialist.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/Tutorial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/TutorialVideo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/Workout.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/enumeration/Gender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/domain/enumeration/MuscleType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/AdjustClientRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/AdjustFoodRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/AdjustMoveRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/AdjustNutritionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/AdjustPriceRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/AdjustProgramRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/AdjustShopingItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/AdjustTokensRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/AdjustTutorialRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/AdjustTutorialVideoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/BodyCompositionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/CartRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/ChatMessageRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/ConversationRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/ExerciseRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/FitnessProgramRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/MealRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/MoveRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/NutritionProgramRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/NutritionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/OrderRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/ShopingItemRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/SpecialistRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/TutorialRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/TutorialVideoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/repository/WorkoutRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/security/AuthoritiesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/security/AuthoritiesConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/AdjustClientService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/AdjustFoodService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/AdjustMoveService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/AdjustNutritionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/AdjustPriceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/AdjustProgramService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/AdjustShopingItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/AdjustTokensService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/AdjustTutorialService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/AdjustTutorialVideoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/BodyCompositionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/CartService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/ChatMessageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/ConversationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/ExerciseService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/FitnessProgramService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/MealService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/MoveService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/NutritionProgramService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/NutritionService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/OrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/ShopingItemService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/SpecialistService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/TutorialService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/TutorialVideoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/WorkoutService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/AdjustClientDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/AdjustFoodDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/AdjustMoveDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/AdjustNutritionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/AdjustPriceDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/AdjustProgramDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/AdjustShopingItemDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/AdjustTokensDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/AdjustTutorialDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/AdjustTutorialVideoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/BodyCompositionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/CartDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/ChatMessageDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/ConversationDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyAdjustClientDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyAdjustFoodDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyAdjustProgramDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyBodyCompositionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyCartDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyExerciseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyFitnessProgramDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyMealDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyMoveDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyNutritionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyNutritionProgramDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyOrderDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyShopingItemDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummySpecialistDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/DummyWorkoutDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/ExerciseDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/FitnessProgramDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/MealDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/MoveDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/NutritionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/NutritionProgramDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/OrderDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/ShopingItemDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/SpecialistDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/TutorialDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/TutorialVideoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/dto/WorkoutDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/AdjustClientMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/AdjustFoodMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/AdjustMoveMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/AdjustNutritionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/AdjustPriceMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/AdjustProgramMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/AdjustShopingItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/AdjustTokensMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/AdjustTutorialMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/AdjustTutorialVideoMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/BodyCompositionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/CartMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/ChatMessageMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/ConversationMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/EntityMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/ExerciseMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/FitnessProgramMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/MealMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/MoveMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/NutritionMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/NutritionProgramMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/OrderMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/ShopingItemMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/SpecialistMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/TutorialMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/TutorialVideoMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/service/mapper/WorkoutMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AccountResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AccountResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AdjustClientResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AdjustFoodResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AdjustMoveResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AdjustNutritionResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AdjustPriceResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AdjustProgramResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AdjustShopingItemResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AdjustTokensResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AdjustTutorialResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/AdjustTutorialVideoResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/BodyCompositionResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/CartResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/ChatMessageResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/ClassUpdater.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/ClientAppController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/ConversationResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/ExerciseResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/FitnessProgramResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/MealResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/MoveResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/NutritionProgramResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/NutritionResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/OrderResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/ShopingItemResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/SpecialistResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/TutorialResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/TutorialVideoResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/java/com/adjust/api/web/rest/WorkoutResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/resources/config/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/resources/config/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731131920_added_entity_AdjustTokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132020_added_entity_AdjustPrice.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132120_added_entity_ShopingItem.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132120_added_entity_constraints_ShopingItem.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132220_added_entity_AdjustShopingItem.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132320_added_entity_Cart.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132420_added_entity_Order.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132420_added_entity_constraints_Order.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132520_added_entity_AdjustClient.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132620_added_entity_Specialist.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132720_added_entity_AdjustProgram.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132720_added_entity_constraints_AdjustProgram.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132820_added_entity_BodyComposition.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132820_added_entity_constraints_BodyComposition.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731132920_added_entity_FitnessProgram.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133020_added_entity_Workout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133020_added_entity_constraints_Workout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133120_added_entity_Exercise.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133120_added_entity_constraints_Exercise.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133220_added_entity_Move.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133320_added_entity_AdjustMove.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133420_added_entity_NutritionProgram.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133520_added_entity_Meal.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133520_added_entity_constraints_Meal.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133620_added_entity_Nutrition.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133620_added_entity_constraints_Nutrition.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133720_added_entity_AdjustNutrition.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133820_added_entity_AdjustFood.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133820_added_entity_constraints_AdjustFood.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133920_added_entity_Conversation.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731133920_added_entity_constraints_Conversation.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731134020_added_entity_ChatMessage.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731134020_added_entity_constraints_ChatMessage.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731134120_added_entity_Tutorial.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731134120_added_entity_constraints_Tutorial.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731134220_added_entity_AdjustTutorial.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731134220_added_entity_constraints_AdjustTutorial.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731134320_added_entity_AdjustTutorialVideo.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/changelog/20200731134420_added_entity_TutorialVideo.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/data/authority.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/data/authority.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/adjust_client.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/adjust_food.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/adjust_move.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/adjust_nutrition.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/adjust_price.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/adjust_program.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/adjust_shoping_item.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/adjust_tokens.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/adjust_tutorial.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/adjust_tutorial_video.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/blob/hipster.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/blob/hipster.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/body_composition.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/cart.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/chat_message.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/conversation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/exercise.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/fitness_program.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/jhi_order.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/meal.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/move.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/nutrition.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/nutrition_program.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/shoping_item.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/specialist.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/tutorial.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/tutorial_video.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/fake-data/workout.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/resources/config/liquibase/master.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/config/tls/keystore.p12" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/resources/config/tls/keystore.p12" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/i18n/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/resources/i18n/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/resources/i18n/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/resources/i18n/messages_fa.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/resources/i18n/messages_fa.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/app/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-client/adjust-client-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-client/adjust-client-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-client/adjust-client-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-client/adjust-client.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-client/adjust-client.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-client/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-food/adjust-food-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-food/adjust-food-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-food/adjust-food-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-food/adjust-food.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-food/adjust-food.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-food/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-move/adjust-move-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-move/adjust-move-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-move/adjust-move-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-move/adjust-move.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-move/adjust-move.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-move/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-nutrition/adjust-nutrition-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-nutrition/adjust-nutrition-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-nutrition/adjust-nutrition-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-nutrition/adjust-nutrition.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-nutrition/adjust-nutrition.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-nutrition/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-price/adjust-price-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-price/adjust-price-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-price/adjust-price-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-price/adjust-price.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-price/adjust-price.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-price/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-program/adjust-program-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-program/adjust-program-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-program/adjust-program-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-program/adjust-program.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-program/adjust-program.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-program/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-shoping-item/adjust-shoping-item-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-shoping-item/adjust-shoping-item-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-shoping-item/adjust-shoping-item-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-shoping-item/adjust-shoping-item.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-shoping-item/adjust-shoping-item.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-shoping-item/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tokens/adjust-tokens-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tokens/adjust-tokens-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tokens/adjust-tokens-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tokens/adjust-tokens.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tokens/adjust-tokens.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tokens/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial-video/adjust-tutorial-video-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial-video/adjust-tutorial-video-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial-video/adjust-tutorial-video-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial-video/adjust-tutorial-video.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial-video/adjust-tutorial-video.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial-video/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial/adjust-tutorial-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial/adjust-tutorial-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial/adjust-tutorial-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial/adjust-tutorial.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial/adjust-tutorial.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/adjust-tutorial/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/body-composition/body-composition-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/body-composition/body-composition-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/body-composition/body-composition-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/body-composition/body-composition.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/body-composition/body-composition.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/body-composition/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/cart/cart-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/cart/cart-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/cart/cart-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/cart/cart.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/cart/cart.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/cart/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/chat-message/chat-message-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/chat-message/chat-message-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/chat-message/chat-message-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/chat-message/chat-message.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/chat-message/chat-message.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/chat-message/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/conversation/conversation-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/conversation/conversation-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/conversation/conversation-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/conversation/conversation.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/conversation/conversation.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/conversation/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/exercise/exercise-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/exercise/exercise-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/exercise/exercise-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/exercise/exercise.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/exercise/exercise.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/exercise/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/fitness-program/fitness-program-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/fitness-program/fitness-program-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/fitness-program/fitness-program-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/fitness-program/fitness-program.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/fitness-program/fitness-program.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/fitness-program/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/meal/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/meal/meal-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/meal/meal-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/meal/meal-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/meal/meal.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/meal/meal.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/move/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/move/move-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/move/move-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/move/move-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/move/move.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/move/move.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition-program/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition-program/nutrition-program-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition-program/nutrition-program-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition-program/nutrition-program-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition-program/nutrition-program.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition-program/nutrition-program.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition/nutrition-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition/nutrition-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition/nutrition-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition/nutrition.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/nutrition/nutrition.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/order/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/order/order-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/order/order-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/order/order-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/order/order.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/order/order.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/shoping-item/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/shoping-item/shoping-item-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/shoping-item/shoping-item-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/shoping-item/shoping-item-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/shoping-item/shoping-item.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/shoping-item/shoping-item.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/specialist/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/specialist/specialist-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/specialist/specialist-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/specialist/specialist-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/specialist/specialist.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/specialist/specialist.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial-video/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial-video/tutorial-video-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial-video/tutorial-video-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial-video/tutorial-video-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial-video/tutorial-video.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial-video/tutorial-video.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial/tutorial-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial/tutorial-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial/tutorial-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial/tutorial.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/tutorial/tutorial.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/workout/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/workout/workout-delete-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/workout/workout-detail.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/workout/workout-update.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/workout/workout.reducer.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/entities/workout/workout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/modules/home/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/app/modules/home/home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/modules/home/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/app/modules/home/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/app/routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/layout/header/header-components.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/layout/header/header-components.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/layout/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/layout/menus/entities.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/layout/menus/entities.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/adjust-client.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/adjust-food.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/adjust-move.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/adjust-nutrition.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/adjust-price.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/adjust-program.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/adjust-shoping-item.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/adjust-tokens.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/adjust-tutorial-video.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/adjust-tutorial.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/body-composition.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/cart.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/chat-message.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/conversation.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/enumerations/gender.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/enumerations/muscle-type.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/exercise.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/fitness-program.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/meal.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/move.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/nutrition-program.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/nutrition.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/order.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/shoping-item.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/specialist.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/tutorial-video.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/tutorial.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/model/workout.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/app/shared/reducers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/content/images/adjust_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/adjustClient.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/adjustFood.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/adjustMove.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/adjustNutrition.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/adjustPrice.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/adjustProgram.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/adjustShopingItem.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/adjustTokens.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/adjustTutorial.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/adjustTutorialVideo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/bodyComposition.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/cart.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/chatMessage.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/conversation.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/exercise.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/fitnessProgram.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/gender.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/home.json" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/home.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/meal.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/move.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/muscleType.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/nutrition.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/nutritionProgram.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/order.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/shopingItem.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/specialist.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/tutorial.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/tutorialVideo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/en/workout.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/adjustClient.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/adjustFood.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/adjustMove.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/adjustNutrition.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/adjustPrice.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/adjustProgram.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/adjustShopingItem.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/adjustTokens.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/adjustTutorial.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/adjustTutorialVideo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/bodyComposition.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/cart.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/chatMessage.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/conversation.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/exercise.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/fitnessProgram.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/gender.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/home.json" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/home.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/meal.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/move.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/muscleType.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/nutrition.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/nutritionProgram.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/order.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/shopingItem.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/specialist.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/tutorial.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/tutorialVideo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/main/webapp/i18n/fa/workout.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/AdjustClientTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/AdjustFoodTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/AdjustMoveTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/AdjustNutritionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/AdjustPriceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/AdjustProgramTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/AdjustShopingItemTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/AdjustTokensTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/AdjustTutorialTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/AdjustTutorialVideoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/BodyCompositionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/CartTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/ChatMessageTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/ConversationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/ExerciseTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/FitnessProgramTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/MealTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/MoveTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/NutritionProgramTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/NutritionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/OrderTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/ShopingItemTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/SpecialistTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/TutorialTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/TutorialVideoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/domain/WorkoutTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/AdjustClientDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/AdjustFoodDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/AdjustMoveDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/AdjustNutritionDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/AdjustPriceDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/AdjustProgramDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/AdjustShopingItemDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/AdjustTokensDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/AdjustTutorialDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/AdjustTutorialVideoDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/BodyCompositionDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/CartDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/ChatMessageDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/ConversationDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/ExerciseDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/FitnessProgramDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/MealDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/MoveDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/NutritionDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/NutritionProgramDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/OrderDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/ShopingItemDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/SpecialistDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/TutorialDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/TutorialVideoDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/dto/WorkoutDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/AdjustClientMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/AdjustFoodMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/AdjustMoveMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/AdjustNutritionMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/AdjustPriceMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/AdjustProgramMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/AdjustShopingItemMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/AdjustTokensMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/AdjustTutorialMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/AdjustTutorialVideoMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/BodyCompositionMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/CartMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/ChatMessageMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/ConversationMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/ExerciseMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/FitnessProgramMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/MealMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/MoveMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/NutritionMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/NutritionProgramMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/OrderMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/ShopingItemMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/SpecialistMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/TutorialMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/TutorialVideoMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/service/mapper/WorkoutMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/AdjustClientResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/AdjustFoodResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/AdjustMoveResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/AdjustNutritionResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/AdjustPriceResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/AdjustProgramResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/AdjustShopingItemResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/AdjustTokensResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/AdjustTutorialResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/AdjustTutorialVideoResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/BodyCompositionResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/CartResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/ChatMessageResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/ConversationResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/ExerciseResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/FitnessProgramResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/MealResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/MoveResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/NutritionProgramResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/NutritionResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/OrderResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/ShopingItemResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/SpecialistResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/TutorialResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/TutorialVideoResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/java/com/adjust/api/web/rest/WorkoutResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/adjust-client/adjust-client-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/adjust-food/adjust-food-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/adjust-move/adjust-move-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/adjust-nutrition/adjust-nutrition-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/adjust-price/adjust-price-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/adjust-program/adjust-program-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/adjust-shoping-item/adjust-shoping-item-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/adjust-tokens/adjust-tokens-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/adjust-tutorial-video/adjust-tutorial-video-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/adjust-tutorial/adjust-tutorial-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/body-composition/body-composition-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/cart/cart-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/chat-message/chat-message-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/conversation/conversation-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/exercise/exercise-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/fitness-program/fitness-program-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/meal/meal-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/move/move-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/nutrition-program/nutrition-program-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/nutrition/nutrition-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/order/order-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/shoping-item/shoping-item-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/specialist/specialist-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/tutorial-video/tutorial-video-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/tutorial/tutorial-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/javascript/spec/app/entities/workout/workout-reducer.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Adjust/src/test/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Adjust/src/test/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../software-design/jhipster-jdl.jh" beforeDir="false" afterPath="$PROJECT_DIR$/../software-design/jhipster-jdl.jh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../software-design/jhipster-jdl.png" beforeDir="false" afterPath="$PROJECT_DIR$/../software-design/jhipster-jdl.png" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/backend.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="100" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="820" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Adjust_v1/Adjust" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e9dda49-e498-4220-8497-76c19b84ffb9" name="Default Changelist" comment="" />
+      <created>1596467313280</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1596467313280</updated>
+      <workItem from="1596467314602" duration="698000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="698000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

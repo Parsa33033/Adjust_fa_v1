@@ -85,6 +85,8 @@ public class CacheConfiguration {
             createCache(cm, com.adjust.api.domain.AdjustTutorialVideo.class.getName());
             createCache(cm, com.adjust.api.domain.TutorialVideo.class.getName());
             createCache(cm, com.adjust.api.domain.AdjustProgram.class.getName() + ".bodyCompostions");
+            createCache(cm, com.adjust.api.domain.AdjustProgram.class.getName() + ".programDevelopments");
+            createCache(cm, com.adjust.api.domain.ProgramDevelopment.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

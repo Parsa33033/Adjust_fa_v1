@@ -240,7 +240,7 @@ class _MainPageState extends State<MainPage>
                           builder: (context) => NutritionProgramPage(0)));
                     } else {
                       showAdjustDialog(context, "برنامه ای موجود نمی باشد",
-                          false, null, GREEN_COLOR);
+                          false, null, RED_COLOR);
                     }
                   }),
                 )

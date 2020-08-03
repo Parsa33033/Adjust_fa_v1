@@ -747,7 +747,7 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
                               } else {
                                 showAdjustDialog(
                                     context,
-                                    "برای ادامه باید با شرایط شرح داده شده در پایین صفحه موافقط فرمایید",
+                                    "برای ادامه باید با شرایط شرح داده شده در پایین صفحه موافقت فرمایید.",
                                     false,
                                     null,
                                     GREEN_COLOR);

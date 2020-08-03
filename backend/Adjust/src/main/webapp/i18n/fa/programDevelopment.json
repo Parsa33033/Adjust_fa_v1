@@ -1,0 +1,25 @@
+{
+  "adjustApp": {
+    "programDevelopment": {
+      "home": {
+        "title": "Program Developments",
+        "createLabel": "Create a new Program Development",
+        "createOrEditLabel": "Create or edit a Program Development",
+        "notFound": "No Program Developments found"
+      },
+      "created": "A new Program Development is created with identifier {{ param }}",
+      "updated": "A Program Development is updated with identifier {{ param }}",
+      "deleted": "A Program Development is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Program Development {{ id }}?"
+      },
+      "detail": {
+        "title": "Program Development"
+      },
+      "date": "Date",
+      "workoutScore": "Workout Score",
+      "fitnessScore": "Fitness Score",
+      "adjustProgram": "Adjust Program"
+    }
+  }
+}

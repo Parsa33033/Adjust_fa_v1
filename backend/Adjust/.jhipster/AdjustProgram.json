@@ -41,6 +41,12 @@
     },
     {
       "relationshipType": "one-to-many",
+      "otherEntityName": "programDevelopment",
+      "otherEntityRelationshipName": "adjustProgram",
+      "relationshipName": "programDevelopments"
+    },
+    {
+      "relationshipType": "one-to-many",
       "otherEntityName": "bodyComposition",
       "otherEntityRelationshipName": "program",
       "relationshipName": "bodyCompostions"

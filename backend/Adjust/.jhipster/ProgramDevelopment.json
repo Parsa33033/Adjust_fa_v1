@@ -1,0 +1,37 @@
+{
+  "name": "ProgramDevelopment",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "workoutScore",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "fitnessScore",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "adjustProgram",
+      "otherEntityRelationshipName": "programDevelopments",
+      "relationshipName": "adjustProgram",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200803152230",
+  "entityTableName": "program_development",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

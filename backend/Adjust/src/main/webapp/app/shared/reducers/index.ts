@@ -116,6 +116,10 @@ import adjustTutorialVideo, {
 import tutorialVideo, {
   TutorialVideoState
 } from 'app/entities/tutorial-video/tutorial-video.reducer';
+// prettier-ignore
+import programDevelopment, {
+  ProgramDevelopmentState
+} from 'app/entities/program-development/program-development.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -155,6 +159,7 @@ export interface IRootState {
   readonly adjustTutorial: AdjustTutorialState;
   readonly adjustTutorialVideo: AdjustTutorialVideoState;
   readonly tutorialVideo: TutorialVideoState;
+  readonly programDevelopment: ProgramDevelopmentState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -196,6 +201,7 @@ const rootReducer = combineReducers<IRootState>({
   adjustTutorial,
   adjustTutorialVideo,
   tutorialVideo,
+  programDevelopment,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
 });

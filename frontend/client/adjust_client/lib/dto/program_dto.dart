@@ -2,6 +2,7 @@ import 'package:adjust_client/dto/body_composition_dto.dart';
 import 'package:adjust_client/dto/client_dto.dart';
 import 'package:adjust_client/dto/fitness_program_dto.dart';
 import 'package:adjust_client/dto/nutrition_program_dto.dart';
+import 'package:adjust_client/dto/program_development_dto.dart';
 import 'package:adjust_client/dto/specialist_dto.dart';
 import 'package:adjust_client/model/program.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -13,6 +14,7 @@ class ProgramDTO extends Program {
   ClientDTO client;
   SpecialistDTO specialist;
 
+  List<ProgramDevelopmentDTO> programDevelopments;
   List<BodyCompositionDTO> bodyCompositions;
   NutritionProgramDTO nutritionProgram;
   FitnessProgramDTO fitnessProgram;
