@@ -25,3 +25,4 @@ final String SPECIALIST_URL = BASE_URL + "/api/client/app/specialists";
 
 final String REQUEST_PROGRAM_URL = BASE_URL + "/api/client/app/request-program";
 final String PROGRAM_URL = BASE_URL + "/api/client/app/adjust-programs";
+final String PROGRAM_DEVELOPMENT_URL = BASE_URL + "/api/client/app/program-developments";

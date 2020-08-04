@@ -40,6 +40,9 @@ export const AdjustPrice = (props: IAdjustPriceProps) => {
                   <Translate contentKey="adjustApp.adjustPrice.name">Name</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="adjustApp.adjustPrice.option">Option</Translate>
+                </th>
+                <th>
                   <Translate contentKey="adjustApp.adjustPrice.token">Token</Translate>
                 </th>
                 <th>
@@ -57,6 +60,9 @@ export const AdjustPrice = (props: IAdjustPriceProps) => {
                     </Button>
                   </td>
                   <td>{adjustPrice.name}</td>
+                  <td>
+                    <Translate contentKey={`adjustApp.PurchaseOption.${adjustPrice.option}`} />
+                  </td>
                   <td>{adjustPrice.token}</td>
                   <td>{adjustPrice.price}</td>
                   <td className="text-right">

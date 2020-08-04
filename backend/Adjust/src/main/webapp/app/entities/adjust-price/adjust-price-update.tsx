@@ -82,6 +82,22 @@ export const AdjustPriceUpdate = (props: IAdjustPriceUpdateProps) => {
                 <AvField id="adjust-price-name" type="text" name="name" />
               </AvGroup>
               <AvGroup>
+                <Label id="optionLabel" for="adjust-price-option">
+                  <Translate contentKey="adjustApp.adjustPrice.option">Option</Translate>
+                </Label>
+                <AvInput
+                  id="adjust-price-option"
+                  type="select"
+                  className="form-control"
+                  name="option"
+                  value={(!isNew && adjustPriceEntity.option) || 'PROGRAM'}
+                >
+                  <option value="PROGRAM">{translate('adjustApp.PurchaseOption.PROGRAM')}</option>
+                  <option value="NUTRITION">{translate('adjustApp.PurchaseOption.NUTRITION')}</option>
+                  <option value="FITNESS">{translate('adjustApp.PurchaseOption.FITNESS')}</option>
+                </AvInput>
+              </AvGroup>
+              <AvGroup>
                 <Label id="tokenLabel" for="adjust-price-token">
                   <Translate contentKey="adjustApp.adjustPrice.token">Token</Translate>
                 </Label>

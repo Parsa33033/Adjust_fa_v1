@@ -4,13 +4,12 @@ class ProgramDevelopment {
 
   DateTime date;
 
-  double workoutScore;
+  double nutritionScore;
 
   double fitnessScore;
 
-
   int adjustProgramId;
 
-  ProgramDevelopment(this.id, this.date, this.workoutScore, this.fitnessScore,
+  ProgramDevelopment(this.id, this.date, this.nutritionScore, this.fitnessScore,
       this.adjustProgramId);
 }

@@ -37,8 +37,8 @@ public class ProgramDevelopmentResourceIT {
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Double DEFAULT_WORKOUT_SCORE = 1D;
-    private static final Double UPDATED_WORKOUT_SCORE = 2D;
+    private static final Double DEFAULT_NUTRITION_SCORE = 1D;
+    private static final Double UPDATED_NUTRITION_SCORE = 2D;
 
     private static final Double DEFAULT_FITNESS_SCORE = 1D;
     private static final Double UPDATED_FITNESS_SCORE = 2D;
@@ -69,7 +69,7 @@ public class ProgramDevelopmentResourceIT {
     public static ProgramDevelopment createEntity(EntityManager em) {
         ProgramDevelopment programDevelopment = new ProgramDevelopment()
             .date(DEFAULT_DATE)
-            .workoutScore(DEFAULT_WORKOUT_SCORE)
+            .nutritionScore(DEFAULT_NUTRITION_SCORE)
             .fitnessScore(DEFAULT_FITNESS_SCORE);
         return programDevelopment;
     }
@@ -82,7 +82,7 @@ public class ProgramDevelopmentResourceIT {
     public static ProgramDevelopment createUpdatedEntity(EntityManager em) {
         ProgramDevelopment programDevelopment = new ProgramDevelopment()
             .date(UPDATED_DATE)
-            .workoutScore(UPDATED_WORKOUT_SCORE)
+            .nutritionScore(UPDATED_NUTRITION_SCORE)
             .fitnessScore(UPDATED_FITNESS_SCORE);
         return programDevelopment;
     }
@@ -108,7 +108,7 @@ public class ProgramDevelopmentResourceIT {
         assertThat(programDevelopmentList).hasSize(databaseSizeBeforeCreate + 1);
         ProgramDevelopment testProgramDevelopment = programDevelopmentList.get(programDevelopmentList.size() - 1);
         assertThat(testProgramDevelopment.getDate()).isEqualTo(DEFAULT_DATE);
-        assertThat(testProgramDevelopment.getWorkoutScore()).isEqualTo(DEFAULT_WORKOUT_SCORE);
+        assertThat(testProgramDevelopment.getNutritionScore()).isEqualTo(DEFAULT_NUTRITION_SCORE);
         assertThat(testProgramDevelopment.getFitnessScore()).isEqualTo(DEFAULT_FITNESS_SCORE);
     }
 
@@ -145,7 +145,7 @@ public class ProgramDevelopmentResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(programDevelopment.getId().intValue())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
-            .andExpect(jsonPath("$.[*].workoutScore").value(hasItem(DEFAULT_WORKOUT_SCORE.doubleValue())))
+            .andExpect(jsonPath("$.[*].nutritionScore").value(hasItem(DEFAULT_NUTRITION_SCORE.doubleValue())))
             .andExpect(jsonPath("$.[*].fitnessScore").value(hasItem(DEFAULT_FITNESS_SCORE.doubleValue())));
     }
     
@@ -161,7 +161,7 @@ public class ProgramDevelopmentResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(programDevelopment.getId().intValue()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
-            .andExpect(jsonPath("$.workoutScore").value(DEFAULT_WORKOUT_SCORE.doubleValue()))
+            .andExpect(jsonPath("$.nutritionScore").value(DEFAULT_NUTRITION_SCORE.doubleValue()))
             .andExpect(jsonPath("$.fitnessScore").value(DEFAULT_FITNESS_SCORE.doubleValue()));
     }
     @Test
@@ -186,7 +186,7 @@ public class ProgramDevelopmentResourceIT {
         em.detach(updatedProgramDevelopment);
         updatedProgramDevelopment
             .date(UPDATED_DATE)
-            .workoutScore(UPDATED_WORKOUT_SCORE)
+            .nutritionScore(UPDATED_NUTRITION_SCORE)
             .fitnessScore(UPDATED_FITNESS_SCORE);
         ProgramDevelopmentDTO programDevelopmentDTO = programDevelopmentMapper.toDto(updatedProgramDevelopment);
 
@@ -200,7 +200,7 @@ public class ProgramDevelopmentResourceIT {
         assertThat(programDevelopmentList).hasSize(databaseSizeBeforeUpdate);
         ProgramDevelopment testProgramDevelopment = programDevelopmentList.get(programDevelopmentList.size() - 1);
         assertThat(testProgramDevelopment.getDate()).isEqualTo(UPDATED_DATE);
-        assertThat(testProgramDevelopment.getWorkoutScore()).isEqualTo(UPDATED_WORKOUT_SCORE);
+        assertThat(testProgramDevelopment.getNutritionScore()).isEqualTo(UPDATED_NUTRITION_SCORE);
         assertThat(testProgramDevelopment.getFitnessScore()).isEqualTo(UPDATED_FITNESS_SCORE);
     }
 

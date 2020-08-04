@@ -17,6 +17,7 @@
         "title": "Adjust Price"
       },
       "name": "Name",
+      "option": "Option",
       "token": "Token",
       "price": "Price"
     }

@@ -17,7 +17,7 @@
         "title": "Program Development"
       },
       "date": "Date",
-      "workoutScore": "Workout Score",
+      "nutritionScore": "Nutrition Score",
       "fitnessScore": "Fitness Score",
       "adjustProgram": "Adjust Program"
     }

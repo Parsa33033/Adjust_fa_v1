@@ -19,6 +19,9 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="jhi_option" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="token" type="double">
                 <constraints nullable="true" />
             </column>
@@ -49,6 +52,7 @@
                   tableName="adjust_price">
             <column name="id" type="numeric"/>
             <column name="name" type="string"/>
+            <column name="jhi_option" type="string"/>
             <column name="token" type="numeric"/>
             <column name="price" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->

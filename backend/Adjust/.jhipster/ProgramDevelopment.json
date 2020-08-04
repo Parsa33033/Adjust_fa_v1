@@ -6,7 +6,7 @@
       "fieldType": "LocalDate"
     },
     {
-      "fieldName": "workoutScore",
+      "fieldName": "nutritionScore",
       "fieldType": "Double"
     },
     {

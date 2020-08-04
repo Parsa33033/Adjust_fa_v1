@@ -11,7 +11,7 @@ ProgramDevelopmentDTO _$ProgramDevelopmentDTOFromJson(
   return ProgramDevelopmentDTO(
     json['id'] as int,
     json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    (json['workoutScore'] as num)?.toDouble(),
+    (json['nutritionScore'] as num)?.toDouble(),
     (json['fitnessScore'] as num)?.toDouble(),
     json['adjustProgramId'] as int,
   );
@@ -22,7 +22,7 @@ Map<String, dynamic> _$ProgramDevelopmentDTOToJson(
     <String, dynamic>{
       'id': instance.id,
       'date': instance.date?.toIso8601String(),
-      'workoutScore': instance.workoutScore,
+      'nutritionScore': instance.nutritionScore,
       'fitnessScore': instance.fitnessScore,
       'adjustProgramId': instance.adjustProgramId,
     };

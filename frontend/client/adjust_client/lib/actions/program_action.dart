@@ -34,6 +34,12 @@ class GetProgramListAction {
   GetProgramListAction({this.payload});
 }
 
+class SetProgramListAction {
+  ProgramListState payload;
+
+  SetProgramListAction({this.payload});
+}
+
 class SetNutritionProgramAction {
   NutritionProgramState payload;
 
@@ -46,13 +52,14 @@ class SetFitnessProgramAction {
   SetFitnessProgramAction({this.payload});
 }
 
-Future<int> requestForProgram(
-    BuildContext context, ProgramDTO programDTO) async {
+
+Future<int> requestForProgram(BuildContext context,
+    ProgramDTO programDTO) async {
   String jwt = await getJwt(context);
 
   Map<String, String> headers = Map<String, String>()
-    ..putIfAbsent("Authorization", () => "Bearer " + jwt)
-    ..putIfAbsent("Content-Type", () => "application/json");
+    ..putIfAbsent("Authorization", () => "Bearer " + jwt)..putIfAbsent(
+        "Content-Type", () => "application/json");
 
   String content = jsonEncode(programDTO.toJson());
 
@@ -78,20 +85,20 @@ Future<int> getClientPrograms(BuildContext context) async {
       ProgramDTO programDTO = ProgramDTO.fromJson(e);
 
       List<ProgramDevelopmentState> programDevelopmentStateList =
-          programDTO.programDevelopments
-            .map((programDevelopmentDTO) {
-              ProgramDevelopmentState programDevelopmentState =
-                  ProgramDevelopmentState(
-                      programDevelopmentDTO.id,
-                      programDevelopmentDTO.date,
-                      programDevelopmentDTO.workoutScore,
-                      programDevelopmentDTO.fitnessScore,
-                      programDevelopmentDTO.adjustProgramId);
-              return programDevelopmentState;
-            }).toList();
+      programDTO.programDevelopments
+          .map((programDevelopmentDTO) {
+        ProgramDevelopmentState programDevelopmentState =
+        ProgramDevelopmentState(
+            programDevelopmentDTO.id,
+            programDevelopmentDTO.date,
+            programDevelopmentDTO.nutritionScore,
+            programDevelopmentDTO.fitnessScore,
+            programDevelopmentDTO.adjustProgramId);
+        return programDevelopmentState;
+      }).toList();
 
       List<BodyCompositionState> bodyCompositionStateList =
-          programDTO.bodyCompositions.map((bodyCompositionDTO) {
+      programDTO.bodyCompositions.map((bodyCompositionDTO) {
         BodyCompositionState bodyCompositionState = BodyCompositionState(
             bodyCompositionDTO.id,
             bodyCompositionDTO.createdAt,
@@ -159,13 +166,20 @@ Future<int> getClientPrograms(BuildContext context) async {
       FitnessProgramState fitnessProgramState = null;
       if (fitnessProgramDTO != null && fitnessProgramDTO.workouts != null) {
         List<WorkoutState> workoutStateList =
-            fitnessProgramDTO.workouts.map((e) {
+        fitnessProgramDTO.workouts.map((e) {
           List<ExerciseState> exerciseStateList = e.exercises.map((e) {
-            return ExerciseState(e.id, e.number, e.sets, e.repsMin, e.repsMax,
-                e.moveId, e.workoutId, e.move);
+            return ExerciseState(
+                e.id,
+                e.number,
+                e.sets,
+                e.repsMin,
+                e.repsMax,
+                e.moveId,
+                e.workoutId,
+                e.move);
           }).toList();
           WorkoutState workoutState =
-              WorkoutState(e.id, e.dayNumber, e.programId, exerciseStateList);
+          WorkoutState(e.id, e.dayNumber, e.programId, exerciseStateList);
           return workoutState;
         }).toList();
         fitnessProgramState = FitnessProgramState(
@@ -233,6 +247,43 @@ Future<int> getClientPrograms(BuildContext context) async {
           GetProgramListAction(payload: ProgramListState(programList)));
       return 1;
     }
+  }
+  return 0;
+}
+
+
+Future<int> setProgramDevelopment(BuildContext context,
+    ProgramDevelopmentDTO programDevelopmentDTO, int programIndex) async {
+  String jwt = await getJwt(context);
+
+  Map<String, String> headers = Map<String, String>()
+    ..putIfAbsent("Authorization", () => "Bearer " + jwt)..putIfAbsent(
+        "Content-Type", () => "application/json");
+
+  String content = jsonEncode(programDevelopmentDTO.toJson());
+
+  http.Response response = await http.post(
+      PROGRAM_DEVELOPMENT_URL, headers: headers,
+      body: content,
+      encoding: Encoding.getByName("UTF-8"));
+  if (response.statusCode == HttpStatus.ok) {
+    List l = jsonDecode(utf8.decode(response.bodyBytes));
+    List<ProgramDevelopmentState> programDevelopmentStateList = l.map((e) {
+      ProgramDevelopmentDTO programDevelopmentDTO = ProgramDevelopmentDTO
+          .fromJson(e);
+      ProgramDevelopmentState programDevelopmentState = ProgramDevelopmentState(
+          programDevelopmentDTO.id, programDevelopmentDTO.date,
+          programDevelopmentDTO.nutritionScore,
+          programDevelopmentDTO.fitnessScore,
+          programDevelopmentDTO.adjustProgramId);
+      return programDevelopmentState;
+    }).toList();
+
+    ProgramState programState = store.state.programListState.programs.reversed.toList()[programIndex];
+    programState.programDevelopmentStateList = programDevelopmentStateList;
+    store.state.programListState.programs.reversed.toList()[programIndex] = programState;
+    store.dispatch(SetProgramListAction(payload: store.state.programListState));
+    return 1;
   }
   return 0;
 }

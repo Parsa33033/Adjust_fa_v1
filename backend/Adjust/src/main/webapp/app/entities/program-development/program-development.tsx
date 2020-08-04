@@ -40,7 +40,7 @@ export const ProgramDevelopment = (props: IProgramDevelopmentProps) => {
                   <Translate contentKey="adjustApp.programDevelopment.date">Date</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="adjustApp.programDevelopment.workoutScore">Workout Score</Translate>
+                  <Translate contentKey="adjustApp.programDevelopment.nutritionScore">Nutrition Score</Translate>
                 </th>
                 <th>
                   <Translate contentKey="adjustApp.programDevelopment.fitnessScore">Fitness Score</Translate>
@@ -64,7 +64,7 @@ export const ProgramDevelopment = (props: IProgramDevelopmentProps) => {
                       <TextFormat type="date" value={programDevelopment.date} format={APP_LOCAL_DATE_FORMAT} />
                     ) : null}
                   </td>
-                  <td>{programDevelopment.workoutScore}</td>
+                  <td>{programDevelopment.nutritionScore}</td>
                   <td>{programDevelopment.fitnessScore}</td>
                   <td>
                     {programDevelopment.adjustProgramId ? (

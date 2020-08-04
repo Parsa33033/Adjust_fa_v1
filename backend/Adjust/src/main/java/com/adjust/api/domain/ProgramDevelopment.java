@@ -26,8 +26,8 @@ public class ProgramDevelopment implements Serializable {
     @Column(name = "date")
     private LocalDate date;
 
-    @Column(name = "workout_score")
-    private Double workoutScore;
+    @Column(name = "nutrition_score")
+    private Double nutritionScore;
 
     @Column(name = "fitness_score")
     private Double fitnessScore;
@@ -58,17 +58,17 @@ public class ProgramDevelopment implements Serializable {
         this.date = date;
     }
 
-    public Double getWorkoutScore() {
-        return workoutScore;
+    public Double getNutritionScore() {
+        return nutritionScore;
     }
 
-    public ProgramDevelopment workoutScore(Double workoutScore) {
-        this.workoutScore = workoutScore;
+    public ProgramDevelopment nutritionScore(Double nutritionScore) {
+        this.nutritionScore = nutritionScore;
         return this;
     }
 
-    public void setWorkoutScore(Double workoutScore) {
-        this.workoutScore = workoutScore;
+    public void setNutritionScore(Double nutritionScore) {
+        this.nutritionScore = nutritionScore;
     }
 
     public Double getFitnessScore() {
@@ -120,7 +120,7 @@ public class ProgramDevelopment implements Serializable {
         return "ProgramDevelopment{" +
             "id=" + getId() +
             ", date='" + getDate() + "'" +
-            ", workoutScore=" + getWorkoutScore() +
+            ", nutritionScore=" + getNutritionScore() +
             ", fitnessScore=" + getFitnessScore() +
             "}";
     }

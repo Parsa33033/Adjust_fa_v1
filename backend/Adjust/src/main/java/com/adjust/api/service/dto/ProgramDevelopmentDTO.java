@@ -12,7 +12,7 @@ public class ProgramDevelopmentDTO implements Serializable {
 
     private LocalDate date;
 
-    private Double workoutScore;
+    private Double nutritionScore;
 
     private Double fitnessScore;
 
@@ -35,12 +35,12 @@ public class ProgramDevelopmentDTO implements Serializable {
         this.date = date;
     }
 
-    public Double getWorkoutScore() {
-        return workoutScore;
+    public Double getNutritionScore() {
+        return nutritionScore;
     }
 
-    public void setWorkoutScore(Double workoutScore) {
-        this.workoutScore = workoutScore;
+    public void setNutritionScore(Double nutritionScore) {
+        this.nutritionScore = nutritionScore;
     }
 
     public Double getFitnessScore() {
@@ -82,7 +82,7 @@ public class ProgramDevelopmentDTO implements Serializable {
         return "ProgramDevelopmentDTO{" +
             "id=" + getId() +
             ", date='" + getDate() + "'" +
-            ", workoutScore=" + getWorkoutScore() +
+            ", nutritionScore=" + getNutritionScore() +
             ", fitnessScore=" + getFitnessScore() +
             ", adjustProgramId=" + getAdjustProgramId() +
             "}";

@@ -6,6 +6,11 @@
       "fieldType": "String"
     },
     {
+      "fieldName": "option",
+      "fieldType": "PurchaseOption",
+      "fieldValues": "PROGRAM,NUTRITION,FITNESS"
+    },
+    {
       "fieldName": "token",
       "fieldType": "Double"
     },

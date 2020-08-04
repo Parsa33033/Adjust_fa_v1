@@ -19,7 +19,7 @@
             <column name="date" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="workout_score" type="double">
+            <column name="nutrition_score" type="double">
                 <constraints nullable="true" />
             </column>
             <column name="fitness_score" type="double">
@@ -52,7 +52,7 @@
                   tableName="program_development">
             <column name="id" type="numeric"/>
             <column name="date" type="date"/>
-            <column name="workout_score" type="numeric"/>
+            <column name="nutrition_score" type="numeric"/>
             <column name="fitness_score" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

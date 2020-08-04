@@ -7,6 +7,8 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 
+import com.adjust.api.domain.enumeration.PurchaseOption;
+
 /**
  * A AdjustPrice.
  */
@@ -23,6 +25,10 @@ public class AdjustPrice implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "jhi_option")
+    private PurchaseOption option;
 
     @Column(name = "token")
     private Double token;
@@ -50,6 +56,19 @@ public class AdjustPrice implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public PurchaseOption getOption() {
+        return option;
+    }
+
+    public AdjustPrice option(PurchaseOption option) {
+        this.option = option;
+        return this;
+    }
+
+    public void setOption(PurchaseOption option) {
+        this.option = option;
     }
 
     public Double getToken() {
@@ -101,6 +120,7 @@ public class AdjustPrice implements Serializable {
         return "AdjustPrice{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", option='" + getOption() + "'" +
             ", token=" + getToken() +
             ", price=" + getPrice() +
             "}";

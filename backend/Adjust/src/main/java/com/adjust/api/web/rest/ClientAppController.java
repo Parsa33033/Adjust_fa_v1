@@ -29,9 +29,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -85,6 +84,7 @@ public class ClientAppController {
     private final SpecialistMapper specialistMapper;
 
     private final AdjustProgramService adjustProgramService;
+    private final ProgramDevelopmentService programDevelopmentService;
     private final BodyCompositionService bodyCompositionService;
     private final FitnessProgramService fitnessProgramService;
     private final NutritionProgramService nutritionProgramService;
@@ -109,6 +109,7 @@ public class ClientAppController {
 
     private final AdjustProgramRepository adjustProgramRepository;
     private final AdjustFoodRepository adjustFoodRepository;
+    private final ProgramDevelopmentRepository programDevelopmentRepository;
 
 
     public ClientAppController(UserService userService, UserJWTController userJWTController, TokenProvider tokenProvider, AdjustClientService adjustClientService,
@@ -118,12 +119,12 @@ public class ClientAppController {
                                TutorialService tutorialService, TutorialVideoService tutorialVideoService, TutorialMapper tutorialMapper,
                                AdjustShopingItemService adjustShopingItemService, OrderService orderService,
                                CartService cartService, ShopingItemService shopingItemService, AdjustTokensService adjustTokensService,
-                               SpecialistService specialistService, SpecialistMapper specialistMapper, AdjustProgramService adjustProgramService, BodyCompositionService bodyCompositionService,
-                               FitnessProgramService fitnessProgramService, NutritionProgramService nutritionProgramService,
+                               SpecialistService specialistService, SpecialistMapper specialistMapper, AdjustProgramService adjustProgramService, ProgramDevelopmentService programDevelopmentService,
+                               BodyCompositionService bodyCompositionService, FitnessProgramService fitnessProgramService, NutritionProgramService nutritionProgramService,
                                MealService mealService, AdjustNutritionRepository adjustNutritionRepository, WorkoutService workoutService, ExerciseService exerciseService, MoveService moveService,
                                ProgramDevelopmentMapper programDevelopmentMapper, BodyCompositionMapper bodyCompositionMapper, NutritionProgramMapper nutritionProgramMapper, FitnessProgramMapper fitnessProgramMapper, MealMapper mealMapper,
                                NutritionMapper nutritionMapper, AdjustNutritionMapper adjustNutritionMapper, AdjustFoodMapper adjustFoodMapper, WorkoutMapper workoutMapper, ExerciseMapper exerciseMapper, MoveMapper moveMapper,
-                               AdjustProgramRepository adjustProgramRepository, AdjustProgramMapper adjustProgramMapper, AdjustFoodRepository adjustFoodRepository) {
+                               AdjustProgramRepository adjustProgramRepository, AdjustProgramMapper adjustProgramMapper, AdjustFoodRepository adjustFoodRepository, ProgramDevelopmentRepository programDevelopmentRepository) {
         this.userService = userService;
         this.userJWTController = userJWTController;
         this.tokenProvider = tokenProvider;
@@ -145,6 +146,7 @@ public class ClientAppController {
         this.specialistService = specialistService;
         this.specialistMapper = specialistMapper;
         this.adjustProgramService = adjustProgramService;
+        this.programDevelopmentService = programDevelopmentService;
         this.bodyCompositionService = bodyCompositionService;
         this.fitnessProgramService = fitnessProgramService;
         this.nutritionProgramService = nutritionProgramService;
@@ -167,6 +169,7 @@ public class ClientAppController {
         this.adjustProgramRepository = adjustProgramRepository;
         this.adjustProgramMapper = adjustProgramMapper;
         this.adjustFoodRepository = adjustFoodRepository;
+        this.programDevelopmentRepository = programDevelopmentRepository;
     }
 
     private static boolean checkPasswordLength(String password) {
@@ -503,7 +506,7 @@ public class ClientAppController {
             DummySpecialistDTO dummySpecialistDTO = new DummySpecialistDTO(specialistMapper.toDto(specialist));
 
             // set adjust program's program development
-            List<DummyProgramDevelopmentDTO> dummyProgramDevelopmentDTOList = program.getProgramDevelopments().stream().map((programDevelopment) -> {
+            List<DummyProgramDevelopmentDTO> dummyProgramDevelopmentDTOList = programDevelopmentRepository.findAllByAdjustProgram(program).stream().map((programDevelopment) -> {
                 DummyProgramDevelopmentDTO dummyProgramDevelopmentDTO = new DummyProgramDevelopmentDTO(programDevelopmentMapper.toDto(programDevelopment));
                 return dummyProgramDevelopmentDTO;
             }).collect(Collectors.toList());
@@ -574,6 +577,26 @@ public class ClientAppController {
         }).collect(Collectors.toList());
         log.debug("REST request to get all AdjustPrograms");
         return adjustProgramDTOList;
+    }
+
+    @PostMapping("/program-developments")
+    public List<ProgramDevelopmentDTO> rate(@RequestBody DummyProgramDevelopmentDTO programDevelopmentDTO) throws Exception {
+        String userLogin = SecurityUtils.getCurrentUserLogin().orElseThrow(() -> new AccountResourceException("Current user login not found"));
+        AdjustClientDTO adjustClientDTO = adjustClientRepository.findAdjustClientByUsername(userLogin).map(adjustClientMapper::toDto).get();
+        LocalDate localDate = LocalDate.now();
+        programDevelopmentDTO.setDate(localDate);
+        if (programDevelopmentDTO.getFitnessScore() <= 5 && programDevelopmentDTO.getNutritionScore() <= 5) {
+            adjustClientDTO.setScore(adjustClientDTO.getScore() + programDevelopmentDTO.getNutritionScore() + programDevelopmentDTO.getFitnessScore());
+            adjustClientService.save(adjustClientDTO);
+            programDevelopmentService.save(programDevelopmentDTO);
+
+            AdjustProgram adjustProgram = adjustProgramRepository.findById(programDevelopmentDTO.getAdjustProgramId()).get();
+            List<ProgramDevelopmentDTO> programDevelopmentDTOList =
+                programDevelopmentRepository.findAllByAdjustProgram(adjustProgram).stream().map((programDevelopment -> programDevelopmentMapper.toDto(programDevelopment))).collect(Collectors.toList());
+            return programDevelopmentDTOList;
+        } else {
+            throw new Exception("wrong score!");
+        }
     }
 
 }

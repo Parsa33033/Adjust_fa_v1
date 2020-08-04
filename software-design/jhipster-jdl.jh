@@ -8,8 +8,15 @@ entity AdjustTokens {
 
 entity AdjustPrice {
 	name String,
+    option PurchaseOption,
     token Double,
     price Double
+}
+
+enum PurchaseOption {
+	PROGRAM,
+    NUTRITION,
+    FITNESS
 }
 
 entity ShopingItem {
@@ -100,7 +107,7 @@ entity AdjustProgram {
 
 entity ProgramDevelopment {
 	date LocalDate,
-    workoutScore Double,
+    nutritionScore Double,
     fitnessScore Double,
 }
 

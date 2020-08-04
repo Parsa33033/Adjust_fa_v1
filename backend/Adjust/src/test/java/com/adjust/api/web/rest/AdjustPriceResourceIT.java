@@ -24,6 +24,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.adjust.api.domain.enumeration.PurchaseOption;
 /**
  * Integration tests for the {@link AdjustPriceResource} REST controller.
  */
@@ -34,6 +35,9 @@ public class AdjustPriceResourceIT {
 
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
+
+    private static final PurchaseOption DEFAULT_OPTION = PurchaseOption.PROGRAM;
+    private static final PurchaseOption UPDATED_OPTION = PurchaseOption.NUTRITION;
 
     private static final Double DEFAULT_TOKEN = 1D;
     private static final Double UPDATED_TOKEN = 2D;
@@ -67,6 +71,7 @@ public class AdjustPriceResourceIT {
     public static AdjustPrice createEntity(EntityManager em) {
         AdjustPrice adjustPrice = new AdjustPrice()
             .name(DEFAULT_NAME)
+            .option(DEFAULT_OPTION)
             .token(DEFAULT_TOKEN)
             .price(DEFAULT_PRICE);
         return adjustPrice;
@@ -80,6 +85,7 @@ public class AdjustPriceResourceIT {
     public static AdjustPrice createUpdatedEntity(EntityManager em) {
         AdjustPrice adjustPrice = new AdjustPrice()
             .name(UPDATED_NAME)
+            .option(UPDATED_OPTION)
             .token(UPDATED_TOKEN)
             .price(UPDATED_PRICE);
         return adjustPrice;
@@ -106,6 +112,7 @@ public class AdjustPriceResourceIT {
         assertThat(adjustPriceList).hasSize(databaseSizeBeforeCreate + 1);
         AdjustPrice testAdjustPrice = adjustPriceList.get(adjustPriceList.size() - 1);
         assertThat(testAdjustPrice.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testAdjustPrice.getOption()).isEqualTo(DEFAULT_OPTION);
         assertThat(testAdjustPrice.getToken()).isEqualTo(DEFAULT_TOKEN);
         assertThat(testAdjustPrice.getPrice()).isEqualTo(DEFAULT_PRICE);
     }
@@ -143,6 +150,7 @@ public class AdjustPriceResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(adjustPrice.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].option").value(hasItem(DEFAULT_OPTION.toString())))
             .andExpect(jsonPath("$.[*].token").value(hasItem(DEFAULT_TOKEN.doubleValue())))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())));
     }
@@ -159,6 +167,7 @@ public class AdjustPriceResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(adjustPrice.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
+            .andExpect(jsonPath("$.option").value(DEFAULT_OPTION.toString()))
             .andExpect(jsonPath("$.token").value(DEFAULT_TOKEN.doubleValue()))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()));
     }
@@ -184,6 +193,7 @@ public class AdjustPriceResourceIT {
         em.detach(updatedAdjustPrice);
         updatedAdjustPrice
             .name(UPDATED_NAME)
+            .option(UPDATED_OPTION)
             .token(UPDATED_TOKEN)
             .price(UPDATED_PRICE);
         AdjustPriceDTO adjustPriceDTO = adjustPriceMapper.toDto(updatedAdjustPrice);
@@ -198,6 +208,7 @@ public class AdjustPriceResourceIT {
         assertThat(adjustPriceList).hasSize(databaseSizeBeforeUpdate);
         AdjustPrice testAdjustPrice = adjustPriceList.get(adjustPriceList.size() - 1);
         assertThat(testAdjustPrice.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testAdjustPrice.getOption()).isEqualTo(UPDATED_OPTION);
         assertThat(testAdjustPrice.getToken()).isEqualTo(UPDATED_TOKEN);
         assertThat(testAdjustPrice.getPrice()).isEqualTo(UPDATED_PRICE);
     }

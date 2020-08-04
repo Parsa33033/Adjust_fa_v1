@@ -32,6 +32,12 @@ export const AdjustPriceDetail = (props: IAdjustPriceDetailProps) => {
           </dt>
           <dd>{adjustPriceEntity.name}</dd>
           <dt>
+            <span id="option">
+              <Translate contentKey="adjustApp.adjustPrice.option">Option</Translate>
+            </span>
+          </dt>
+          <dd>{adjustPriceEntity.option}</dd>
+          <dt>
             <span id="token">
               <Translate contentKey="adjustApp.adjustPrice.token">Token</Translate>
             </span>

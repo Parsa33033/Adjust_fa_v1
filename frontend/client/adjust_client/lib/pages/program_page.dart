@@ -6,7 +6,7 @@ import 'package:adjust_client/components/adjust_dialog.dart';
 import 'package:adjust_client/components/adjust_info_button.dart';
 import 'package:adjust_client/config/localization.dart';
 import 'package:adjust_client/constants/adjust_colors.dart';
-import 'package:adjust_client/pages/development_page.dart';
+import 'package:adjust_client/pages/program_development_page.dart';
 import 'package:adjust_client/pages/fitness_program_page.dart';
 import 'package:adjust_client/pages/nutrition_program_page.dart';
 import 'package:adjust_client/states/app_state.dart';
@@ -192,7 +192,7 @@ class _ProgramPageState extends State<ProgramPage> {
                                         1) {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) =>
-                                          DevelopmentPage()));
+                                          ProgramDevelopmentPage(program.id, pos)));
                                 } else {
                                   showAdjustDialog(
                                       context,

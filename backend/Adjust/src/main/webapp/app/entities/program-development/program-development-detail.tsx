@@ -37,11 +37,11 @@ export const ProgramDevelopmentDetail = (props: IProgramDevelopmentDetailProps) 
             ) : null}
           </dd>
           <dt>
-            <span id="workoutScore">
-              <Translate contentKey="adjustApp.programDevelopment.workoutScore">Workout Score</Translate>
+            <span id="nutritionScore">
+              <Translate contentKey="adjustApp.programDevelopment.nutritionScore">Nutrition Score</Translate>
             </span>
           </dt>
-          <dd>{programDevelopmentEntity.workoutScore}</dd>
+          <dd>{programDevelopmentEntity.nutritionScore}</dd>
           <dt>
             <span id="fitnessScore">
               <Translate contentKey="adjustApp.programDevelopment.fitnessScore">Fitness Score</Translate>

@@ -1,4 +1,4 @@
-id;date;workout_score;fitness_score
+id;date;nutrition_score;fitness_score
 1;2020-08-03;87036;96790
 2;2020-08-03;79773;82719
 3;2020-08-03;93975;70518

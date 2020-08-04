@@ -1,6 +1,7 @@
 package com.adjust.api.service.dto;
 
 import java.io.Serializable;
+import com.adjust.api.domain.enumeration.PurchaseOption;
 
 /**
  * A DTO for the {@link com.adjust.api.domain.AdjustPrice} entity.
@@ -10,6 +11,8 @@ public class AdjustPriceDTO implements Serializable {
     private Long id;
 
     private String name;
+
+    private PurchaseOption option;
 
     private Double token;
 
@@ -30,6 +33,14 @@ public class AdjustPriceDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public PurchaseOption getOption() {
+        return option;
+    }
+
+    public void setOption(PurchaseOption option) {
+        this.option = option;
     }
 
     public Double getToken() {
@@ -71,6 +82,7 @@ public class AdjustPriceDTO implements Serializable {
         return "AdjustPriceDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", option='" + getOption() + "'" +
             ", token=" + getToken() +
             ", price=" + getPrice() +
             "}";

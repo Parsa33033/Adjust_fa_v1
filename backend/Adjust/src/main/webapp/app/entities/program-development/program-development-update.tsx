@@ -87,10 +87,10 @@ export const ProgramDevelopmentUpdate = (props: IProgramDevelopmentUpdateProps) 
                 <AvField id="program-development-date" type="date" className="form-control" name="date" />
               </AvGroup>
               <AvGroup>
-                <Label id="workoutScoreLabel" for="program-development-workoutScore">
-                  <Translate contentKey="adjustApp.programDevelopment.workoutScore">Workout Score</Translate>
+                <Label id="nutritionScoreLabel" for="program-development-nutritionScore">
+                  <Translate contentKey="adjustApp.programDevelopment.nutritionScore">Nutrition Score</Translate>
                 </Label>
-                <AvField id="program-development-workoutScore" type="string" className="form-control" name="workoutScore" />
+                <AvField id="program-development-nutritionScore" type="string" className="form-control" name="nutritionScore" />
               </AvGroup>
               <AvGroup>
                 <Label id="fitnessScoreLabel" for="program-development-fitnessScore">

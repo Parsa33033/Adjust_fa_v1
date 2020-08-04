@@ -11,6 +11,6 @@ public class DummyProgramDevelopmentDTO extends ProgramDevelopmentDTO implements
         this.setAdjustProgramId(programDevelopmentDTO.getAdjustProgramId());
         this.setDate(programDevelopmentDTO.getDate());
         this.setFitnessScore(programDevelopmentDTO.getFitnessScore());
-        this.setWorkoutScore(programDevelopmentDTO.getWorkoutScore());
+        this.setNutritionScore(programDevelopmentDTO.getNutritionScore());
     }
 }
