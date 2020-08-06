@@ -303,7 +303,7 @@ class _FitnessProgramPageState extends State<FitnessProgramPage> {
                       height: 200,
                       width: 200,
                       padding: EdgeInsets.all(20),
-                      child: Image.memory(base64Decode(exercise.move.picture))
+                      child: exercise.move.picture != null ? Image.memory(base64Decode(exercise.move.picture)) : Container()
                     ),
                   ],
                 ),

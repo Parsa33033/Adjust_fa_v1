@@ -9,6 +9,7 @@ import 'package:adjust_client/actions/tutorial_action.dart';
 import 'package:adjust_client/components/adjust_dialog.dart';
 import 'package:adjust_client/components/dashboard.dart';
 import 'package:adjust_client/components/preloader.dart';
+import 'package:adjust_client/config/stomp.dart';
 import 'package:adjust_client/constants/adjust_colors.dart';
 import 'package:adjust_client/constants/words.dart';
 import 'package:adjust_client/notifications/adjust_state_change_notification.dart';
@@ -31,6 +32,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:persian_datetime_picker/utils/consts.dart';
 import 'package:redux/redux.dart';
+import 'package:stomp_dart_client/stomp.dart';
 
 import '../main.dart';
 
@@ -55,6 +57,9 @@ class _MainPageState extends State<MainPage>
   double score;
   Image _image;
 
+  StompInstance stompInstance;
+  StompClient stompClient;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -62,6 +67,8 @@ class _MainPageState extends State<MainPage>
     mainPageStream.asBroadcastStream().listen((event) {
       setMainPageState(true);
     });
+    stompInstance = StompInstance.getInstance();
+    stompInstance.stompClient.activate();
 
     fetchDependencies();
 

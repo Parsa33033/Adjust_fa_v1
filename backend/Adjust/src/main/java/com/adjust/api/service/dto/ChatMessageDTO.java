@@ -119,7 +119,7 @@ public class ChatMessageDTO implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "ChatMessageDTO{" +
+        return "MessageDTO{" +
             "id=" + getId() +
             ", clientId=" + getClientId() +
             ", clientUsername='" + getClientUsername() + "'" +

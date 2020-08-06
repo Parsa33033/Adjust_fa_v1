@@ -84,3 +84,21 @@ Future<int> getClientToken(BuildContext context) async {
   }
   return 0;
 }
+
+Future<int> getClientScore(BuildContext context) async {
+  String jwt = await getJwt(context);
+
+  Map<String, String> headers = Map<String, String>()
+    ..putIfAbsent("Authorization", () => "Bearer " + jwt);
+
+  http.Response response = await http.get(GET_CLIENT_SCORE_URL, headers: headers);
+  if (response.statusCode == HttpStatus.ok) {
+    double score = double.parse(response.body);
+    ClientState clientState = ClientState(
+        null, null, null, null, null, null, null, null, score, null, null);
+    StoreProvider.of<AppState>(context)
+        .dispatch(UpdateClientAction(payload: clientState));
+    return 1;
+  }
+  return 0;
+}

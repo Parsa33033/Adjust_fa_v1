@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:math';
 
+import 'package:adjust_client/actions/jwt.dart';
 import 'package:adjust_client/components/adjust_dialog.dart';
 import 'package:adjust_client/components/adjust_info_button.dart';
 import 'package:adjust_client/config/localization.dart';
 import 'package:adjust_client/constants/adjust_colors.dart';
+import 'package:adjust_client/pages/chat_page.dart';
 import 'package:adjust_client/pages/program_development_page.dart';
 import 'package:adjust_client/pages/fitness_program_page.dart';
 import 'package:adjust_client/pages/nutrition_program_page.dart';
@@ -19,6 +21,9 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:redux/redux.dart';
+import 'package:stomp_dart_client/stomp.dart';
+import 'package:stomp_dart_client/stomp_config.dart';
+import 'package:stomp_dart_client/stomp_frame.dart';
 
 class ProgramPage extends StatefulWidget {
   @override
@@ -203,28 +208,33 @@ class _ProgramPageState extends State<ProgramPage> {
                                 }
                               },
                             ),
-                            Container(
-                              color: YELLOW_COLOR,
-                              padding: EdgeInsets.all(7),
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                      height: 40,
-                                      width: 40,
-                                      child: Icon(Icons.message)),
-                                  Directionality(
-                                    textDirection: TextDirection.rtl,
-                                    child: Text(
-                                      "سوال",
-                                      style: TextStyle(
-                                          fontFamily: "Iransans",
-                                          fontSize: 13,
-                                          color: WHITE_COLOR),
-                                    ),
-                                  )
-                                ],
+                            InkWell(
+                              child: Container(
+                                color: YELLOW_COLOR,
+                                padding: EdgeInsets.all(7),
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                        height: 40,
+                                        width: 40,
+                                        child: Icon(Icons.message)),
+                                    Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: Text(
+                                        "سوال",
+                                        style: TextStyle(
+                                            fontFamily: "Iransans",
+                                            fontSize: 13,
+                                            color: WHITE_COLOR),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
+                              onTap: () async {
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatPage(specialistState: program.specialistState)));
+                              },
+                            )
                           ],
                           child: Container(
                             decoration: BoxDecoration(

@@ -79,60 +79,69 @@ class AdjustInfoButton extends StatelessWidget {
                               right: 10,
                               height: this.height * 3 / 5,
                               width: this.width * 3 / 5,
-                              child: this.imageIsCircular ? getCircularImage() : getImage(),
+                              child: this.image == null ? Container() : this.imageIsCircular ? getCircularImage() : getImage(),
                             ),
                             Positioned(
                               top: 10,
                               right: 5,
                               height: this.height,
                               width: this.width,
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    padding: EdgeInsets.all(4),
-                                    width: this.width,
-                                    child: Directionality(
-                                      textDirection: TextDirection.rtl,
-                                      child: Text(
-                                        name,
-                                        style: TextStyle(
-                                            fontFamily: "Iransans",
-                                            fontSize: this.fontSize,
-                                            color: WHITE_COLOR),
+                                child: Column(
+                                  children: <Widget>[
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Container(
+                                        padding: EdgeInsets.all(4),
+                                        width: this.width,
+                                        child: Directionality(
+                                          textDirection: TextDirection.rtl,
+                                          child: Text(
+                                            name,
+                                            style: TextStyle(
+                                                fontFamily: "Iransans",
+                                                fontSize: this.fontSize,
+                                                color: WHITE_COLOR),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(4),
-                                    width: this.width,
-                                    child: Directionality(
-                                      textDirection: TextDirection.rtl,
-                                      child: Text(
-                                        title,
-                                        style: TextStyle(
-                                            fontFamily: "Iransans",
-                                            fontSize: this.fontSize - 1,
-                                            color: WHITE_COLOR),
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Container(
+                                        padding: EdgeInsets.all(4),
+                                        width: this.width,
+                                        child: Directionality(
+                                          textDirection: TextDirection.rtl,
+                                          child: Text(
+                                            title,
+                                            style: TextStyle(
+                                                fontFamily: "Iransans",
+                                                fontSize: this.fontSize - 1,
+                                                color: WHITE_COLOR),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(4),
-                                    width: this.width,
-                                    child: Directionality(
-                                      textDirection: TextDirection.rtl,
-                                      child: Text(
-                                        description,
-                                        style: TextStyle(
-                                            fontFamily: "Iransans",
-                                            fontSize: this.fontSize - 2,
-                                            color: WHITE_COLOR),
+                                    FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Container(
+                                        padding: EdgeInsets.all(4),
+                                        width: this.width,
+                                        child: Directionality(
+                                          textDirection: TextDirection.rtl,
+                                          child: Text(
+                                            description,
+                                            style: TextStyle(
+                                                fontFamily: "Iransans",
+                                                fontSize: this.fontSize - 2,
+                                                color: WHITE_COLOR),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
+                                    )
+                                  ],
+                                ),
+                              )
                           ],
                         ),
                       ),

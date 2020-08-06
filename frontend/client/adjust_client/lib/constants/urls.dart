@@ -20,6 +20,7 @@ final String BUY_TUTORIAL_URL = BASE_URL + "/api/client/app/buy-tutorial";
 final String GET_CLIENT_TUTORIALS_URL = BASE_URL + "/api/client/app/get-tutorials";
 final String GET_CLIENT_TUTORIALS_VIDEO_URL = BASE_URL + "/api/client/app/get-tutorial-video";
 final String GET_CLIENT_TOKENS_URL = BASE_URL + "/api/client/app/get-client-token";
+final String GET_CLIENT_SCORE_URL = BASE_URL + "/api/client/app/client-score";
 
 final String SPECIALIST_URL = BASE_URL + "/api/client/app/specialists";
 

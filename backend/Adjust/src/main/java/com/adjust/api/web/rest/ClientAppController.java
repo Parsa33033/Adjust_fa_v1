@@ -12,6 +12,7 @@ import com.adjust.api.web.rest.errors.InvalidPasswordException;
 import com.adjust.api.web.rest.errors.LoginAlreadyUsedException;
 import com.adjust.api.web.rest.vm.LoginVM;
 import com.adjust.api.web.rest.vm.ManagedUserVM;
+import com.adjust.api.web.websocket.dto.MessageDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -110,6 +111,10 @@ public class ClientAppController {
     private final AdjustProgramRepository adjustProgramRepository;
     private final AdjustFoodRepository adjustFoodRepository;
     private final ProgramDevelopmentRepository programDevelopmentRepository;
+    private final BodyCompositionRepository bodyCompositionRepository;
+
+    private final ConversationService conversationService;
+    private final ChatMessageRepository chatMessageRepository;
 
 
     public ClientAppController(UserService userService, UserJWTController userJWTController, TokenProvider tokenProvider, AdjustClientService adjustClientService,
@@ -124,7 +129,8 @@ public class ClientAppController {
                                MealService mealService, AdjustNutritionRepository adjustNutritionRepository, WorkoutService workoutService, ExerciseService exerciseService, MoveService moveService,
                                ProgramDevelopmentMapper programDevelopmentMapper, BodyCompositionMapper bodyCompositionMapper, NutritionProgramMapper nutritionProgramMapper, FitnessProgramMapper fitnessProgramMapper, MealMapper mealMapper,
                                NutritionMapper nutritionMapper, AdjustNutritionMapper adjustNutritionMapper, AdjustFoodMapper adjustFoodMapper, WorkoutMapper workoutMapper, ExerciseMapper exerciseMapper, MoveMapper moveMapper,
-                               AdjustProgramRepository adjustProgramRepository, AdjustProgramMapper adjustProgramMapper, AdjustFoodRepository adjustFoodRepository, ProgramDevelopmentRepository programDevelopmentRepository) {
+                               AdjustProgramRepository adjustProgramRepository, AdjustProgramMapper adjustProgramMapper, AdjustFoodRepository adjustFoodRepository, ProgramDevelopmentRepository programDevelopmentRepository,
+                               BodyCompositionRepository bodyCompositionRepository, ConversationService conversationService, ChatMessageRepository chatMessageRepository;) {
         this.userService = userService;
         this.userJWTController = userJWTController;
         this.tokenProvider = tokenProvider;
@@ -170,6 +176,9 @@ public class ClientAppController {
         this.adjustProgramMapper = adjustProgramMapper;
         this.adjustFoodRepository = adjustFoodRepository;
         this.programDevelopmentRepository = programDevelopmentRepository;
+        this.bodyCompositionRepository = bodyCompositionRepository;
+        this.conversationService = conversationService;
+        this.chatMessageRepository = chatMessageRepository;
     }
 
     private static boolean checkPasswordLength(String password) {
@@ -482,6 +491,12 @@ public class ClientAppController {
             bodyComposition.setProgramId(adjustProgramDTO.getId());
             bodyCompositionService.save(bodyComposition);
         });
+
+        ConversationDTO conversationDTO = new ConversationDTO();
+        conversationDTO.setClientId(adjustClientDTO.getId());
+        conversationDTO.setSpecialistId(dummyAdjustProgramDTO.getSpecialistId());
+        conversationService.save(conversationDTO);
+
         return ResponseEntity.ok().header("charset", "utf-8").body(adjustProgramDTO);
     }
 
@@ -512,7 +527,7 @@ public class ClientAppController {
             }).collect(Collectors.toList());
 
             // set adjust program's body composition
-            List<DummyBodyCompositionDTO> dummyBodyCompositionDTOList = program.getBodyCompostions().stream().map((bodyComposition) -> {
+            List<DummyBodyCompositionDTO> dummyBodyCompositionDTOList = bodyCompositionRepository.findAllByProgram(program).stream().map((bodyComposition) -> {
                 DummyBodyCompositionDTO dummyBodyCompositionDTO = new DummyBodyCompositionDTO(bodyCompositionMapper.toDto(bodyComposition));
                 return dummyBodyCompositionDTO;
             }).collect(Collectors.toList());
@@ -584,13 +599,17 @@ public class ClientAppController {
         String userLogin = SecurityUtils.getCurrentUserLogin().orElseThrow(() -> new AccountResourceException("Current user login not found"));
         AdjustClientDTO adjustClientDTO = adjustClientRepository.findAdjustClientByUsername(userLogin).map(adjustClientMapper::toDto).get();
         LocalDate localDate = LocalDate.now();
+        AdjustProgram adjustProgram = adjustProgramRepository.findById(programDevelopmentDTO.getAdjustProgramId()).get();
+        for (ProgramDevelopment pd : adjustProgram.getProgramDevelopments()) {
+            if (pd.getDate().getYear() == localDate.getYear() && pd.getDate().getMonth() == localDate.getMonth() && pd.getDate().getDayOfMonth() == localDate.getDayOfMonth()) {
+                throw new Exception("client has scored his/her performance already today!");
+            }
+        }
         programDevelopmentDTO.setDate(localDate);
         if (programDevelopmentDTO.getFitnessScore() <= 5 && programDevelopmentDTO.getNutritionScore() <= 5) {
             adjustClientDTO.setScore(adjustClientDTO.getScore() + programDevelopmentDTO.getNutritionScore() + programDevelopmentDTO.getFitnessScore());
             adjustClientService.save(adjustClientDTO);
             programDevelopmentService.save(programDevelopmentDTO);
-
-            AdjustProgram adjustProgram = adjustProgramRepository.findById(programDevelopmentDTO.getAdjustProgramId()).get();
             List<ProgramDevelopmentDTO> programDevelopmentDTOList =
                 programDevelopmentRepository.findAllByAdjustProgram(adjustProgram).stream().map((programDevelopment -> programDevelopmentMapper.toDto(programDevelopment))).collect(Collectors.toList());
             return programDevelopmentDTOList;
@@ -599,4 +618,23 @@ public class ClientAppController {
         }
     }
 
+
+    @GetMapping("/client-score")
+    public ResponseEntity<Double> getClientScore() {
+        String userLogin = SecurityUtils.getCurrentUserLogin().orElseThrow(() -> new AccountResourceException("Current user login not found"));
+        AdjustClientDTO adjustClientDTO = adjustClientRepository.findAdjustClientByUsername(userLogin).map(adjustClientMapper::toDto).get();
+        return ResponseEntity.ok(adjustClientDTO.getScore());
+    }
+
+    @GetMapping("/messages")
+    public ResponseEntity<List<MessageDTO>> getClientMessages(@RequestParam("client-id") Long clientId, @RequestParam("specialist-id") Long specialistId) {
+        List<ChatMessage> chatMessages = chatMessageRepository.findAllByClientIdAndSpecialistId(clientId, specialistId);
+        List<MessageDTO> messageDTOList = chatMessages.stream().map((chatMessage) -> {
+            MessageDTO messageDTO = new MessageDTO();
+            messageDTO.setClientId(chatMessage.getClientId());
+            messageDTO.setMessage(chatMessage.getText());
+            messageDTO.setSpecialistId(chatMessage.getSpecialistId());
+            messageDTO.setSender(chatMessage.);
+        }).collect(Collectors.toList());
+    }
 }
