@@ -49,6 +49,12 @@ export const ChatMessage = (props: IChatMessageProps) => {
                   <Translate contentKey="adjustApp.chatMessage.specialistUsername">Specialist Username</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="adjustApp.chatMessage.sender">Sender</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.chatMessage.receiver">Receiver</Translate>
+                </th>
+                <th>
                   <Translate contentKey="adjustApp.chatMessage.text">Text</Translate>
                 </th>
                 <th>
@@ -72,6 +78,8 @@ export const ChatMessage = (props: IChatMessageProps) => {
                   <td>{chatMessage.clientUsername}</td>
                   <td>{chatMessage.specialistId}</td>
                   <td>{chatMessage.specialistUsername}</td>
+                  <td>{chatMessage.sender}</td>
+                  <td>{chatMessage.receiver}</td>
                   <td>{chatMessage.text}</td>
                   <td>
                     {chatMessage.voice ? (

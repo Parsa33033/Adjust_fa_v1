@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:adjust_client/actions/message_action.dart';
 import 'package:adjust_client/config/stomp.dart';
 import 'package:adjust_client/constants/adjust_colors.dart';
 import 'package:adjust_client/dto/message_dto.dart';
 import 'package:adjust_client/main.dart';
-import 'package:adjust_client/model/Message.dart';
+import 'package:adjust_client/model/message.dart';
 import 'package:adjust_client/states/app_state.dart';
+import 'package:adjust_client/states/client_state.dart';
 import 'package:adjust_client/states/specialist_state.dart';
 import 'package:dash_chat/dash_chat.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,18 +31,9 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final GlobalKey<DashChatState> _chatViewKey = GlobalKey<DashChatState>();
 
-  final ChatUser user = ChatUser(
-    name: "Fayeed",
-    firstName: "Fayeed",
-    lastName: "Pawaskar",
-    uid: "12345678",
-    avatar: "https://www.wrappixel.com/ampleadmin/assets/images/users/4.jpg",
-  );
+  ChatUser user;
 
-  final ChatUser otherUser = ChatUser(
-    name: "Mrfatty",
-    uid: "25649654",
-  );
+  ChatUser otherUser;
 
   List<ChatMessage> messages = List<ChatMessage>();
   var m = List<ChatMessage>();
@@ -48,20 +41,49 @@ class _ChatPageState extends State<ChatPage> {
   var i = 0;
 
   StompInstance stompInstance;
+  String username;
+  int clientId;
+  int specialistId;
+  ClientState clientState;
+  SpecialistState specialistState;
 
   @override
   void initState() {
     super.initState();
+    AppState state = store.state;
+    username = state.userState.login;
+    clientState = state.clientState;
+    specialistState = this.widget.specialistState;
+    clientId = clientState.id;
+    specialistId = specialistState.id;
+    initiateSession();
 
+
+  }
+
+  void initiateSession() async {
+    user = ChatUser(
+      name: clientState.username,
+      firstName: clientState.firstName,
+      lastName: clientState.lastName,
+      uid: clientState.id.toString(),
+      avatar: "",
+    );
+    otherUser = ChatUser(
+      name: specialistState.username,
+      uid: specialistState.id.toString(),
+    );
+    messages = store.state.messagesState.messages.map((e) {
+      ChatUser u = e.sender == user.name ? user : otherUser;
+      return ChatMessage(text: e.message, user: u);
+    }).toList();
     mainStompClient.subscribe(destination: "/topic/"+ StompInstance.getUsername() +"/reply", headers: StompInstance.getHeaders(), callback: (StompFrame frame) {
-      print("------->" + frame.body.toString());
       ChatMessage chatMessage = ChatMessage(
           text: frame.body.toString(),
           user: otherUser
       );
       messages.add(chatMessage);
     });
-
   }
 
   void systemMessage() {
@@ -84,41 +106,13 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void onSend(ChatMessage message) async {
-    AppState state = store.state;
-    String username = state.userState.login;
-    int clientId = state.clientState.id;
-    int specialistId = this.widget.specialistState.id;
 
     MessageDTO messageDTO = MessageDTO(username, this.widget.specialistState.username, message.text, clientId, specialistId);
     StompInstance.sendMessage(context, mainStompClient, messageDTO);
 
-//    stompInstance.sendMessage(context, messageDTO);
-//    stompInstance.sendMessage(context, stompClient, messageDTO);
-
-//    var documentReference = Firestore.instance
-//        .collection('messages')
-//        .document(DateTime.now().millisecondsSinceEpoch.toString());
-//
-//    await Firestore.instance.runTransaction((transaction) async {
-//      await transaction.set(
-//        documentReference,
-//        message.toJson(),
-//      );
-//    });
-
     setState(() {
       messages = [...messages, message];
-      print(messages.length);
     });
-
-//    if (i == 0) {
-//      systemMessage();
-//      Timer(Duration(milliseconds: 600), () {
-//        systemMessage();
-//      });
-//    } else {
-//      systemMessage();
-//    }
   }
 
   @override

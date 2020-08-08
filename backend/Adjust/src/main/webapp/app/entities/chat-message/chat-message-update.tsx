@@ -22,7 +22,7 @@ export const ChatMessageUpdate = (props: IChatMessageUpdateProps) => {
 
   const { chatMessageEntity, conversations, loading, updating } = props;
 
-  const { voice, voiceContentType } = chatMessageEntity;
+  const { text, voice, voiceContentType } = chatMessageEntity;
 
   const handleClose = () => {
     props.history.push('/chat-message');
@@ -115,10 +115,22 @@ export const ChatMessageUpdate = (props: IChatMessageUpdateProps) => {
                 <AvField id="chat-message-specialistUsername" type="text" name="specialistUsername" />
               </AvGroup>
               <AvGroup>
+                <Label id="senderLabel" for="chat-message-sender">
+                  <Translate contentKey="adjustApp.chatMessage.sender">Sender</Translate>
+                </Label>
+                <AvField id="chat-message-sender" type="text" name="sender" />
+              </AvGroup>
+              <AvGroup>
+                <Label id="receiverLabel" for="chat-message-receiver">
+                  <Translate contentKey="adjustApp.chatMessage.receiver">Receiver</Translate>
+                </Label>
+                <AvField id="chat-message-receiver" type="text" name="receiver" />
+              </AvGroup>
+              <AvGroup>
                 <Label id="textLabel" for="chat-message-text">
                   <Translate contentKey="adjustApp.chatMessage.text">Text</Translate>
                 </Label>
-                <AvField id="chat-message-text" type="text" name="text" />
+                <AvInput id="chat-message-text" type="textarea" name="text" />
               </AvGroup>
               <AvGroup>
                 <AvGroup>

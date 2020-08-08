@@ -4,7 +4,7 @@ import 'package:adjust_client/components/adjust_dialog.dart';
 import 'package:adjust_client/components/adjust_raised_button.dart';
 import 'package:adjust_client/components/adjust_text_field.dart';
 import 'package:adjust_client/components/preloader.dart';
-import 'file:///F:/Projects/Adjust/alpha/frontend/adjust_client/lib/constants/adjust_colors.dart';
+import 'package:adjust_client/constants/adjust_colors.dart';
 import 'package:adjust_client/constants/words.dart';
 import 'package:adjust_client/dto/login_dto.dart';
 import 'package:adjust_client/pages/main_page.dart';

@@ -2,7 +2,7 @@
 import 'dart:math';
 
 import 'package:adjust_client/components/adjust_dialog.dart';
-import 'file:///F:/Projects/Adjust/alpha/frontend/adjust_client/lib/constants/adjust_colors.dart';
+import 'package:adjust_client/constants/adjust_colors.dart';
 import 'package:adjust_client/constants/words.dart';
 import 'package:adjust_client/pages/profile_page.dart';
 import 'package:flutter/cupertino.dart';

@@ -34,6 +34,13 @@ public class ChatMessage implements Serializable {
     @Column(name = "specialist_username")
     private String specialistUsername;
 
+    @Column(name = "sender")
+    private String sender;
+
+    @Column(name = "receiver")
+    private String receiver;
+
+    @Lob
     @Column(name = "text")
     private String text;
 
@@ -107,6 +114,32 @@ public class ChatMessage implements Serializable {
 
     public void setSpecialistUsername(String specialistUsername) {
         this.specialistUsername = specialistUsername;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public ChatMessage sender(String sender) {
+        this.sender = sender;
+        return this;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public ChatMessage receiver(String receiver) {
+        this.receiver = receiver;
+        return this;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
     public String getText() {
@@ -187,6 +220,8 @@ public class ChatMessage implements Serializable {
             ", clientUsername='" + getClientUsername() + "'" +
             ", specialistId=" + getSpecialistId() +
             ", specialistUsername='" + getSpecialistUsername() + "'" +
+            ", sender='" + getSender() + "'" +
+            ", receiver='" + getReceiver() + "'" +
             ", text='" + getText() + "'" +
             ", voice='" + getVoice() + "'" +
             ", voiceContentType='" + getVoiceContentType() + "'" +

@@ -59,10 +59,12 @@ public class MessageService {
         ChatMessageDTO chatMessageDTO = new ChatMessageDTO();
         chatMessageDTO.setClientId(msg.getClientId());
         chatMessageDTO.setSpecialistId(msg.getSpecialistId());
+        chatMessageDTO.setSender(userLogin);
         chatMessageDTO.setClientUsername(userLogin);
         chatMessageDTO.setSpecialistUsername(msg.getReceiver());
         AdjustClient adjustClient = adjustClientRepository.findAdjustClientByUsername(userLogin).get();
         Specialist specialist = specialistRepository.findByUsername(msg.getReceiver()).get();
+        chatMessageDTO.setReceiver(specialist.getUsername());
         Conversation conversation = conversationRepository.findByClientAndSpecialist(adjustClient, specialist).get();
         chatMessageDTO.setConversationId(conversation.getId());
         chatMessageDTO.setText(msg.getMessage());

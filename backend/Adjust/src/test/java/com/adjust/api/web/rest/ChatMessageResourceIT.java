@@ -45,6 +45,12 @@ public class ChatMessageResourceIT {
     private static final String DEFAULT_SPECIALIST_USERNAME = "AAAAAAAAAA";
     private static final String UPDATED_SPECIALIST_USERNAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_SENDER = "AAAAAAAAAA";
+    private static final String UPDATED_SENDER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_RECEIVER = "AAAAAAAAAA";
+    private static final String UPDATED_RECEIVER = "BBBBBBBBBB";
+
     private static final String DEFAULT_TEXT = "AAAAAAAAAA";
     private static final String UPDATED_TEXT = "BBBBBBBBBB";
 
@@ -82,6 +88,8 @@ public class ChatMessageResourceIT {
             .clientUsername(DEFAULT_CLIENT_USERNAME)
             .specialistId(DEFAULT_SPECIALIST_ID)
             .specialistUsername(DEFAULT_SPECIALIST_USERNAME)
+            .sender(DEFAULT_SENDER)
+            .receiver(DEFAULT_RECEIVER)
             .text(DEFAULT_TEXT)
             .voice(DEFAULT_VOICE)
             .voiceContentType(DEFAULT_VOICE_CONTENT_TYPE);
@@ -99,6 +107,8 @@ public class ChatMessageResourceIT {
             .clientUsername(UPDATED_CLIENT_USERNAME)
             .specialistId(UPDATED_SPECIALIST_ID)
             .specialistUsername(UPDATED_SPECIALIST_USERNAME)
+            .sender(UPDATED_SENDER)
+            .receiver(UPDATED_RECEIVER)
             .text(UPDATED_TEXT)
             .voice(UPDATED_VOICE)
             .voiceContentType(UPDATED_VOICE_CONTENT_TYPE);
@@ -129,6 +139,8 @@ public class ChatMessageResourceIT {
         assertThat(testChatMessage.getClientUsername()).isEqualTo(DEFAULT_CLIENT_USERNAME);
         assertThat(testChatMessage.getSpecialistId()).isEqualTo(DEFAULT_SPECIALIST_ID);
         assertThat(testChatMessage.getSpecialistUsername()).isEqualTo(DEFAULT_SPECIALIST_USERNAME);
+        assertThat(testChatMessage.getSender()).isEqualTo(DEFAULT_SENDER);
+        assertThat(testChatMessage.getReceiver()).isEqualTo(DEFAULT_RECEIVER);
         assertThat(testChatMessage.getText()).isEqualTo(DEFAULT_TEXT);
         assertThat(testChatMessage.getVoice()).isEqualTo(DEFAULT_VOICE);
         assertThat(testChatMessage.getVoiceContentType()).isEqualTo(DEFAULT_VOICE_CONTENT_TYPE);
@@ -170,7 +182,9 @@ public class ChatMessageResourceIT {
             .andExpect(jsonPath("$.[*].clientUsername").value(hasItem(DEFAULT_CLIENT_USERNAME)))
             .andExpect(jsonPath("$.[*].specialistId").value(hasItem(DEFAULT_SPECIALIST_ID.intValue())))
             .andExpect(jsonPath("$.[*].specialistUsername").value(hasItem(DEFAULT_SPECIALIST_USERNAME)))
-            .andExpect(jsonPath("$.[*].text").value(hasItem(DEFAULT_TEXT)))
+            .andExpect(jsonPath("$.[*].sender").value(hasItem(DEFAULT_SENDER)))
+            .andExpect(jsonPath("$.[*].receiver").value(hasItem(DEFAULT_RECEIVER)))
+            .andExpect(jsonPath("$.[*].text").value(hasItem(DEFAULT_TEXT.toString())))
             .andExpect(jsonPath("$.[*].voiceContentType").value(hasItem(DEFAULT_VOICE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].voice").value(hasItem(Base64Utils.encodeToString(DEFAULT_VOICE))));
     }
@@ -190,7 +204,9 @@ public class ChatMessageResourceIT {
             .andExpect(jsonPath("$.clientUsername").value(DEFAULT_CLIENT_USERNAME))
             .andExpect(jsonPath("$.specialistId").value(DEFAULT_SPECIALIST_ID.intValue()))
             .andExpect(jsonPath("$.specialistUsername").value(DEFAULT_SPECIALIST_USERNAME))
-            .andExpect(jsonPath("$.text").value(DEFAULT_TEXT))
+            .andExpect(jsonPath("$.sender").value(DEFAULT_SENDER))
+            .andExpect(jsonPath("$.receiver").value(DEFAULT_RECEIVER))
+            .andExpect(jsonPath("$.text").value(DEFAULT_TEXT.toString()))
             .andExpect(jsonPath("$.voiceContentType").value(DEFAULT_VOICE_CONTENT_TYPE))
             .andExpect(jsonPath("$.voice").value(Base64Utils.encodeToString(DEFAULT_VOICE)));
     }
@@ -219,6 +235,8 @@ public class ChatMessageResourceIT {
             .clientUsername(UPDATED_CLIENT_USERNAME)
             .specialistId(UPDATED_SPECIALIST_ID)
             .specialistUsername(UPDATED_SPECIALIST_USERNAME)
+            .sender(UPDATED_SENDER)
+            .receiver(UPDATED_RECEIVER)
             .text(UPDATED_TEXT)
             .voice(UPDATED_VOICE)
             .voiceContentType(UPDATED_VOICE_CONTENT_TYPE);
@@ -237,6 +255,8 @@ public class ChatMessageResourceIT {
         assertThat(testChatMessage.getClientUsername()).isEqualTo(UPDATED_CLIENT_USERNAME);
         assertThat(testChatMessage.getSpecialistId()).isEqualTo(UPDATED_SPECIALIST_ID);
         assertThat(testChatMessage.getSpecialistUsername()).isEqualTo(UPDATED_SPECIALIST_USERNAME);
+        assertThat(testChatMessage.getSender()).isEqualTo(UPDATED_SENDER);
+        assertThat(testChatMessage.getReceiver()).isEqualTo(UPDATED_RECEIVER);
         assertThat(testChatMessage.getText()).isEqualTo(UPDATED_TEXT);
         assertThat(testChatMessage.getVoice()).isEqualTo(UPDATED_VOICE);
         assertThat(testChatMessage.getVoiceContentType()).isEqualTo(UPDATED_VOICE_CONTENT_TYPE);

@@ -1,4 +1,4 @@
-import 'file:///F:/Projects/Adjust/alpha/frontend/adjust_client/lib/constants/adjust_colors.dart';
+import 'package:adjust_client/constants/adjust_colors.dart';
 import 'package:adjust_client/constants/urls.dart';
 import 'package:adjust_client/main.dart';
 import 'package:adjust_client/model/tutorial.dart';

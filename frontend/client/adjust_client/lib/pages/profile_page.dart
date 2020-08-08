@@ -9,7 +9,7 @@ import 'package:adjust_client/components/adjust_dropdown_field.dart';
 import 'package:adjust_client/components/adjust_raised_button.dart';
 import 'package:adjust_client/components/adjust_text_field.dart';
 import 'package:adjust_client/components/preloader.dart';
-import 'file:///F:/Projects/Adjust/alpha/frontend/adjust_client/lib/constants/adjust_colors.dart';
+import 'package:adjust_client/constants/adjust_colors.dart';
 import 'package:adjust_client/config/localization.dart';
 import 'package:adjust_client/constants/words.dart';
 import 'package:adjust_client/dto/client_dto.dart';

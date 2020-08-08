@@ -130,7 +130,7 @@ public class ClientAppController {
                                ProgramDevelopmentMapper programDevelopmentMapper, BodyCompositionMapper bodyCompositionMapper, NutritionProgramMapper nutritionProgramMapper, FitnessProgramMapper fitnessProgramMapper, MealMapper mealMapper,
                                NutritionMapper nutritionMapper, AdjustNutritionMapper adjustNutritionMapper, AdjustFoodMapper adjustFoodMapper, WorkoutMapper workoutMapper, ExerciseMapper exerciseMapper, MoveMapper moveMapper,
                                AdjustProgramRepository adjustProgramRepository, AdjustProgramMapper adjustProgramMapper, AdjustFoodRepository adjustFoodRepository, ProgramDevelopmentRepository programDevelopmentRepository,
-                               BodyCompositionRepository bodyCompositionRepository, ConversationService conversationService, ChatMessageRepository chatMessageRepository;) {
+                               BodyCompositionRepository bodyCompositionRepository, ConversationService conversationService, ChatMessageRepository chatMessageRepository) {
         this.userService = userService;
         this.userJWTController = userJWTController;
         this.tokenProvider = tokenProvider;
@@ -493,9 +493,11 @@ public class ClientAppController {
         });
 
         ConversationDTO conversationDTO = new ConversationDTO();
-        conversationDTO.setClientId(adjustClientDTO.getId());
+        conversationDTO = conversationService.save(conversationDTO);
         conversationDTO.setSpecialistId(dummyAdjustProgramDTO.getSpecialistId());
+        conversationDTO.setClientId(dummyAdjustProgramDTO.getClientId());
         conversationService.save(conversationDTO);
+
 
         return ResponseEntity.ok().header("charset", "utf-8").body(adjustProgramDTO);
     }
@@ -634,7 +636,10 @@ public class ClientAppController {
             messageDTO.setClientId(chatMessage.getClientId());
             messageDTO.setMessage(chatMessage.getText());
             messageDTO.setSpecialistId(chatMessage.getSpecialistId());
-            messageDTO.setSender(chatMessage.);
+            messageDTO.setSender(chatMessage.getSender());
+            messageDTO.setReceiver(chatMessage.getReceiver());
+            return messageDTO;
         }).collect(Collectors.toList());
+        return ResponseEntity.ok(messageDTOList);
     }
 }

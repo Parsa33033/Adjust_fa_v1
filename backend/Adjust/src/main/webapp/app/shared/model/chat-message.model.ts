@@ -4,7 +4,9 @@ export interface IChatMessage {
   clientUsername?: string;
   specialistId?: number;
   specialistUsername?: string;
-  text?: string;
+  sender?: string;
+  receiver?: string;
+  text?: any;
   voiceContentType?: string;
   voice?: any;
   conversationId?: number;

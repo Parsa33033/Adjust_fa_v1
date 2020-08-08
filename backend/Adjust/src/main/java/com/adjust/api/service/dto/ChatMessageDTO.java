@@ -18,6 +18,11 @@ public class ChatMessageDTO implements Serializable {
 
     private String specialistUsername;
 
+    private String sender;
+
+    private String receiver;
+
+    @Lob
     private String text;
 
     @Lob
@@ -65,6 +70,22 @@ public class ChatMessageDTO implements Serializable {
 
     public void setSpecialistUsername(String specialistUsername) {
         this.specialistUsername = specialistUsername;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
     public String getText() {
@@ -119,12 +140,14 @@ public class ChatMessageDTO implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "MessageDTO{" +
+        return "ChatMessageDTO{" +
             "id=" + getId() +
             ", clientId=" + getClientId() +
             ", clientUsername='" + getClientUsername() + "'" +
             ", specialistId=" + getSpecialistId() +
             ", specialistUsername='" + getSpecialistUsername() + "'" +
+            ", sender='" + getSender() + "'" +
+            ", receiver='" + getReceiver() + "'" +
             ", text='" + getText() + "'" +
             ", voice='" + getVoice() + "'" +
             ", conversationId=" + getConversationId() +

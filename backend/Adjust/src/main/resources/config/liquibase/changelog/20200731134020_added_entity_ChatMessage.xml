@@ -28,7 +28,13 @@
             <column name="specialist_username" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="text" type="varchar(255)">
+            <column name="sender" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="receiver" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="text" type="${clobType}">
                 <constraints nullable="true" />
             </column>
             <column name="voice" type="longblob">
@@ -67,7 +73,9 @@
             <column name="client_username" type="string"/>
             <column name="specialist_id" type="numeric"/>
             <column name="specialist_username" type="string"/>
-            <column name="text" type="string"/>
+            <column name="sender" type="string"/>
+            <column name="receiver" type="string"/>
+            <column name="text" type="clob"/>
             <column name="voice" type="blob"/>
             <column name="voice_content_type" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->

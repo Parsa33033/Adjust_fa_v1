@@ -3,10 +3,13 @@ import 'dart:typed_data';
 import 'dart:math';
 
 import 'package:adjust_client/actions/jwt.dart';
+import 'package:adjust_client/actions/message_action.dart';
 import 'package:adjust_client/components/adjust_dialog.dart';
 import 'package:adjust_client/components/adjust_info_button.dart';
+import 'package:adjust_client/components/preloader.dart';
 import 'package:adjust_client/config/localization.dart';
 import 'package:adjust_client/constants/adjust_colors.dart';
+import 'package:adjust_client/constants/words.dart';
 import 'package:adjust_client/pages/chat_page.dart';
 import 'package:adjust_client/pages/program_development_page.dart';
 import 'package:adjust_client/pages/fitness_program_page.dart';
@@ -232,7 +235,15 @@ class _ProgramPageState extends State<ProgramPage> {
                                 ),
                               ),
                               onTap: () async {
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatPage(specialistState: program.specialistState)));
+                                preloader(context);
+                                int i = await getMessages(context, program.clientId, program.specialistId);
+                                if (i == 1) {
+                                  Navigator.of(context, rootNavigator: true).pop("dialog");
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatPage(specialistState: program.specialistState)));
+                                } else {
+                                  Navigator.of(context, rootNavigator: true).pop("dialog");
+                                  showAdjustDialog(context, FAILURE, false, null, ORANGE_COLOR);
+                                }
                               },
                             )
                           ],

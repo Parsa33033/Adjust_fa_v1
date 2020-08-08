@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'dart:math';
 
 import 'package:adjust_client/components/adjust_info_button.dart';
-import 'file:///F:/Projects/Adjust/alpha/frontend/adjust_client/lib/constants/adjust_colors.dart';
+import 'package:adjust_client/constants/adjust_colors.dart';
 import 'package:adjust_client/states/app_state.dart';
 import 'package:adjust_client/states/specialist_state.dart';
 import 'package:flutter/cupertino.dart';

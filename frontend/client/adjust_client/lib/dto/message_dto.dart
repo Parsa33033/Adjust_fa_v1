@@ -1,13 +1,13 @@
-import 'package:adjust_client/model/Message.dart';
+import 'package:adjust_client/model/message.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'message_dto.g.dart';
 
 @JsonSerializable()
 class MessageDTO extends Message {
-  MessageDTO(String sender, String receiver, String message, int senderId,
-      int receiverId)
-      : super(sender, receiver, message, senderId, receiverId);
+  MessageDTO(String sender, String receiver, String message, int clientId,
+      int specialistId)
+      : super(sender, receiver, message, clientId, specialistId);
 
   factory MessageDTO.fromJson(Map<String, dynamic> json) =>
       _$MessageDTOFromJson(json);

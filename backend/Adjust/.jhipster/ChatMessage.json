@@ -18,8 +18,17 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "text",
+      "fieldName": "sender",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "receiver",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "text",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
     },
     {
       "fieldName": "voice",

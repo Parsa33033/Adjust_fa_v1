@@ -50,6 +50,18 @@ export const ChatMessageDetail = (props: IChatMessageDetailProps) => {
           </dt>
           <dd>{chatMessageEntity.specialistUsername}</dd>
           <dt>
+            <span id="sender">
+              <Translate contentKey="adjustApp.chatMessage.sender">Sender</Translate>
+            </span>
+          </dt>
+          <dd>{chatMessageEntity.sender}</dd>
+          <dt>
+            <span id="receiver">
+              <Translate contentKey="adjustApp.chatMessage.receiver">Receiver</Translate>
+            </span>
+          </dt>
+          <dd>{chatMessageEntity.receiver}</dd>
+          <dt>
             <span id="text">
               <Translate contentKey="adjustApp.chatMessage.text">Text</Translate>
             </span>

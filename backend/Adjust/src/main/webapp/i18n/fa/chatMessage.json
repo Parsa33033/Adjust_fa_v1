@@ -20,6 +20,8 @@
       "clientUsername": "Client Username",
       "specialistId": "Specialist Id",
       "specialistUsername": "Specialist Username",
+      "sender": "Sender",
+      "receiver": "Receiver",
       "text": "Text",
       "voice": "Voice",
       "conversation": "Conversation"

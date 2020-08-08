@@ -3,7 +3,7 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'file:///F:/Projects/Adjust/alpha/frontend/adjust_client/lib/constants/adjust_colors.dart';
+import 'package:adjust_client/constants/adjust_colors.dart';
 import 'package:adjust_client/pages/login_page.dart';
 import 'package:adjust_client/pages/main_page.dart';
 import 'package:flutter/cupertino.dart';

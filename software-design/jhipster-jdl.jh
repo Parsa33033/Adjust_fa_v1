@@ -245,7 +245,9 @@ entity ChatMessage {
     clientUsername String,
     specialistId Long,
     specialistUsername String,
-    text String,
+    sender String,
+    receiver String,
+    text TextBlob,
     voice AnyBlob
 }
 

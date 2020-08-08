@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'file:///F:/Projects/Adjust/alpha/frontend/adjust_client/lib/constants/adjust_colors.dart';
+import 'package:adjust_client/constants/adjust_colors.dart';
 import 'package:adjust_client/main.dart';
 import 'package:adjust_client/pages/cart_page.dart';
 import 'package:adjust_client/pages/main_page.dart';
@@ -171,16 +171,19 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         Expanded(
                           flex: 4,
-                          child: Container(
-                            child: CircleAvatar(
-                                radius: MediaQuery.of(context).size.width *
-                                    7 /
-                                    10 *
-                                    18 /
-                                    100,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Container(
+                              child: CircleAvatar(
+                                  radius: MediaQuery.of(context).size.width *
+                                      7 /
+                                      10 *
+                                      18 /
+                                      100,
 //                          maxRadius: 52,
-                                backgroundImage: this.widget.image.image),
-                          ),
+                                  backgroundImage: this.widget.image.image),
+                            ),
+                          )
                         )
                       ],
                     )),

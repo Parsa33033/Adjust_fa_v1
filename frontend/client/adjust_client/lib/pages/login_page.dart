@@ -4,7 +4,7 @@ import 'package:adjust_client/components/singin.dart';
 import 'package:adjust_client/constants/words.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'file:///F:/Projects/Adjust/alpha/frontend/adjust_client/lib/constants/adjust_colors.dart';
+import 'package:adjust_client/constants/adjust_colors.dart';
 
 class LoginPage extends StatefulWidget {
   @override

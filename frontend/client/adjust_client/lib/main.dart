@@ -6,6 +6,7 @@ import 'package:adjust_client/pages/main_page.dart';
 import 'package:adjust_client/pages/profile_page.dart';
 import 'package:adjust_client/reducers/authentication_reducer.dart';
 import 'package:adjust_client/reducers/client_reducer.dart';
+import 'package:adjust_client/reducers/message_reducer.dart';
 import 'package:adjust_client/reducers/program_reducer.dart';
 import 'package:adjust_client/reducers/shoping_item_reducer.dart';
 import 'package:adjust_client/reducers/specialist_reducer.dart';
@@ -29,6 +30,7 @@ void main() {
     TypedReducer<AppState, dynamic>(tutorialReducer),
     TypedReducer<AppState, dynamic>(programReducer),
     TypedReducer<AppState, dynamic>(specialistReducer),
+    TypedReducer<AppState, dynamic>(messageReducer),
   ]);
   store = Store<AppState>(reducers, initialState: appStateInit);
 
