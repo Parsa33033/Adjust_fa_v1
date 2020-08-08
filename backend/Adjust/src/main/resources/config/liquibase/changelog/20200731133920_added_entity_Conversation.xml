@@ -17,10 +17,10 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="client_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_conversation_client_id" />
+                <constraints nullable="true" />
             </column>
             <column name="specialist_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_conversation_specialist_id" />
+                <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -45,6 +45,8 @@
                   separator=";"
                   tableName="conversation">
             <column name="id" type="numeric"/>
+            <column name="client_id" type="numeric"/>
+            <column name="specialist_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

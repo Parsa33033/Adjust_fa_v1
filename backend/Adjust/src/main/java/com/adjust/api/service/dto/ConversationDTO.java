@@ -9,10 +9,10 @@ public class ConversationDTO implements Serializable {
     
     private Long id;
 
-
     private Long clientId;
 
     private Long specialistId;
+
     
     public Long getId() {
         return id;
@@ -26,8 +26,8 @@ public class ConversationDTO implements Serializable {
         return clientId;
     }
 
-    public void setClientId(Long adjustClientId) {
-        this.clientId = adjustClientId;
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
     public Long getSpecialistId() {

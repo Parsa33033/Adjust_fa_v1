@@ -17,7 +17,6 @@ export interface ISpecialist {
   image?: any;
   busy?: boolean;
   programs?: IAdjustProgram[];
-  conversationId?: number;
 }
 
 export const defaultValue: Readonly<ISpecialist> = {

@@ -51,6 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/swagger-ui/index.html")
             .antMatchers("/test/**")
             .antMatchers("/api/client/app/register")
+            .antMatchers("/api/specialist/app/register")
             .antMatchers("/api/client/app/adjust-shoping-items")
             .antMatchers("/api/client/app/adjust-tokens");
     }

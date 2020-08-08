@@ -26,13 +26,17 @@ export const ConversationDetail = (props: IConversationDetailProps) => {
         </h2>
         <dl className="jh-entity-details">
           <dt>
-            <Translate contentKey="adjustApp.conversation.client">Client</Translate>
+            <span id="clientId">
+              <Translate contentKey="adjustApp.conversation.clientId">Client Id</Translate>
+            </span>
           </dt>
-          <dd>{conversationEntity.clientId ? conversationEntity.clientId : ''}</dd>
+          <dd>{conversationEntity.clientId}</dd>
           <dt>
-            <Translate contentKey="adjustApp.conversation.specialist">Specialist</Translate>
+            <span id="specialistId">
+              <Translate contentKey="adjustApp.conversation.specialistId">Specialist Id</Translate>
+            </span>
           </dt>
-          <dd>{conversationEntity.specialistId ? conversationEntity.specialistId : ''}</dd>
+          <dd>{conversationEntity.specialistId}</dd>
         </dl>
         <Button tag={Link} to="/conversation" replace color="info">
           <FontAwesomeIcon icon="arrow-left" />{' '}

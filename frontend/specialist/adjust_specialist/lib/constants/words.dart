@@ -46,6 +46,15 @@ final String GENDER = "جنسیت";
 final String AGE = "سن";
 final String UPDATE = "بروزرسانی";
 final String DEFAULT = "پیش فرض";
+final String DEGREE = "درجه";
+final String FIELD = "رشته";
+final String RESUME = "رزومه";
+final String BUSY = "مشغول";
+
+final Map<String, String> BUSY_LIST = Map<String, String>()
+  ..putIfAbsent("true", () => "بله")
+  ..putIfAbsent("false", () => "خیر");
+
 final Map<String, String> GENDER_LIST = Map<String, String>()
   ..putIfAbsent(EnumToString.parse(Gender.FEMALE), () => "زن")
   ..putIfAbsent(EnumToString.parse(Gender.MALE), () => "مرد");

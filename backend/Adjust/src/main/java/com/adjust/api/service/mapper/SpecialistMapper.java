@@ -15,7 +15,6 @@ public interface SpecialistMapper extends EntityMapper<SpecialistDTO, Specialist
 
     @Mapping(target = "programs", ignore = true)
     @Mapping(target = "removePrograms", ignore = true)
-    @Mapping(target = "conversation", ignore = true)
     Specialist toEntity(SpecialistDTO specialistDTO);
 
     default Specialist fromId(Long id) {

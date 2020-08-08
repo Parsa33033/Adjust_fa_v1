@@ -7,8 +7,6 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, setFileData, o
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { IConversation } from 'app/shared/model/conversation.model';
-import { getEntities as getConversations } from 'app/entities/conversation/conversation.reducer';
 import { getEntity, updateEntity, createEntity, setBlob, reset } from './specialist.reducer';
 import { ISpecialist } from 'app/shared/model/specialist.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -17,10 +15,9 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface ISpecialistUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const SpecialistUpdate = (props: ISpecialistUpdateProps) => {
-  const [conversationId, setConversationId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { specialistEntity, conversations, loading, updating } = props;
+  const { specialistEntity, loading, updating } = props;
 
   const { image, imageContentType } = specialistEntity;
 
@@ -34,8 +31,6 @@ export const SpecialistUpdate = (props: ISpecialistUpdateProps) => {
     } else {
       props.getEntity(props.match.params.id);
     }
-
-    props.getConversations();
   }, []);
 
   const onBlobChange = (isAnImage, name) => event => {
@@ -213,7 +208,6 @@ export const SpecialistUpdate = (props: ISpecialistUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  conversations: storeState.conversation.entities,
   specialistEntity: storeState.specialist.entity,
   loading: storeState.specialist.loading,
   updating: storeState.specialist.updating,
@@ -221,7 +215,6 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getConversations,
   getEntity,
   updateEntity,
   setBlob,

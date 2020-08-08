@@ -3,6 +3,7 @@ package com.adjust.api.repository;
 import com.adjust.api.domain.AdjustClient;
 import com.adjust.api.domain.AdjustProgram;
 
+import com.adjust.api.domain.Specialist;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,5 @@ import java.util.List;
 @Repository
 public interface AdjustProgramRepository extends JpaRepository<AdjustProgram, Long> {
     List<AdjustProgram> findAllByClient(AdjustClient client);
+    List<AdjustProgram> findAllBySpecialist(Specialist client);
 }

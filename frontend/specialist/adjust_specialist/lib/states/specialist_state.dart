@@ -1,13 +1,7 @@
 import 'package:adjust_specialist/model/Specialist.dart';
 import 'package:adjust_specialist/model/client.dart';
 
-final SpecialistListState specialistListStateInit = SpecialistListState(List());
-
-class SpecialistListState {
-  List<SpecialistState> specialists;
-
-  SpecialistListState(this.specialists);
-}
+final SpecialistState specialistStateInit = SpecialistState(null, "", "", "", DateTime(2000), null, "", "", "", 0, null, "", false);
 
 class SpecialistState extends Specialist {
   SpecialistState(

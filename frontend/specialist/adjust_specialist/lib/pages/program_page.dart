@@ -239,7 +239,7 @@ class _ProgramPageState extends State<ProgramPage> {
                                 int i = await getMessages(context, program.clientId, program.specialistId);
                                 if (i == 1) {
                                   Navigator.of(context, rootNavigator: true).pop("dialog");
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatPage(specialistState: program.specialistState)));
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatPage(program.specialistState, program.clientState)));
                                 } else {
                                   Navigator.of(context, rootNavigator: true).pop("dialog");
                                   showAdjustDialog(context, FAILURE, false, null, ORANGE_COLOR);

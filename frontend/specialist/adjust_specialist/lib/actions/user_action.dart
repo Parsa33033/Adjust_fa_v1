@@ -31,7 +31,6 @@ Future<int> registerUser(BuildContext context, ManagedUserDTO userDTO) async {
     ..putIfAbsent("Content-Type", () => "application/json");
 
   String content = jsonEncode(userDTO.toJson());
-
   http.Response response = await http.post(REGISTER_URL,
       headers: headers, body: content, encoding: Encoding.getByName("UTF-8"));
   if (response.statusCode == HttpStatus.ok) {

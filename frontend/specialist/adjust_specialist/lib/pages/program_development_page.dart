@@ -572,39 +572,7 @@ class _ProgramDevelopmentPageState extends State<ProgramDevelopmentPage> {
                                   text: "ذخیره ی ارزیابی",
                                   onPressed: () {
                                     showAdjustDialog(context, ASSESS_NOTE, true,
-                                        () async {
-                                      ProgramDevelopmentDTO
-                                          programDevelopmentDTO =
-                                          ProgramDevelopmentDTO(
-                                              null,
-                                              null,
-                                              this.nutritionRating,
-                                              this.fitnessRating,
-                                              this.widget.programId);
-                                      int i = await setProgramDevelopment(
-                                          context,
-                                          programDevelopmentDTO,
-                                          this.widget.programIndex);
-                                      if (i == 1) {
-                                        setState(() {
-                                          this.programDevelopmentStateList =
-                                              state.programListState.programs
-                                                  .reversed
-                                                  .toList()[
-                                                      this.widget.programIndex]
-                                                  .programDevelopmentStateList;
-                                        });
-                                        int i = await getClientScore(context);
-                                        if (i == 1) {
-                                          mainPageStreamController.add(1);
-                                        } else {
-                                          showAdjustDialog(context, FAILURE, false, null, ORANGE_COLOR);
-                                        }
-                                      } else {
-                                        showAdjustDialog(context, "شما برای امروز ارزیابی انجام داده اید",
-                                            false, null, ORANGE_COLOR);
-                                      }
-                                    }, ORANGE_COLOR);
+                                        () async {}, ORANGE_COLOR);
                                   },
                                 ),
                               ),

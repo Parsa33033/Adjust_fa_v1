@@ -14,7 +14,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing {@link AdjustClient}.
@@ -60,21 +59,6 @@ public class AdjustClientService {
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-
-
-    /**
-     *  Get all the adjustClients where Conversation is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true) 
-    public List<AdjustClientDTO> findAllWhereConversationIsNull() {
-        log.debug("Request to get all adjustClients where Conversation is null");
-        return StreamSupport
-            .stream(adjustClientRepository.findAll().spliterator(), false)
-            .filter(adjustClient -> adjustClient.getConversation() == null)
-            .map(adjustClientMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
 
     /**
      * Get one adjustClient by id.

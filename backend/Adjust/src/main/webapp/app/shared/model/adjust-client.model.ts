@@ -17,7 +17,6 @@ export interface IAdjustClient {
   image?: any;
   tutorials?: ITutorial[];
   programs?: IAdjustProgram[];
-  conversationId?: number;
 }
 
 export const defaultValue: Readonly<IAdjustClient> = {};

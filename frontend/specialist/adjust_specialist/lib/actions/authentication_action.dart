@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:adjust_specialist/actions/specialist_action.dart';
 import 'package:adjust_specialist/actions/user_action.dart';
-import 'package:adjust_specialist/actions/client_action.dart';
 import 'package:adjust_specialist/constants/urls.dart';
 import 'package:adjust_specialist/dto/login_dto.dart';
 import 'package:adjust_specialist/states/app_state.dart';
@@ -45,7 +45,7 @@ Future<int> userLogin(BuildContext context, LoginDTO loginDTO) async {
 
      int i = await getUser(context);
      if (i == 1) {
-       i = await getClient(context);
+       i = await getSpecialist(context);
        if (i == 1) {
          return 1;
        }

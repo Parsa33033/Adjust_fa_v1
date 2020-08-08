@@ -237,7 +237,8 @@ relationship OneToMany {
 
 //chat 
 entity Conversation {
-
+	clientId Long,
+	specialistId Long,
 }
 
 entity ChatMessage {
@@ -251,13 +252,6 @@ entity ChatMessage {
     voice AnyBlob
 }
 
-relationship OneToOne {
-	Conversation{client} to AdjustClient{conversation}
-}
-
-relationship OneToOne {
-	Conversation{specialist} to Specialist{conversation}
-}
 
 relationship OneToMany {
 	Conversation{messages} to ChatMessage{conversation}

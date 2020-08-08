@@ -445,6 +445,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             },
                           ),
                           AdjustDropDownField(
+                            itemsMap: GENDER_LIST,
                               items: [
                                 GENDER_LIST[EnumToString.parse(Gender.MALE)],
                                 GENDER_LIST[EnumToString.parse(Gender.FEMALE)]

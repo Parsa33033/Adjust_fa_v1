@@ -16,8 +16,8 @@
       "detail": {
         "title": "Conversation"
       },
-      "client": "Client",
-      "specialist": "Specialist",
+      "clientId": "Client Id",
+      "specialistId": "Specialist Id",
       "messages": "Messages"
     }
   }

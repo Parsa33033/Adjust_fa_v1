@@ -52,13 +52,6 @@
       "otherEntityName": "adjustProgram",
       "otherEntityRelationshipName": "client",
       "relationshipName": "programs"
-    },
-    {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "conversation",
-      "otherEntityRelationshipName": "client",
-      "relationshipName": "conversation",
-      "ownerSide": false
     }
   ],
   "changelogDate": "20200731132520",

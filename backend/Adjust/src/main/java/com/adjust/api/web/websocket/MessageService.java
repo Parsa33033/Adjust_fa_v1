@@ -65,7 +65,7 @@ public class MessageService {
         AdjustClient adjustClient = adjustClientRepository.findAdjustClientByUsername(userLogin).get();
         Specialist specialist = specialistRepository.findByUsername(msg.getReceiver()).get();
         chatMessageDTO.setReceiver(specialist.getUsername());
-        Conversation conversation = conversationRepository.findByClientAndSpecialist(adjustClient, specialist).get();
+        Conversation conversation = conversationRepository.findByClientIdAndSpecialistId(adjustClient.getId(), specialist.getId()).get();
         chatMessageDTO.setConversationId(conversation.getId());
         chatMessageDTO.setText(msg.getMessage());
         chatMessageService.save(chatMessageDTO);

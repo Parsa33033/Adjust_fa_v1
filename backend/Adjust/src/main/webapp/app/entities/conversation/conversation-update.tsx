@@ -2,15 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Label } from 'reactstrap';
-import { AvFeedback, AvForm, AvGroup, AvInput } from 'availity-reactstrap-validation';
+import { AvFeedback, AvForm, AvGroup, AvInput, AvField } from 'availity-reactstrap-validation';
 import { Translate, translate, ICrudGetAction, ICrudGetAllAction, ICrudPutAction } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { IAdjustClient } from 'app/shared/model/adjust-client.model';
-import { getEntities as getAdjustClients } from 'app/entities/adjust-client/adjust-client.reducer';
-import { ISpecialist } from 'app/shared/model/specialist.model';
-import { getEntities as getSpecialists } from 'app/entities/specialist/specialist.reducer';
 import { getEntity, updateEntity, createEntity, reset } from './conversation.reducer';
 import { IConversation } from 'app/shared/model/conversation.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -19,11 +15,9 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface IConversationUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const ConversationUpdate = (props: IConversationUpdateProps) => {
-  const [clientId, setClientId] = useState('0');
-  const [specialistId, setSpecialistId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { conversationEntity, adjustClients, specialists, loading, updating } = props;
+  const { conversationEntity, loading, updating } = props;
 
   const handleClose = () => {
     props.history.push('/conversation');
@@ -35,9 +29,6 @@ export const ConversationUpdate = (props: IConversationUpdateProps) => {
     } else {
       props.getEntity(props.match.params.id);
     }
-
-    props.getAdjustClients();
-    props.getSpecialists();
   }, []);
 
   useEffect(() => {
@@ -85,34 +76,16 @@ export const ConversationUpdate = (props: IConversationUpdateProps) => {
                 </AvGroup>
               ) : null}
               <AvGroup>
-                <Label for="conversation-client">
-                  <Translate contentKey="adjustApp.conversation.client">Client</Translate>
+                <Label id="clientIdLabel" for="conversation-clientId">
+                  <Translate contentKey="adjustApp.conversation.clientId">Client Id</Translate>
                 </Label>
-                <AvInput id="conversation-client" type="select" className="form-control" name="clientId">
-                  <option value="" key="0" />
-                  {adjustClients
-                    ? adjustClients.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
+                <AvField id="conversation-clientId" type="string" className="form-control" name="clientId" />
               </AvGroup>
               <AvGroup>
-                <Label for="conversation-specialist">
-                  <Translate contentKey="adjustApp.conversation.specialist">Specialist</Translate>
+                <Label id="specialistIdLabel" for="conversation-specialistId">
+                  <Translate contentKey="adjustApp.conversation.specialistId">Specialist Id</Translate>
                 </Label>
-                <AvInput id="conversation-specialist" type="select" className="form-control" name="specialistId">
-                  <option value="" key="0" />
-                  {specialists
-                    ? specialists.map(otherEntity => (
-                        <option value={otherEntity.id} key={otherEntity.id}>
-                          {otherEntity.id}
-                        </option>
-                      ))
-                    : null}
-                </AvInput>
+                <AvField id="conversation-specialistId" type="string" className="form-control" name="specialistId" />
               </AvGroup>
               <Button tag={Link} id="cancel-save" to="/conversation" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
@@ -136,8 +109,6 @@ export const ConversationUpdate = (props: IConversationUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  adjustClients: storeState.adjustClient.entities,
-  specialists: storeState.specialist.entities,
   conversationEntity: storeState.conversation.entity,
   loading: storeState.conversation.loading,
   updating: storeState.conversation.updating,
@@ -145,8 +116,6 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getAdjustClients,
-  getSpecialists,
   getEntity,
   updateEntity,
   createEntity,

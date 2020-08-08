@@ -50,7 +50,7 @@
     <include file="config/liquibase/changelog/20200731133520_added_entity_constraints_Meal.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731133620_added_entity_constraints_Nutrition.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731133820_added_entity_constraints_AdjustFood.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20200731133920_added_entity_constraints_Conversation.xml" relativeToChangelogFile="false"/>
+<!--    <include file="config/liquibase/changelog/20200731133920_added_entity_constraints_Conversation.xml" relativeToChangelogFile="false"/>-->
     <include file="config/liquibase/changelog/20200731134020_added_entity_constraints_ChatMessage.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731134120_added_entity_constraints_Tutorial.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200731134220_added_entity_constraints_AdjustTutorial.xml" relativeToChangelogFile="false"/>

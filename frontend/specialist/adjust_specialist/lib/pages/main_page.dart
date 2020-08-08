@@ -3,34 +3,23 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:adjust_specialist/actions/program_action.dart';
-import 'package:adjust_specialist/actions/shoping_action.dart';
-import 'package:adjust_specialist/actions/specialist_action.dart';
-import 'package:adjust_specialist/actions/tutorial_action.dart';
 import 'package:adjust_specialist/components/adjust_dialog.dart';
 import 'package:adjust_specialist/components/dashboard.dart';
 import 'package:adjust_specialist/components/preloader.dart';
 import 'package:adjust_specialist/config/stomp.dart';
 import 'package:adjust_specialist/constants/adjust_colors.dart';
 import 'package:adjust_specialist/constants/words.dart';
-import 'package:adjust_specialist/notifications/adjust_state_change_notification.dart';
 import 'package:adjust_specialist/pages/fitness_program_page.dart';
 import 'package:adjust_specialist/pages/menu_page.dart';
 import 'package:adjust_specialist/pages/nutrition_program_page.dart';
 import 'package:adjust_specialist/pages/program_page.dart';
-import 'package:adjust_specialist/pages/program_request_page.dart';
-import 'package:adjust_specialist/pages/shoping_page.dart';
-import 'package:adjust_specialist/pages/specialist_page.dart';
-import 'package:adjust_specialist/pages/tutorial_page.dart';
-import 'package:adjust_specialist/pages/tutorial_video_page.dart';
 import 'package:adjust_specialist/states/app_state.dart';
-import 'package:adjust_specialist/states/client_state.dart';
-import 'package:adjust_specialist/states/nutrition_program_state.dart';
+import 'package:adjust_specialist/states/specialist_state.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:persian_datetime_picker/utils/consts.dart';
 import 'package:redux/redux.dart';
 import 'package:stomp_dart_client/stomp.dart';
 
@@ -53,8 +42,8 @@ class _MainPageState extends State<MainPage>
 
   String firstName;
   String lastName;
-  double token;
-  double score;
+  String field;
+  double stars;
   Image _image;
 
   StompInstance stompInstance;
@@ -77,31 +66,30 @@ class _MainPageState extends State<MainPage>
   }
 
   void fetchDependencies() async {
-    await getShopingItems(context);
-    await getTokenItems(context);
-    await getClientPrograms(context);
+    await getSpecialistPrograms(context);
   }
 
   void setMainPageState(bool fromNotification) {
-    ClientState clientState = store.state.clientState;
+    SpecialistState specialistState = store.state.specialistState;
     if (fromNotification) {
       setState(() {
-        stateSetter(clientState);
+        stateSetter(specialistState);
       });
     } else {
-      stateSetter(clientState);
+      stateSetter(specialistState);
     }
   }
 
-  void stateSetter(ClientState clientState) {
-    firstName = clientState.firstName;
-    lastName = clientState.lastName;
-    token = clientState.token;
-    score = clientState.score;
-    if (clientState.image == null) {
+  void stateSetter(SpecialistState specialistState) {
+    firstName = specialistState.firstName;
+    lastName = specialistState.lastName;
+    field = specialistState.field;
+    stars = specialistState.stars;
+
+    if (specialistState.image == null) {
       _image = Image.asset("assets/adjust_logo1.png");
     } else {
-      Uint8List imageByte = Uint8List.fromList(base64Decode(clientState.image));
+      Uint8List imageByte = Uint8List.fromList(base64Decode(specialistState.image));
       _image = Image.memory(imageByte);
     }
   }
@@ -127,34 +115,16 @@ class _MainPageState extends State<MainPage>
           key: _bottomNavigationKey,
           backgroundColor: LIGHT_GREY_COLOR,
           color: GREEN_COLOR,
-          index: 1,
+          index: 0,
           items: <Widget>[
-            Icon(
-              Icons.open_in_browser,
-              size: 30,
-              color: LIGHT_GREY_COLOR,
-            ),
             CircleAvatar(
                 radius: 30, child: Image.asset("assets/adjust_logo1.png")),
-            Icon(
-              Icons.shopping_cart,
-              size: 30,
-              color: LIGHT_GREY_COLOR,
-            ),
           ],
           onTap: (index) {
             //Handle button tap
-            if (index == 0) {
-              setState(() {
-                _content = Container(child: ProgramRequestPage());
-              });
-            } else if (index == 1) {
+            if (index == 1) {
               setState(() {
                 _content = mainMenu();
-              });
-            } else {
-              setState(() {
-                _content = ShopingPage();
               });
             }
           },
@@ -172,8 +142,8 @@ class _MainPageState extends State<MainPage>
                         child: Dashboard(
                           firstName: firstName,
                           lastName: lastName,
-                          token: token,
-                          score: score,
+                          field: field,
+                          stars: stars,
                           image: _image,
                         )),
                     Expanded(
@@ -263,14 +233,14 @@ class _MainPageState extends State<MainPage>
                   flex: 5,
                   child: menuItem("آموزش", "assets/game_icon.png", ORANGE_COLOR,
                       () async {
-                    preloader(context);
-                    int j = await getClientTutorials(context);
-                    int i = await getTutorials(context);
-                    if (i == 1 && j == 1) {
-                      Navigator.of(context, rootNavigator: true).pop("dialog");
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => TutorialPage()));
-                    }
+//                    preloader(context);
+//                    int j = await getClientTutorials(context);
+//                    int i = await getTutorials(context);
+//                    if (i == 1 && j == 1) {
+//                      Navigator.of(context, rootNavigator: true).pop("dialog");
+//                      Navigator.of(context).push(MaterialPageRoute(
+//                          builder: (context) => TutorialPage()));
+//                    }
                   }),
                 ),
                 Expanded(
@@ -279,7 +249,7 @@ class _MainPageState extends State<MainPage>
                       "برنامه ها", "assets/tutorial_icon.png", YELLOW_COLOR,
                       () async {
                     preloader(context);
-                    int i = await getClientPrograms(context);
+                    int i = await getSpecialistPrograms(context);
                     if (i == 1) {
                       Navigator.of(context, rootNavigator: true).pop("dialog");
                       Navigator.of(context).push(MaterialPageRoute(

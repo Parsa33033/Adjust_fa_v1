@@ -457,15 +457,10 @@ public class ClientAppController {
     /**
      * {@code GET  /specialists} : get all the specialists.
      *
-     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of specialists in body.
      */
     @GetMapping("/specialists")
-    public List<SpecialistDTO> getAllSpecialists(@RequestParam(required = false) String filter) {
-        if ("conversation-is-null".equals(filter)) {
-            log.debug("REST request to get all Specialists where conversation is null");
-            return specialistService.findAllWhereConversationIsNull();
-        }
+    public List<SpecialistDTO> getAllSpecialists() {
         log.debug("REST request to get all Specialists");
         return specialistService.findAll();
     }

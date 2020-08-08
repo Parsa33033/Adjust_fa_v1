@@ -17,7 +17,6 @@ public interface AdjustClientMapper extends EntityMapper<AdjustClientDTO, Adjust
     @Mapping(target = "removeTutorials", ignore = true)
     @Mapping(target = "programs", ignore = true)
     @Mapping(target = "removePrograms", ignore = true)
-    @Mapping(target = "conversation", ignore = true)
     AdjustClient toEntity(AdjustClientDTO adjustClientDTO);
 
     default AdjustClient fromId(Long id) {

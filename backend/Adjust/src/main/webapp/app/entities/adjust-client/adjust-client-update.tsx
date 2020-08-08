@@ -7,8 +7,6 @@ import { Translate, translate, ICrudGetAction, ICrudGetAllAction, setFileData, o
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IRootState } from 'app/shared/reducers';
 
-import { IConversation } from 'app/shared/model/conversation.model';
-import { getEntities as getConversations } from 'app/entities/conversation/conversation.reducer';
 import { getEntity, updateEntity, createEntity, setBlob, reset } from './adjust-client.reducer';
 import { IAdjustClient } from 'app/shared/model/adjust-client.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
@@ -17,10 +15,9 @@ import { mapIdList } from 'app/shared/util/entity-utils';
 export interface IAdjustClientUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export const AdjustClientUpdate = (props: IAdjustClientUpdateProps) => {
-  const [conversationId, setConversationId] = useState('0');
   const [isNew, setIsNew] = useState(!props.match.params || !props.match.params.id);
 
-  const { adjustClientEntity, conversations, loading, updating } = props;
+  const { adjustClientEntity, loading, updating } = props;
 
   const { image, imageContentType } = adjustClientEntity;
 
@@ -34,8 +31,6 @@ export const AdjustClientUpdate = (props: IAdjustClientUpdateProps) => {
     } else {
       props.getEntity(props.match.params.id);
     }
-
-    props.getConversations();
   }, []);
 
   const onBlobChange = (isAnImage, name) => event => {
@@ -201,7 +196,6 @@ export const AdjustClientUpdate = (props: IAdjustClientUpdateProps) => {
 };
 
 const mapStateToProps = (storeState: IRootState) => ({
-  conversations: storeState.conversation.entities,
   adjustClientEntity: storeState.adjustClient.entity,
   loading: storeState.adjustClient.loading,
   updating: storeState.adjustClient.updating,
@@ -209,7 +203,6 @@ const mapStateToProps = (storeState: IRootState) => ({
 });
 
 const mapDispatchToProps = {
-  getConversations,
   getEntity,
   updateEntity,
   setBlob,

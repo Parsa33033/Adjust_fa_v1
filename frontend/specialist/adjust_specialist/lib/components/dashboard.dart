@@ -2,7 +2,6 @@ import 'dart:typed_data';
 
 import 'package:adjust_specialist/constants/adjust_colors.dart';
 import 'package:adjust_specialist/main.dart';
-import 'package:adjust_specialist/pages/cart_page.dart';
 import 'package:adjust_specialist/pages/main_page.dart';
 import 'package:adjust_specialist/states/app_state.dart';
 import 'package:adjust_specialist/states/client_state.dart';
@@ -19,11 +18,11 @@ import 'package:redux/redux.dart';
 class Dashboard extends StatefulWidget {
   String firstName;
   String lastName;
-  double token;
-  double score;
+  String field;
+  double stars;
   Image image;
 
-  Dashboard({this.firstName, this.lastName, this.token, this.score, this.image});
+  Dashboard({this.firstName, this.lastName, this.field, this.stars, this.image});
 
 
   @override
@@ -42,7 +41,6 @@ class _DashboardState extends State<Dashboard> {
     return StoreConnector<AppState, AppState>(
       converter: (Store store) => store.state,
       builder: (BuildContext context, AppState state) {
-        int l = state.cartState.items.length;
         return Container(
           margin: EdgeInsets.only(top: 20),
           child: Row(
@@ -67,15 +65,15 @@ class _DashboardState extends State<Dashboard> {
                       ],
                     ),
                     child: Center(
-                        child: Badge(
-                          showBadge: l > 0 ? true : false,
-                          badgeContent: Text(l.toString()),
-                          child: Icon(Icons.add_shopping_cart),
-                        )
+//                        child: Badge(
+//                          showBadge: l > 0 ? true : false,
+//                          badgeContent: Text(l.toString()),
+//                          child: Icon(Icons.add_shopping_cart),
+//                        )
                     ),
                   ),
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartPage()));
+//                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartPage()));
                   },
                 )
               ),
@@ -137,7 +135,7 @@ class _DashboardState extends State<Dashboard> {
                                     child: Directionality(
                                       textDirection: TextDirection.rtl,
                                       child: Text(
-                                        "امتیاز: " + NumberUtility.changeDigit(this.widget.score.round().toString(), NumStrLanguage.Farsi),
+                                        "رشته: " + this.widget.field,
                                         style: TextStyle(
                                           fontFamily: "Iransans",
                                           color: FONT_COLOR,
@@ -155,7 +153,7 @@ class _DashboardState extends State<Dashboard> {
                                     child: Directionality(
                                       textDirection: TextDirection.rtl,
                                       child: Text(
-                                        "توکن: " + NumberUtility.changeDigit(this.widget.token.round().toString(), NumStrLanguage.Farsi),
+                                        "ستاره: " + NumberUtility.changeDigit(this.widget.stars.round().toString(), NumStrLanguage.Farsi),
                                         style: TextStyle(
                                           fontFamily: "Iransans",
                                           color: FONT_COLOR,

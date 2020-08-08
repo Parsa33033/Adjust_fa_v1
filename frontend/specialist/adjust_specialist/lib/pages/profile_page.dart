@@ -1,23 +1,19 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:adjust_specialist/actions/client_action.dart';
-import 'package:adjust_specialist/actions/user_action.dart';
+
+import 'package:adjust_specialist/actions/specialist_action.dart';
 import 'package:adjust_specialist/components/adjust_dialog.dart';
 import 'package:adjust_specialist/components/adjust_dropdown_field.dart';
 import 'package:adjust_specialist/components/adjust_raised_button.dart';
 import 'package:adjust_specialist/components/adjust_text_field.dart';
 import 'package:adjust_specialist/components/preloader.dart';
-import 'package:adjust_specialist/constants/adjust_colors.dart';
 import 'package:adjust_specialist/config/localization.dart';
+import 'package:adjust_specialist/constants/adjust_colors.dart';
 import 'package:adjust_specialist/constants/words.dart';
-import 'package:adjust_specialist/dto/client_dto.dart';
-import 'package:adjust_specialist/dto/user_dto.dart';
+import 'package:adjust_specialist/dto/specialist_dto.dart';
 import 'package:adjust_specialist/main.dart';
 import 'package:adjust_specialist/model/client.dart';
-import 'package:adjust_specialist/notifications/adjust_state_change_notification.dart';
-import 'package:adjust_specialist/pages/start_page.dart';
 import 'package:adjust_specialist/states/app_state.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:enum_to_string/enum_to_string.dart';
@@ -37,9 +33,12 @@ import 'main_page.dart';
 class ProfilePage extends StatefulWidget {
   Image image;
   bool isFromMainPage;
+
   ProfilePage({this.image, this.isFromMainPage}) {
-    this.isFromMainPage = this.isFromMainPage == null ? false : this.isFromMainPage;
+    this.isFromMainPage =
+        this.isFromMainPage == null ? false : this.isFromMainPage;
   }
+
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -49,8 +48,13 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController firstNameTextFieldController;
   TextEditingController lastNameTextFieldController;
   TextEditingController birthDateConfirmTextFieldController;
+  TextEditingController degreeTextFieldController;
+  TextEditingController busyTextFieldController;
+  TextEditingController fieldTextFieldController;
+  TextEditingController resumeTextFieldController;
   Image avatarImage;
   String genderValue;
+  bool busyValue;
 
   final _formKey = GlobalKey<FormState>();
   final _imgCropKey = GlobalKey<ImgCropState>();
@@ -66,6 +70,10 @@ class _ProfilePageState extends State<ProfilePage> {
     firstNameTextFieldController = TextEditingController();
     lastNameTextFieldController = TextEditingController();
     birthDateConfirmTextFieldController = TextEditingController();
+    degreeTextFieldController = TextEditingController();
+    fieldTextFieldController = TextEditingController();
+    busyTextFieldController = TextEditingController();
+    resumeTextFieldController = TextEditingController();
     avatarImage = Image.asset("assets/adjust_logo1.png");
 
     AppState state = store.state;
@@ -75,16 +83,26 @@ class _ProfilePageState extends State<ProfilePage> {
   void setAppState(AppState state) {
     setState(() {
       emailTextEditingController.text = state.userState.email;
-      firstNameTextFieldController.text = state.clientState.firstName;
-      lastNameTextFieldController.text = state.clientState.lastName;
-      Jalali jalali = Jalali.fromDateTime(state.clientState.birthDate);
-      birthDateConfirmTextFieldController.text =
-          NumberUtility.changeDigit(jalali.year.toString(), NumStrLanguage.Farsi) +
-              "/" +
-              NumberUtility.changeDigit(jalali.month.toString(), NumStrLanguage.Farsi) +
-              "/" +
-              NumberUtility.changeDigit(jalali.day.toString(), NumStrLanguage.Farsi);
-      genderValue = state.clientState.gender == null? null : EnumToString.parse(state.clientState.gender);
+      firstNameTextFieldController.text = state.specialistState.firstName;
+      lastNameTextFieldController.text = state.specialistState.lastName;
+      Jalali jalali = Jalali.fromDateTime(state.specialistState.birth);
+      birthDateConfirmTextFieldController.text = NumberUtility.changeDigit(
+              jalali.year.toString(), NumStrLanguage.Farsi) +
+          "/" +
+          NumberUtility.changeDigit(
+              jalali.month.toString(), NumStrLanguage.Farsi) +
+          "/" +
+          NumberUtility.changeDigit(
+              jalali.day.toString(), NumStrLanguage.Farsi);
+      genderValue = state.specialistState.gender == null
+          ? null
+          : EnumToString.parse(state.specialistState.gender);
+      busyValue = state.specialistState.busy == null
+          ? null
+          : state.specialistState.busy;
+      resumeTextFieldController.text = state.specialistState.resume;
+      fieldTextFieldController.text = state.specialistState.field;
+
       if (this.widget.image != null) {
         avatarImage = this.widget.image;
       }
@@ -147,16 +165,29 @@ class _ProfilePageState extends State<ProfilePage> {
                     File imageFile = await _imgCropKey.currentState
                         .cropCompleted(_image, pictureQuality: 512);
                     Uint8List image = await imageFile.readAsBytes();
-                    ClientDTO clientDTO = ClientDTO(null, null, null, null,
-                        null, null, null, null, null, base64Encode(image), "image/jpeg");
+                    SpecialistDTO specialistDTO = SpecialistDTO(
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        base64Encode(image),
+                        "image/jpeg",
+                        null);
 
-                    int i = await updateClient(context, clientDTO);
+                    int i = await updateSpecialist(context, specialistDTO);
                     if (i == 1) {
                       mainPageStreamController.add(1);
                       Navigator.of(context, rootNavigator: true).pop("dialog");
                       Navigator.of(context, rootNavigator: true).pop("dialog");
                       Navigator.of(context, rootNavigator: true).pop("dialog");
-                      List<int> imgList = base64Decode(state.clientState.image);
+                      List<int> imgList =
+                          base64Decode(state.specialistState.image);
                       Uint8List imgByte = Uint8List.fromList(imgList);
                       setState(() {
                         avatarImage = Image.memory(imgByte);
@@ -178,6 +209,13 @@ class _ProfilePageState extends State<ProfilePage> {
   void setGenderValue(String genderValue) {
     setState(() {
       this.genderValue = genderValue;
+    });
+  }
+
+  void setBusyValue(String busyValue) {
+    bool b = busyValue == "true" ? true : false;
+    setState(() {
+      this.busyValue = b;
     });
   }
 
@@ -206,20 +244,25 @@ class _ProfilePageState extends State<ProfilePage> {
                             color: GREEN_COLOR,
                           ),
                         ),
-                        this.widget.isFromMainPage ? Positioned(
-                            left: 20,
-                            top: 50,
-                            child: Container(
-                              height: 50,
-                              width: 50,
-                              child: InkWell(
-                                child: Icon(Icons.arrow_back, color: WHITE_COLOR, size: 50,),
-                                onTap: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            )
-                        ): Container(),
+                        this.widget.isFromMainPage
+                            ? Positioned(
+                                left: 20,
+                                top: 50,
+                                child: Container(
+                                  height: 50,
+                                  width: 50,
+                                  child: InkWell(
+                                    child: Icon(
+                                      Icons.arrow_back,
+                                      color: WHITE_COLOR,
+                                      size: 50,
+                                    ),
+                                    onTap: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ))
+                            : Container(),
                         Positioned(
                           bottom: 0,
                           left: 0,
@@ -249,69 +292,93 @@ class _ProfilePageState extends State<ProfilePage> {
                                           radius: 60.0,
                                         ),
                                         onTap: () async {
-                                          showDialog(context: context,
-                                            child: Container(
-                                              height: 400,
-                                              child: SingleChildScrollView(
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      padding: EdgeInsets.all(20),
-                                                      child: CircleAvatar(
-                                                        backgroundColor: Colors.grey[100],
-                                                        backgroundImage: avatarImage.image,
-                                                        radius: 150.0,
+                                          showDialog(
+                                              context: context,
+                                              child: Container(
+                                                height: 400,
+                                                child: SingleChildScrollView(
+                                                  child: Column(
+                                                    children: <Widget>[
+                                                      Container(
+                                                        padding:
+                                                            EdgeInsets.all(20),
+                                                        child: CircleAvatar(
+                                                          backgroundColor:
+                                                              Colors.grey[100],
+                                                          backgroundImage:
+                                                              avatarImage.image,
+                                                          radius: 150.0,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Container(
-                                                      padding: EdgeInsets.all(20),
-                                                      child: Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                        children: <Widget>[
-                                                          AdjustRaisedButton(
-                                                            text: "گالری",
-                                                            height: 40,
-                                                            width: 90,
-                                                            textDirection: TextDirection.rtl,
-                                                            primaryColor: GREEN_COLOR,
-                                                            secondaryColor: GREEN_COLOR,
-                                                            fontSize: 18,
-                                                            fontColor: WHITE_COLOR,
-                                                            onPressed: () async {
-                                                              await getImage(false);
-                                                              showDialog(
-                                                                  context: context,
-                                                                  child: _buildCropImage(
-                                                                      await _image.readAsBytes(),
-                                                                      state));
-                                                            },
-                                                          ),
-                                                          AdjustRaisedButton(
-                                                            text: "دوربین",
-                                                            height: 40,
-                                                            width: 90,
-                                                            textDirection: TextDirection.rtl,
-                                                            primaryColor: GREEN_COLOR,
-                                                            secondaryColor: GREEN_COLOR,
-                                                            fontSize: 18,
-                                                            fontColor: WHITE_COLOR,
-                                                            onPressed: () async {
-                                                              await getImage(true);
-                                                              showDialog(
-                                                                  context: context,
-                                                                  child: _buildCropImage(
-                                                                      await _image.readAsBytes(),
-                                                                      state));
-                                                            },
-                                                          )
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],
+                                                      Container(
+                                                        padding:
+                                                            EdgeInsets.all(20),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: <Widget>[
+                                                            AdjustRaisedButton(
+                                                              text: "گالری",
+                                                              height: 40,
+                                                              width: 90,
+                                                              textDirection:
+                                                                  TextDirection
+                                                                      .rtl,
+                                                              primaryColor:
+                                                                  GREEN_COLOR,
+                                                              secondaryColor:
+                                                                  GREEN_COLOR,
+                                                              fontSize: 18,
+                                                              fontColor:
+                                                                  WHITE_COLOR,
+                                                              onPressed:
+                                                                  () async {
+                                                                await getImage(
+                                                                    false);
+                                                                showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    child: _buildCropImage(
+                                                                        await _image
+                                                                            .readAsBytes(),
+                                                                        state));
+                                                              },
+                                                            ),
+                                                            AdjustRaisedButton(
+                                                              text: "دوربین",
+                                                              height: 40,
+                                                              width: 90,
+                                                              textDirection:
+                                                                  TextDirection
+                                                                      .rtl,
+                                                              primaryColor:
+                                                                  GREEN_COLOR,
+                                                              secondaryColor:
+                                                                  GREEN_COLOR,
+                                                              fontSize: 18,
+                                                              fontColor:
+                                                                  WHITE_COLOR,
+                                                              onPressed:
+                                                                  () async {
+                                                                await getImage(
+                                                                    true);
+                                                                showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    child: _buildCropImage(
+                                                                        await _image
+                                                                            .readAsBytes(),
+                                                                        state));
+                                                              },
+                                                            )
+                                                          ],
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            )
-                                          );
+                                              ));
                                         },
                                       )),
                                 ),
@@ -408,7 +475,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               margin: 20),
                           InkWell(
                             child: AdjustTextField(
-                              textAlign: TextAlign.right,
+                                textAlign: TextAlign.right,
                                 textDirection: TextDirection.rtl,
                                 controller: birthDateConfirmTextFieldController,
                                 hintText: BIRTH,
@@ -437,7 +504,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                     disable: true,
                                     onSelect: (date) {
                                       birthDateConfirmTextFieldController.text =
-                                          NumberUtility.changeDigit(date, NumStrLanguage.Farsi);
+                                          NumberUtility.changeDigit(
+                                              date, NumStrLanguage.Farsi);
                                     },
                                   );
                                 },
@@ -445,11 +513,14 @@ class _ProfilePageState extends State<ProfilePage> {
                             },
                           ),
                           AdjustDropDownField(
+                              itemsMap: GENDER_LIST,
                               items: [
                                 GENDER_LIST[EnumToString.parse(Gender.MALE)],
                                 GENDER_LIST[EnumToString.parse(Gender.FEMALE)]
                               ],
-                              value: genderValue == null ? null : GENDER_LIST[genderValue],
+                              value: genderValue == null
+                                  ? null
+                                  : GENDER_LIST[genderValue],
                               setValue: setGenderValue,
                               textDirection: TextDirection.rtl,
                               alignment: Alignment.centerRight,
@@ -470,6 +541,92 @@ class _ProfilePageState extends State<ProfilePage> {
                               primaryColor: YELLOW_COLOR,
                               padding: 0,
                               margin: 20),
+                          AdjustTextField(
+                              textAlign: TextAlign.right,
+                              textDirection: TextDirection.rtl,
+                              controller: degreeTextFieldController,
+                              hintText: DEGREE,
+                              enabled: true,
+                              icon: Icon(
+                                Icons.person,
+                                color: GREEN_COLOR,
+                              ),
+                              validator: (String val) {
+                                if (val == null || val == "") {
+                                  return EMPTY;
+                                } else
+                                  return null;
+                              },
+                              isPassword: false,
+                              primaryColor: GREEN_COLOR,
+                              padding: 0,
+                              margin: 20),
+                          AdjustTextField(
+                              textAlign: TextAlign.right,
+                              textDirection: TextDirection.rtl,
+                              controller: fieldTextFieldController,
+                              hintText: FIELD,
+                              enabled: true,
+                              icon: Icon(
+                                Icons.person,
+                                color: RED_COLOR,
+                              ),
+                              validator: (String val) {
+                                if (val == null || val == "") {
+                                  return EMPTY;
+                                } else
+                                  return null;
+                              },
+                              isPassword: false,
+                              primaryColor: RED_COLOR,
+                              padding: 0,
+                              margin: 20),
+                          AdjustDropDownField(
+                              itemsMap: BUSY_LIST,
+                              items: BUSY_LIST.values.toList(),
+                              value: busyValue == null
+                                  ? null
+                                  : BUSY_LIST[busyValue],
+                              setValue: setBusyValue,
+                              textDirection: TextDirection.rtl,
+                              alignment: Alignment.centerRight,
+                              controller: busyTextFieldController,
+                              hintText: BUSY,
+                              enabled: true,
+                              icon: Icon(
+                                Icons.perm_identity,
+                                color: YELLOW_COLOR,
+                              ),
+                              validator: (String val) {
+                                if (val == null || val == "") {
+                                  return EMPTY;
+                                } else
+                                  return null;
+                              },
+                              isPassword: false,
+                              primaryColor: YELLOW_COLOR,
+                              padding: 0,
+                              margin: 20),
+                          AdjustTextField(
+                              textAlign: TextAlign.right,
+                              textDirection: TextDirection.rtl,
+                              controller: resumeTextFieldController,
+                              hintText: RESUME,
+                              enabled: true,
+                              icon: Icon(
+                                Icons.person,
+                                color: ORANGE_COLOR,
+                              ),
+                              validator: (String val) {
+                                if (val == null || val == "") {
+                                  return EMPTY;
+                                } else
+                                  return null;
+                              },
+                              isPassword: false,
+                              primaryColor: ORANGE_COLOR,
+                              padding: 0,
+                              margin: 20),
                           SizedBox(
                             height: 40,
                           ),
@@ -485,7 +642,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 width: 90,
                                 onPressed: () {
                                   // set field back to default
-                                  showAdjustDialog(context, SET_TO_DEFAULT, true, () {
+                                  showAdjustDialog(
+                                      context, SET_TO_DEFAULT, true, () {
                                     setAppState(state);
                                   }, null);
                                 },
@@ -499,33 +657,57 @@ class _ProfilePageState extends State<ProfilePage> {
                                 width: 90,
                                 onPressed: () async {
                                   if (_formKey.currentState.validate()) {
-                                    showAdjustDialog(context, SURE_WITH_DECISION, true, () async {
+                                    showAdjustDialog(
+                                        context, SURE_WITH_DECISION, true,
+                                        () async {
                                       preloader(context);
-                                      ClientDTO clientDTO = ClientDTO(
-                                          null,
-                                          null,
-                                          firstNameTextFieldController.text,
-                                          lastNameTextFieldController.text,
-                                          jalaliToGeorgianDateTime(
-                                              NumberUtility.changeDigit(birthDateConfirmTextFieldController
-                                                  .text, NumStrLanguage.English)),
-                                          null,
-                                          EnumToString.fromString(
-                                              Gender.values, genderValue),
-                                          null,
-                                          null,
-                                          null,
-                                          null);
-                                      int i =
-                                          await updateClient(context, clientDTO);
+                                      String firstName =
+                                          firstNameTextFieldController.text;
+                                      String lastName =
+                                          lastNameTextFieldController.text;
+                                      Gender gender = EnumToString.fromString(
+                                          Gender.values, genderValue);
+                                      DateTime birth = jalaliToGeorgianDateTime(
+                                          NumberUtility.changeDigit(
+                                              birthDateConfirmTextFieldController
+                                                  .text,
+                                              NumStrLanguage.English));
+                                      String degree =
+                                          degreeTextFieldController.text;
+                                      String field =
+                                          fieldTextFieldController.text;
+                                      String resume =
+                                          resumeTextFieldController.text;
+                                      bool busy = busyValue;
+                                      SpecialistDTO specialistDTO =
+                                          SpecialistDTO(
+                                              null,
+                                              null,
+                                              firstName,
+                                              lastName,
+                                              birth,
+                                              gender,
+                                              degree,
+                                              field,
+                                              resume,
+                                              null,
+                                              null,
+                                              null,
+                                              busy);
+
+                                      int i = await updateSpecialist(
+                                          context, specialistDTO);
                                       if (i == 1) {
                                         if (this.widget.isFromMainPage) {
-                                          Navigator.of(context, rootNavigator: true)
+                                          Navigator.of(context,
+                                                  rootNavigator: true)
                                               .pop("dialog");
                                           mainPageStreamController.add(1);
-                                          showAdjustDialog(context, SUCCESS, false, null, null);
+                                          showAdjustDialog(context, SUCCESS,
+                                              false, null, null);
                                         } else {
-                                          Navigator.of(context, rootNavigator: true)
+                                          Navigator.of(context,
+                                                  rootNavigator: true)
                                               .pop("dialog");
                                           Navigator.of(context).pushReplacement(
                                               MaterialPageRoute(
@@ -533,10 +715,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                                       MainPage()));
                                         }
                                       } else if (i == 0) {
-                                        Navigator.of(context, rootNavigator: true)
+                                        Navigator.of(context,
+                                                rootNavigator: true)
                                             .pop("dialog");
-                                        showAdjustDialog(
-                                            context, FAILURE, false, null, null);
+                                        showAdjustDialog(context, FAILURE,
+                                            false, null, null);
                                       }
                                     }, null);
                                   }
@@ -568,6 +751,10 @@ class _ProfilePageState extends State<ProfilePage> {
     firstNameTextFieldController.dispose();
     lastNameTextFieldController.dispose();
     birthDateConfirmTextFieldController.dispose();
+    fieldTextFieldController.dispose();
+    degreeTextFieldController.dispose();
+    resumeTextFieldController.dispose();
+    busyTextFieldController.dispose();
     super.dispose();
   }
 }

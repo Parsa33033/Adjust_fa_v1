@@ -14,7 +14,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing {@link Specialist}.
@@ -60,21 +59,6 @@ public class SpecialistService {
             .collect(Collectors.toCollection(LinkedList::new));
     }
 
-
-
-    /**
-     *  Get all the specialists where Conversation is {@code null}.
-     *  @return the list of entities.
-     */
-    @Transactional(readOnly = true) 
-    public List<SpecialistDTO> findAllWhereConversationIsNull() {
-        log.debug("Request to get all specialists where Conversation is null");
-        return StreamSupport
-            .stream(specialistRepository.findAll().spliterator(), false)
-            .filter(specialist -> specialist.getConversation() == null)
-            .map(specialistMapper::toDto)
-            .collect(Collectors.toCollection(LinkedList::new));
-    }
 
     /**
      * Get one specialist by id.

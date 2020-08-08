@@ -9,15 +9,10 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Conversation} and its DTO {@link ConversationDTO}.
  */
-@Mapper(componentModel = "spring", uses = {AdjustClientMapper.class, SpecialistMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface ConversationMapper extends EntityMapper<ConversationDTO, Conversation> {
 
-    @Mapping(source = "client.id", target = "clientId")
-    @Mapping(source = "specialist.id", target = "specialistId")
-    ConversationDTO toDto(Conversation conversation);
 
-    @Mapping(source = "clientId", target = "client")
-    @Mapping(source = "specialistId", target = "specialist")
     @Mapping(target = "messages", ignore = true)
     @Mapping(target = "removeMessages", ignore = true)
     Conversation toEntity(ConversationDTO conversationDTO);

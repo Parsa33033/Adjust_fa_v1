@@ -21,7 +21,8 @@ import 'package:stomp_dart_client/stomp_frame.dart';
 
 class ChatPage extends StatefulWidget {
   SpecialistState specialistState;
-  ChatPage({this.specialistState});
+  ClientState clientState;
+  ChatPage(this.specialistState, this.clientState);
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -52,7 +53,7 @@ class _ChatPageState extends State<ChatPage> {
     super.initState();
     AppState state = store.state;
     username = state.userState.login;
-    clientState = state.clientState;
+    clientState = this.widget.clientState;
     specialistState = this.widget.specialistState;
     clientId = clientState.id;
     specialistId = specialistState.id;

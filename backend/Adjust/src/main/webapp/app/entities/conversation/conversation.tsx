@@ -37,10 +37,10 @@ export const Conversation = (props: IConversationProps) => {
                   <Translate contentKey="global.field.id">ID</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="adjustApp.conversation.client">Client</Translate>
+                  <Translate contentKey="adjustApp.conversation.clientId">Client Id</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="adjustApp.conversation.specialist">Specialist</Translate>
+                  <Translate contentKey="adjustApp.conversation.specialistId">Specialist Id</Translate>
                 </th>
                 <th />
               </tr>
@@ -53,14 +53,8 @@ export const Conversation = (props: IConversationProps) => {
                       {conversation.id}
                     </Button>
                   </td>
-                  <td>{conversation.clientId ? <Link to={`adjust-client/${conversation.clientId}`}>{conversation.clientId}</Link> : ''}</td>
-                  <td>
-                    {conversation.specialistId ? (
-                      <Link to={`specialist/${conversation.specialistId}`}>{conversation.specialistId}</Link>
-                    ) : (
-                      ''
-                    )}
-                  </td>
+                  <td>{conversation.clientId}</td>
+                  <td>{conversation.specialistId}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`${match.url}/${conversation.id}`} color="info" size="sm">

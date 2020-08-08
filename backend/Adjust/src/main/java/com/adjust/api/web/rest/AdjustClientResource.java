@@ -16,7 +16,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.StreamSupport;
 
 /**
  * REST controller for managing {@link com.adjust.api.domain.AdjustClient}.
@@ -81,15 +80,10 @@ public class AdjustClientResource {
     /**
      * {@code GET  /adjust-clients} : get all the adjustClients.
      *
-     * @param filter the filter of the request.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of adjustClients in body.
      */
     @GetMapping("/adjust-clients")
-    public List<AdjustClientDTO> getAllAdjustClients(@RequestParam(required = false) String filter) {
-        if ("conversation-is-null".equals(filter)) {
-            log.debug("REST request to get all AdjustClients where conversation is null");
-            return adjustClientService.findAllWhereConversationIsNull();
-        }
+    public List<AdjustClientDTO> getAllAdjustClients() {
         log.debug("REST request to get all AdjustClients");
         return adjustClientService.findAll();
     }

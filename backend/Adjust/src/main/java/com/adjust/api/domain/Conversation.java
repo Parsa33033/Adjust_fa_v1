@@ -23,13 +23,11 @@ public class Conversation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private AdjustClient client;
+    @Column(name = "client_id")
+    private Long clientId;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Specialist specialist;
+    @Column(name = "specialist_id")
+    private Long specialistId;
 
     @OneToMany(mappedBy = "conversation")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -44,30 +42,30 @@ public class Conversation implements Serializable {
         this.id = id;
     }
 
-    public AdjustClient getClient() {
-        return client;
+    public Long getClientId() {
+        return clientId;
     }
 
-    public Conversation client(AdjustClient adjustClient) {
-        this.client = adjustClient;
+    public Conversation clientId(Long clientId) {
+        this.clientId = clientId;
         return this;
     }
 
-    public void setClient(AdjustClient adjustClient) {
-        this.client = adjustClient;
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
-    public Specialist getSpecialist() {
-        return specialist;
+    public Long getSpecialistId() {
+        return specialistId;
     }
 
-    public Conversation specialist(Specialist specialist) {
-        this.specialist = specialist;
+    public Conversation specialistId(Long specialistId) {
+        this.specialistId = specialistId;
         return this;
     }
 
-    public void setSpecialist(Specialist specialist) {
-        this.specialist = specialist;
+    public void setSpecialistId(Long specialistId) {
+        this.specialistId = specialistId;
     }
 
     public Set<ChatMessage> getMessages() {
@@ -117,6 +115,8 @@ public class Conversation implements Serializable {
     public String toString() {
         return "Conversation{" +
             "id=" + getId() +
+            ", clientId=" + getClientId() +
+            ", specialistId=" + getSpecialistId() +
             "}";
     }
 }

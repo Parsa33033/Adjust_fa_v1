@@ -1,6 +1,5 @@
 package com.adjust.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -66,10 +65,6 @@ public class AdjustClient implements Serializable {
     @OneToMany(mappedBy = "client")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<AdjustProgram> programs = new HashSet<>();
-
-    @OneToOne(mappedBy = "client")
-    @JsonIgnore
-    private Conversation conversation;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -258,19 +253,6 @@ public class AdjustClient implements Serializable {
 
     public void setPrograms(Set<AdjustProgram> adjustPrograms) {
         this.programs = adjustPrograms;
-    }
-
-    public Conversation getConversation() {
-        return conversation;
-    }
-
-    public AdjustClient conversation(Conversation conversation) {
-        this.conversation = conversation;
-        return this;
-    }
-
-    public void setConversation(Conversation conversation) {
-        this.conversation = conversation;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

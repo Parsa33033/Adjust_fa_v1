@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AdjustDropDownField extends StatefulWidget {
+  Map itemsMap;
   String hintText;
   Icon icon;
   Color primaryColor;
@@ -19,9 +20,10 @@ class AdjustDropDownField extends StatefulWidget {
   String value;
   TextAlign textAlign;
   Alignment alignment;
-  Function(String) setValue;
+  Function(dynamic) setValue;
 
   AdjustDropDownField({
+    this.itemsMap,
     this.hintText,
     this.icon,
     this.primaryColor,
@@ -113,7 +115,7 @@ class _AdjustDropDownFieldState extends State<AdjustDropDownField> {
           value: this.widget.value,
           onChanged: (String val) {
             String keyMap;
-            GENDER_LIST.forEach((key, value) {
+            this.widget.itemsMap.forEach((key, value) {
               if (value == val) this.widget.setValue(key);
             });
             setState(() {

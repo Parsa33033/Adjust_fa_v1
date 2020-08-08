@@ -23,23 +23,3 @@ class ClientState extends Client {
       : super(id, username, firstName, lastName, birthDate, age, gender, token,
             score, image, imageContentType);
 }
-
-
-
-void setClientState(BuildContext context, Client client) {
-  ClientState clientState = ClientState(
-      client.id,
-      client.username,
-      client.firstName,
-      client.lastName,
-      client.birthDate,
-      client.age,
-      client.gender,
-      client.token,
-      client.score,
-      client.image,
-      client.imageContentType);
-
-  StoreProvider.of<AppState>(context)
-      .dispatch(UpdateClientAction(payload: clientState));
-}

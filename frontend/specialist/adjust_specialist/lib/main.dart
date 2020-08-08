@@ -5,12 +5,9 @@ import 'package:adjust_specialist/pages/start_page.dart';
 import 'package:adjust_specialist/pages/main_page.dart';
 import 'package:adjust_specialist/pages/profile_page.dart';
 import 'package:adjust_specialist/reducers/authentication_reducer.dart';
-import 'package:adjust_specialist/reducers/client_reducer.dart';
 import 'package:adjust_specialist/reducers/message_reducer.dart';
 import 'package:adjust_specialist/reducers/program_reducer.dart';
-import 'package:adjust_specialist/reducers/shoping_item_reducer.dart';
 import 'package:adjust_specialist/reducers/specialist_reducer.dart';
-import 'package:adjust_specialist/reducers/tutorial_reducer.dart';
 import 'package:adjust_specialist/reducers/user_reducer.dart';
 import 'package:adjust_specialist/states/app_state.dart';
 import 'package:flutter/material.dart';
@@ -25,11 +22,8 @@ void main() {
   final reducers = combineReducers<AppState>([
     TypedReducer<AppState, dynamic>(userReducer),
     TypedReducer<AppState, dynamic>(authenticationReducer),
-    TypedReducer<AppState, dynamic>(clientReducer),
-    TypedReducer<AppState, dynamic>(shopingItemReducer),
-    TypedReducer<AppState, dynamic>(tutorialReducer),
-    TypedReducer<AppState, dynamic>(programReducer),
     TypedReducer<AppState, dynamic>(specialistReducer),
+    TypedReducer<AppState, dynamic>(programReducer),
     TypedReducer<AppState, dynamic>(messageReducer),
   ]);
   store = Store<AppState>(reducers, initialState: appStateInit);

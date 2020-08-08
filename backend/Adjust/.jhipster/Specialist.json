@@ -54,13 +54,6 @@
       "otherEntityName": "adjustProgram",
       "otherEntityRelationshipName": "specialist",
       "relationshipName": "programs"
-    },
-    {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "conversation",
-      "otherEntityRelationshipName": "specialist",
-      "relationshipName": "conversation",
-      "ownerSide": false
     }
   ],
   "changelogDate": "20200731132620",

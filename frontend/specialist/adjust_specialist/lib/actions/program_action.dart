@@ -52,27 +52,7 @@ class SetFitnessProgramAction {
   SetFitnessProgramAction({this.payload});
 }
 
-
-Future<int> requestForProgram(BuildContext context,
-    ProgramDTO programDTO) async {
-  String jwt = await getJwt(context);
-
-  Map<String, String> headers = Map<String, String>()
-    ..putIfAbsent("Authorization", () => "Bearer " + jwt)..putIfAbsent(
-        "Content-Type", () => "application/json");
-
-  String content = jsonEncode(programDTO.toJson());
-
-  http.Response response = await http.post(REQUEST_PROGRAM_URL,
-      headers: headers, body: content, encoding: Encoding.getByName("UTF-8"));
-  if (response.statusCode == HttpStatus.ok) {
-    // set a get all requests later
-    return 1;
-  }
-  return 0;
-}
-
-Future<int> getClientPrograms(BuildContext context) async {
+Future<int> getSpecialistPrograms(BuildContext context) async {
   String jwt = await getJwt(context);
 
   Map<String, String> headers = Map<String, String>()

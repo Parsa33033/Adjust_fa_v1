@@ -32,6 +32,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class ConversationResourceIT {
 
+    private static final Long DEFAULT_CLIENT_ID = 1L;
+    private static final Long UPDATED_CLIENT_ID = 2L;
+
+    private static final Long DEFAULT_SPECIALIST_ID = 1L;
+    private static final Long UPDATED_SPECIALIST_ID = 2L;
+
     @Autowired
     private ConversationRepository conversationRepository;
 
@@ -56,7 +62,9 @@ public class ConversationResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Conversation createEntity(EntityManager em) {
-        Conversation conversation = new Conversation();
+        Conversation conversation = new Conversation()
+            .clientId(DEFAULT_CLIENT_ID)
+            .specialistId(DEFAULT_SPECIALIST_ID);
         return conversation;
     }
     /**
@@ -66,7 +74,9 @@ public class ConversationResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Conversation createUpdatedEntity(EntityManager em) {
-        Conversation conversation = new Conversation();
+        Conversation conversation = new Conversation()
+            .clientId(UPDATED_CLIENT_ID)
+            .specialistId(UPDATED_SPECIALIST_ID);
         return conversation;
     }
 
@@ -90,6 +100,8 @@ public class ConversationResourceIT {
         List<Conversation> conversationList = conversationRepository.findAll();
         assertThat(conversationList).hasSize(databaseSizeBeforeCreate + 1);
         Conversation testConversation = conversationList.get(conversationList.size() - 1);
+        assertThat(testConversation.getClientId()).isEqualTo(DEFAULT_CLIENT_ID);
+        assertThat(testConversation.getSpecialistId()).isEqualTo(DEFAULT_SPECIALIST_ID);
     }
 
     @Test
@@ -123,7 +135,9 @@ public class ConversationResourceIT {
         restConversationMockMvc.perform(get("/api/conversations?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(conversation.getId().intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(conversation.getId().intValue())))
+            .andExpect(jsonPath("$.[*].clientId").value(hasItem(DEFAULT_CLIENT_ID.intValue())))
+            .andExpect(jsonPath("$.[*].specialistId").value(hasItem(DEFAULT_SPECIALIST_ID.intValue())));
     }
     
     @Test
@@ -136,7 +150,9 @@ public class ConversationResourceIT {
         restConversationMockMvc.perform(get("/api/conversations/{id}", conversation.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(conversation.getId().intValue()));
+            .andExpect(jsonPath("$.id").value(conversation.getId().intValue()))
+            .andExpect(jsonPath("$.clientId").value(DEFAULT_CLIENT_ID.intValue()))
+            .andExpect(jsonPath("$.specialistId").value(DEFAULT_SPECIALIST_ID.intValue()));
     }
     @Test
     @Transactional
@@ -158,6 +174,9 @@ public class ConversationResourceIT {
         Conversation updatedConversation = conversationRepository.findById(conversation.getId()).get();
         // Disconnect from session so that the updates on updatedConversation are not directly saved in db
         em.detach(updatedConversation);
+        updatedConversation
+            .clientId(UPDATED_CLIENT_ID)
+            .specialistId(UPDATED_SPECIALIST_ID);
         ConversationDTO conversationDTO = conversationMapper.toDto(updatedConversation);
 
         restConversationMockMvc.perform(put("/api/conversations")
@@ -169,6 +188,8 @@ public class ConversationResourceIT {
         List<Conversation> conversationList = conversationRepository.findAll();
         assertThat(conversationList).hasSize(databaseSizeBeforeUpdate);
         Conversation testConversation = conversationList.get(conversationList.size() - 1);
+        assertThat(testConversation.getClientId()).isEqualTo(UPDATED_CLIENT_ID);
+        assertThat(testConversation.getSpecialistId()).isEqualTo(UPDATED_SPECIALIST_ID);
     }
 
     @Test

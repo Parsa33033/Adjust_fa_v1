@@ -36,9 +36,10 @@ import 'package:simple_image_crop/simple_image_crop.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 
 class BodyCompositionPage extends StatefulWidget {
-  SpecialistState specialist;
+  SpecialistState specialistState;
+  ClientState clientState;
 
-  BodyCompositionPage(this.specialist);
+  BodyCompositionPage(this.specialistState, this.clientState);
 
   @override
   _BodyCompositionPageState createState() => _BodyCompositionPageState();
@@ -96,7 +97,7 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
     muscleMassTextFieldController = TextEditingController();
     fatMassTextFieldController = TextEditingController();
 
-    ClientState clientState = store.state.clientState;
+    ClientState clientState = this.widget.clientState;
 
     // name
     nameTextFieldController.text =
@@ -665,7 +666,7 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
                                 }
 
                                 double lbm =
-                                    state.clientState.gender == Gender.MALE
+                                  this.widget.clientState.gender == Gender.MALE
                                         ? (0.32810 * weight) +
                                             (0.33929 * height) -
                                             29.5336
@@ -677,7 +678,7 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
 
                                 // Find out your age
                                 age = Age.dateDifference(
-                                    fromDate: state.clientState.birthDate,
+                                    fromDate: this.widget.clientState.birthDate,
                                     toDate: DateTime.now(),
                                     includeToDate: false);
                                 BodyCompositionDTO bodyCompositionDTO =
@@ -694,7 +695,7 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
                                         null,
                                         fatMass,
                                         null,
-                                        state.clientState.gender,
+                                        this.widget.clientState.gender,
                                         age.years,
                                         _bodyImageFile != null
                                             ? base64Encode(_bodyImageFile)
@@ -721,29 +722,29 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
                                     false,
                                     null,
                                     null,
-                                    state.clientState.id,
-                                    this.widget.specialist.id,
+                                    this.widget.clientState.id,
+                                    this.widget.specialistState.id,
                                     null,
                                     null,
                                     bodyCompositionDTOList,
                                     null,
                                     null);
-                                int i = await requestForProgram(
-                                    context, programDTO);
-                                if (i == 1) {
-                                  Navigator.of(context, rootNavigator: true)
-                                      .pop();
-                                  showAdjustDialog(context, SUCCESS, true, () {
-                                    Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                            builder: (context) => MainPage()));
-                                  }, GREEN_COLOR);
-                                } else {
-                                  Navigator.of(context, rootNavigator: true)
-                                      .pop();
-                                  showAdjustDialog(context, FAILURE, false,
-                                      null, GREEN_COLOR);
-                                }
+//                                int i = await requestForProgram(
+//                                    context, programDTO);
+//                                if (i == 1) {
+//                                  Navigator.of(context, rootNavigator: true)
+//                                      .pop();
+//                                  showAdjustDialog(context, SUCCESS, true, () {
+//                                    Navigator.of(context).pushReplacement(
+//                                        MaterialPageRoute(
+//                                            builder: (context) => MainPage()));
+//                                  }, GREEN_COLOR);
+//                                } else {
+//                                  Navigator.of(context, rootNavigator: true)
+//                                      .pop();
+//                                  showAdjustDialog(context, FAILURE, false,
+//                                      null, GREEN_COLOR);
+//                                }
                               } else {
                                 showAdjustDialog(
                                     context,
