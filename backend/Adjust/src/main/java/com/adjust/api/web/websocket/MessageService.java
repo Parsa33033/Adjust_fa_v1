@@ -69,14 +69,26 @@ public class MessageService {
         chatMessageDTO.setConversationId(conversation.getId());
         chatMessageDTO.setText(msg.getMessage());
         chatMessageService.save(chatMessageDTO);
-        simpMessagingTemplate.convertAndSend("/topic/"+ msg.getReceiver() +"/reply", msg + ": got the message");
+        simpMessagingTemplate.convertAndSend("/topic/"+ msg.getReceiver() +"/reply", msg.getMessage());
     }
 
-    @MessageMapping("/c/chat.message")
+    @MessageMapping("/specialist/chat.message")
     @SendTo("/topic/reply")
     public void sendMessageBySpecialist(@Payload MessageDTO msg) {
         String userLogin = SecurityUtils.getCurrentUserLogin().orElseThrow(() -> new AccountResourceException("Current user login not found"));
-        msg.setSender(userLogin);
-        simpMessagingTemplate.convertAndSend("/topic/"+ msg.getReceiver() +"/reply", msg.getMessage() + ": got the message");
+        ChatMessageDTO chatMessageDTO = new ChatMessageDTO();
+        chatMessageDTO.setClientId(msg.getClientId());
+        chatMessageDTO.setSpecialistId(msg.getSpecialistId());
+        chatMessageDTO.setSender(userLogin);
+        chatMessageDTO.setClientUsername(msg.getReceiver());
+        chatMessageDTO.setSpecialistUsername(userLogin);
+        AdjustClient adjustClient = adjustClientRepository.findAdjustClientByUsername(msg.getReceiver()).get();
+        Specialist specialist = specialistRepository.findByUsername(userLogin).get();
+        chatMessageDTO.setReceiver(specialist.getUsername());
+        Conversation conversation = conversationRepository.findByClientIdAndSpecialistId(adjustClient.getId(), specialist.getId()).get();
+        chatMessageDTO.setConversationId(conversation.getId());
+        chatMessageDTO.setText(msg.getMessage());
+        chatMessageService.save(chatMessageDTO);
+        simpMessagingTemplate.convertAndSend("/topic/"+ msg.getReceiver() +"/reply", msg.getMessage() );
     }
 }

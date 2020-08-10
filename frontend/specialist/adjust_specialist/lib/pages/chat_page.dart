@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:adjust_specialist/actions/message_action.dart';
@@ -32,9 +33,15 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final GlobalKey<DashChatState> _chatViewKey = GlobalKey<DashChatState>();
 
-  ChatUser user;
+  static ChatUser user = ChatUser(
+    name: "",
+    uid: "1",
+  );
 
-  ChatUser otherUser;
+  final ChatUser otherUser = ChatUser(
+    name: "c",
+    uid: "2",
+  );
 
   List<ChatMessage> messages = List<ChatMessage>();
   var m = List<ChatMessage>();
@@ -55,35 +62,39 @@ class _ChatPageState extends State<ChatPage> {
     username = state.userState.login;
     clientState = this.widget.clientState;
     specialistState = this.widget.specialistState;
+    user = ChatUser(
+      name: specialistState.username,
+      firstName: specialistState.firstName,
+      lastName: specialistState.lastName,
+      uid: specialistState.id.toString(),
+      avatar: "",
+    );
+//    otherUser = ChatUser(
+//      name: clientState.username,
+//      uid: clientState.id.toString(),
+//    );
     clientId = clientState.id;
     specialistId = specialistState.id;
     initiateSession();
-
-
   }
 
-  void initiateSession() async {
-    user = ChatUser(
-      name: clientState.username,
-      firstName: clientState.firstName,
-      lastName: clientState.lastName,
-      uid: clientState.id.toString(),
-      avatar: "",
-    );
-    otherUser = ChatUser(
-      name: specialistState.username,
-      uid: specialistState.id.toString(),
-    );
+  void initiateSession() {
     messages = store.state.messagesState.messages.map((e) {
       ChatUser u = e.sender == user.name ? user : otherUser;
-      return ChatMessage(text: e.message, user: u);
+      ChatMessage chatMessage = ChatMessage(text: e.message, user: u);
+      return chatMessage;
     }).toList();
+
     mainStompClient.subscribe(destination: "/topic/"+ StompInstance.getUsername() +"/reply", headers: StompInstance.getHeaders(), callback: (StompFrame frame) {
       ChatMessage chatMessage = ChatMessage(
           text: frame.body.toString(),
           user: otherUser
       );
-      messages.add(chatMessage);
+      if (this.mounted) {
+        setState(() {
+          messages.add(chatMessage);
+        });
+      }
     });
   }
 
@@ -108,7 +119,7 @@ class _ChatPageState extends State<ChatPage> {
 
   void onSend(ChatMessage message) async {
 
-    MessageDTO messageDTO = MessageDTO(username, this.widget.specialistState.username, message.text, clientId, specialistId);
+    MessageDTO messageDTO = MessageDTO(username, clientState.username, message.text, clientId, specialistId);
     StompInstance.sendMessage(context, mainStompClient, messageDTO);
 
     setState(() {
@@ -125,7 +136,7 @@ class _ChatPageState extends State<ChatPage> {
             child: Directionality(
               textDirection: TextDirection.rtl,
               child: Text(
-                "سوال از متخصص",
+                "سوالات " + clientState.firstName + " " + clientState.lastName,
                 style: TextStyle(
                     fontFamily: "Iransans", fontSize: 20, color: WHITE_COLOR),
               ),
@@ -199,7 +210,7 @@ class _ChatPageState extends State<ChatPage> {
               });
             },
             onLoadEarlier: () {
-              print("laoding...");
+              print("loading...");
             },
             shouldShowLoadEarlier: false,
             showTraillingBeforeSend: true,

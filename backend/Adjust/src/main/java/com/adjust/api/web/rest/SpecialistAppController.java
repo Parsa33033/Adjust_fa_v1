@@ -12,6 +12,7 @@ import com.adjust.api.web.rest.errors.InvalidPasswordException;
 import com.adjust.api.web.rest.errors.LoginAlreadyUsedException;
 import com.adjust.api.web.rest.vm.LoginVM;
 import com.adjust.api.web.rest.vm.ManagedUserVM;
+import com.adjust.api.web.websocket.dto.MessageDTO;
 import io.github.jhipster.web.util.HeaderUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -397,4 +398,19 @@ public class SpecialistAppController {
         adjustProgramService.save(adjustProgramDTO);
     }
 
+
+    @GetMapping("/messages")
+    public ResponseEntity<List<MessageDTO>> getSpecialistMessages(@RequestParam("client-id") Long clientId, @RequestParam("specialist-id") Long specialistId) {
+        List<ChatMessage> chatMessages = chatMessageRepository.findAllByClientIdAndSpecialistId(clientId, specialistId);
+        List<MessageDTO> messageDTOList = chatMessages.stream().map((chatMessage) -> {
+            MessageDTO messageDTO = new MessageDTO();
+            messageDTO.setClientId(chatMessage.getClientId());
+            messageDTO.setMessage(chatMessage.getText());
+            messageDTO.setSpecialistId(chatMessage.getSpecialistId());
+            messageDTO.setSender(chatMessage.getSender());
+            messageDTO.setReceiver(chatMessage.getReceiver());
+            return messageDTO;
+        }).collect(Collectors.toList());
+        return ResponseEntity.ok(messageDTOList);
+    }
 }

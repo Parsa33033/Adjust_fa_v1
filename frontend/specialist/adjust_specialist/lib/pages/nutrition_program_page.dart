@@ -13,6 +13,7 @@ import 'package:adjust_specialist/dto/nutrition_dto.dart';
 import 'package:adjust_specialist/dto/nutrition_program_dto.dart';
 import 'package:adjust_specialist/dto/program_dto.dart';
 import 'package:adjust_specialist/main.dart';
+import 'package:adjust_specialist/pages/main_page.dart';
 import 'package:adjust_specialist/states/app_state.dart';
 import 'package:adjust_specialist/states/nutrition_program_state.dart';
 import 'package:adjust_specialist/states/nutrition_state.dart';
@@ -1600,11 +1601,19 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                               fontSize: 16,
                               primaryColor: RED_COLOR,
                               onPressed: () {
-                                ProgramState programState = this.widget.programState;
-                                this.nutritionProgramDTO.description = descriptionTextEditingController.text;
-                                this.nutritionProgramDTO.meals = this.mealDTOList;
-                                ProgramDTO programDTO = ProgramDTO(programState.id, null, null, null, null, programState.paid, null, null, null, null, null, null, null, this.nutritionProgramDTO, null);
-                                designNutritionProgram(context, programDTO);
+                                showAdjustDialog(context, SURE_WITH_DECISION, true, () async {
+                                  ProgramState programState = this.widget.programState;
+                                  this.nutritionProgramDTO.description = descriptionTextEditingController.text;
+                                  this.nutritionProgramDTO.meals = this.mealDTOList;
+                                  ProgramDTO programDTO = ProgramDTO(programState.id, null, null, null, null, programState.paid, null, null, null, null, null, null, null, this.nutritionProgramDTO, null);
+                                  int i = await designNutritionProgram(context, programDTO);
+                                  if (i == 1) {
+                                    showAdjustDialog(context, SUCCESS, false, null, RED_COLOR);
+                                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainPage()));
+                                  } else {
+                                    showAdjustDialog(context, FAILURE, false, null, RED_COLOR);
+                                  }
+                                }, RED_COLOR);
                               },
                             ),
                           ))

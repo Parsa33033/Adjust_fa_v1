@@ -20,7 +20,7 @@ class AdjustDropDownField extends StatefulWidget {
   String value;
   TextAlign textAlign;
   Alignment alignment;
-  Function(dynamic) setValue;
+  Function(String) setValue;
 
   AdjustDropDownField({
     this.itemsMap,

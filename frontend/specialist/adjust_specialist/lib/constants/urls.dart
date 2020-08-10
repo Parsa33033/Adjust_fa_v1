@@ -6,7 +6,7 @@ final String HOST = "10.0.2.2:8080";
 final String BASE_URL = "http://" + HOST;
 final String BASE_WS = 'ws://' + HOST + '/websocket/websocket';
 
-final String MESSAGE_MAPPING = "/app/websocket/client/chat.message";
+final String MESSAGE_MAPPING = "/app/websocket/specialist/chat.message";
 
 final String REGISTER_URL = BASE_URL + "/api/specialist/app/register";
 final String LOGIN_URL = BASE_URL + "/api/authenticate";

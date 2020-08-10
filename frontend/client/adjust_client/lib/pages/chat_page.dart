@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:adjust_client/actions/message_action.dart';
@@ -31,9 +32,16 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final GlobalKey<DashChatState> _chatViewKey = GlobalKey<DashChatState>();
 
-  ChatUser user;
+  static ChatUser user = ChatUser(
+    name: "",
+    uid: "1",
+  );
 
-  ChatUser otherUser;
+  final ChatUser otherUser = ChatUser(
+    name: "s",
+    uid: "2",
+  );
+
 
   List<ChatMessage> messages = List<ChatMessage>();
   var m = List<ChatMessage>();
@@ -54,6 +62,17 @@ class _ChatPageState extends State<ChatPage> {
     username = state.userState.login;
     clientState = state.clientState;
     specialistState = this.widget.specialistState;
+    user = ChatUser(
+      name: clientState.username,
+      firstName: clientState.firstName,
+      lastName: clientState.lastName,
+      uid: clientState.id.toString(),
+      avatar: "",
+    );
+//    otherUser = ChatUser(
+//      name: specialistState.username,
+//      uid: specialistState.id.toString(),
+//    );
     clientId = clientState.id;
     specialistId = specialistState.id;
     initiateSession();
@@ -62,17 +81,7 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void initiateSession() async {
-    user = ChatUser(
-      name: clientState.username,
-      firstName: clientState.firstName,
-      lastName: clientState.lastName,
-      uid: clientState.id.toString(),
-      avatar: "",
-    );
-    otherUser = ChatUser(
-      name: specialistState.username,
-      uid: specialistState.id.toString(),
-    );
+
     messages = store.state.messagesState.messages.map((e) {
       ChatUser u = e.sender == user.name ? user : otherUser;
       return ChatMessage(text: e.message, user: u);
@@ -82,7 +91,11 @@ class _ChatPageState extends State<ChatPage> {
           text: frame.body.toString(),
           user: otherUser
       );
-      messages.add(chatMessage);
+      if (this.mounted) {
+        setState(() {
+          messages.add(chatMessage);
+        });
+      }
     });
   }
 
