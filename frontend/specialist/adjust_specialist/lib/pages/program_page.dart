@@ -151,18 +151,9 @@ class _ProgramPageState extends State<ProgramPage> {
                                 ),
                               ),
                               onTap: () {
-                                if (program.nutritionProgramState != null) {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          NutritionProgramPage(pos)));
-                                } else {
-                                  showAdjustDialog(
-                                      context,
-                                      "برنامه تغذیه ی شما طراحی نشده است!",
-                                      false,
-                                      null,
-                                      RED_COLOR);
-                                }
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        NutritionProgramPage(pos, program)));
                               },
                             )
                           ],
@@ -308,11 +299,11 @@ class _ProgramPageState extends State<ProgramPage> {
                                             child: Directionality(
                                               textDirection: TextDirection.rtl,
                                               child: Text(
-                                                "متخصص: " +
-                                                    program.specialistState
+                                                "کلاینت: " +
+                                                    program.clientState
                                                         .firstName +
                                                     " " +
-                                                    program.specialistState
+                                                    program.clientState
                                                         .lastName,
                                                 style: TextStyle(
                                                     fontFamily: "Iransans",

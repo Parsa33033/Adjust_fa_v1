@@ -86,6 +86,7 @@ public class SpecialistAppController {
     private final BodyCompositionService bodyCompositionService;
     private final FitnessProgramService fitnessProgramService;
     private final NutritionProgramService nutritionProgramService;
+    private final AdjustNutritionService adjustNutritionService;
     private final MealService mealService;
     private final AdjustNutritionRepository adjustNutritionRepository;
     private final WorkoutService workoutService;
@@ -118,7 +119,7 @@ public class SpecialistAppController {
                                    TutorialRepository tutorialRepository, AdjustTutorialVideoService adjustTutorialVideoService,
                                    TutorialService tutorialService, TutorialVideoService tutorialVideoService, TutorialMapper tutorialMapper,
                                    AdjustShopingItemService adjustShopingItemService, OrderService orderService,
-                                   CartService cartService, ShopingItemService shopingItemService, AdjustTokensService adjustTokensService,
+                                   CartService cartService, ShopingItemService shopingItemService, AdjustTokensService adjustTokensService, AdjustNutritionService adjustNutritionService,
                                    SpecialistService specialistService, SpecialistMapper specialistMapper, AdjustProgramService adjustProgramService, ProgramDevelopmentService programDevelopmentService,
                                    BodyCompositionService bodyCompositionService, FitnessProgramService fitnessProgramService, NutritionProgramService nutritionProgramService,
                                    MealService mealService, AdjustNutritionRepository adjustNutritionRepository, WorkoutService workoutService, ExerciseService exerciseService, MoveService moveService,
@@ -175,6 +176,7 @@ public class SpecialistAppController {
         this.bodyCompositionRepository = bodyCompositionRepository;
         this.conversationService = conversationService;
         this.chatMessageRepository = chatMessageRepository;
+        this.adjustNutritionService = adjustNutritionService;
     }
 
     private static boolean checkPasswordLength(String password) {
@@ -271,7 +273,7 @@ public class SpecialistAppController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of adjustPrograms in body.
      */
     @GetMapping("/adjust-programs")
-    public List<DummyAdjustProgramDTO> getAllAdjustPrograms() {
+    public List<DummyAdjustProgramDTO> getAllAdjustProgramsForSpecialistApp() {
         String userLogin = SecurityUtils.getCurrentUserLogin().orElseThrow(() -> new AccountResourceException("Current user login not found"));
         SpecialistDTO specialistDTO = specialistRepository.findByUsername(userLogin).map(specialistMapper::toDto).get();
         List<AdjustProgram> adjustPrograms = adjustProgramRepository.findAllBySpecialist(specialistMapper.toEntity(specialistDTO));
@@ -357,6 +359,21 @@ public class SpecialistAppController {
         }).collect(Collectors.toList());
         log.debug("REST request to get all AdjustPrograms");
         return adjustProgramDTOList;
+    }
+
+    @GetMapping("/adjust-nutritions")
+    public ResponseEntity<List<DummyAdjustNutritionDTO>> getAdjustNutritionsForSpecialistApp() {
+        List<AdjustNutrition> adjustNutritions = adjustNutritionRepository.findAll();
+        List<DummyAdjustNutritionDTO> dummyAdjustNutritionDTOList = adjustNutritions.stream().map((adjustNutrition) -> {
+            List<DummyAdjustFoodDTO> dummyAdjustFoodDTOList = adjustNutrition.getFoods().stream().map(adjustFood -> {
+                DummyAdjustFoodDTO dummyAdjustFoodDTO = new DummyAdjustFoodDTO(adjustFoodMapper.toDto(adjustFood));
+                return dummyAdjustFoodDTO;
+            }).collect(Collectors.toList());
+            DummyAdjustNutritionDTO dummyAdjustNutritionDTO = new DummyAdjustNutritionDTO(adjustNutritionMapper.toDto(adjustNutrition));
+            dummyAdjustNutritionDTO.setFoods(dummyAdjustFoodDTOList);
+            return dummyAdjustNutritionDTO;
+        }).collect(Collectors.toList());
+        return ResponseEntity.ok(dummyAdjustNutritionDTOList);
     }
 
 }

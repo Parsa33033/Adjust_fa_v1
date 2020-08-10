@@ -66,6 +66,7 @@ class _MainPageState extends State<MainPage>
   }
 
   void fetchDependencies() async {
+    await getAdjustNutritionList(context);
     await getSpecialistPrograms(context);
   }
 
@@ -203,22 +204,22 @@ class _MainPageState extends State<MainPage>
                   flex: 5,
                   child: menuItem("برنامه ی تغذیه من",
                       "assets/nutrition_icon.png", RED_COLOR, () {
-                    Store<AppState> store = StoreProvider.of<AppState>(context);
-                    if (store.state.programListState.programs.length >= 1 &&
-                        store.state.programListState.programs.reversed
-                                .toList()[0]
-                                .nutritionProgramState != null) {
-                      store.dispatch(SetNutritionProgramAction(
-                          payload: store
-                              .state.programListState.programs.reversed
-                              .toList()[0]
-                              .nutritionProgramState));
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => NutritionProgramPage(0)));
-                    } else {
-                      showAdjustDialog(context, "برنامه ای موجود نمی باشد",
-                          false, null, RED_COLOR);
-                    }
+//                    Store<AppState> store = StoreProvider.of<AppState>(context);
+//                    if (store.state.programListState.programs.length >= 1 &&
+//                        store.state.programListState.programs.reversed
+//                                .toList()[0]
+//                                .nutritionProgramState != null) {
+//                      store.dispatch(SetNutritionProgramAction(
+//                          payload: store
+//                              .state.programListState.programs.reversed
+//                              .toList()[0]
+//                              .nutritionProgramState));
+//                      Navigator.of(context).push(MaterialPageRoute(
+//                          builder: (context) => NutritionProgramPage(0)));
+//                    } else {
+//                      showAdjustDialog(context, "برنامه ای موجود نمی باشد",
+//                          false, null, RED_COLOR);
+//                    }
                   }),
                 )
               ],

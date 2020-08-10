@@ -182,51 +182,53 @@ class _ProgramRequestPageState extends State<ProgramRequestPage> with TickerProv
   }
 
   Widget specialistList(AppState state) {
+    List<SpecialistState> specialistList = state.specialistListState.specialists.map((e) {
+      if (!e.busy) {
+        return e;
+      }
+      return null;
+    }).where((element) => element != null).toList();
+    specialistList.forEach((element) {print("----->${element.firstName}");});
     return Container(
       padding: EdgeInsets.all(20),
       child: ListView.builder(
-          itemCount: state.specialistListState.specialists.length,
+          itemCount: specialistList.length,
           itemBuilder: (BuildContext context, int pos) {
-            SpecialistState e = state.specialistListState.specialists[pos];
-            if (e.busy) {
-              return null;
-            } else {
-              Uint8List imageByte = Uint8List.fromList(base64Decode(e.image));
-              Image image = Image.memory(imageByte);
-
-              return AdjustInfoButton(
-                id: e.username,
-                width: 150,
-                height: 150,
-                title: e == null ? "" : "رشته: " + e.field + " - " + e.degree,
-                description: "", //e == null ? "" : "رزومه: " + e.resume ,
-                name: e == null ? "" : e.firstName + " " + e.lastName,
-                fontSize: 14,
-                isVertical: false,
-                primaryColor: YELLOW_COLOR,
-                primaryColorLight: LIGHT_YELLOW_COLOR,
-                secondaryColor: FONT_COLOR,
-                image: image,
-                imageIsCircular: true,
-                func: () async {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdjustItemPage(
-                      image: image,
-                      name: e.firstName + " " + e.lastName,
-                      title: e.degree + " - " + e.field,
-                      description: e.resume,
-                      buttonText: "انتخاب",
-                      isInfo: false,
-                      primaryColor: YELLOW_COLOR,
-                      primaryColorLight: LIGHT_YELLOW_COLOR,
-                      backgroundImagePath: "assets/bg_yellow.png",
-                      onButtonPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => BodyCompositionPage(e)));
-                      },
-                      imageIsCircular: true
-                  )));
-                },
-              );
-            }
+            SpecialistState e = specialistList[pos];
+            Uint8List imageByte = Uint8List.fromList(base64Decode(e.image));
+            Image image = Image.memory(imageByte);
+            return AdjustInfoButton(
+              id: e.username,
+              width: 150,
+              height: 150,
+              title: e == null ? "" : "رشته: " + e.field + " - " + e.degree,
+              description: "", //e == null ? "" : "رزومه: " + e.resume ,
+              name: e == null ? "" : e.firstName + " " + e.lastName,
+              fontSize: 14,
+              isVertical: false,
+              primaryColor: YELLOW_COLOR,
+              primaryColorLight: LIGHT_YELLOW_COLOR,
+              secondaryColor: FONT_COLOR,
+              image: image,
+              imageIsCircular: true,
+              func: () async {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => AdjustItemPage(
+                    image: image,
+                    name: e.firstName + " " + e.lastName,
+                    title: e.degree + " - " + e.field,
+                    description: e.resume,
+                    buttonText: "انتخاب",
+                    isInfo: false,
+                    primaryColor: YELLOW_COLOR,
+                    primaryColorLight: LIGHT_YELLOW_COLOR,
+                    backgroundImagePath: "assets/bg_yellow.png",
+                    onButtonPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => BodyCompositionPage(e)));
+                    },
+                    imageIsCircular: true
+                )));
+              },
+            );
           }),
     );
   }

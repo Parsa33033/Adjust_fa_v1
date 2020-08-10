@@ -51,6 +51,12 @@ final String FIELD = "رشته";
 final String RESUME = "رزومه";
 final String BUSY = "مشغول";
 
+final String CALORIES = "کالری";
+final String PROTEIN_PERCENTAGE = "درصد پروتئین";
+final String CARBS_PERCENTAGE = "درصد کربوهیدرات";
+final String FAT_PERCENTAGE = "درصد چربی";
+final String DESCRIPTION = "توضیحات";
+
 final Map<String, String> BUSY_LIST = Map<String, String>()
   ..putIfAbsent("true", () => "بله")
   ..putIfAbsent("false", () => "خیر");
@@ -106,3 +112,8 @@ final String MUSCLE = "عضله";
 
 final String TERMS_BODY_COMPOSITION = "توجه داشته باشید که ورودی هایی که علامت (*) دارند باید پر شوند ولی تمام ورودی ها نیاز به پر کردن نداشته ولی پر نکردن کامل مشخصات بدنی خود باعث کمبود دقت در برنامه های طراحی شده خواهد شد. در نتیجه مسوولیت عدم پر کردن کامل مشخصات بدنی به عهده ی خود شخص میباشد. ضمنا اعداد وارد شده برای مشخصات بدنی به صورت اعشار بوده (برای مثال 12.50 کیلوگرم برابر با 12 کیلو و پانصد گرم میباشد.)";
 final String ASSESS_NOTE = "توجه داشته باشید در طول روز فقط یک بار میتوانید عملکرد خود را ارزیابی کرده و امتیاز دریافت کنید. پس ترجیحا در انتهای روز ارزیابی را انجام دهید. تلاش کنید که با خود نیز صادق بوده و ارزیابی روز خود را آنطور که میبینید انجام دهید.";
+
+
+final List<String> MEAL_NAMES = ["صبحانه", "ناهار", "عصرانه", "شام", "میان وعده اول", "میان وعده دوم", "میان وعده سوم", "میان وعده چهارم", "میان وعده پنجم", "میان وعده ششم"];
+final String CHOOSE_NUTRITION = "انتخاب مواد غدایی برای برنامه";
+final String CHOOSE_MEAL = "انتخاب وعده غدایی برای برنامه";

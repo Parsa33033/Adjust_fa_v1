@@ -4,6 +4,7 @@ import 'package:adjust_specialist/actions/program_action.dart';
 import 'package:adjust_specialist/states/app_state.dart';
 import 'package:adjust_specialist/states/fitness_program_state.dart';
 import 'package:adjust_specialist/states/nutrition_program_state.dart';
+import 'package:adjust_specialist/states/nutrition_state.dart';
 import 'package:adjust_specialist/states/program_state.dart';
 
 AppState programReducer(AppState state, dynamic action) {
@@ -27,11 +28,24 @@ AppState programReducer(AppState state, dynamic action) {
     return state;
   } else if (action is SetFitnessProgramAction) {
     FitnessProgramState fitnessProgramState = state.fitnessProgramState;
-    fitnessProgramState.description = action.payload.description != null && action.payload.description != "" ? action.payload.description : fitnessProgramState.description;
-    fitnessProgramState.workouts = action.payload.workouts != null ? action.payload.workouts : fitnessProgramState.workouts;
-    fitnessProgramState.id = action.payload.id != null ? action.payload.id : fitnessProgramState.id;
-    fitnessProgramState.type = action.payload.type != null && action.payload.type != "" ? action.payload.type : fitnessProgramState.type;
+    fitnessProgramState.description =
+    action.payload.description != null && action.payload.description != ""
+        ? action.payload.description
+        : fitnessProgramState.description;
+    fitnessProgramState.workouts = action.payload.workouts != null
+        ? action.payload.workouts
+        : fitnessProgramState.workouts;
+    fitnessProgramState.id =
+    action.payload.id != null ? action.payload.id : fitnessProgramState.id;
+    fitnessProgramState.type =
+    action.payload.type != null && action.payload.type != "" ? action.payload
+        .type : fitnessProgramState.type;
     state.fitnessProgramState = fitnessProgramState;
+    return state;
+  } if (action is GetAdjustNutritions) {
+    NutritionStateList nutritionStateList = state.nutritionStateList;
+    nutritionStateList.nutritions = action.payload.nutritions != null ? action.payload.nutritions : nutritionStateList.nutritions;
+    state.nutritionStateList = nutritionStateList;
     return state;
   } else {
     return state;

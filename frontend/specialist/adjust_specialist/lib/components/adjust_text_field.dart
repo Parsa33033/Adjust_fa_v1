@@ -3,6 +3,7 @@
 import 'package:adjust_specialist/constants/adjust_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AdjustTextField extends StatelessWidget {
   String hintText;
@@ -17,6 +18,9 @@ class AdjustTextField extends StatelessWidget {
   double padding;
   double margin;
   TextAlign textAlign;
+  int maxLines;
+  Color fontColor;
+  TextInputType textInputType;
 
   AdjustTextField({
       this.hintText,
@@ -30,8 +34,14 @@ class AdjustTextField extends StatelessWidget {
       this.textDirection,
       this.padding,
       this.margin,
-      this.textAlign}) {
+      this.textAlign,
+      this.maxLines,
+      this.fontColor,
+      this.textInputType}) {
     this.textAlign = this.textAlign == null ? TextAlign.left : this.textAlign;
+    this.maxLines = this.maxLines == null ? 1 : this.maxLines;
+    this.fontColor = this.fontColor == null ? FONT_COLOR : this.fontColor;
+    this.textInputType = this.textInputType == null ? null : this.textInputType;
   }
 
   @override
@@ -42,6 +52,7 @@ class AdjustTextField extends StatelessWidget {
       child: Directionality(
         textDirection: textDirection,
         child: TextFormField(
+          keyboardType: this.textInputType,
           textAlign: this.textAlign,
           decoration: InputDecoration(
             focusColor: primaryColor,
@@ -81,15 +92,15 @@ class AdjustTextField extends StatelessWidget {
             ),
             labelText: hintText,
             prefixIcon: icon,
-            hintStyle: TextStyle(fontFamily: "Iransans", fontSize: 16, color: FONT_COLOR),
-            labelStyle: TextStyle(fontFamily: "Iransans", fontSize: 16, color: FONT_COLOR),
+            hintStyle: TextStyle(fontFamily: "Iransans", fontSize: 16, color: this.fontColor),
+            labelStyle: TextStyle(fontFamily: "Iransans", fontSize: 16, color: this.fontColor),
             enabled: true,
           ),
-          style: TextStyle(fontFamily: "Iransans", fontSize: 16, color: FONT_COLOR),
+          style: TextStyle(fontFamily: "Iransans", fontSize: 16, color: this.fontColor),
           enabled: this.enabled,
           obscureText: this.isPassword,
           controller: controller,
-          maxLines: 1,
+          maxLines: this.maxLines,
           validator: (String text) {
             return this.validator(text);
           },

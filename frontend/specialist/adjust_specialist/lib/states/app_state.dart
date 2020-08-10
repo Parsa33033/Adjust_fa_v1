@@ -3,6 +3,7 @@ import 'package:adjust_specialist/states/client_state.dart';
 import 'package:adjust_specialist/states/fitness_program_state.dart';
 import 'package:adjust_specialist/states/message_state.dart';
 import 'package:adjust_specialist/states/nutrition_program_state.dart';
+import 'package:adjust_specialist/states/nutrition_state.dart';
 import 'package:adjust_specialist/states/program_state.dart';
 import 'package:adjust_specialist/states/specialist_state.dart';
 import 'package:adjust_specialist/states/user_state.dart';
@@ -15,6 +16,7 @@ AppState appStateInit = AppState(
   nutritionProgramState: nutritionProgramStateInit,
   fitnessProgramState: fitnessProgramStateInit,
   messagesState: messagesStateInit,
+  nutritionStateList: nutritionStateListInit,
 );
 
 class AppState {
@@ -25,6 +27,7 @@ class AppState {
   NutritionProgramState nutritionProgramState;
   FitnessProgramState fitnessProgramState;
   MessagesState messagesState;
+  NutritionStateList nutritionStateList;
 
   AppState({
       this.userState,
@@ -33,5 +36,6 @@ class AppState {
       this.programListState,
       this.nutritionProgramState,
       this.fitnessProgramState,
-      this.messagesState});
+      this.messagesState,
+      this.nutritionStateList});
 }

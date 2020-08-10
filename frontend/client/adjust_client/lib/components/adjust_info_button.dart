@@ -151,7 +151,7 @@ class AdjustInfoButton extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Expanded(
-                      flex: 7,
+                      flex: 6,
                       child: Container(
                         padding: EdgeInsets.all(20),
                         alignment: Alignment.centerRight,
@@ -162,20 +162,26 @@ class AdjustInfoButton extends StatelessWidget {
                                 flex: 36,
                                 child: Align(
                                   alignment: Alignment.centerRight,
-                                  child: Directionality(
-                                    textDirection: TextDirection.rtl,
-                                    child: Text(this.name, style: TextStyle(fontFamily: "Iransans", fontSize: fontSize, color: secondaryColor)),
-                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: Text(this.name, style: TextStyle(fontFamily: "Iransans", fontSize: fontSize, color: secondaryColor)),
+                                    ),
+                                  )
                                 )
                             ),
                             Expanded(
                                 flex: 35,
                                 child: Align(
                                   alignment: Alignment.centerRight,
-                                  child: Directionality(
-                                    textDirection: TextDirection.rtl,
-                                    child: Text(this.title, style: TextStyle(fontFamily: "Iransans", fontSize: fontSize - 2, color: secondaryColor)),
-                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: Text(this.title, style: TextStyle(fontFamily: "Iransans", fontSize: fontSize - 2, color: secondaryColor)),
+                                    ),
+                                  )
                                 )
                             ),
                             Expanded(
@@ -193,7 +199,7 @@ class AdjustInfoButton extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      flex: 3,
+                      flex: 4,
                       child: Container(
                         width: this.width * 3/4,
                         height: this.height * 3/4,
@@ -225,9 +231,13 @@ class AdjustInfoButton extends StatelessWidget {
     return Container(
       child: Hero(
         tag: this.id,
-        child: CircleAvatar(
-          backgroundImage: image.image,
-        ),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: CircleAvatar(
+            radius: 80,
+            backgroundImage: image.image,
+          ),
+        )
       ),
     );
   }

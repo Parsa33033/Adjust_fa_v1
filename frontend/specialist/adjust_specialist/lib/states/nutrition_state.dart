@@ -1,6 +1,13 @@
 import 'package:adjust_specialist/model/nutrition.dart';
 import 'package:adjust_specialist/states/food_state.dart';
 
+final NutritionStateList nutritionStateListInit = NutritionStateList(List());
+
+class NutritionStateList {
+  List<NutritionState> nutritions;
+  NutritionStateList(this.nutritions);
+}
+
 class NutritionState extends Nutrition {
   List<FoodState> foods;
   NutritionState(

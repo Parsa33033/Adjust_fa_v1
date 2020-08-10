@@ -6,11 +6,14 @@ import 'package:adjust_specialist/constants/urls.dart';
 import 'package:adjust_specialist/dto/body_composition_dto.dart';
 import 'package:adjust_specialist/dto/client_dto.dart';
 import 'package:adjust_specialist/dto/fitness_program_dto.dart';
+import 'package:adjust_specialist/dto/food_dto.dart';
+import 'package:adjust_specialist/dto/nutrition_dto.dart';
 import 'package:adjust_specialist/dto/nutrition_program_dto.dart';
 import 'package:adjust_specialist/dto/program_development_dto.dart';
 import 'package:adjust_specialist/dto/program_dto.dart';
 import 'package:adjust_specialist/dto/specialist_dto.dart';
 import 'package:adjust_specialist/main.dart';
+import 'package:adjust_specialist/model/food.dart';
 import 'package:adjust_specialist/states/app_state.dart';
 import 'package:adjust_specialist/states/body_composition_state.dart';
 import 'package:adjust_specialist/states/client_state.dart';
@@ -50,6 +53,11 @@ class SetFitnessProgramAction {
   FitnessProgramState payload;
 
   SetFitnessProgramAction({this.payload});
+}
+
+class GetAdjustNutritions {
+  NutritionStateList payload;
+  GetAdjustNutritions({this.payload});
 }
 
 Future<int> getSpecialistPrograms(BuildContext context) async {
@@ -263,6 +271,33 @@ Future<int> setProgramDevelopment(BuildContext context,
     programState.programDevelopmentStateList = programDevelopmentStateList;
     store.state.programListState.programs.reversed.toList()[programIndex] = programState;
     store.dispatch(SetProgramListAction(payload: store.state.programListState));
+    return 1;
+  }
+  return 0;
+}
+
+
+Future<int> getAdjustNutritionList(BuildContext context) async {
+  String jwt = await getJwt(context);
+  Map<String, String> headers = Map<String, String>()
+    ..putIfAbsent("Authorization", () => "Bearer " + jwt);
+  http.Response response = await http.get(ADJUST_NUTRITION_URL, headers: headers);
+  if (response.statusCode == HttpStatus.ok) {
+    List l = jsonDecode(utf8.decode(response.bodyBytes));
+    List<NutritionState> nutritionStateList = l.map((e) {
+      NutritionDTO nutritionDTO = NutritionDTO.fromJson(e);
+      List<FoodState> foodStateList = nutritionDTO.foods.map((foodDTO) {
+        FoodState foodState = FoodState(foodDTO.id, foodDTO.name, foodDTO.description, foodDTO.nutritionId);
+        return foodState;
+      }).toList();
+      NutritionState nutritionState = NutritionState(nutritionDTO.id, nutritionDTO.name, nutritionDTO.description, nutritionDTO.unit, nutritionDTO.adjustNutritionId, nutritionDTO.caloriesPerUnit, nutritionDTO.proteinPerUnit, nutritionDTO.carbsPerUnit, nutritionDTO.fatInUnit, nutritionDTO.mealId, foodStateList);
+      return nutritionState;
+    }).toList();
+    try {
+      StoreProvider.of<AppState>(context).dispatch(GetAdjustNutritions(payload: NutritionStateList(nutritionStateList)));
+    } catch (e) {
+      store.dispatch(GetAdjustNutritions(payload: NutritionStateList(nutritionStateList)));
+    }
     return 1;
   }
   return 0;

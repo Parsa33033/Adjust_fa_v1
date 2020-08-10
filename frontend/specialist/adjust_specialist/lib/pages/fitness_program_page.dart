@@ -44,8 +44,6 @@ class _FitnessProgramPageState extends State<FitnessProgramPage> {
         context: context,
         child: Dialog(
           child: Container(
-//                            height: MediaQuery.of(context).size.height * 8/10,
-//                              width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.all(10),
               child: SingleChildScrollView(
                 child: Column(
