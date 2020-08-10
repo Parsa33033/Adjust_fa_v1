@@ -302,3 +302,18 @@ Future<int> getAdjustNutritionList(BuildContext context) async {
   }
   return 0;
 }
+
+Future<int> designNutritionProgram(BuildContext context, ProgramDTO programDTO) async {
+  String jwt = await getJwt(context);
+  Map<String, String> headers = Map<String, String>()
+    ..putIfAbsent("Authorization", () => "Bearer " + jwt)
+    ..putIfAbsent("Content-Type", () => "application/json");
+
+  String content = jsonEncode(programDTO.toJson());
+
+  http.Response response = await http.post(DESIGN_NUTRITION_PROGRAM_URL, headers: headers, body: content, encoding: Encoding.getByName("UTF-8"));
+  if (response.statusCode == HttpStatus.ok) {
+    return 1;
+  }
+  return 0;
+}

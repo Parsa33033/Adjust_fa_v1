@@ -116,4 +116,8 @@ final String ASSESS_NOTE = "توجه داشته باشید در طول روز ف
 
 final List<String> MEAL_NAMES = ["صبحانه", "ناهار", "عصرانه", "شام", "میان وعده اول", "میان وعده دوم", "میان وعده سوم", "میان وعده چهارم", "میان وعده پنجم", "میان وعده ششم"];
 final String CHOOSE_NUTRITION = "انتخاب مواد غدایی برای برنامه";
-final String CHOOSE_MEAL = "انتخاب وعده غدایی برای برنامه";
+final String CHOOSE_MEAL = "انتخاب وعده غذایی برای برنامه";
+final String CHOOSE_UNIT = "انتخاب واحد برای مواد غذایی";
+final String WANT_MEAL_REMOVED = "آیا مایل به حذف وعده ی غذایی هستید؟";
+final String ATLEAST_ONE_NUTRITION = "لطفا حداقل یک ماده غذایی انتخاب کنید!";
+final String ATLEAST_ONE_MEAL = "لطفا حداقل یک وعده غذایی انتخاب کنید!";

@@ -770,6 +770,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.3"
+  stepo:
+    dependency: "direct main"
+    description:
+      name: stepo
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   stepper_counter_swipe:
     dependency: "direct main"
     description:

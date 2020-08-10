@@ -110,9 +110,12 @@ public class SpecialistAppController {
     private final AdjustFoodRepository adjustFoodRepository;
     private final ProgramDevelopmentRepository programDevelopmentRepository;
     private final BodyCompositionRepository bodyCompositionRepository;
+    private final NutritionService nutritionService;
 
     private final ConversationService conversationService;
     private final ChatMessageRepository chatMessageRepository;
+
+
     public SpecialistAppController(SpecialistRepository specialistRepository, UserService userService, UserJWTController userJWTController, TokenProvider tokenProvider, AdjustClientService adjustClientService,
                                    AdjustClientRepository adjustClientRepository, AdjustClientMapper adjustClientMapper,
                                    AdjustTokensResource adjustTokensResource, AdjustTutorialService adjustTutorialService,
@@ -126,7 +129,8 @@ public class SpecialistAppController {
                                    ProgramDevelopmentMapper programDevelopmentMapper, BodyCompositionMapper bodyCompositionMapper, NutritionProgramMapper nutritionProgramMapper, FitnessProgramMapper fitnessProgramMapper, MealMapper mealMapper,
                                    NutritionMapper nutritionMapper, AdjustNutritionMapper adjustNutritionMapper, AdjustFoodMapper adjustFoodMapper, WorkoutMapper workoutMapper, ExerciseMapper exerciseMapper, MoveMapper moveMapper,
                                    AdjustProgramRepository adjustProgramRepository, AdjustProgramMapper adjustProgramMapper, AdjustFoodRepository adjustFoodRepository, ProgramDevelopmentRepository programDevelopmentRepository,
-                                   BodyCompositionRepository bodyCompositionRepository, ConversationService conversationService, ChatMessageRepository chatMessageRepository)  {
+                                   BodyCompositionRepository bodyCompositionRepository, ConversationService conversationService, ChatMessageRepository chatMessageRepository,
+                                   NutritionService nutritionService)  {
         this.specialistRepository = specialistRepository;
         this.userService = userService;
         this.userJWTController = userJWTController;
@@ -177,6 +181,7 @@ public class SpecialistAppController {
         this.conversationService = conversationService;
         this.chatMessageRepository = chatMessageRepository;
         this.adjustNutritionService = adjustNutritionService;
+        this.nutritionService = nutritionService;
     }
 
     private static boolean checkPasswordLength(String password) {
@@ -374,6 +379,22 @@ public class SpecialistAppController {
             return dummyAdjustNutritionDTO;
         }).collect(Collectors.toList());
         return ResponseEntity.ok(dummyAdjustNutritionDTOList);
+    }
+
+    @PostMapping("/design-nutrition-program")
+    public void designNutritionProgramBySpecialist(@RequestBody DummyAdjustProgramDTO dummyAdjustProgramDTO) {
+        AdjustProgramDTO adjustProgramDTO = adjustProgramService.findOne(dummyAdjustProgramDTO.getId()).get();
+        NutritionProgramDTO nutritionProgramDTO = nutritionProgramService.save(dummyAdjustProgramDTO.getNutritionProgram());
+        dummyAdjustProgramDTO.getNutritionProgram().getMeals().forEach((mealDTO) -> {
+            mealDTO.setNutritionProgramId(nutritionProgramDTO.getId());
+            MealDTO mealDTOSaved = mealService.save(mealDTO);
+            mealDTO.getNutritions().forEach((nutritionDTO) -> {
+                nutritionDTO.setMealId(mealDTOSaved.getId());
+                nutritionService.save(nutritionDTO);
+            });
+        });
+        adjustProgramDTO.setNutritionProgramId(nutritionProgramDTO.getId());
+        adjustProgramService.save(adjustProgramDTO);
     }
 
 }
