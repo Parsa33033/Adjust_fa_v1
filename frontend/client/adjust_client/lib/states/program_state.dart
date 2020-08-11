@@ -12,7 +12,6 @@ import 'package:adjust_client/states/specialist_state.dart';
 
 import 'nutrition_program_state.dart';
 
-
 final ProgramListState programListStateInit = ProgramListState(List());
 
 class ProgramListState {
@@ -28,12 +27,14 @@ class ProgramState extends Program {
   List<BodyCompositionState> bodyCompositionStateList;
   NutritionProgramState nutritionProgramState;
   FitnessProgramState fitnessProgramState;
+
   ProgramState(
       int id,
       DateTime createdAt,
       DateTime expirationDate,
       bool designed,
-      bool done,
+      bool nutritionDone,
+      bool fitnessDone,
       bool paid,
       int fitnessProgramId,
       int nutritionProgramId,
@@ -50,7 +51,8 @@ class ProgramState extends Program {
             createdAt,
             expirationDate,
             designed,
-            done,
+            nutritionDone,
+            fitnessDone,
             paid,
             fitnessProgramId,
             nutritionProgramId,

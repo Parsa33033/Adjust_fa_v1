@@ -188,15 +188,14 @@ class _ProgramRequestPageState extends State<ProgramRequestPage> with TickerProv
       }
       return null;
     }).where((element) => element != null).toList();
-    specialistList.forEach((element) {print("----->${element.firstName}");});
     return Container(
       padding: EdgeInsets.all(20),
       child: ListView.builder(
           itemCount: specialistList.length,
           itemBuilder: (BuildContext context, int pos) {
             SpecialistState e = specialistList[pos];
-            Uint8List imageByte = Uint8List.fromList(base64Decode(e.image));
-            Image image = Image.memory(imageByte);
+            Uint8List imageByte = e.image == null ? null : Uint8List.fromList(base64Decode(e.image));
+            Image image = imageByte == null ? Image.asset("assets/adjust_logo.png") : Image.memory(imageByte);
             return AdjustInfoButton(
               id: e.username,
               width: 150,

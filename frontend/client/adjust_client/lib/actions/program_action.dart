@@ -224,7 +224,8 @@ Future<int> getClientPrograms(BuildContext context) async {
           programDTO.createdAt,
           programDTO.expirationDate,
           programDTO.designed,
-          programDTO.done,
+          programDTO.nutritionDone,
+          programDTO.fitnessDone,
           programDTO.paid,
           programDTO.fitnessProgramId,
           programDTO.nutritionProgramId,
@@ -286,4 +287,17 @@ Future<int> setProgramDevelopment(BuildContext context,
     return 1;
   }
   return 0;
+}
+
+Future<double> getProgramPrice(BuildContext context) async {
+  String jwt = await getJwt(context);
+
+  Map<String, String> headers = Map<String, String>()
+    ..putIfAbsent("Authorization", () => "Bearer " + jwt);
+
+  http.Response response = await http.get(PROGRAM_PRICE, headers: headers);
+  if (response.statusCode == HttpStatus.ok) {
+    return double.parse(response.body);
+  }
+  return -1;
 }

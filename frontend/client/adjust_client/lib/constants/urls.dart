@@ -34,3 +34,5 @@ final String PROGRAM_DEVELOPMENT_URL = BASE_URL + "/api/client/app/program-devel
 
 
 final String MESSAGE_URL = BASE_URL + "/api/client/app/messages";
+
+final String PROGRAM_PRICE = BASE_URL + "/api/client/app/program-price";

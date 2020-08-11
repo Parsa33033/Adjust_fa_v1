@@ -1,6 +1,7 @@
 package com.adjust.api.web.rest;
 
 import com.adjust.api.domain.*;
+import com.adjust.api.domain.enumeration.PurchaseOption;
 import com.adjust.api.repository.*;
 import com.adjust.api.security.SecurityUtils;
 import com.adjust.api.security.jwt.TokenProvider;
@@ -13,6 +14,7 @@ import com.adjust.api.web.rest.errors.LoginAlreadyUsedException;
 import com.adjust.api.web.rest.vm.LoginVM;
 import com.adjust.api.web.rest.vm.ManagedUserVM;
 import com.adjust.api.web.websocket.dto.MessageDTO;
+import com.sun.mail.iap.Response;
 import io.github.jhipster.web.util.HeaderUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -116,6 +118,8 @@ public class ClientAppController {
     private final ConversationService conversationService;
     private final ChatMessageRepository chatMessageRepository;
 
+    private final AdjustPriceService adjustPriceService;
+
 
     public ClientAppController(UserService userService, UserJWTController userJWTController, TokenProvider tokenProvider, AdjustClientService adjustClientService,
                                AdjustClientRepository adjustClientRepository, AdjustClientMapper adjustClientMapper,
@@ -130,7 +134,8 @@ public class ClientAppController {
                                ProgramDevelopmentMapper programDevelopmentMapper, BodyCompositionMapper bodyCompositionMapper, NutritionProgramMapper nutritionProgramMapper, FitnessProgramMapper fitnessProgramMapper, MealMapper mealMapper,
                                NutritionMapper nutritionMapper, AdjustNutritionMapper adjustNutritionMapper, AdjustFoodMapper adjustFoodMapper, WorkoutMapper workoutMapper, ExerciseMapper exerciseMapper, MoveMapper moveMapper,
                                AdjustProgramRepository adjustProgramRepository, AdjustProgramMapper adjustProgramMapper, AdjustFoodRepository adjustFoodRepository, ProgramDevelopmentRepository programDevelopmentRepository,
-                               BodyCompositionRepository bodyCompositionRepository, ConversationService conversationService, ChatMessageRepository chatMessageRepository) {
+                               BodyCompositionRepository bodyCompositionRepository, ConversationService conversationService, ChatMessageRepository chatMessageRepository,
+                               AdjustPriceService adjustPriceService) {
         this.userService = userService;
         this.userJWTController = userJWTController;
         this.tokenProvider = tokenProvider;
@@ -179,6 +184,7 @@ public class ClientAppController {
         this.bodyCompositionRepository = bodyCompositionRepository;
         this.conversationService = conversationService;
         this.chatMessageRepository = chatMessageRepository;
+        this.adjustPriceService = adjustPriceService;
     }
 
     private static boolean checkPasswordLength(String password) {
@@ -465,6 +471,17 @@ public class ClientAppController {
         return specialistService.findAll();
     }
 
+    @GetMapping("/program-price")
+    public ResponseEntity<Double> getProgramPrice() {
+        List<AdjustPriceDTO> adjustPriceDTOList = adjustPriceService.findAll();
+        for (AdjustPriceDTO adjustPriceDTO : adjustPriceDTOList) {
+            if (adjustPriceDTO.getOption() == PurchaseOption.PROGRAM) {
+                return ResponseEntity.ok(adjustPriceDTO.getToken());
+            }
+        }
+        return ResponseEntity.ok(1000.0);
+    }
+
     //program request
 
     /**
@@ -474,10 +491,24 @@ public class ClientAppController {
      * @return
      */
     @PostMapping("/request-program")
-    public ResponseEntity<AdjustProgramDTO> requestForProgramByClient(@RequestBody DummyAdjustProgramDTO dummyAdjustProgramDTO) {
+    public ResponseEntity<AdjustProgramDTO> requestForProgramByClient(@RequestBody DummyAdjustProgramDTO dummyAdjustProgramDTO) throws Exception {
         // set client id for program
         String userLogin = SecurityUtils.getCurrentUserLogin().orElseThrow(() -> new AccountResourceException("Current user login not found"));
         AdjustClientDTO adjustClientDTO = adjustClientRepository.findAdjustClientByUsername(userLogin).map(adjustClientMapper::toDto).get();
+
+        boolean hasEnoughToken = false;
+        List<AdjustPriceDTO> adjustPriceDTOList = adjustPriceService.findAll();
+        for (AdjustPriceDTO adjustPriceDTO : adjustPriceDTOList) {
+            if (adjustPriceDTO.getOption() == PurchaseOption.PROGRAM) {
+                hasEnoughToken = adjustClientDTO.getToken() >= adjustPriceDTO.getToken();
+            }
+        }
+
+        if (!hasEnoughToken) {
+            throw new Exception("not enough token for program purchase!");
+        }
+
+
         dummyAdjustProgramDTO.setClientId(adjustClientDTO.getId());
 
         // set adjust program (nutrition program, fitness program and body composition)

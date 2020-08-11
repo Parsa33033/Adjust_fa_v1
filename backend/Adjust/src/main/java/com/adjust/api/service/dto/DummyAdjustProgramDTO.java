@@ -22,7 +22,8 @@ public class DummyAdjustProgramDTO extends AdjustProgramDTO implements Serializa
         this.setFitnessProgramId(adjustProgramDTO.getNutritionProgramId());
         this.setCreatedAt(adjustProgramDTO.getCreatedAt());
         this.setDesigned(adjustProgramDTO.isDesigned());
-        this.setDone(adjustProgramDTO.isDone());
+        this.setNutritionDone(adjustProgramDTO.isNutritionDone());
+        this.setFitnessDone(adjustProgramDTO.isFitnessDone());
         this.setPaid(adjustProgramDTO.isPaid());
         this.setExpirationDate(adjustProgramDTO.getExpirationDate());
         this.setSpecialistId(adjustProgramDTO.getSpecialistId());

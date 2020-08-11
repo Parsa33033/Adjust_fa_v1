@@ -638,120 +638,146 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
                           height: 50,
                           width: MediaQuery.of(context).size.width,
                           onPressed: () async {
-                            if (_formKey.currentState.validate()) {
-                              if (agreed) {
-                                preloader(context);
-                                double height = double.parse(
-                                    this.heightTextFieldController.text);
-                                double weight = double.parse(
-                                    this.weightTextFieldController.text);
-                                double bmi = weight / pow(height, 2);
-                                double wrist = double.parse(
-                                    this.wristTextFieldController.text);
-                                double waist = double.parse(
-                                    this.waistTextFieldController.text);
-                                double muscleMass = null;
-                                if (muscleMassTextFieldController.text != "" &&
-                                    muscleMassTextFieldController.text !=
-                                        null) {
-                                  muscleMass = double.parse(
-                                      this.muscleMassTextFieldController.text);
-                                }
-                                double fatMass = null;
-                                if (fatMassTextFieldController.text != "" &&
-                                    fatMassTextFieldController.text != null) {
-                                  fatMass = double.parse(
-                                      this.fatMassTextFieldController.text);
-                                }
+                            double price = await getProgramPrice(context);
+                            if (store.state.clientState.token < price) {
+                              showAdjustDialog(context, "برای دریافت برنامه تغذیه و ورزشی، " +
+                                  NumberUtility.changeDigit(
+                                      price.round().toString(),
+                                      NumStrLanguage.Farsi) +
+                                  " توکن از شما کسر خواهد شد!",
+                                  false, null, GREEN_COLOR);
+                            } else {
+                              showAdjustDialog(
+                                  context,
+                                  "برای دریافت برنامه تغذیه و ورزشی، " +
+                                      NumberUtility.changeDigit(
+                                          price.round().toString(),
+                                          NumStrLanguage.Farsi) +
+                                      " توکن از شما کسر خواهد شد!",
+                                  true, () async {
+                                if (_formKey.currentState.validate()) {
+                                  if (agreed) {
+                                    preloader(context);
+                                    double height = double.parse(
+                                        this.heightTextFieldController.text);
+                                    double weight = double.parse(
+                                        this.weightTextFieldController.text);
+                                    double bmi = weight / pow(height, 2);
+                                    double wrist = double.parse(
+                                        this.wristTextFieldController.text);
+                                    double waist = double.parse(
+                                        this.waistTextFieldController.text);
+                                    double muscleMass = null;
+                                    if (muscleMassTextFieldController.text !=
+                                            "" &&
+                                        muscleMassTextFieldController.text !=
+                                            null) {
+                                      muscleMass = double.parse(this
+                                          .muscleMassTextFieldController
+                                          .text);
+                                    }
+                                    double fatMass = null;
+                                    if (fatMassTextFieldController.text != "" &&
+                                        fatMassTextFieldController.text !=
+                                            null) {
+                                      fatMass = double.parse(
+                                          this.fatMassTextFieldController.text);
+                                    }
 
-                                double lbm =
-                                    state.clientState.gender == Gender.MALE
-                                        ? (0.32810 * weight) +
-                                            (0.33929 * height) -
-                                            29.5336
-                                        : (0.29569 * weight) +
-                                            (0.41813 * height) -
-                                            43.2933;
+                                    double lbm =
+                                        state.clientState.gender == Gender.MALE
+                                            ? (0.32810 * weight) +
+                                                (0.33929 * height) -
+                                                29.5336
+                                            : (0.29569 * weight) +
+                                                (0.41813 * height) -
+                                                43.2933;
 
-                                AgeDuration age;
+                                    AgeDuration age;
 
-                                // Find out your age
-                                age = Age.dateDifference(
-                                    fromDate: state.clientState.birthDate,
-                                    toDate: DateTime.now(),
-                                    includeToDate: false);
-                                BodyCompositionDTO bodyCompositionDTO =
-                                    BodyCompositionDTO(
+                                    // Find out your age
+                                    age = Age.dateDifference(
+                                        fromDate: state.clientState.birthDate,
+                                        toDate: DateTime.now(),
+                                        includeToDate: false);
+                                    BodyCompositionDTO bodyCompositionDTO =
+                                        BodyCompositionDTO(
+                                            null,
+                                            DateTime.now(),
+                                            height,
+                                            weight,
+                                            bmi,
+                                            wrist,
+                                            waist,
+                                            lbm,
+                                            muscleMass,
+                                            null,
+                                            fatMass,
+                                            null,
+                                            state.clientState.gender,
+                                            age.years,
+                                            _bodyImageFile != null
+                                                ? base64Encode(_bodyImageFile)
+                                                : null,
+                                            "image/jpg",
+                                            _bodyCompositionFile != null
+                                                ? base64Encode(
+                                                    _bodyCompositionFile)
+                                                : null,
+                                            "image/jpg",
+                                            _bloodTestFile != null
+                                                ? base64Encode(_bloodTestFile)
+                                                : null,
+                                            "image/jpg",
+                                            null);
+                                    List<BodyCompositionDTO>
+                                        bodyCompositionDTOList = List()
+                                          ..add(bodyCompositionDTO);
+                                    ProgramDTO programDTO = ProgramDTO(
                                         null,
                                         DateTime.now(),
-                                        height,
-                                        weight,
-                                        bmi,
-                                        wrist,
-                                        waist,
-                                        lbm,
-                                        muscleMass,
                                         null,
-                                        fatMass,
+                                        false,
+                                        false,
+                                        false,
                                         null,
-                                        state.clientState.gender,
-                                        age.years,
-                                        _bodyImageFile != null
-                                            ? base64Encode(_bodyImageFile)
-                                            : null,
-                                        "image/jpg",
-                                        _bodyCompositionFile != null
-                                            ? base64Encode(_bodyCompositionFile)
-                                            : null,
-                                        "image/jpg",
-                                        _bloodTestFile != null
-                                            ? base64Encode(_bloodTestFile)
-                                            : null,
-                                        "image/jpg",
+                                        null,
+                                        null,
+                                        state.clientState.id,
+                                        this.widget.specialist.id,
+                                        null,
+                                        null,
+                                        bodyCompositionDTOList,
+                                        null,
                                         null);
-                                List<BodyCompositionDTO>
-                                    bodyCompositionDTOList = List()
-                                      ..add(bodyCompositionDTO);
-                                ProgramDTO programDTO = ProgramDTO(
-                                    null,
-                                    DateTime.now(),
-                                    null,
-                                    false,
-                                    false,
-                                    false,
-                                    null,
-                                    null,
-                                    state.clientState.id,
-                                    this.widget.specialist.id,
-                                    null,
-                                    null,
-                                    bodyCompositionDTOList,
-                                    null,
-                                    null);
-                                int i = await requestForProgram(
-                                    context, programDTO);
-                                if (i == 1) {
-                                  Navigator.of(context, rootNavigator: true)
-                                      .pop();
-                                  showAdjustDialog(context, SUCCESS, true, () {
-                                    Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                            builder: (context) => MainPage()));
-                                  }, GREEN_COLOR);
-                                } else {
-                                  Navigator.of(context, rootNavigator: true)
-                                      .pop();
-                                  showAdjustDialog(context, FAILURE, false,
-                                      null, GREEN_COLOR);
+                                    int i = await requestForProgram(
+                                        context, programDTO);
+                                    if (i == 1) {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop();
+                                      showAdjustDialog(context, SUCCESS, true,
+                                          () {
+                                        Navigator.of(context).pushReplacement(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    MainPage()));
+                                      }, GREEN_COLOR);
+                                    } else {
+                                      Navigator.of(context, rootNavigator: true)
+                                          .pop();
+                                      showAdjustDialog(context, FAILURE, false,
+                                          null, GREEN_COLOR);
+                                    }
+                                  } else {
+                                    showAdjustDialog(
+                                        context,
+                                        "برای ادامه باید با شرایط شرح داده شده در پایین صفحه موافقت فرمایید.",
+                                        false,
+                                        null,
+                                        GREEN_COLOR);
+                                  }
                                 }
-                              } else {
-                                showAdjustDialog(
-                                    context,
-                                    "برای ادامه باید با شرایط شرح داده شده در پایین صفحه موافقت فرمایید.",
-                                    false,
-                                    null,
-                                    GREEN_COLOR);
-                              }
+                              }, GREEN_COLOR);
                             }
                           }),
                     )

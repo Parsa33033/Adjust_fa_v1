@@ -315,8 +315,8 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                               disperseUnitsInNutrition();
                               iconStepperStateKey.currentState.next();
                             } else {
-                              showAdjustDialog(context, ATLEAST_ONE_NUTRITION, false,
-                                  null, RED_COLOR);
+                              showAdjustDialog(context, ATLEAST_ONE_NUTRITION,
+                                  false, null, RED_COLOR);
                             }
                           },
                         ),
@@ -554,7 +554,6 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                       },
                     ),
                   ),
-
                   Expanded(
                       flex: 75,
                       child: Container(
@@ -1055,24 +1054,26 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                               this.mealDTOList.forEach((mealDTO) {
                                 mealDTO.nutritions =
                                     nutritionDTOList.map((nutritionDTO) {
-                                      NutritionDTO temp = NutritionDTO(
-                                          nutritionDTO.id,
-                                          nutritionDTO.name,
-                                          nutritionDTO.description,
-                                          0,//nutritionDTO.unit,
-                                          nutritionDTO.adjustNutritionId,
-                                          nutritionDTO.caloriesPerUnit,
-                                          nutritionDTO.proteinPerUnit,
-                                          nutritionDTO.carbsPerUnit,
-                                          nutritionDTO.fatInUnit,
-                                          nutritionDTO.mealId,
-                                          null);
-                                      return temp;
-                                    }).toList();
+                                  NutritionDTO temp = NutritionDTO(
+                                      nutritionDTO.id,
+                                      nutritionDTO.name,
+                                      nutritionDTO.description,
+                                      0,
+                                      //nutritionDTO.unit,
+                                      nutritionDTO.adjustNutritionId,
+                                      nutritionDTO.caloriesPerUnit,
+                                      nutritionDTO.proteinPerUnit,
+                                      nutritionDTO.carbsPerUnit,
+                                      nutritionDTO.fatInUnit,
+                                      nutritionDTO.mealId,
+                                      null);
+                                  return temp;
+                                }).toList();
                               });
                               iconStepperStateKey.currentState.next();
                             } else {
-                              showAdjustDialog(context, ATLEAST_ONE_MEAL, false, null, RED_COLOR);
+                              showAdjustDialog(context, ATLEAST_ONE_MEAL, false,
+                                  null, RED_COLOR);
                             }
                           },
                         ),
@@ -1192,7 +1193,8 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                 child: ListView.builder(
                   itemCount: this.nutritionDTOList.length,
                   itemBuilder: (BuildContext context, int pos) {
-                    NutritionDTO nutritionDTO = this.mealDTOList[selectedMeal].nutritions[pos];
+                    NutritionDTO nutritionDTO =
+                        this.mealDTOList[selectedMeal].nutritions[pos];
                     return Container(
                       alignment: Alignment.centerRight,
                       child: Row(
@@ -1233,7 +1235,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                                   if (this.mounted) {
                                     setState(() {
                                       nutritionDTOList[pos].unit--;
-                                      nutritionDTO.unit ++;
+                                      nutritionDTO.unit++;
                                     });
                                   }
                                 },
@@ -1242,7 +1244,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                                   if (this.mounted) {
                                     setState(() {
                                       nutritionDTOList[pos].unit++;
-                                      nutritionDTO.unit --;
+                                      nutritionDTO.unit--;
                                     });
                                   }
                                 },
@@ -1260,7 +1262,10 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                                       textDirection: TextDirection.rtl,
                                       child: Text(
                                         NumberUtility.changeDigit(
-                                            this.nutritionDTOList[pos].unit.toString() +
+                                            this
+                                                    .nutritionDTOList[pos]
+                                                    .unit
+                                                    .toString() +
                                                 " واحد",
                                             NumStrLanguage.Farsi),
                                         style: TextStyle(
@@ -1601,17 +1606,43 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                               fontSize: 16,
                               primaryColor: RED_COLOR,
                               onPressed: () {
-                                showAdjustDialog(context, SURE_WITH_DECISION, true, () async {
-                                  ProgramState programState = this.widget.programState;
-                                  this.nutritionProgramDTO.description = descriptionTextEditingController.text;
-                                  this.nutritionProgramDTO.meals = this.mealDTOList;
-                                  ProgramDTO programDTO = ProgramDTO(programState.id, null, null, null, null, programState.paid, null, null, null, null, null, null, null, this.nutritionProgramDTO, null);
-                                  int i = await designNutritionProgram(context, programDTO);
+                                showAdjustDialog(
+                                    context, SURE_WITH_DECISION, true,
+                                    () async {
+                                  ProgramState programState =
+                                      this.widget.programState;
+                                  this.nutritionProgramDTO.description =
+                                      descriptionTextEditingController.text;
+                                  this.nutritionProgramDTO.meals =
+                                      this.mealDTOList;
+                                  ProgramDTO programDTO = ProgramDTO(
+                                      programState.id,
+                                      null,
+                                      null,
+                                      null,
+                                      null,
+                                      null,
+                                      null,
+                                      null,
+                                      null,
+                                      null,
+                                      null,
+                                      null,
+                                      null,
+                                      null,
+                                      this.nutritionProgramDTO,
+                                      null);
+                                  int i = await designNutritionProgram(
+                                      context, programDTO);
                                   if (i == 1) {
-                                    showAdjustDialog(context, SUCCESS, false, null, RED_COLOR);
-                                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainPage()));
+                                    showAdjustDialog(context, SUCCESS, false,
+                                        null, RED_COLOR);
+                                    Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (context) => MainPage()));
                                   } else {
-                                    showAdjustDialog(context, FAILURE, false, null, RED_COLOR);
+                                    showAdjustDialog(context, FAILURE, false,
+                                        null, RED_COLOR);
                                   }
                                 }, RED_COLOR);
                               },

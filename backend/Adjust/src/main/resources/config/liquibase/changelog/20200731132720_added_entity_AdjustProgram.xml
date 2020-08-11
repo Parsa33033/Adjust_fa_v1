@@ -25,7 +25,10 @@
             <column name="designed" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="done" type="boolean">
+            <column name="nutrition_done" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="fitness_done" type="boolean">
                 <constraints nullable="true" />
             </column>
             <column name="paid" type="boolean">
@@ -69,7 +72,8 @@
             <column name="created_at" type="date"/>
             <column name="expiration_date" type="date"/>
             <column name="designed" type="boolean"/>
-            <column name="done" type="boolean"/>
+            <column name="nutrition_done" type="boolean"/>
+            <column name="fitness_done" type="boolean"/>
             <column name="paid" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

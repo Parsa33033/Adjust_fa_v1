@@ -10,7 +10,9 @@ class Program {
 
   bool designed;
 
-  bool done;
+  bool nutritionDone;
+
+  bool fitnessDone;
 
   bool paid;
 
@@ -27,7 +29,8 @@ class Program {
       this.createdAt,
       this.expirationDate,
       this.designed,
-      this.done,
+      this.nutritionDone,
+      this.fitnessDone,
       this.paid,
       this.fitnessProgramId,
       this.nutritionProgramId,

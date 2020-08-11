@@ -111,9 +111,15 @@ export const AdjustProgramUpdate = (props: IAdjustProgramUpdateProps) => {
                 </Label>
               </AvGroup>
               <AvGroup check>
-                <Label id="doneLabel">
-                  <AvInput id="adjust-program-done" type="checkbox" className="form-check-input" name="done" />
-                  <Translate contentKey="adjustApp.adjustProgram.done">Done</Translate>
+                <Label id="nutritionDoneLabel">
+                  <AvInput id="adjust-program-nutritionDone" type="checkbox" className="form-check-input" name="nutritionDone" />
+                  <Translate contentKey="adjustApp.adjustProgram.nutritionDone">Nutrition Done</Translate>
+                </Label>
+              </AvGroup>
+              <AvGroup check>
+                <Label id="fitnessDoneLabel">
+                  <AvInput id="adjust-program-fitnessDone" type="checkbox" className="form-check-input" name="fitnessDone" />
+                  <Translate contentKey="adjustApp.adjustProgram.fitnessDone">Fitness Done</Translate>
                 </Label>
               </AvGroup>
               <AvGroup check>

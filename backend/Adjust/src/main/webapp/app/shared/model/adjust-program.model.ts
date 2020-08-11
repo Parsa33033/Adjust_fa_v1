@@ -7,7 +7,8 @@ export interface IAdjustProgram {
   createdAt?: string;
   expirationDate?: string;
   designed?: boolean;
-  done?: boolean;
+  nutritionDone?: boolean;
+  fitnessDone?: boolean;
   paid?: boolean;
   fitnessProgramId?: number;
   nutritionProgramId?: number;
@@ -19,6 +20,7 @@ export interface IAdjustProgram {
 
 export const defaultValue: Readonly<IAdjustProgram> = {
   designed: false,
-  done: false,
+  nutritionDone: false,
+  fitnessDone: false,
   paid: false,
 };

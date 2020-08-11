@@ -722,6 +722,7 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
                                     false,
                                     null,
                                     null,
+                                    null,
                                     this.widget.clientState.id,
                                     this.widget.specialistState.id,
                                     null,

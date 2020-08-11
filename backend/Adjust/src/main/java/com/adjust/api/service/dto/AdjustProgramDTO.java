@@ -16,7 +16,9 @@ public class AdjustProgramDTO implements Serializable {
 
     private Boolean designed;
 
-    private Boolean done;
+    private Boolean nutritionDone;
+
+    private Boolean fitnessDone;
 
     private Boolean paid;
 
@@ -61,12 +63,20 @@ public class AdjustProgramDTO implements Serializable {
         this.designed = designed;
     }
 
-    public Boolean isDone() {
-        return done;
+    public Boolean isNutritionDone() {
+        return nutritionDone;
     }
 
-    public void setDone(Boolean done) {
-        this.done = done;
+    public void setNutritionDone(Boolean nutritionDone) {
+        this.nutritionDone = nutritionDone;
+    }
+
+    public Boolean isFitnessDone() {
+        return fitnessDone;
+    }
+
+    public void setFitnessDone(Boolean fitnessDone) {
+        this.fitnessDone = fitnessDone;
     }
 
     public Boolean isPaid() {
@@ -134,7 +144,8 @@ public class AdjustProgramDTO implements Serializable {
             ", createdAt='" + getCreatedAt() + "'" +
             ", expirationDate='" + getExpirationDate() + "'" +
             ", designed='" + isDesigned() + "'" +
-            ", done='" + isDone() + "'" +
+            ", nutritionDone='" + isNutritionDone() + "'" +
+            ", fitnessDone='" + isFitnessDone() + "'" +
             ", paid='" + isPaid() + "'" +
             ", fitnessProgramId=" + getFitnessProgramId() +
             ", nutritionProgramId=" + getNutritionProgramId() +

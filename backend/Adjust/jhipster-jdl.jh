@@ -101,7 +101,8 @@ entity AdjustProgram {
 	createdAt LocalDate,
     expirationDate LocalDate,
     designed Boolean,
-    done Boolean,
+    nutritionDone Boolean,
+    fitnessDone Boolean,
     paid Boolean
 }
 

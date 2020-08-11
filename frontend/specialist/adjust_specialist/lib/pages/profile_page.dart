@@ -613,6 +613,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               controller: resumeTextFieldController,
                               hintText: RESUME,
                               enabled: true,
+                              maxLines: 3,
                               icon: Icon(
                                 Icons.person,
                                 color: ORANGE_COLOR,

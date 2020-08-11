@@ -34,8 +34,11 @@ public class AdjustProgram implements Serializable {
     @Column(name = "designed")
     private Boolean designed;
 
-    @Column(name = "done")
-    private Boolean done;
+    @Column(name = "nutrition_done")
+    private Boolean nutritionDone;
+
+    @Column(name = "fitness_done")
+    private Boolean fitnessDone;
 
     @Column(name = "paid")
     private Boolean paid;
@@ -48,11 +51,11 @@ public class AdjustProgram implements Serializable {
     @JoinColumn(unique = true)
     private NutritionProgram nutritionProgram;
 
-    @OneToMany(mappedBy = "adjustProgram", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "adjustProgram")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<ProgramDevelopment> programDevelopments = new HashSet<>();
 
-    @OneToMany(mappedBy = "program", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "program")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<BodyComposition> bodyCompostions = new HashSet<>();
 
@@ -112,17 +115,30 @@ public class AdjustProgram implements Serializable {
         this.designed = designed;
     }
 
-    public Boolean isDone() {
-        return done;
+    public Boolean isNutritionDone() {
+        return nutritionDone;
     }
 
-    public AdjustProgram done(Boolean done) {
-        this.done = done;
+    public AdjustProgram nutritionDone(Boolean nutritionDone) {
+        this.nutritionDone = nutritionDone;
         return this;
     }
 
-    public void setDone(Boolean done) {
-        this.done = done;
+    public void setNutritionDone(Boolean nutritionDone) {
+        this.nutritionDone = nutritionDone;
+    }
+
+    public Boolean isFitnessDone() {
+        return fitnessDone;
+    }
+
+    public AdjustProgram fitnessDone(Boolean fitnessDone) {
+        this.fitnessDone = fitnessDone;
+        return this;
+    }
+
+    public void setFitnessDone(Boolean fitnessDone) {
+        this.fitnessDone = fitnessDone;
     }
 
     public Boolean isPaid() {
@@ -265,7 +281,8 @@ public class AdjustProgram implements Serializable {
             ", createdAt='" + getCreatedAt() + "'" +
             ", expirationDate='" + getExpirationDate() + "'" +
             ", designed='" + isDesigned() + "'" +
-            ", done='" + isDone() + "'" +
+            ", nutritionDone='" + isNutritionDone() + "'" +
+            ", fitnessDone='" + isFitnessDone() + "'" +
             ", paid='" + isPaid() + "'" +
             "}";
     }

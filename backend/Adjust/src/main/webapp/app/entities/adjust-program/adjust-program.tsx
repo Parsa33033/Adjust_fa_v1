@@ -46,7 +46,10 @@ export const AdjustProgram = (props: IAdjustProgramProps) => {
                   <Translate contentKey="adjustApp.adjustProgram.designed">Designed</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="adjustApp.adjustProgram.done">Done</Translate>
+                  <Translate contentKey="adjustApp.adjustProgram.nutritionDone">Nutrition Done</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="adjustApp.adjustProgram.fitnessDone">Fitness Done</Translate>
                 </th>
                 <th>
                   <Translate contentKey="adjustApp.adjustProgram.paid">Paid</Translate>
@@ -85,7 +88,8 @@ export const AdjustProgram = (props: IAdjustProgramProps) => {
                     ) : null}
                   </td>
                   <td>{adjustProgram.designed ? 'true' : 'false'}</td>
-                  <td>{adjustProgram.done ? 'true' : 'false'}</td>
+                  <td>{adjustProgram.nutritionDone ? 'true' : 'false'}</td>
+                  <td>{adjustProgram.fitnessDone ? 'true' : 'false'}</td>
                   <td>{adjustProgram.paid ? 'true' : 'false'}</td>
                   <td>
                     {adjustProgram.fitnessProgramId ? (

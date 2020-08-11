@@ -14,7 +14,11 @@
       "fieldType": "Boolean"
     },
     {
-      "fieldName": "done",
+      "fieldName": "nutritionDone",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "fitnessDone",
       "fieldType": "Boolean"
     },
     {

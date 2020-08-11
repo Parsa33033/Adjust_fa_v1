@@ -43,8 +43,11 @@ public class AdjustProgramResourceIT {
     private static final Boolean DEFAULT_DESIGNED = false;
     private static final Boolean UPDATED_DESIGNED = true;
 
-    private static final Boolean DEFAULT_DONE = false;
-    private static final Boolean UPDATED_DONE = true;
+    private static final Boolean DEFAULT_NUTRITION_DONE = false;
+    private static final Boolean UPDATED_NUTRITION_DONE = true;
+
+    private static final Boolean DEFAULT_FITNESS_DONE = false;
+    private static final Boolean UPDATED_FITNESS_DONE = true;
 
     private static final Boolean DEFAULT_PAID = false;
     private static final Boolean UPDATED_PAID = true;
@@ -77,7 +80,8 @@ public class AdjustProgramResourceIT {
             .createdAt(DEFAULT_CREATED_AT)
             .expirationDate(DEFAULT_EXPIRATION_DATE)
             .designed(DEFAULT_DESIGNED)
-            .done(DEFAULT_DONE)
+            .nutritionDone(DEFAULT_NUTRITION_DONE)
+            .fitnessDone(DEFAULT_FITNESS_DONE)
             .paid(DEFAULT_PAID);
         return adjustProgram;
     }
@@ -92,7 +96,8 @@ public class AdjustProgramResourceIT {
             .createdAt(UPDATED_CREATED_AT)
             .expirationDate(UPDATED_EXPIRATION_DATE)
             .designed(UPDATED_DESIGNED)
-            .done(UPDATED_DONE)
+            .nutritionDone(UPDATED_NUTRITION_DONE)
+            .fitnessDone(UPDATED_FITNESS_DONE)
             .paid(UPDATED_PAID);
         return adjustProgram;
     }
@@ -120,7 +125,8 @@ public class AdjustProgramResourceIT {
         assertThat(testAdjustProgram.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
         assertThat(testAdjustProgram.getExpirationDate()).isEqualTo(DEFAULT_EXPIRATION_DATE);
         assertThat(testAdjustProgram.isDesigned()).isEqualTo(DEFAULT_DESIGNED);
-        assertThat(testAdjustProgram.isDone()).isEqualTo(DEFAULT_DONE);
+        assertThat(testAdjustProgram.isNutritionDone()).isEqualTo(DEFAULT_NUTRITION_DONE);
+        assertThat(testAdjustProgram.isFitnessDone()).isEqualTo(DEFAULT_FITNESS_DONE);
         assertThat(testAdjustProgram.isPaid()).isEqualTo(DEFAULT_PAID);
     }
 
@@ -159,7 +165,8 @@ public class AdjustProgramResourceIT {
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(DEFAULT_CREATED_AT.toString())))
             .andExpect(jsonPath("$.[*].expirationDate").value(hasItem(DEFAULT_EXPIRATION_DATE.toString())))
             .andExpect(jsonPath("$.[*].designed").value(hasItem(DEFAULT_DESIGNED.booleanValue())))
-            .andExpect(jsonPath("$.[*].done").value(hasItem(DEFAULT_DONE.booleanValue())))
+            .andExpect(jsonPath("$.[*].nutritionDone").value(hasItem(DEFAULT_NUTRITION_DONE.booleanValue())))
+            .andExpect(jsonPath("$.[*].fitnessDone").value(hasItem(DEFAULT_FITNESS_DONE.booleanValue())))
             .andExpect(jsonPath("$.[*].paid").value(hasItem(DEFAULT_PAID.booleanValue())));
     }
     
@@ -177,7 +184,8 @@ public class AdjustProgramResourceIT {
             .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()))
             .andExpect(jsonPath("$.expirationDate").value(DEFAULT_EXPIRATION_DATE.toString()))
             .andExpect(jsonPath("$.designed").value(DEFAULT_DESIGNED.booleanValue()))
-            .andExpect(jsonPath("$.done").value(DEFAULT_DONE.booleanValue()))
+            .andExpect(jsonPath("$.nutritionDone").value(DEFAULT_NUTRITION_DONE.booleanValue()))
+            .andExpect(jsonPath("$.fitnessDone").value(DEFAULT_FITNESS_DONE.booleanValue()))
             .andExpect(jsonPath("$.paid").value(DEFAULT_PAID.booleanValue()));
     }
     @Test
@@ -204,7 +212,8 @@ public class AdjustProgramResourceIT {
             .createdAt(UPDATED_CREATED_AT)
             .expirationDate(UPDATED_EXPIRATION_DATE)
             .designed(UPDATED_DESIGNED)
-            .done(UPDATED_DONE)
+            .nutritionDone(UPDATED_NUTRITION_DONE)
+            .fitnessDone(UPDATED_FITNESS_DONE)
             .paid(UPDATED_PAID);
         AdjustProgramDTO adjustProgramDTO = adjustProgramMapper.toDto(updatedAdjustProgram);
 
@@ -220,7 +229,8 @@ public class AdjustProgramResourceIT {
         assertThat(testAdjustProgram.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
         assertThat(testAdjustProgram.getExpirationDate()).isEqualTo(UPDATED_EXPIRATION_DATE);
         assertThat(testAdjustProgram.isDesigned()).isEqualTo(UPDATED_DESIGNED);
-        assertThat(testAdjustProgram.isDone()).isEqualTo(UPDATED_DONE);
+        assertThat(testAdjustProgram.isNutritionDone()).isEqualTo(UPDATED_NUTRITION_DONE);
+        assertThat(testAdjustProgram.isFitnessDone()).isEqualTo(UPDATED_FITNESS_DONE);
         assertThat(testAdjustProgram.isPaid()).isEqualTo(UPDATED_PAID);
     }
 

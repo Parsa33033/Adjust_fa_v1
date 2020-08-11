@@ -395,6 +395,7 @@ public class SpecialistAppController {
             });
         });
         adjustProgramDTO.setNutritionProgramId(nutritionProgramDTO.getId());
+        adjustProgramDTO.setNutritionDone(true);
         adjustProgramService.save(adjustProgramDTO);
     }
 

@@ -52,11 +52,17 @@ export const AdjustProgramDetail = (props: IAdjustProgramDetailProps) => {
           </dt>
           <dd>{adjustProgramEntity.designed ? 'true' : 'false'}</dd>
           <dt>
-            <span id="done">
-              <Translate contentKey="adjustApp.adjustProgram.done">Done</Translate>
+            <span id="nutritionDone">
+              <Translate contentKey="adjustApp.adjustProgram.nutritionDone">Nutrition Done</Translate>
             </span>
           </dt>
-          <dd>{adjustProgramEntity.done ? 'true' : 'false'}</dd>
+          <dd>{adjustProgramEntity.nutritionDone ? 'true' : 'false'}</dd>
+          <dt>
+            <span id="fitnessDone">
+              <Translate contentKey="adjustApp.adjustProgram.fitnessDone">Fitness Done</Translate>
+            </span>
+          </dt>
+          <dd>{adjustProgramEntity.fitnessDone ? 'true' : 'false'}</dd>
           <dt>
             <span id="paid">
               <Translate contentKey="adjustApp.adjustProgram.paid">Paid</Translate>

@@ -21,6 +21,7 @@ class AdjustTextField extends StatelessWidget {
   int maxLines;
   Color fontColor;
   TextInputType textInputType;
+  int maxLength;
 
   AdjustTextField({
       this.hintText,
@@ -37,11 +38,13 @@ class AdjustTextField extends StatelessWidget {
       this.textAlign,
       this.maxLines,
       this.fontColor,
-      this.textInputType}) {
+      this.textInputType,
+      this.maxLength}) {
     this.textAlign = this.textAlign == null ? TextAlign.left : this.textAlign;
     this.maxLines = this.maxLines == null ? 1 : this.maxLines;
     this.fontColor = this.fontColor == null ? FONT_COLOR : this.fontColor;
     this.textInputType = this.textInputType == null ? null : this.textInputType;
+    this.maxLength = this.maxLength == null ? null : this.maxLength;
   }
 
   @override
@@ -52,6 +55,7 @@ class AdjustTextField extends StatelessWidget {
       child: Directionality(
         textDirection: textDirection,
         child: TextFormField(
+          maxLength: this.maxLength,
           keyboardType: this.textInputType,
           textAlign: this.textAlign,
           decoration: InputDecoration(
