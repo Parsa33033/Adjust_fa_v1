@@ -1,5 +1,6 @@
 import 'package:adjust_specialist/model/client.dart';
 import 'package:adjust_specialist/model/move.dart';
+import 'package:adjust_specialist/model/workout.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 
 final String RAMSARI = "دکتر سوسن رامسری";
@@ -69,6 +70,7 @@ final Map<String, String> GENDER_LIST = Map<String, String>()
 final Map<String, String> MUSCLE_TYPE_LIST = Map<String, String>()
   ..putIfAbsent(EnumToString.parse(MuscleType.CHEST), () => 'سینه')
   ..putIfAbsent(EnumToString.parse(MuscleType.BACK), () => 'پشت')
+  ..putIfAbsent(EnumToString.parse(MuscleType.TRAPEZOID), () => 'کول')
   ..putIfAbsent(EnumToString.parse(MuscleType.BICEP), () => 'جلوبازو')
   ..putIfAbsent(EnumToString.parse(MuscleType.TRICEP), () => 'پشت بازو')
   ..putIfAbsent(EnumToString.parse(MuscleType.ABS), () => 'شکم')
@@ -121,3 +123,15 @@ final String CHOOSE_UNIT = "انتخاب واحد برای مواد غذایی";
 final String WANT_MEAL_REMOVED = "آیا مایل به حذف وعده ی غذایی هستید؟";
 final String ATLEAST_ONE_NUTRITION = "لطفا حداقل یک ماده غذایی انتخاب کنید!";
 final String ATLEAST_ONE_MEAL = "لطفا حداقل یک وعده غذایی انتخاب کنید!";
+
+
+final Map<String, String> WORKOUT_TYPE_LIST = Map<String, String>()
+  ..putIfAbsent(EnumToString.parse(WorkoutType.POWER), () => "قدرتی")
+  ..putIfAbsent(EnumToString.parse(WorkoutType.BODYBUILDING_MASS), () => "بدنسازی حجمی")
+  ..putIfAbsent(EnumToString.parse(WorkoutType.BODYBUILDING), () => "بدنسازی")
+  ..putIfAbsent(EnumToString.parse(WorkoutType.BODYBUILDING_CUT), () => "بدنسازی تفکیکی")
+  ..putIfAbsent(EnumToString.parse(WorkoutType.ENDURANCE), () => "استقامتی")
+  ..putIfAbsent(EnumToString.parse(WorkoutType.CARDIO), () => "هوازی");
+
+final String WORKOUT_TYPE = "مدل تمرین";
+final String WORKOUT_DAY_NUMBERS = "تعداد روزهای تمرینی";

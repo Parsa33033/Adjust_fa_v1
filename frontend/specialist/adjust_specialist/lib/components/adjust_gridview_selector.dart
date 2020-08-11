@@ -9,24 +9,25 @@ class AdjustGridViewItem extends StatefulWidget {
   Color notSelectedColor;
   Color selectedFontColor;
   Color notSelectedFontColor;
+  bool selected;
   ValueChanged<bool> isSelected;
 
 
   AdjustGridViewItem({this.name, this.selectedColor,
-      this.notSelectedColor, this.selectedFontColor, this.notSelectedFontColor, this.isSelected});
+      this.notSelectedColor, this.selectedFontColor, this.notSelectedFontColor, this.selected, this.isSelected}) {
+    this.selected = this.selected == null ? false : this.selected;
+  }
 
   @override
   _AdjustGridViewItemState createState() => _AdjustGridViewItemState();
 }
 
 class _AdjustGridViewItemState extends State<AdjustGridViewItem> {
-  bool selected;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    selected = false;
   }
 
   @override
@@ -41,20 +42,20 @@ class _AdjustGridViewItemState extends State<AdjustGridViewItem> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   border: Border.all(color: this.widget.selectedColor, width: 2),
-                  color: this.selected ? this.widget.selectedColor : this.widget.notSelectedColor
+                  color: this.widget.selected ? this.widget.selectedColor : this.widget.notSelectedColor
               ),
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Directionality(
                   textDirection: TextDirection.rtl,
-                  child: Text(this.widget.name, style: TextStyle(fontFamily: "Iransans", color: this.selected ? this.widget.selectedFontColor: this.widget.notSelectedFontColor, fontSize: 14),),
+                  child: Text(this.widget.name, style: TextStyle(fontFamily: "Iransans", color: this.widget.selected ? this.widget.selectedFontColor: this.widget.notSelectedFontColor, fontSize: 14),),
                 ),
               )
           ),
           onTap: () {
             setState(() {
-              this.selected = !this.selected;
-              this.widget.isSelected(this.selected);
+              this.widget.selected = !this.widget.selected;
+              this.widget.isSelected(this.widget.selected);
             });
           },
         )

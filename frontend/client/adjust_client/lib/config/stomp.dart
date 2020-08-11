@@ -24,7 +24,8 @@ class StompInstance {
           onConnect: onConnected,
           onDisconnect: (StompFrame frame) {print("disconnected: " + frame.body);},
           onWebSocketError: (err) {print("websocket error: " + err.toString());},
-          onStompError: (err) {print("stomp error: " + err.toString());}
+          onStompError: (err) {print("stomp error: " + err.toString());},
+          reconnectDelay: 1
       )
   );
 

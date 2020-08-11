@@ -420,7 +420,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                 .programs.reversed.toList()[this.widget.programIndex].nutritionProgramState;
             return Container(
                 height: MediaQuery.of(context).size.height,
-                color: RED_COLOR.withAlpha(25),
+//                color: RED_COLOR.withAlpha(25),
                 child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[

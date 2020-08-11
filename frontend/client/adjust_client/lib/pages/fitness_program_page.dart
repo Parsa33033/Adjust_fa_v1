@@ -436,7 +436,7 @@ class _FitnessProgramPageState extends State<FitnessProgramPage> {
                 .programs.reversed.toList()[this.widget.programIndex].fitnessProgramState;
             return Container(
                 height: MediaQuery.of(context).size.height,
-                color: GREEN_COLOR.withAlpha(25),
+//                color: GREEN_COLOR.withAlpha(25),
                 child: SingleChildScrollView(
                   child: Column(
                     children: <Widget>[

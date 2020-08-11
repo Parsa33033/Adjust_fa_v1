@@ -8,6 +8,7 @@ import 'package:adjust_specialist/components/adjust_dialog.dart';
 import 'package:adjust_specialist/components/adjust_info_button.dart';
 import 'package:adjust_specialist/components/preloader.dart';
 import 'package:adjust_specialist/config/localization.dart';
+import 'package:adjust_specialist/config/stomp.dart';
 import 'package:adjust_specialist/constants/adjust_colors.dart';
 import 'package:adjust_specialist/constants/words.dart';
 import 'package:adjust_specialist/pages/body_composition_page.dart';
@@ -196,8 +197,12 @@ class _ProgramPageState extends State<ProgramPage> {
                                 preloader(context);
                                 int i = await getMessages(context, program.clientId, program.specialistId);
                                 if (i == 1) {
-                                  Navigator.of(context, rootNavigator: true).pop("dialog");
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatPage(program.specialistState, program.clientState)));
+                                  if (mainStompClient.connected) {
+                                    Navigator.of(context, rootNavigator: true).pop("dialog");
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChatPage(program.specialistState, program.clientState)));
+                                  } else {
+                                    mainStompClient.activate();
+                                  }
                                 } else {
                                   Navigator.of(context, rootNavigator: true).pop("dialog");
                                   showAdjustDialog(context, FAILURE, false, null, ORANGE_COLOR);
