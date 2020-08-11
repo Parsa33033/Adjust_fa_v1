@@ -21,8 +21,9 @@ class Dashboard extends StatefulWidget {
   String field;
   double stars;
   Image image;
+  Function refereshFunc;
 
-  Dashboard({this.firstName, this.lastName, this.field, this.stars, this.image});
+  Dashboard({this.firstName, this.lastName, this.field, this.stars, this.image, this.refereshFunc});
 
 
   @override
@@ -65,15 +66,11 @@ class _DashboardState extends State<Dashboard> {
                       ],
                     ),
                     child: Center(
-//                        child: Badge(
-//                          showBadge: l > 0 ? true : false,
-//                          badgeContent: Text(l.toString()),
-//                          child: Icon(Icons.add_shopping_cart),
-//                        )
+                        child: Icon(Icons.refresh),
                     ),
                   ),
                   onTap: () {
-//                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CartPage()));
+                    this.widget.refereshFunc();
                   },
                 )
               ),

@@ -9,6 +9,7 @@ import 'package:adjust_specialist/components/preloader.dart';
 import 'package:adjust_specialist/config/stomp.dart';
 import 'package:adjust_specialist/constants/adjust_colors.dart';
 import 'package:adjust_specialist/constants/words.dart';
+import 'package:adjust_specialist/model/program.dart';
 import 'package:adjust_specialist/pages/fitness_program_page.dart';
 import 'package:adjust_specialist/pages/menu_page.dart';
 import 'package:adjust_specialist/pages/nutrition_program_page.dart';
@@ -61,8 +62,8 @@ class _MainPageState extends State<MainPage>
 
     fetchDependencies();
 
-    _content = mainMenu();
     setMainPageState(false);
+    _content = ProgramPage();
   }
 
   void fetchDependencies() async {
@@ -125,7 +126,7 @@ class _MainPageState extends State<MainPage>
             //Handle button tap
             if (index == 1) {
               setState(() {
-                _content = mainMenu();
+                _content = ProgramPage();
               });
             }
           },
@@ -146,6 +147,10 @@ class _MainPageState extends State<MainPage>
                           field: field,
                           stars: stars,
                           image: _image,
+                          refereshFunc: () {
+                            fetchDependencies();
+                            setMainPageState(false);
+                          }
                         )),
                     Expanded(
                         flex: 5,
@@ -182,22 +187,22 @@ class _MainPageState extends State<MainPage>
                   flex: 5,
                   child: menuItem("برنامه ی تمرینی من",
                       "assets/workout_icon.png", GREEN_COLOR, () {
-                    Store<AppState> store = StoreProvider.of<AppState>(context);
-                    if (store.state.programListState.programs.length >= 1&&
-                        store.state.programListState.programs.reversed
-                            .toList()[0]
-                            .fitnessProgramState != null) {
-                      store.dispatch(SetFitnessProgramAction(
-                          payload: store
-                              .state.programListState.programs.reversed
-                              .toList()[0]
-                              .fitnessProgramState));
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => FitnessProgramPage(0)));
-                    } else {
-                      showAdjustDialog(context, "برنامه ای موجود نمی باشد",
-                          false, null, GREEN_COLOR);
-                    }
+//                    Store<AppState> store = StoreProvider.of<AppState>(context);
+//                    if (store.state.programListState.programs.length >= 1&&
+//                        store.state.programListState.programs.reversed
+//                            .toList()[0]
+//                            .fitnessProgramState != null) {
+//                      store.dispatch(SetFitnessProgramAction(
+//                          payload: store
+//                              .state.programListState.programs.reversed
+//                              .toList()[0]
+//                              .fitnessProgramState));
+//                      Navigator.of(context).push(MaterialPageRoute(
+//                          builder: (context) => FitnessProgramPage(0)));
+//                    } else {
+//                      showAdjustDialog(context, "برنامه ای موجود نمی باشد",
+//                          false, null, GREEN_COLOR);
+//                    }
                   }),
                 ),
                 Expanded(

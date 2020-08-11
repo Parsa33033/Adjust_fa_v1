@@ -10,6 +10,7 @@ import 'package:adjust_specialist/components/preloader.dart';
 import 'package:adjust_specialist/config/localization.dart';
 import 'package:adjust_specialist/constants/adjust_colors.dart';
 import 'package:adjust_specialist/constants/words.dart';
+import 'package:adjust_specialist/pages/body_composition_page.dart';
 import 'package:adjust_specialist/pages/chat_page.dart';
 import 'package:adjust_specialist/pages/program_development_page.dart';
 import 'package:adjust_specialist/pages/fitness_program_page.dart';
@@ -42,33 +43,11 @@ class _ProgramPageState extends State<ProgramPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Align(
-          alignment: Alignment.centerRight,
-          child: Directionality(
-            textDirection: TextDirection.rtl,
-            child: Text(
-              "برنامه ها",
-              style: TextStyle(
-                  fontFamily: "Iransans", fontSize: 20, color: WHITE_COLOR),
-            ),
-          ),
-        ),
-        backgroundColor: YELLOW_COLOR,
-        elevation: 4,
-        leading: InkWell(
-          child: Icon(Icons.arrow_back),
-          onTap: () {
-            Navigator.of(context).pop();
-          },
-        ),
-      ),
-      body: StoreConnector<AppState, AppState>(
+    return Container(
+      child: StoreConnector<AppState, AppState>(
         converter: (Store store) => store.state,
         builder: (BuildContext context, AppState state) {
           return Container(
-            color: YELLOW_COLOR.withAlpha(35),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -111,18 +90,9 @@ class _ProgramPageState extends State<ProgramPage> {
                                 ),
                               ),
                               onTap: () {
-                                if (program.fitnessProgramState != null) {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) =>
-                                          FitnessProgramPage(pos)));
-                                } else {
-                                  showAdjustDialog(
-                                      context,
-                                      "برنامه ورزشی شما طراحی نشده است!",
-                                      false,
-                                      null,
-                                      GREEN_COLOR);
-                                }
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        FitnessProgramPage(pos, program)));
                               },
                             ),
                             InkWell(
@@ -174,7 +144,7 @@ class _ProgramPageState extends State<ProgramPage> {
                                     Directionality(
                                       textDirection: TextDirection.rtl,
                                       child: Text(
-                                        "پیشرفت",
+                                        "کامپوزیشن",
                                         style: TextStyle(
                                             fontFamily: "Iransans",
                                             fontSize: 13,
@@ -185,13 +155,10 @@ class _ProgramPageState extends State<ProgramPage> {
                                 ),
                               ),
                               onTap: () {
-                                if (program.nutritionProgramState != null &&
-                                    program.fitnessProgramState != null &&
-                                    program.bodyCompositionStateList.length >=
-                                        1) {
+                                if (program.bodyCompositionStateList.length >= 1) {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) =>
-                                          ProgramDevelopmentPage(program.id, pos)));
+                                          BodyCompositionPage(program)));
                                 } else {
                                   showAdjustDialog(
                                       context,
@@ -243,12 +210,12 @@ class _ProgramPageState extends State<ProgramPage> {
                                 color: WHITE_COLOR,
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: 1, color: YELLOW_COLOR))),
+                                        width: 1, color: GREEN_COLOR))),
                             child: ExpansionCard(
-                              backgroundColor: YELLOW_COLOR.withAlpha(55),
+                              backgroundColor: GREEN_COLOR.withAlpha(55),
                               trailing: Icon(
                                 Icons.description,
-                                color: YELLOW_COLOR,
+                                color: GREEN_COLOR,
                                 size: 40,
                               ),
                               title: Row(

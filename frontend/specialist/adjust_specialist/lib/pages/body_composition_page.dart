@@ -19,7 +19,9 @@ import 'package:adjust_specialist/model/client.dart';
 import 'package:adjust_specialist/pages/main_page.dart';
 import 'package:adjust_specialist/pages/program_page.dart';
 import 'package:adjust_specialist/states/app_state.dart';
+import 'package:adjust_specialist/states/body_composition_state.dart';
 import 'package:adjust_specialist/states/client_state.dart';
+import 'package:adjust_specialist/states/program_state.dart';
 import 'package:adjust_specialist/states/specialist_state.dart';
 import 'package:age/age.dart';
 import 'package:avatar_glow/avatar_glow.dart';
@@ -36,10 +38,9 @@ import 'package:simple_image_crop/simple_image_crop.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 
 class BodyCompositionPage extends StatefulWidget {
-  SpecialistState specialistState;
-  ClientState clientState;
+  ProgramState programState;
 
-  BodyCompositionPage(this.specialistState, this.clientState);
+  BodyCompositionPage(this.programState);
 
   @override
   _BodyCompositionPageState createState() => _BodyCompositionPageState();
@@ -97,7 +98,7 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
     muscleMassTextFieldController = TextEditingController();
     fatMassTextFieldController = TextEditingController();
 
-    ClientState clientState = this.widget.clientState;
+    ClientState clientState = this.widget.programState.clientState;
 
     // name
     nameTextFieldController.text =
@@ -114,6 +115,14 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
         toDate: DateTime.now(),
         includeToDate: false);
     ageTextFieldController.text = age.years.toString();
+
+    BodyCompositionState bodyCompositionState = this.widget.programState.bodyCompositionStateList[0];
+    heightTextFieldController.text = bodyCompositionState.height == null ? "" : bodyCompositionState.height.toString();
+    weightTextFieldController.text = bodyCompositionState.weight == null ? "" : bodyCompositionState.weight.toString();
+    wristTextFieldController.text = bodyCompositionState.wrist == null ? "" : bodyCompositionState.wrist.toString();
+    waistTextFieldController.text = bodyCompositionState.waist == null ? "" : bodyCompositionState.waist.toString();
+    muscleMassTextFieldController.text = bodyCompositionState.muscleMass == null ? "" : bodyCompositionState.muscleMass.toString();
+    fatMassTextFieldController.text = bodyCompositionState.fatMass == null ? "" : bodyCompositionState.fatMass.toString();
 
     heightNuminal = 0;
     heightDecimal = 0;
@@ -666,7 +675,7 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
                                 }
 
                                 double lbm =
-                                  this.widget.clientState.gender == Gender.MALE
+                                  this.widget.programState.clientState.gender == Gender.MALE
                                         ? (0.32810 * weight) +
                                             (0.33929 * height) -
                                             29.5336
@@ -678,7 +687,7 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
 
                                 // Find out your age
                                 age = Age.dateDifference(
-                                    fromDate: this.widget.clientState.birthDate,
+                                    fromDate: this.widget.programState.clientState.birthDate,
                                     toDate: DateTime.now(),
                                     includeToDate: false);
                                 BodyCompositionDTO bodyCompositionDTO =
@@ -695,7 +704,7 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
                                         null,
                                         fatMass,
                                         null,
-                                        this.widget.clientState.gender,
+                                        this.widget.programState.clientState.gender,
                                         age.years,
                                         _bodyImageFile != null
                                             ? base64Encode(_bodyImageFile)
@@ -723,8 +732,8 @@ class _BodyCompositionPageState extends State<BodyCompositionPage> {
                                     null,
                                     null,
                                     null,
-                                    this.widget.clientState.id,
-                                    this.widget.specialistState.id,
+                                    this.widget.programState.clientState.id,
+                                    this.widget.programState.specialistState.id,
                                     null,
                                     null,
                                     bodyCompositionDTOList,

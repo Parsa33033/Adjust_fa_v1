@@ -168,7 +168,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                   child: Container(
                     padding: EdgeInsets.only(top: 20),
                     child: IconStepper(
-                      key: iconStepperStateKey,
+                      key: nutritionIconStepperStateKey,
                       direction: Axis.vertical,
                       stepColor: RED_COLOR,
                       activeStepColor: WHITE_COLOR,
@@ -276,7 +276,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                           fontSize: 16,
                           primaryColor: RED_COLOR,
                           onPressed: () {
-                            iconStepperStateKey.currentState.previous();
+                            nutritionIconStepperStateKey.currentState.previous();
                           },
                         ),
                       )),
@@ -313,7 +313,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                                 return nutritionDTO;
                               }).toList();
                               disperseUnitsInNutrition();
-                              iconStepperStateKey.currentState.next();
+                              nutritionIconStepperStateKey.currentState.next();
                             } else {
                               showAdjustDialog(context, ATLEAST_ONE_NUTRITION,
                                   false, null, RED_COLOR);
@@ -1019,7 +1019,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                               carbsPSet = 0;
                               fatPSet = 0;
                             });
-                            iconStepperStateKey.currentState.previous();
+                            nutritionIconStepperStateKey.currentState.previous();
                           },
                         ),
                       )),
@@ -1070,7 +1070,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                                   return temp;
                                 }).toList();
                               });
-                              iconStepperStateKey.currentState.next();
+                              nutritionIconStepperStateKey.currentState.next();
                             } else {
                               showAdjustDialog(context, ATLEAST_ONE_MEAL, false,
                                   null, RED_COLOR);
@@ -1331,7 +1331,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                               });
                             });
                             disperseUnitsInNutrition();
-                            iconStepperStateKey.currentState.previous();
+                            nutritionIconStepperStateKey.currentState.previous();
                           },
                         ),
                       )),
@@ -1350,7 +1350,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                           primaryColor: RED_COLOR,
                           onPressed: () {
                             //
-                            iconStepperStateKey.currentState.next();
+                            nutritionIconStepperStateKey.currentState.next();
                           },
                         ),
                       ))
@@ -1493,7 +1493,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                             if (carbsP + proteinP + fatP == 100) {
                               nutritionProgramDTO = NutritionProgramDTO(null,
                                   calory, proteinP, carbsP, fatP, null, null);
-                              iconStepperStateKey.currentState.next();
+                              nutritionIconStepperStateKey.currentState.next();
                             } else {
                               showAdjustDialog(
                                   context,
@@ -1588,7 +1588,7 @@ class _NutritionProgramPageState extends State<NutritionProgramPage> {
                               fontSize: 16,
                               primaryColor: RED_COLOR,
                               onPressed: () {
-                                iconStepperStateKey.currentState.previous();
+                                nutritionIconStepperStateKey.currentState.previous();
                               },
                             ),
                           )),

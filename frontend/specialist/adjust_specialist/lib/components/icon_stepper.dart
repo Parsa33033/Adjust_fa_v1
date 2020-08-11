@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 /// Callback is fired when a step is reached.
 typedef OnStepReached = void Function(int index);
-GlobalKey<_IconStepperState> iconStepperStateKey = GlobalKey();
+GlobalKey<_IconStepperState> nutritionIconStepperStateKey = GlobalKey();
+GlobalKey<_IconStepperState> fitnessIconStepperStateKey = GlobalKey();
 class IconStepper extends StatefulWidget {
 
   /// Each icon defines a step. Hence, total number of icons determines the total number of steps.
