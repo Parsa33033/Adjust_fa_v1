@@ -7,6 +7,7 @@ import 'package:adjust_specialist/dto/body_composition_dto.dart';
 import 'package:adjust_specialist/dto/client_dto.dart';
 import 'package:adjust_specialist/dto/fitness_program_dto.dart';
 import 'package:adjust_specialist/dto/food_dto.dart';
+import 'package:adjust_specialist/dto/move_dto.dart';
 import 'package:adjust_specialist/dto/nutrition_dto.dart';
 import 'package:adjust_specialist/dto/nutrition_program_dto.dart';
 import 'package:adjust_specialist/dto/program_development_dto.dart';
@@ -21,6 +22,7 @@ import 'package:adjust_specialist/states/exercise_state.dart';
 import 'package:adjust_specialist/states/fitness_program_state.dart';
 import 'package:adjust_specialist/states/food_state.dart';
 import 'package:adjust_specialist/states/meal_state.dart';
+import 'package:adjust_specialist/states/move_state.dart';
 import 'package:adjust_specialist/states/nutrition_program_state.dart';
 import 'package:adjust_specialist/states/nutrition_state.dart';
 import 'package:adjust_specialist/states/program_development_state.dart';
@@ -55,9 +57,16 @@ class SetFitnessProgramAction {
   SetFitnessProgramAction({this.payload});
 }
 
-class GetAdjustNutritions {
+class GetAdjustNutritionsAction {
   NutritionStateList payload;
-  GetAdjustNutritions({this.payload});
+
+  GetAdjustNutritionsAction({this.payload});
+}
+
+class GetAdjustMovesAction {
+  MoveStateList payload;
+
+  GetAdjustMovesAction({this.payload});
 }
 
 Future<int> getSpecialistPrograms(BuildContext context) async {
@@ -73,20 +82,19 @@ Future<int> getSpecialistPrograms(BuildContext context) async {
       ProgramDTO programDTO = ProgramDTO.fromJson(e);
 
       List<ProgramDevelopmentState> programDevelopmentStateList =
-      programDTO.programDevelopments
-          .map((programDevelopmentDTO) {
+          programDTO.programDevelopments.map((programDevelopmentDTO) {
         ProgramDevelopmentState programDevelopmentState =
-        ProgramDevelopmentState(
-            programDevelopmentDTO.id,
-            programDevelopmentDTO.date,
-            programDevelopmentDTO.nutritionScore,
-            programDevelopmentDTO.fitnessScore,
-            programDevelopmentDTO.adjustProgramId);
+            ProgramDevelopmentState(
+                programDevelopmentDTO.id,
+                programDevelopmentDTO.date,
+                programDevelopmentDTO.nutritionScore,
+                programDevelopmentDTO.fitnessScore,
+                programDevelopmentDTO.adjustProgramId);
         return programDevelopmentState;
       }).toList();
 
       List<BodyCompositionState> bodyCompositionStateList =
-      programDTO.bodyCompositions.map((bodyCompositionDTO) {
+          programDTO.bodyCompositions.map((bodyCompositionDTO) {
         BodyCompositionState bodyCompositionState = BodyCompositionState(
             bodyCompositionDTO.id,
             bodyCompositionDTO.createdAt,
@@ -154,20 +162,13 @@ Future<int> getSpecialistPrograms(BuildContext context) async {
       FitnessProgramState fitnessProgramState = null;
       if (fitnessProgramDTO != null && fitnessProgramDTO.workouts != null) {
         List<WorkoutState> workoutStateList =
-        fitnessProgramDTO.workouts.map((e) {
+            fitnessProgramDTO.workouts.map((e) {
           List<ExerciseState> exerciseStateList = e.exercises.map((e) {
-            return ExerciseState(
-                e.id,
-                e.number,
-                e.sets,
-                e.repsMin,
-                e.repsMax,
-                e.moveId,
-                e.workoutId,
-                e.move);
+            return ExerciseState(e.id, e.number, e.sets, e.repsMin, e.repsMax,
+                e.moveId, e.workoutId, e.move);
           }).toList();
           WorkoutState workoutState =
-          WorkoutState(e.id, e.dayNumber, e.programId, exerciseStateList);
+              WorkoutState(e.id, e.dayNumber, e.programId, exerciseStateList);
           return workoutState;
         }).toList();
         fitnessProgramState = FitnessProgramState(
@@ -240,71 +241,118 @@ Future<int> getSpecialistPrograms(BuildContext context) async {
   return 0;
 }
 
-
 Future<int> setProgramDevelopment(BuildContext context,
     ProgramDevelopmentDTO programDevelopmentDTO, int programIndex) async {
   String jwt = await getJwt(context);
 
   Map<String, String> headers = Map<String, String>()
-    ..putIfAbsent("Authorization", () => "Bearer " + jwt)..putIfAbsent(
-        "Content-Type", () => "application/json");
+    ..putIfAbsent("Authorization", () => "Bearer " + jwt)
+    ..putIfAbsent("Content-Type", () => "application/json");
 
   String content = jsonEncode(programDevelopmentDTO.toJson());
 
-  http.Response response = await http.post(
-      PROGRAM_DEVELOPMENT_URL, headers: headers,
-      body: content,
-      encoding: Encoding.getByName("UTF-8"));
+  http.Response response = await http.post(PROGRAM_DEVELOPMENT_URL,
+      headers: headers, body: content, encoding: Encoding.getByName("UTF-8"));
   if (response.statusCode == HttpStatus.ok) {
     List l = jsonDecode(utf8.decode(response.bodyBytes));
     List<ProgramDevelopmentState> programDevelopmentStateList = l.map((e) {
-      ProgramDevelopmentDTO programDevelopmentDTO = ProgramDevelopmentDTO
-          .fromJson(e);
+      ProgramDevelopmentDTO programDevelopmentDTO =
+          ProgramDevelopmentDTO.fromJson(e);
       ProgramDevelopmentState programDevelopmentState = ProgramDevelopmentState(
-          programDevelopmentDTO.id, programDevelopmentDTO.date,
+          programDevelopmentDTO.id,
+          programDevelopmentDTO.date,
           programDevelopmentDTO.nutritionScore,
           programDevelopmentDTO.fitnessScore,
           programDevelopmentDTO.adjustProgramId);
       return programDevelopmentState;
     }).toList();
 
-    ProgramState programState = store.state.programListState.programs.reversed.toList()[programIndex];
+    ProgramState programState =
+        store.state.programListState.programs.reversed.toList()[programIndex];
     programState.programDevelopmentStateList = programDevelopmentStateList;
-    store.state.programListState.programs.reversed.toList()[programIndex] = programState;
+    store.state.programListState.programs.reversed.toList()[programIndex] =
+        programState;
     store.dispatch(SetProgramListAction(payload: store.state.programListState));
     return 1;
   }
   return 0;
 }
 
-
 Future<int> getAdjustNutritionList(BuildContext context) async {
   String jwt = await getJwt(context);
   Map<String, String> headers = Map<String, String>()
     ..putIfAbsent("Authorization", () => "Bearer " + jwt);
-  http.Response response = await http.get(ADJUST_NUTRITION_URL, headers: headers);
+  http.Response response =
+      await http.get(ADJUST_NUTRITION_URL, headers: headers);
   if (response.statusCode == HttpStatus.ok) {
     List l = jsonDecode(utf8.decode(response.bodyBytes));
     List<NutritionState> nutritionStateList = l.map((e) {
       NutritionDTO nutritionDTO = NutritionDTO.fromJson(e);
       List<FoodState> foodStateList = nutritionDTO.foods.map((foodDTO) {
-        FoodState foodState = FoodState(foodDTO.id, foodDTO.name, foodDTO.description, foodDTO.nutritionId);
+        FoodState foodState = FoodState(
+            foodDTO.id, foodDTO.name, foodDTO.description, foodDTO.nutritionId);
         return foodState;
       }).toList();
-      NutritionState nutritionState = NutritionState(nutritionDTO.id, nutritionDTO.name, nutritionDTO.description, nutritionDTO.unit, nutritionDTO.adjustNutritionId, nutritionDTO.caloriesPerUnit, nutritionDTO.proteinPerUnit, nutritionDTO.carbsPerUnit, nutritionDTO.fatInUnit, nutritionDTO.mealId, foodStateList);
+      NutritionState nutritionState = NutritionState(
+          nutritionDTO.id,
+          nutritionDTO.name,
+          nutritionDTO.description,
+          nutritionDTO.unit,
+          nutritionDTO.adjustNutritionId,
+          nutritionDTO.caloriesPerUnit,
+          nutritionDTO.proteinPerUnit,
+          nutritionDTO.carbsPerUnit,
+          nutritionDTO.fatInUnit,
+          nutritionDTO.mealId,
+          foodStateList);
       return nutritionState;
     }).toList();
     try {
-      StoreProvider.of<AppState>(context).dispatch(GetAdjustNutritions(payload: NutritionStateList(nutritionStateList)));
+      StoreProvider.of<AppState>(context).dispatch(GetAdjustNutritionsAction(
+          payload: NutritionStateList(nutritionStateList)));
     } catch (e) {
-      store.dispatch(GetAdjustNutritions(payload: NutritionStateList(nutritionStateList)));
+      store.dispatch(GetAdjustNutritionsAction(
+          payload: NutritionStateList(nutritionStateList)));
     }
     return 1;
   }
   return 0;
 }
 
-Future<int> designNutritionProgram(BuildContext context, ProgramDTO programDTO) async {
+Future<int> getAdjustMoveList(BuildContext context) async {
+  String jwt = await getJwt(context);
+  Map<String, String> headers = Map<String, String>()
+    ..putIfAbsent("Authorization", () => "Bearer " + jwt);
+
+  http.Response response = await http.get(ADJUST_MOVE_URL, headers: headers);
+  if (response.statusCode == HttpStatus.ok) {
+    List l = jsonDecode(utf8.decode(response.bodyBytes));
+    List<MoveState> moveStateList = l.map((e) {
+      MoveDTO moveDTO = MoveDTO.fromJson(e);
+      MoveState moveState = MoveState(
+          moveDTO.id,
+          moveDTO.name,
+          moveDTO.muscleName,
+          moveDTO.muscleType,
+          moveDTO.equipment,
+          moveDTO.picture,
+          moveDTO.pictureContentType,
+          moveDTO.adjustMoveId);
+      return moveState;
+    }).toList();
+
+    try {
+      StoreProvider.of<AppState>(context).dispatch(GetAdjustMovesAction(payload: MoveStateList(moves: moveStateList)));
+    } catch (e) {
+      store.dispatch(GetAdjustMovesAction(payload: MoveStateList(moves: moveStateList)));
+    }
+    return 1;
+  }
+  return 0;
+}
+
+Future<int> designNutritionProgram(
+    BuildContext context, ProgramDTO programDTO) async {
   String jwt = await getJwt(context);
   Map<String, String> headers = Map<String, String>()
     ..putIfAbsent("Authorization", () => "Bearer " + jwt)
@@ -312,7 +360,26 @@ Future<int> designNutritionProgram(BuildContext context, ProgramDTO programDTO) 
 
   String content = jsonEncode(programDTO.toJson());
 
-  http.Response response = await http.post(DESIGN_NUTRITION_PROGRAM_URL, headers: headers, body: content, encoding: Encoding.getByName("UTF-8"));
+  http.Response response = await http.post(DESIGN_NUTRITION_PROGRAM_URL,
+      headers: headers, body: content, encoding: Encoding.getByName("UTF-8"));
+  if (response.statusCode == HttpStatus.ok) {
+    return 1;
+  }
+  return 0;
+}
+
+
+Future<int> designFitnessProgram(
+    BuildContext context, ProgramDTO programDTO) async {
+  String jwt = await getJwt(context);
+  Map<String, String> headers = Map<String, String>()
+    ..putIfAbsent("Authorization", () => "Bearer " + jwt)
+    ..putIfAbsent("Content-Type", () => "application/json");
+
+  String content = jsonEncode(programDTO.toJson());
+
+  http.Response response = await http.post(DESIGN_FITNESS_PROGRAM_URL,
+      headers: headers, body: content, encoding: Encoding.getByName("UTF-8"));
   if (response.statusCode == HttpStatus.ok) {
     return 1;
   }

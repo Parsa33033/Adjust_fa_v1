@@ -13,6 +13,7 @@ import 'package:adjust_specialist/model/program.dart';
 import 'package:adjust_specialist/pages/fitness_program_page.dart';
 import 'package:adjust_specialist/pages/menu_page.dart';
 import 'package:adjust_specialist/pages/nutrition_program_page.dart';
+import 'package:adjust_specialist/pages/program_info_page.dart';
 import 'package:adjust_specialist/pages/program_page.dart';
 import 'package:adjust_specialist/states/app_state.dart';
 import 'package:adjust_specialist/states/specialist_state.dart';
@@ -68,6 +69,7 @@ class _MainPageState extends State<MainPage>
 
   void fetchDependencies() async {
     await getAdjustNutritionList(context);
+    await getAdjustMoveList(context);
     await getSpecialistPrograms(context);
   }
 
@@ -121,12 +123,18 @@ class _MainPageState extends State<MainPage>
           items: <Widget>[
             CircleAvatar(
                 radius: 30, child: Image.asset("assets/adjust_logo1.png")),
+            CircleAvatar(
+                radius: 30, child: Image.asset("assets/adjust_logo1.png")),
           ],
           onTap: (index) {
             //Handle button tap
-            if (index == 1) {
+            if (index == 0) {
               setState(() {
                 _content = ProgramPage();
+              });
+            } else if (index == 1) {
+              setState(() {
+                _content = ProgramInfoPage();
               });
             }
           },

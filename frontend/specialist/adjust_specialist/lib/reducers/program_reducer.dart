@@ -3,6 +3,7 @@
 import 'package:adjust_specialist/actions/program_action.dart';
 import 'package:adjust_specialist/states/app_state.dart';
 import 'package:adjust_specialist/states/fitness_program_state.dart';
+import 'package:adjust_specialist/states/move_state.dart';
 import 'package:adjust_specialist/states/nutrition_program_state.dart';
 import 'package:adjust_specialist/states/nutrition_state.dart';
 import 'package:adjust_specialist/states/program_state.dart';
@@ -42,10 +43,17 @@ AppState programReducer(AppState state, dynamic action) {
         .type : fitnessProgramState.type;
     state.fitnessProgramState = fitnessProgramState;
     return state;
-  } if (action is GetAdjustNutritions) {
+  } if (action is GetAdjustNutritionsAction) {
     NutritionStateList nutritionStateList = state.nutritionStateList;
-    nutritionStateList.nutritions = action.payload.nutritions != null ? action.payload.nutritions : nutritionStateList.nutritions;
+    nutritionStateList.nutritions = action.payload.nutritions != null
+        ? action.payload.nutritions
+        : nutritionStateList.nutritions;
     state.nutritionStateList = nutritionStateList;
+    return state;
+  } if (action is GetAdjustMovesAction) {
+    MoveStateList moveStateList = state.moveStateList;
+    moveStateList.moves = action.payload.moves != null ? action.payload.moves : moveStateList.moves;
+    state.moveStateList = moveStateList;
     return state;
   } else {
     return state;

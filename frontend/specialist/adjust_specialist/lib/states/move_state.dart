@@ -1,5 +1,13 @@
 import 'package:adjust_specialist/model/move.dart';
 
+
+final MoveStateList moveStateListInit = MoveStateList(moves: List());
+
+class MoveStateList {
+  List<MoveState> moves;
+  MoveStateList({this.moves});
+}
+
 class MoveState extends Move {
   MoveState(
       int id,

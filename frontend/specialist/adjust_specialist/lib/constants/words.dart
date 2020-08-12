@@ -135,3 +135,5 @@ final Map<String, String> WORKOUT_TYPE_LIST = Map<String, String>()
 
 final String WORKOUT_TYPE = "مدل تمرین";
 final String WORKOUT_DAY_NUMBERS = "تعداد روزهای تمرینی";
+final String ATLEAST_ONE_WORKOUT_DAY = "حداقل باید یک روز تمرینی وارد کرد!";
+final String WORKOUT_TYPE_EMPTY = "مدل تمرین انتخاب نشده";

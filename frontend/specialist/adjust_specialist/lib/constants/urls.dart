@@ -18,8 +18,10 @@ final String SPECIALIST_URL = BASE_URL + "/api/specialist/app/specialists";
 final String PROGRAM_URL = BASE_URL + "/api/specialist/app/adjust-programs";
 
 final String ADJUST_NUTRITION_URL = BASE_URL + "/api/specialist/app/adjust-nutritions";
+final String ADJUST_MOVE_URL = BASE_URL + "/api/specialist/app/adjust-moves";
 
 final String DESIGN_NUTRITION_PROGRAM_URL = BASE_URL + "/api/specialist/app/design-nutrition-program";
+final String DESIGN_FITNESS_PROGRAM_URL = BASE_URL + "/api/specialist/app/design-fitness-program";
 
 
 

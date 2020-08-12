@@ -8,6 +8,8 @@ import 'package:adjust_specialist/states/program_state.dart';
 import 'package:adjust_specialist/states/specialist_state.dart';
 import 'package:adjust_specialist/states/user_state.dart';
 
+import 'move_state.dart';
+
 AppState appStateInit = AppState(
   userState: userStateInit,
   authenticationState: authenticationStateInit,
@@ -17,6 +19,7 @@ AppState appStateInit = AppState(
   fitnessProgramState: fitnessProgramStateInit,
   messagesState: messagesStateInit,
   nutritionStateList: nutritionStateListInit,
+  moveStateList: moveStateListInit
 );
 
 class AppState {
@@ -28,6 +31,7 @@ class AppState {
   FitnessProgramState fitnessProgramState;
   MessagesState messagesState;
   NutritionStateList nutritionStateList;
+  MoveStateList moveStateList;
 
   AppState({
       this.userState,
@@ -37,5 +41,6 @@ class AppState {
       this.nutritionProgramState,
       this.fitnessProgramState,
       this.messagesState,
-      this.nutritionStateList});
+      this.nutritionStateList,
+      this.moveStateList});
 }

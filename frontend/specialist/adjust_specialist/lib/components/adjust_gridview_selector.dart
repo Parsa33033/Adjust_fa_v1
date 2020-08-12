@@ -10,12 +10,16 @@ class AdjustGridViewItem extends StatefulWidget {
   Color selectedFontColor;
   Color notSelectedFontColor;
   bool selected;
+  bool hasPicture;
+  Image picture;
   ValueChanged<bool> isSelected;
 
 
   AdjustGridViewItem({this.name, this.selectedColor,
-      this.notSelectedColor, this.selectedFontColor, this.notSelectedFontColor, this.selected, this.isSelected}) {
+      this.notSelectedColor, this.selectedFontColor, this.notSelectedFontColor, this.selected, this.hasPicture, this.picture, this.isSelected}) {
     this.selected = this.selected == null ? false : this.selected;
+    this.hasPicture = this.hasPicture == null ? false : this.hasPicture;
+    this.picture = this.picture == null ? null : this.picture;
   }
 
   @override
@@ -33,7 +37,7 @@ class _AdjustGridViewItemState extends State<AdjustGridViewItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.of(context).size.height,
+        height: 100,
         width: MediaQuery.of(context).size.width,
         child: InkWell(
           child: Container(
@@ -44,13 +48,32 @@ class _AdjustGridViewItemState extends State<AdjustGridViewItem> {
                   border: Border.all(color: this.widget.selectedColor, width: 2),
                   color: this.widget.selected ? this.widget.selectedColor : this.widget.notSelectedColor
               ),
-              child: FittedBox(
+              child: this.widget.hasPicture ? Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 7,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: Text(this.widget.name, style: TextStyle(fontFamily: "Iransans", color: this.widget.selected ? this.widget.selectedFontColor: this.widget.notSelectedFontColor, fontSize: 14),),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      child: this.widget.picture,
+                    ),
+                  )
+                ],
+              ) : FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Directionality(
                   textDirection: TextDirection.rtl,
                   child: Text(this.widget.name, style: TextStyle(fontFamily: "Iransans", color: this.widget.selected ? this.widget.selectedFontColor: this.widget.notSelectedFontColor, fontSize: 14),),
                 ),
-              )
+              ),
           ),
           onTap: () {
             setState(() {
